@@ -4,14 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Workers Guild | Launch</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#ff8c00">
     <script src="https://cdn.tailwindcss.com/"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;700;900&display=swap');
+        body { font-family: 'Hanken Grotesk', sans-serif; }
+    </style>
 </head>
 <body class="bg-[#131313] text-[#ff8c00] font-sans">
 
     <!-- Header -->
     <header class="fixed top-0 left-0 w-full z-50 bg-[#131313]/80 backdrop-blur-md border-b border-orange-500/20 px-6 py-4 flex justify-between items-center">
         <div class="flex items-center gap-2">
-            <img src="{{DATA:IMAGE:IMAGE_1126}}" alt="Logo" class="w-8 h-8">
+            <img src="{{DATA:IMAGE:IMAGE_1134}}" alt="Logo" class="w-8 h-8">
             <h1 class="text-lg font-black uppercase tracking-tighter">The Workers Guild</h1>
         </div>
         <button class="text-xs font-bold uppercase opacity-60 flex items-center gap-1">
@@ -20,11 +26,11 @@
         </button>
     </header>
 
-    <main class="min-h-screen pt-24 pb-12 px-6 flex flex-col items-center justify-center text-center">
+    <main class="min-h-screen pt-28 pb-12 px-6 flex flex-col items-center justify-center text-center">
         <!-- Guild Seal -->
         <div class="relative mb-8">
-            <img src="{{DATA:IMAGE:IMAGE_1126}}" alt="Guild Seal" class="w-48 h-48 opacity-20 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 blur-2xl">
-            <img src="{{DATA:IMAGE:IMAGE_1126}}" alt="Guild Seal" class="w-32 h-32 relative z-10 drop-shadow-[0_0_15px_rgba(255,140,0,0.3)]">
+            <img src="{{DATA:IMAGE:IMAGE_1134}}" alt="Guild Seal" class="w-48 h-48 opacity-20 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 blur-2xl">
+            <img src="{{DATA:IMAGE:IMAGE_1134}}" alt="Guild Seal" class="w-32 h-32 relative z-10 drop-shadow-[0_0_15px_rgba(255,140,0,0.3)]">
         </div>
 
         <h2 class="text-4xl font-bold uppercase tracking-tighter mb-2">Time Till Launch</h2>
@@ -47,7 +53,7 @@
             </div>
 
             <p class="text-sm text-white/70 mb-6 leading-relaxed border-l-2 border-orange-500/40 pl-4">
-                The Workers Guild is the high-stakes coordination engine for elite tradesmen and business partners. We provide A.I. verified labor dispatch, precision skill tracking, and secure financial settlement for the modern vocational economy.
+                The Workers Guild is the high-stakes coordination engine for elite tradesmen and business partners. Master your trade and secure your future in the modern vocational economy.
             </p>
 
             <form class="space-y-4">
@@ -84,5 +90,15 @@
         </div>
     </footer>
 
+    <!-- PWA Service Worker Registration -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./service-worker.js')
+            .then(reg => console.log('Service Worker registered', reg))
+            .catch(err => console.error('Service Worker registration failed', err));
+        });
+      }
+    </script>
 </body>
 </html>
