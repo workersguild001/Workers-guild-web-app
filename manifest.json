@@ -8,13 +8,42 @@
   "orientation": "portrait",
   "icons": [
     {
-      "src": "Handcrafted industrial symbol, wood and metal, circular brand mark, rivets, weathered grain, high contrast, The Workers Guild emblem.. Design context: - Primary color: #ff8c00
-- Font: hankenGrotesk
-- Mode: dark
-- Roundness: rounded-sm
-. The logo should be visually consistent with these brand tokens.",
-      "sizes": "1024x1024",
-      "type": "image/png"
+      "src": "{{DATA:IMAGE:IMAGE_194}}",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "{{DATA:IMAGE:IMAGE_875}}",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
     }
-  ]
+  ],
+  "description": "The definitive administrative terminal for the modern labor force."
 }
+File 6: service-worker.js (Offline Support)
+Instructions: Create a new file named service-worker.js. This runs in the background to handle the installation process.
+
+self.addEventListener('install', (event) => {
+  event.waitUntil(
+    caches.open('guild-v1').then((cache) => {
+      return cache.addAll([
+        '/',
+        'index.html',
+        'gateway.html',
+        'recruitment.html',
+        'success.html',
+        'manifest.json'
+      ]);
+    })
+  );
+});
+
+self.addEventListener('fetch', (event) => {
+  event.respondWith(
+    caches.match(event.request).then((response) => {
+      return response || fetch(event.request);
+    })
+  );
+});
