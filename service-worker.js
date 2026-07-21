@@ -1,7 +1,22 @@
-self.addEventListener('install', (e) => {
-  console.log('Guild App Service Worker Installed');
+self.addEventListener('install', (event) => {
+  event.waitUntil(
+    caches.open('guild-v1').then((cache) => {
+      return cache.addAll([
+        '/',
+        'index.html',
+        'gateway.html',
+        'recruitment.html',
+        'success.html',
+        'manifest.json'
+      ]);
+    })
+  );
 });
 
-self.addEventListener('fetch', (e) => {
-  e.respondWith(fetch(e.request));
+self.addEventListener('fetch', (event) => {
+  event.respondWith(
+    caches.match(event.request).then((response) => {
+      return response || fetch(event.request);
+    })
+  );
 });
