@@ -8,8 +8,12 @@
   "orientation": "portrait",
   "icons": [
     {
-      "src": "A high-fidelity, professional favicon set for 'The Workers Guild'. The icon is the circular industrial brand mark: a gloved fist holding a hammer at a diagonal angle, set against a dark metallic gear background. The asset must be isolated on a pure white background to be cropped into a 32x32 and 192x192 favicon. High contrast, sharp detail, industrial wood and metal textures.",
-      "sizes": "192x192",
+      "src": "Handcrafted industrial symbol, wood and metal, circular brand mark, rivets, weathered grain, high contrast, The Workers Guild emblem.. Design context: - Primary color: #ff8c00
+- Font: hankenGrotesk
+- Mode: dark
+- Roundness: rounded-sm
+. The logo should be visually consistent with these brand tokens.",
+      "sizes": "1024x1024",
       "type": "image/png"
     }
   ]
