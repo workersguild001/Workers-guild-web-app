@@ -1,1 +1,113 @@
-Affiliate Master Console (Logo Removed)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Affiliate Master Console | The Workers Guild</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .industrial-border { border-image: linear-gradient(to bottom, #ff8c00, #333) 1; }
+        .glow-text { text-shadow: 0 0 10px rgba(255, 140, 0, 0.3); }
+    </style>
+</head>
+<body class="bg-[#131313] text-white font-sans min-h-screen">
+
+    <!-- Header -->
+    <header class="h-20 border-b border-white/10 flex items-center justify-between px-6 bg-[#1c1b1b]">
+        <h1 class="text-xl font-black text-orange-500 tracking-[0.2em] uppercase glow-text">Workers Guild</h1>
+        <div class="w-10 h-10 rounded-full bg-orange-500/20 border border-orange-500/50 flex items-center justify-center">
+            <span class="text-xs font-black text-orange-500">OP</span>
+        </div>
+    </header>
+
+    <main class="p-6 max-w-md mx-auto space-y-8 pb-32">
+        
+        <!-- Dashboard Header -->
+        <div class="flex justify-between items-end">
+            <div>
+                <p class="text-[10px] font-black text-orange-500 uppercase tracking-widest mb-1">[ Operator Overview ]</p>
+                <h2 class="text-3xl font-black uppercase leading-none">Affiliate Master<br>Console</h2>
+            </div>
+            <div class="bg-white/5 border border-white/10 px-3 py-2 rounded font-mono text-[10px] text-gray-400">
+                CYCLE: 2026.07.20
+            </div>
+        </div>
+
+        <!-- Stats Grid -->
+        <div class="grid grid-cols-2 gap-4">
+            <div class="bg-[#1c1b1b] p-5 rounded border border-white/5 border-l-4 border-l-orange-500">
+                <p class="text-[9px] text-gray-500 font-bold uppercase tracking-tighter mb-1">Total Referrals</p>
+                <p class="text-4xl font-black text-white">1,402</p>
+                <p class="text-[10px] text-orange-500 font-bold mt-1">+12% This Month</p>
+            </div>
+            <div class="bg-[#1c1b1b] p-5 rounded border border-white/5 border-l-4 border-l-green-500">
+                <p class="text-[9px] text-gray-500 font-bold uppercase tracking-tighter mb-1">Total Earnings</p>
+                <p class="text-3xl font-black text-white">$42.8k</p>
+                <p class="text-[9px] text-gray-400 mt-1">PAID OUT: $38,200.00</p>
+            </div>
+        </div>
+
+        <!-- Claim Rewards Section -->
+        <div class="bg-gradient-to-br from-[#1c1b1b] to-black border-2 border-orange-500/30 p-8 rounded-lg shadow-[0_0_30px_rgba(255,140,0,0.1)]">
+            <p class="text-[10px] font-black text-orange-500 uppercase tracking-widest text-center mb-6">[ Pending Collection ]</p>
+            
+            <div class="flex justify-center mb-6">
+                <!-- Chest Icon Placeholder -->
+                <div class="relative">
+                    <div class="w-24 h-24 bg-orange-500/10 rounded-full flex items-center justify-center border border-orange-500/20">
+                        <svg class="w-12 h-12 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="text-center text-4xl font-black mb-2 tracking-tighter">$4,600.20</h3>
+            <p class="text-center text-[10px] text-orange-500/50 font-bold uppercase mb-8">Overflow Detected • Ready to Harvest</p>
+            
+            <button class="w-full bg-orange-500 hover:bg-orange-600 active:scale-95 text-black font-black py-4 rounded uppercase tracking-tighter transition-all shadow-[0_0_20px_rgba(255,140,0,0.3)]">
+                Claim Assets Now
+            </button>
+        </div>
+
+        <!-- Links Section -->
+        <div class="space-y-4">
+            <h3 class="text-[10px] font-black uppercase text-gray-500 tracking-[0.2em]">[ Network Propagation ]</h3>
+            
+            <div class="bg-black/40 border border-white/10 p-5 rounded-lg space-y-3">
+                <p class="text-[10px] font-bold text-gray-400 uppercase">Primary Recruitment Link</p>
+                <div class="flex items-center gap-3">
+                    <div class="flex-1 bg-black/60 border border-white/5 p-3 rounded font-mono text-xs text-orange-500/80 truncate">
+                        workersguild.store/ref/alpha-8829
+                    </div>
+                    <button class="bg-white/5 hover:bg-white/10 p-3 rounded text-xs font-bold uppercase border border-white/10 transition-colors">
+                        Copy
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Navigation Bar -->
+    <nav class="fixed bottom-0 left-0 w-full bg-[#1c1b1b]/95 backdrop-blur-lg border-t border-white/10 flex justify-around items-center h-20 pb-safe">
+        <button class="flex flex-col items-center gap-1 text-orange-500">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+            <span class="text-[9px] font-black uppercase">Status</span>
+        </button>
+        <button class="flex flex-col items-center gap-1 text-gray-500">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.828a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
+            <span class="text-[9px] font-black uppercase">Links</span>
+        </button>
+        <button class="flex flex-col items-center gap-1 text-gray-500">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+            <span class="text-[9px] font-black uppercase">Chest</span>
+        </button>
+        <button class="flex flex-col items-center gap-1 text-gray-500">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+            <span class="text-[9px] font-black uppercase">Wallet</span>
+        </button>
+    </nav>
+
+</body>
+</html>
