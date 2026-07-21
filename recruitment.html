@@ -1,113 +1,442 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Affiliate Master Console | The Workers Guild</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        .industrial-border { border-image: linear-gradient(to bottom, #ff8c00, #333) 1; }
-        .glow-text { text-shadow: 0 0 10px rgba(255, 140, 0, 0.3); }
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Workers Guild | Affiliate Master Console</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .rivet {
+            width: 4px;
+            height: 4px;
+            background-color: #ffd79b;
+            border-radius: 50%;
+            position: absolute;
+        }
+        .steel-plate {
+            background-image: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 100%);
+            box-shadow: inset 0 0 10px rgba(255, 179, 0, 0.05);
+        }
+        .glow-amber {
+            filter: drop-shadow(0 0 15px rgba(255, 179, 0, 0.4));
+        }
+        @keyframes pulse-glow {
+            0%, 100% { filter: drop-shadow(0 0 15px rgba(255, 179, 0, 0.4)); }
+            50% { filter: drop-shadow(0 0 25px rgba(255, 179, 0, 0.7)); }
+        }
+        .animate-treasure-glow {
+            animation: pulse-glow 3s ease-in-out infinite;
+        }
+        .recessed-groove {
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);
+        }
+        /* Custom scrollbar for industrial feel */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #131313;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #514532;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ffd79b;
+        }
     </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed": "#1c1b1b",
+                    "tertiary-fixed-dim": "#c8c6c5",
+                    "surface-bright": "#3a3939",
+                    "tertiary-fixed": "#e5e2e1",
+                    "surface-container": "#201f1f",
+                    "on-background": "#e5e2e1",
+                    "tertiary-container": "#c3c1c0",
+                    "surface-tint": "#ffba38",
+                    "on-tertiary-fixed-variant": "#474746",
+                    "tertiary": "#dfdddc",
+                    "on-secondary-fixed": "#1a1c1c",
+                    "outline": "#9e8e78",
+                    "inverse-on-surface": "#313030",
+                    "surface-container-high": "#2a2a2a",
+                    "on-primary": "#432c00",
+                    "error-container": "#93000a",
+                    "outline-variant": "#514532",
+                    "surface-variant": "#353534",
+                    "surface-dim": "#131313",
+                    "surface-container-lowest": "#0e0e0e",
+                    "secondary-container": "#484949",
+                    "primary": "#ffd79b",
+                    "on-surface-variant": "#d6c4ac",
+                    "surface": "#131313",
+                    "on-primary-fixed": "#281900",
+                    "on-surface": "#e5e2e1",
+                    "surface-container-highest": "#353534",
+                    "primary-fixed-dim": "#ffba38",
+                    "on-secondary-fixed-variant": "#464747",
+                    "error": "#ffb4ab",
+                    "primary-fixed": "#ffdeac",
+                    "primary-container": "#ffb300",
+                    "surface-container-low": "#1c1b1b",
+                    "on-secondary": "#2f3131",
+                    "secondary-fixed": "#e3e2e2",
+                    "secondary-fixed-dim": "#c7c6c6",
+                    "secondary": "#c7c6c6",
+                    "on-primary-container": "#6b4900",
+                    "on-error-container": "#ffdad6",
+                    "inverse-surface": "#e5e2e1",
+                    "on-secondary-container": "#b8b8b8",
+                    "on-error": "#690005",
+                    "on-tertiary": "#313030",
+                    "on-tertiary-container": "#504f4f",
+                    "on-primary-fixed-variant": "#604100",
+                    "inverse-primary": "#7e5700",
+                    "background": "#131313"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "panel-padding": "40px",
+                    "unit": "8px",
+                    "gutter": "24px",
+                    "margin": "32px",
+                    "stack-gap": "12px"
+            },
+            "fontFamily": {
+                    "body-md": ["JetBrains Mono"],
+                    "code-display": ["JetBrains Mono"],
+                    "label-caps": ["JetBrains Mono"],
+                    "headline-md": ["Space Grotesk"],
+                    "body-lg": ["JetBrains Mono"],
+                    "headline-lg": ["Space Grotesk"],
+                    "headline-lg-mobile": ["Space Grotesk"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "code-display": ["14px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                    "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "1.1", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
 </head>
-<body class="bg-[#131313] text-white font-sans min-h-screen">
-
-    <!-- Header -->
-    <header class="h-20 border-b border-white/10 flex items-center justify-between px-6 bg-[#1c1b1b]">
-        <h1 class="text-xl font-black text-orange-500 tracking-[0.2em] uppercase glow-text">Workers Guild</h1>
-        <div class="w-10 h-10 rounded-full bg-orange-500/20 border border-orange-500/50 flex items-center justify-center">
-            <span class="text-xs font-black text-orange-500">OP</span>
-        </div>
-    </header>
-
-    <main class="p-6 max-w-md mx-auto space-y-8 pb-32">
+<body class="bg-background text-on-surface font-body-md min-h-screen selection:bg-primary selection:text-on-primary flex flex-col overflow-x-hidden">
+<!-- Brand Header -->
+<header class="fixed top-0 w-full z-50 bg-surface border-b-2 border-surface-container-highest px-4 h-20 flex items-center justify-center">
+</header>
+<div class="flex flex-1 pt-20">
+<!-- Sidebar (Desktop Only) -->
+<aside class="hidden lg:flex flex-col h-full w-80 bg-surface-container border-r-2 border-outline-variant py-panel-padding sticky top-20">
+<div class="px-8 mb-10">
+<h2 class="font-headline-md text-headline-md text-primary font-bold uppercase">Master Console</h2>
+</div>
+<nav class="flex-1">
+<ul class="space-y-2">
+<li>
+<a class="bg-primary-container text-on-primary-container rounded-lg mx-2 flex items-center px-4 py-3 gap-4" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-caps text-label-caps uppercase">Dashboard</span>
+</a>
+</li>
+<li>
+<a class="text-on-surface-variant px-4 py-3 flex items-center gap-4 hover:bg-surface-variant mx-2 rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">link</span>
+<span class="font-label-caps text-label-caps uppercase">Referral Links</span>
+</a>
+</li>
+<li>
+<a class="text-on-surface-variant px-4 py-3 flex items-center gap-4 hover:bg-surface-variant mx-2 rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-label-caps text-label-caps uppercase">Treasure Chest</span>
+</a>
+</li>
+<li>
+<a class="text-on-surface-variant px-4 py-3 flex items-center gap-4 hover:bg-surface-variant mx-2 rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-label-caps text-label-caps uppercase">Payment Setup</span>
+</a>
+</li>
+</ul>
+</nav>
+<div class="px-margin pt-10 border-t border-outline-variant mt-auto">
+<div class="bg-surface-dim p-4 border border-outline-variant rounded relative">
+<div class="rivet top-1 left-1"></div>
+<div class="rivet top-1 right-1"></div>
+<p class="font-label-caps text-[10px] text-primary mb-2 uppercase">System Status</p>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+<p class="text-xs uppercase">Engines Optimal</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 overflow-x-hidden p-4 md:p-8 lg:p-panel-padding">
+<div class="max-w-6xl mx-auto space-y-8 pb-24 lg:pb-8">
+<!-- Page Title -->
+<section class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b-4 border-surface-container-highest pb-6">
+<div>
+<p class="font-label-caps text-label-caps text-primary-fixed-dim mb-2 uppercase">[ Operator Overview ]</p>
+<h2 class="font-headline-lg text-3xl md:text-5xl font-extrabold tracking-tight uppercase leading-tight">Affiliate Master Console</h2>
+</div>
+<div class="bg-surface-container-high px-4 py-2 border border-outline-variant flex items-center gap-3 self-start md:self-auto">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">calendar_today</span>
+<span class="font-code-display text-xs md:text-sm uppercase">Cycle: 2023.11.04</span>
+</div>
+</section>
+<!-- Stats Grid -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Total Referrals -->
+<div class="steel-plate border-2 border-outline-variant p-6 relative overflow-hidden">
+<div class="rivet top-2 left-2"></div>
+<div class="rivet top-2 right-2"></div>
+<div class="rivet bottom-2 left-2"></div>
+<div class="rivet bottom-2 right-2"></div>
+<p class="font-label-caps text-xs text-on-surface-variant mb-4 uppercase">Total Referrals</p>
+<div class="flex items-baseline gap-2"><span class="font-headline-lg text-4xl text-primary font-bold">0</span></div>
+<div class="mt-4 h-1 bg-surface-container-highest w-full overflow-hidden">
+<div class="h-full bg-primary-container w-[72%]" style="width: 0%;"></div>
+</div>
+</div>
+<!-- Active Links -->
+<div class="steel-plate border-2 border-outline-variant p-6 relative overflow-hidden">
+<div class="rivet top-2 left-2"></div>
+<div class="rivet top-2 right-2"></div>
+<div class="rivet bottom-2 left-2"></div>
+<div class="rivet bottom-2 right-2"></div>
+<p class="font-label-caps text-xs text-on-surface-variant mb-4 uppercase">Active Links</p>
+<div class="flex items-baseline gap-2"><span class="font-headline-lg text-4xl text-primary font-bold">00</span><span class="text-on-surface-variant font-label-caps text-[10px] uppercase font-bold">Of 10</span></div>
+<div class="mt-4 flex gap-1 h-2"><div class="flex-1 bg-surface-container-highest"></div><div class="flex-1 bg-surface-container-highest"></div><div class="flex-1 bg-surface-container-highest"></div><div class="flex-1 bg-surface-container-highest"></div><div class="flex-1 bg-surface-container-highest"></div><div class="flex-1 bg-surface-container-highest"></div><div class="flex-1 bg-surface-container-highest"></div><div class="flex-1 bg-surface-container-highest"></div><div class="flex-1 bg-surface-container-highest"></div><div class="flex-1 bg-surface-container-highest"></div></div>
+</div>
+<!-- Total Earnings -->
+<div class="steel-plate border-2 border-outline-variant p-6 relative overflow-hidden">
+<div class="rivet top-2 left-2"></div>
+<div class="rivet top-2 right-2"></div>
+<div class="rivet bottom-2 left-2"></div>
+<div class="rivet bottom-2 right-2"></div>
+<p class="font-label-caps text-xs text-on-surface-variant mb-4 uppercase">Total Earnings</p>
+<div class="flex items-baseline gap-2">
+<span class="font-headline-lg text-4xl text-primary font-bold">$0.00</span>
+</div>
+<p class="font-code-display text-[10px] text-on-surface-variant mt-2 uppercase">Paid Out: $0.00</p>
+</div>
+<div class="steel-plate border-2 border-outline-variant p-6 relative overflow-hidden">
+<div class="rivet top-2 left-2"></div>
+<div class="rivet top-2 right-2"></div>
+<div class="rivet bottom-2 left-2"></div>
+<div class="rivet bottom-2 right-2"></div>
+<p class="font-label-caps text-xs text-on-surface-variant mb-4 uppercase">Waiting List Reservations</p>
+<div class="flex items-baseline gap-2"><span class="font-headline-lg text-4xl text-primary font-bold">0</span></div>
+<div class="mt-4 flex items-center gap-2">
+<div class="flex-1 h-1 bg-surface-container-highest overflow-hidden">
+<div class="h-full bg-primary w-[85%] animate-pulse" style="width: 0%;"></div>
+</div>
+<span class="font-code-display text-[9px] text-primary uppercase">Growth Velocity</span>
+</div>
+</div></section>
+<!-- Mid Section: Treasure Chest & Recruitment -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Claimable Rewards Card -->
+<div class="lg:col-span-5 steel-plate bg-surface-container border-2 border-primary p-6 relative flex flex-col justify-between min-h-[350px]">
+<div class="rivet top-4 left-4"></div>
+<div class="rivet top-4 right-4"></div>
+<div class="rivet bottom-4 left-4"></div>
+<div class="rivet bottom-4 right-4"></div>
+<div class="z-10">
+<p class="font-label-caps text-label-caps text-primary mb-2 uppercase text-xs font-bold">[ Pending Collection ]</p>
+<h3 class="font-headline-md text-2xl text-on-surface font-bold uppercase leading-tight">Claimable Rewards</h3>
+</div>
+<!-- Industrial Chest Graphic -->
+<div class="relative flex-1 flex items-center justify-center my-6">
+<div class="absolute inset-0 bg-primary/10 blur-[50px] animate-treasure-glow rounded-full"></div>
+<div class="relative z-10 animate-treasure-glow">
+<span class="material-symbols-outlined text-8xl md:text-9xl text-primary" style="font-variation-settings: 'FILL' 1, 'wght' 200;">inventory_2</span>
+<div class="absolute -top-2 -right-2 bg-primary text-on-primary w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs shadow-lg">$$</div>
+</div>
+</div>
+<div class="z-10 space-y-4">
+<div class="flex justify-between items-end">
+<div class="font-headline-lg text-3xl text-primary font-bold">$0.00</div>
+<div class="font-code-display text-[10px] text-primary animate-pulse uppercase">Overflow Detected</div>
+</div>
+<button class="w-full bg-primary text-on-primary font-label-caps py-3 font-bold tracking-widest hover:bg-primary-fixed-dim transition-all active:translate-y-1 active:translate-x-1 shadow-[4px_4px_0px_#432c00] uppercase text-sm">
+                            Claim Assets Now
+                        </button>
+</div>
+</div>
+<!-- Recruitment & Links Console -->
+<div class="lg:col-span-7 steel-plate border-2 border-outline-variant p-6 relative flex flex-col gap-6">
+<div class="rivet top-4 left-4"></div>
+<div class="rivet top-4 right-4"></div>
+<div class="flex flex-col sm:flex-row gap-6">
+<div class="flex-1">
+<p class="font-label-caps text-xs text-on-surface-variant mb-2 uppercase">Network Propagation</p>
+<h3 class="font-headline-md text-2xl text-on-surface font-bold uppercase">Active Referral Links</h3>
+<div class="space-y-3 mt-4">
+<!-- Link 1 -->
+<div class="bg-surface-dim p-3 border border-outline-variant">
+<div class="flex justify-between items-center mb-2">
+<span class="font-label-caps text-[9px] text-on-surface-variant uppercase">Campaign: Summer Valkyrie</span>
+</div>
+<div class="recessed-groove bg-black/40 p-2 flex items-center justify-between gap-3 border border-outline-variant/30">
+<code class="font-code-display text-[11px] text-primary truncate max-w-[150px] md:max-w-none">workersguild.io/ref/VALK-492</code>
+<button class="bg-outline-variant px-2 py-1 font-label-caps text-[9px] hover:bg-primary hover:text-on-primary transition-all uppercase whitespace-nowrap">Copy</button>
+</div>
+</div>
+<!-- Link 2 -->
+<div class="bg-surface-dim p-3 border border-outline-variant">
+<div class="flex justify-between items-center mb-2">
+<span class="font-label-caps text-[9px] text-on-surface-variant uppercase">Campaign: Iron Heart</span>
+</div>
+<div class="recessed-groove bg-black/40 p-2 flex items-center justify-between gap-3 border border-outline-variant/30">
+<code class="font-code-display text-[11px] text-primary truncate max-w-[150px] md:max-w-none">workersguild.io/ref/IRON-22</code>
+<button class="bg-outline-variant px-2 py-1 font-label-caps text-[9px] hover:bg-primary hover:text-on-primary transition-all uppercase whitespace-nowrap">Copy</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Recruitment QR -->
+<div class="w-full sm:w-40 flex flex-col items-center gap-2">
+<p class="font-label-caps text-[9px] text-primary uppercase font-bold">Fast Recruit QR</p>
+<div class="bg-primary p-2 aspect-square w-32 flex items-center justify-center">
+<!-- Simulated QR Code -->
+<div class="grid grid-cols-4 grid-rows-4 gap-1 w-full h-full">
+<div class="bg-on-primary"></div><div class="bg-on-primary"></div><div class="bg-primary"></div><div class="bg-on-primary"></div>
+<div class="bg-on-primary"></div><div class="bg-primary"></div><div class="bg-on-primary"></div><div class="bg-on-primary"></div>
+<div class="bg-primary"></div><div class="bg-on-primary"></div><div class="bg-on-primary"></div><div class="bg-primary"></div>
+<div class="bg-on-primary"></div><div class="bg-on-primary"></div><div class="bg-primary"></div><div class="bg-on-primary"></div>
+</div>
+</div>
+<button class="text-[9px] font-label-caps text-on-surface-variant hover:text-primary transition-all underline uppercase">Download Kit</button>
+</div>
+</div>
+<div class="mt-auto pt-4 flex flex-wrap gap-2">
+<button class="border border-outline px-3 py-1 font-label-caps text-[10px] hover:bg-outline hover:text-on-tertiary-fixed transition-all uppercase">[ Twitter ]</button>
+<button class="border border-outline px-3 py-1 font-label-caps text-[10px] hover:bg-outline hover:text-on-tertiary-fixed transition-all uppercase">[ LinkedIn ]</button>
+<button class="border border-outline px-3 py-1 font-label-caps text-[10px] hover:bg-outline hover:text-on-tertiary-fixed transition-all uppercase">[ Discord ]</button>
+</div>
+</div>
+</section>
+<!-- Payout History / Earnings Ledger -->
+<section class="steel-plate border-2 border-outline-variant overflow-hidden relative">
+<div class="rivet top-2 left-2"></div>
+<div class="rivet top-2 right-2"></div>
+<div class="p-4 border-b border-outline-variant bg-surface-container">
+<h3 class="font-label-caps text-xs text-primary tracking-widest uppercase font-bold">Transactional Ledger History</h3>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left font-code-display text-xs">
+<thead>
+<tr class="bg-surface-container-high text-on-surface-variant border-b border-outline-variant uppercase">
+<th class="px-4 py-3 font-bold">Timestamp</th>
+<th class="px-4 py-3 font-bold">Entity</th>
+<th class="px-4 py-3 font-bold">Type</th>
+<th class="px-4 py-3 font-bold">Value</th>
+<th class="px-4 py-3 font-bold">State</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/20"><tr class="bg-surface"><td class="px-4 py-8 text-center text-on-surface-variant italic" colspan="5">No activity logged.</td></tr></tbody>
+</table>
+</div>
+<div class="p-3 bg-surface-container text-center">
+<button class="font-label-caps text-[10px] text-on-surface-variant hover:text-primary transition-all uppercase">Load Additional Archives</button>
+</div>
+</section>
+</div>
+</main>
+</div>
+<!-- Bottom Navigation (Mobile Only) -->
+<footer class="md:hidden fixed bottom-0 left-0 w-full z-50 bg-surface-container-high flex justify-around items-center h-16 px-2 border-t-2 border-outline-variant shadow-[0_-4px_10px_rgba(255,186,56,0.1)] rounded-t-xl">
+<button class="flex flex-col items-center justify-center text-primary font-bold transition-all duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<span class="font-label-caps text-[9px] uppercase mt-0.5">Status</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:opacity-100">
+<span class="material-symbols-outlined">share</span>
+<span class="font-label-caps text-[9px] uppercase mt-0.5">Links</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:opacity-100">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+<span class="font-label-caps text-[9px] uppercase mt-0.5">Chest</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:opacity-100">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-label-caps text-[9px] uppercase mt-0.5">Wallet</span>
+</button>
+</footer>
+<script>
+    // Micro-interaction for Copy buttons
+    document.querySelectorAll('button').forEach(button => {
+        if (button.textContent.trim().toUpperCase() === 'COPY') {
+            button.addEventListener('click', () => {
+                const originalText = button.textContent;
+                const container = button.closest('.recessed-groove');
+                
+                button.textContent = 'COPIED';
+                button.classList.add('bg-primary', 'text-on-primary');
+                container.style.borderColor = '#ffba38';
+                
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.classList.remove('bg-primary', 'text-on-primary');
+                    container.style.borderColor = 'rgba(81, 69, 50, 0.3)';
+                }, 2000);
+            });
+        }
         
-        <!-- Dashboard Header -->
-        <div class="flex justify-between items-end">
-            <div>
-                <p class="text-[10px] font-black text-orange-500 uppercase tracking-widest mb-1">[ Operator Overview ]</p>
-                <h2 class="text-3xl font-black uppercase leading-none">Affiliate Master<br>Console</h2>
-            </div>
-            <div class="bg-white/5 border border-white/10 px-3 py-2 rounded font-mono text-[10px] text-gray-400">
-                CYCLE: 2026.07.20
-            </div>
-        </div>
+        // Tactile feedback
+        button.addEventListener('mousedown', () => { button.style.transform = 'translate(1px, 1px)'; });
+        button.addEventListener('mouseup', () => { button.style.transform = ''; });
+        button.addEventListener('mouseleave', () => { button.style.transform = ''; });
+    });
 
-        <!-- Stats Grid -->
-        <div class="grid grid-cols-2 gap-4">
-            <div class="bg-[#1c1b1b] p-5 rounded border border-white/5 border-l-4 border-l-orange-500">
-                <p class="text-[9px] text-gray-500 font-bold uppercase tracking-tighter mb-1">Total Referrals</p>
-                <p class="text-4xl font-black text-white">1,402</p>
-                <p class="text-[10px] text-orange-500 font-bold mt-1">+12% This Month</p>
-            </div>
-            <div class="bg-[#1c1b1b] p-5 rounded border border-white/5 border-l-4 border-l-green-500">
-                <p class="text-[9px] text-gray-500 font-bold uppercase tracking-tighter mb-1">Total Earnings</p>
-                <p class="text-3xl font-black text-white">$42.8k</p>
-                <p class="text-[9px] text-gray-400 mt-1">PAID OUT: $38,200.00</p>
-            </div>
-        </div>
-
-        <!-- Claim Rewards Section -->
-        <div class="bg-gradient-to-br from-[#1c1b1b] to-black border-2 border-orange-500/30 p-8 rounded-lg shadow-[0_0_30px_rgba(255,140,0,0.1)]">
-            <p class="text-[10px] font-black text-orange-500 uppercase tracking-widest text-center mb-6">[ Pending Collection ]</p>
+    // Particle effect for chest
+    const chestArea = document.querySelector('.animate-treasure-glow');
+    if (chestArea) {
+        setInterval(() => {
+            const particle = document.createElement('div');
+            particle.className = 'absolute bg-primary/40 rounded-full blur-sm pointer-events-none';
+            const size = Math.random() * 8 + 4;
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.left = '50%';
+            particle.style.top = '50%';
             
-            <div class="flex justify-center mb-6">
-                <!-- Chest Icon Placeholder -->
-                <div class="relative">
-                    <div class="w-24 h-24 bg-orange-500/10 rounded-full flex items-center justify-center border border-orange-500/20">
-                        <svg class="w-12 h-12 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-                        </svg>
-                    </div>
-                </div>
-            </div>
-
-            <h3 class="text-center text-4xl font-black mb-2 tracking-tighter">$4,600.20</h3>
-            <p class="text-center text-[10px] text-orange-500/50 font-bold uppercase mb-8">Overflow Detected • Ready to Harvest</p>
+            chestArea.appendChild(particle);
             
-            <button class="w-full bg-orange-500 hover:bg-orange-600 active:scale-95 text-black font-black py-4 rounded uppercase tracking-tighter transition-all shadow-[0_0_20px_rgba(255,140,0,0.3)]">
-                Claim Assets Now
-            </button>
-        </div>
-
-        <!-- Links Section -->
-        <div class="space-y-4">
-            <h3 class="text-[10px] font-black uppercase text-gray-500 tracking-[0.2em]">[ Network Propagation ]</h3>
+            const angle = Math.random() * Math.PI * 2;
+            const distance = Math.random() * 80 + 40;
+            const destX = Math.cos(angle) * distance;
+            const destY = Math.sin(angle) * distance;
             
-            <div class="bg-black/40 border border-white/10 p-5 rounded-lg space-y-3">
-                <p class="text-[10px] font-bold text-gray-400 uppercase">Primary Recruitment Link</p>
-                <div class="flex items-center gap-3">
-                    <div class="flex-1 bg-black/60 border border-white/5 p-3 rounded font-mono text-xs text-orange-500/80 truncate">
-                        workersguild.store/ref/alpha-8829
-                    </div>
-                    <button class="bg-white/5 hover:bg-white/10 p-3 rounded text-xs font-bold uppercase border border-white/10 transition-colors">
-                        Copy
-                    </button>
-                </div>
-            </div>
-        </div>
-
-    </main>
-
-    <!-- Navigation Bar -->
-    <nav class="fixed bottom-0 left-0 w-full bg-[#1c1b1b]/95 backdrop-blur-lg border-t border-white/10 flex justify-around items-center h-20 pb-safe">
-        <button class="flex flex-col items-center gap-1 text-orange-500">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
-            <span class="text-[9px] font-black uppercase">Status</span>
-        </button>
-        <button class="flex flex-col items-center gap-1 text-gray-500">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.828a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
-            <span class="text-[9px] font-black uppercase">Links</span>
-        </button>
-        <button class="flex flex-col items-center gap-1 text-gray-500">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
-            <span class="text-[9px] font-black uppercase">Chest</span>
-        </button>
-        <button class="flex flex-col items-center gap-1 text-gray-500">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
-            <span class="text-[9px] font-black uppercase">Wallet</span>
-        </button>
-    </nav>
-
-</body>
-</html>
+            particle.animate([
+                { transform: 'translate(-50%, -50%) scale(1)', opacity: 0.8 },
+                { transform: `translate(calc(-50% + ${destX}px), calc(-50% + ${destY}px)) scale(0)`, opacity: 0 }
+            ], {
+                duration: 1500,
+                easing: 'ease-out'
+            }).onfinish = () => particle.remove();
+        }, 400);
+    }
+</script>
+</body></html>
