@@ -1,14 +1,299 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Workers Guild | Profile</title>
-    <script src="https://cdn.tailwindcss.com/"></script>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>James Miller - Master Welder | THE WORKERS GUILD</title>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@100..900&amp;family=Inter:wght@100..900&amp;family=JetBrains+Mono:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface": "#e5e2e3",
+                    "inverse-surface": "#e5e2e3",
+                    "outline-variant": "#564334",
+                    "surface": "#131314",
+                    "surface-bright": "#39393a",
+                    "secondary": "#ffeeaf",
+                    "on-background": "#e5e2e3",
+                    "on-secondary": "#3a3000",
+                    "error-container": "#93000a",
+                    "on-primary": "#4d2600",
+                    "on-secondary-fixed-variant": "#534600",
+                    "error": "#ffb4ab",
+                    "tertiary-container": "#00b5fc",
+                    "surface-dim": "#131314",
+                    "on-error": "#690005",
+                    "on-surface-variant": "#ddc1ae",
+                    "surface-container-low": "#1b1b1c",
+                    "primary-container": "#ff8c00",
+                    "tertiary-fixed-dim": "#85cfff",
+                    "tertiary": "#85cfff",
+                    "on-primary-fixed": "#2f1500",
+                    "on-primary-container": "#623200",
+                    "surface-container-lowest": "#0e0e0f",
+                    "surface-container-highest": "#353436",
+                    "on-tertiary-fixed-variant": "#004c6c",
+                    "surface-variant": "#353436",
+                    "surface-container": "#1f1f20",
+                    "primary-fixed-dim": "#ffb77d",
+                    "on-tertiary-container": "#004360",
+                    "on-secondary-fixed": "#221b00",
+                    "surface-tint": "#ffb77d",
+                    "outline": "#a48c7a",
+                    "primary-fixed": "#ffdcc3",
+                    "on-secondary-container": "#695900",
+                    "secondary-fixed": "#ffe262",
+                    "primary": "#ffb77d",
+                    "secondary-container": "#f3d000",
+                    "on-primary-fixed-variant": "#6e3900",
+                    "secondary-fixed-dim": "#e7c500",
+                    "background": "#131314",
+                    "tertiary-fixed": "#c7e7ff",
+                    "inverse-on-surface": "#303031",
+                    "inverse-primary": "#904d00",
+                    "surface-container-high": "#2a2a2b",
+                    "on-tertiary": "#00344c",
+                    "on-tertiary-fixed": "#001e2e",
+                    "on-error-container": "#ffdad6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "unit-8": "32px",
+                    "unit-12": "48px",
+                    "unit-4": "16px",
+                    "unit-6": "24px",
+                    "base": "4px",
+                    "container-max": "1280px",
+                    "unit-1": "4px",
+                    "unit-2": "8px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Hanken Grotesk"],
+                    "display-lg": ["Hanken Grotesk"],
+                    "label-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "label-caps": ["JetBrains Mono"],
+                    "title-md": ["Hanken Grotesk"],
+                    "headline-lg-mobile": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 16px;
+        }
+        @media (max-width: 1024px) {
+            .bento-grid { grid-template-columns: repeat(8, 1fr); }
+        }
+        @media (max-width: 640px) {
+            .bento-grid { grid-template-columns: repeat(4, 1fr); }
+        }
+        .text-glow {
+            text-shadow: 0 0 10px rgba(255, 140, 0, 0.3);
+        }
+        .border-left-accent {
+            border-left: 4px solid #ff8c00;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
 </head>
-<body class="bg-[#131313] text-[#ff8c00] font-sans">
-    <!-- STITCH_SCREEN_START:SCREEN_776 -->
-    <!-- Content from SCREEN_776 with Professional Profile Logic -->
-    <!-- [Professional Profile Code] -->
-</body>
-</html>
+<body class="bg-background text-on-surface font-body-lg overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 bg-surface-container flex justify-between items-center px-gutter h-16 border-b border-outline-variant">
+<div class="flex items-center gap-unit-4">
+<span class="material-symbols-outlined text-primary" data-icon="menu">menu</span>
+<span class="font-headline-lg-mobile text-headline-lg-mobile font-bold tracking-tight text-on-surface uppercase">THE WORKERS GUILD</span>
+</div>
+<div class="flex items-center gap-unit-4">
+<div class="hidden md:flex gap-unit-6 mr-unit-8">
+<span class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors cursor-pointer">DIRECTORY</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors cursor-pointer">RESOURCES</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors cursor-pointer">COMPLIANCE</span>
+</div>
+<div class="w-10 h-10 bg-surface-container-highest rounded-full flex items-center justify-center border border-outline-variant overflow-hidden"><span class="material-symbols-outlined text-on-surface-variant">person</span></div>
+</div>
+</header>
+<main class="mt-16 pb-unit-12 px-gutter md:px-unit-12 max-w-container-max mx-auto">
+<!-- Profile Header Section -->
+<section class="pt-unit-12 pb-unit-8 border-b border-outline-variant">
+<div class="flex flex-col md:flex-row gap-unit-8 items-start md:items-end justify-between">
+<div class="flex flex-col gap-unit-2">
+<div class="flex items-center gap-unit-2 mb-unit-2">
+<span class="bg-primary-container text-on-primary-container font-label-caps text-[10px] px-unit-2 py-unit-1 rounded-sm uppercase tracking-widest flex items-center gap-1"><span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 0;">pending</span> PENDING VERIFICATION</span>
+<span class="text-on-surface-variant font-label-caps text-[10px] border border-outline-variant px-unit-2 py-unit-1 rounded-sm uppercase tracking-widest">
+                            MASTER STATUS
+                        </span>
+</div>
+<h1 class="font-display-lg text-display-lg text-on-surface tracking-tight uppercase leading-none">(Insert Name Here)</h1>
+<p class="font-headline-lg text-headline-lg text-primary uppercase">CRAFTSMAN STATUS PENDING</p>
+</div>
+<div class="flex flex-col gap-unit-4 w-full md:w-auto">
+<button class="bg-primary-container hover:opacity-90 text-on-primary-container font-label-caps text-label-caps py-unit-4 px-unit-8 font-bold transition-all duration-200 uppercase flex items-center justify-center gap-unit-2 group">
+                        HIRE FOR PROJECT
+                        <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+<div class="flex items-center justify-between md:justify-end gap-unit-6 px-unit-2">
+<div class="flex flex-col items-end">
+<span class="font-label-caps text-[10px] text-on-surface-variant uppercase">COMPLIANCE</span>
+<span class="flex items-center gap-1 text-on-surface font-label-md text-label-md">
+<span class="material-symbols-outlined text-tertiary text-[16px]" style="font-variation-settings: 'FILL' 1;">security</span>
+                                FULL LIABILITY ACTIVE
+                            </span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Bento Grid Content -->
+<div class="bento-grid mt-unit-12">
+<!-- Bio Section -->
+<div class="col-span-12 lg:col-span-8 bg-surface-container p-unit-8 border border-outline-variant flex flex-col gap-unit-6">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest border-b border-outline-variant pb-unit-2 self-start">Professional Summary</h3>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed max-w-3xl">
+                    Dedicated welding professional with over 15 years of experience in structural engineering and architectural metalwork. Specialized in high-precision TIG and MIG applications for critical infrastructure and luxury industrial design. Committed to structural integrity, mathematical precision, and a zero-tolerance approach to weld defects. Expert in reading complex blueprints and translating architectural vision into durable, load-bearing reality.
+                </p>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-unit-4 mt-unit-4">
+<div class="flex flex-col">
+<span class="font-label-caps text-[10px] text-on-surface-variant uppercase">Exp.</span>
+<span class="font-title-md text-title-md text-on-surface">N/A</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-[10px] text-on-surface-variant uppercase">Location</span>
+<span class="font-title-md text-title-md text-on-surface" data-location="Chicago, IL">N/A</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-[10px] text-on-surface-variant uppercase">Cert.</span>
+<span class="font-title-md text-title-md text-on-surface">N/A</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-[10px] text-on-surface-variant uppercase">Availability</span>
+<span class="font-title-md text-title-md text-primary">N/A</span>
+</div>
+</div>
+</div>
+<!-- Reputation Card -->
+<div class="col-span-12 md:col-span-6 lg:col-span-4 bg-surface-container p-unit-8 border border-outline-variant flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Reputation</h3>
+<span class="material-symbols-outlined text-primary" data-icon="military_tech">military_tech</span>
+</div>
+<div class="py-unit-6">
+<div class="flex items-baseline gap-2">
+<span class="font-display-lg text-display-lg text-on-surface">0.0</span>
+<span class="text-on-surface-variant font-body-sm">/ 0.0 ELO</span>
+</div>
+<div class="flex gap-1 mt-unit-1"><span class="text-on-surface-variant font-label-caps text-[10px]">NO RATING DATA</span></div>
+</div>
+<div class="border-t border-outline-variant pt-unit-4 flex justify-between items-center">
+<span class="font-label-md text-label-md text-on-surface-variant">Projects Logged</span>
+<span class="font-label-caps text-label-caps text-on-surface bg-surface-container-highest px-unit-3 py-unit-1">0 UNITS</span>
+</div>
+</div>
+<!-- Specializations List -->
+<div class="col-span-12 md:col-span-6 lg:col-span-4 bg-surface-container border border-outline-variant flex flex-col">
+<div class="p-unit-8 border-b border-outline-variant">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Specializations</h3>
+</div>
+<div class="flex-grow flex flex-col"><div class="p-unit-8 flex items-center justify-center h-full"><span class="text-on-surface-variant font-label-caps">No Data Found</span></div></div>
+</div>
+<!-- Portfolio Glimpse -->
+<div class="col-span-12 md:col-span-12 lg:col-span-8 bg-surface-container border border-outline-variant overflow-hidden group">
+<div class="flex h-full flex-col md:flex-row">
+<div class="w-full md:w-1/2 h-48 md:h-full overflow-hidden relative">
+<div class="w-full h-full bg-surface-container-highest flex items-center justify-center"><span class="material-symbols-outlined text-on-surface-variant text-[48px]">image_not_supported</span></div>
+<div class="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent"></div>
+<div class="absolute bottom-unit-4 left-unit-4">
+<span class="font-label-caps text-[10px] text-primary uppercase">Recent Project</span>
+<h4 class="font-title-md text-title-md text-on-surface uppercase">No Active Deployment</h4>
+</div>
+</div>
+<div class="w-full md:w-1/2 p-unit-8 flex flex-col justify-between">
+<div>
+<h3 class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest mb-unit-4">Project Integrity</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Pending verification of project history and safety protocols.</p>
+</div>
+<div class="flex flex-col gap-unit-2 mt-unit-4">
+<div class="flex justify-between items-center">
+<span class="font-label-md text-label-md text-on-surface-variant">Safety Rating</span>
+<span class="font-label-caps text-label-caps text-on-surface">PENDING</span>
+</div>
+<div class="w-full h-2 bg-surface-container-highest">
+<div class="bg-primary h-full w-[98%] shadow-[0_0_8px_rgba(255,140,0,0.4)]" style="width: 0%;"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 bg-surface-container border-t border-outline-variant px-unit-4">
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-2 hover:text-on-surface transition-colors active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="engineering">engineering</span>
+<span class="font-label-caps text-[10px] mt-1">JOBS</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-2 hover:text-on-surface transition-colors active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-label-caps text-[10px] mt-1">LEDGER</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-2 hover:text-on-surface transition-colors active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-label-caps text-[10px] mt-1">HISTORY</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary border-t-2 border-primary pt-2 active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="verified_user">verified_user</span>
+<span class="font-label-caps text-[10px] mt-1">PROFILE</span>
+</a>
+</nav>
+<!-- Visual Polish: Micro-interaction Script -->
+<script>
+        document.querySelectorAll('.bento-grid > div').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.classList.add('border-primary');
+                card.style.transition = 'border-color 0.3s ease';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.classList.remove('border-primary');
+            });
+        });
+
+        // Simple parallax or subtle scroll reveal could go here
+    </script>
+</body></html>
