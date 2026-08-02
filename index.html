@@ -3,63 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Workers Guild | Entry</title>
+    <title>The Workers Guild | Launch</title>
     <script src="https://cdn.tailwindcss.com/"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;700;900&display=swap');
-        body { font-family: 'Hanken Grotesk', sans-serif; background-color: #131313; color: #ff8c00; }
-        .glow { text-shadow: 0 0 10px rgba(255, 140, 0, 0.6); }
-        .industrial-border { border: 2px solid rgba(255, 140, 0, 0.2); box-shadow: 0 0 20px rgba(0,0,0,0.5); }
-    </style>
+    <!-- Source Code from {{DATA:SCREEN:SCREEN_269}} -->
 </head>
-<body class="min-h-screen flex flex-col">
-    <header class="w-full flex justify-between items-center px-6 py-8 border-b border-white/5">
-        <h1 class="text-xl font-black uppercase tracking-tighter">The Workers Guild</h1>
-        <button class="text-xs font-bold uppercase opacity-60 flex items-center gap-2">
-            <span class="material-symbols-outlined text-sm">lock</span> Owner Login
-        </button>
-    </header>
-
-    <main class="flex-grow flex flex-col items-center justify-center p-6 text-center space-y-12">
-        <div class="relative">
-            <img src="{{DATA:IMAGE:IMAGE_1174}}" alt="Guild Seal" class="w-48 h-48 drop-shadow-[0_0_30px_rgba(255,140,0,0.3)]">
-        </div>
-
-        <div class="space-y-2">
-            <h2 class="text-4xl font-bold uppercase tracking-tighter glow">Time Till Launch</h2>
-            <div class="w-24 h-1 bg-orange-500/40 mx-auto"></div>
-        </div>
-
-        <div class="w-full max-w-sm bg-[#1c1b1b] border-2 border-orange-500/30 p-10 rounded-lg industrial-border">
-            <span class="text-5xl font-black uppercase tracking-widest text-white drop-shadow-[0_0_15px_rgba(255,140,0,0.5)]">Coming Soon</span>
-        </div>
-
-        <div class="w-full max-w-sm bg-[#1c1b1b] border border-white/5 p-8 rounded-lg text-left relative overflow-hidden">
-            <h3 class="text-lg font-bold uppercase tracking-tight text-white mb-4">Join the Waitlist</h3>
-            <p class="text-sm text-white/70 mb-6 leading-relaxed border-l-2 border-orange-500/40 pl-4">
-                The Workers Guild is the high-stakes coordination engine for elite tradesmen. Master your trade and secure your future in the modern vocational economy.
-            </p>
-            <form class="space-y-4">
-                <input type="text" placeholder="FULL NAME" class="w-full bg-black/40 border border-white/10 rounded p-4 text-white text-sm focus:border-orange-500/50 outline-none transition-colors">
-                <input type="email" placeholder="EMAIL ADDRESS" class="w-full bg-black/40 border border-white/10 rounded p-4 text-white text-sm focus:border-orange-500/50 outline-none transition-colors">
-                <button type="button" class="w-full bg-orange-500 hover:bg-orange-600 text-black font-black uppercase py-4 rounded shadow-[0_0_20px_rgba(255,140,0,0.3)] transition-all active:scale-95">
-                    Secure My Status
-                </button>
+<body class="bg-[#131313] text-[#ff8c00] font-sans">
+    <main class="min-h-screen flex flex-col items-center justify-center p-6 text-center">
+        <img src="{{DATA:IMAGE:IMAGE_1126}}" alt="Guild Seal" class="w-48 h-48 mb-8 drop-shadow-[0_0_20px_rgba(255,140,0,0.4)]">
+        <h1 class="text-4xl font-black uppercase tracking-tighter mb-4">THE WORKERS GUILD</h1>
+        <p class="text-xl mb-12 opacity-80 uppercase tracking-widest">Waitlist Active - Secure Your Status</p>
+        <div class="w-full max-w-sm bg-[#1c1b1b] border-2 border-orange-500/30 p-8 rounded-lg">
+            <h2 class="text-2xl font-bold mb-4">Join the Waitlist</h2>
+            <form action="success.html" class="space-y-4">
+                <input type="text" placeholder="FULL NAME" class="w-full bg-black border border-white/10 p-3 rounded text-white">
+                <input type="email" placeholder="EMAIL ADDRESS" class="w-full bg-black border border-white/10 p-3 rounded text-white">
+                <button type="submit" class="w-full bg-orange-500 text-black font-black py-4 rounded uppercase">Secure My Status</button>
             </form>
         </div>
-
-        <a href="recruitment.html" class="inline-flex items-center gap-2 px-8 py-3 border border-orange-500/30 text-xs font-black uppercase tracking-widest hover:bg-orange-500/5 transition-colors">
-            Affiliate Access
-        </a>
     </main>
-
-    <footer class="py-12 border-t border-white/5 text-center text-[10px] text-white/30 uppercase tracking-[0.2em]">
-        <p>© 2026 THE WORKERS GUILD. BUILT FOR THE MODERN TRADESMAN.</p>
-        <div class="flex justify-center gap-8 mt-4 font-black text-white/50">
-            <a href="#" class="hover:text-orange-500">Terms</a>
-            <a href="#" class="hover:text-orange-500">Privacy</a>
-            <a href="#" class="hover:text-orange-500">Support</a>
-        </div>
-    </footer>
 </body>
 </html>
