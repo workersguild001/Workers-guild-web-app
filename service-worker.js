@@ -6,7 +6,8 @@ self.addEventListener('install', (event) => {
         'index.html',
         'gateway.html',
         'recruitment.html',
-        'success.html',
+        'profile.html',
+        'payouts.html',
         'manifest.json'
       ]);
     })
