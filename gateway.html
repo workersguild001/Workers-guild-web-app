@@ -5,30 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Workers Guild | Hub</title>
     <script src="https://cdn.tailwindcss.com/"></script>
-    <!-- Source Code from {{DATA:SCREEN:SCREEN_1423}} -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 </head>
 <body class="bg-[#131313] text-[#ff8c00] font-sans">
     <main class="min-h-screen flex flex-col items-center justify-center p-6 text-center">
-        <img src="{{DATA:IMAGE:IMAGE_1126}}" alt="Logo" class="w-32 h-32 mb-8">
+        <img src="{{DATA:IMAGE:IMAGE_1126}}" alt="Logo" class="w-32 h-32 mb-8 drop-shadow-[0_0_20px_rgba(255,140,0,0.4)]">
         <h1 class="text-3xl font-black uppercase mb-12">System Gateway</h1>
-        <div class="grid grid-cols-2 gap-4 w-full max-w-md">
-            <a href="dashboard.html" class="bg-[#1c1b1b] border-2 border-orange-500/20 p-6 flex flex-col items-center gap-3">
-                <span class="material-symbols-outlined">dashboard</span>
+        <div class="grid grid-cols-2 gap-4 w-full max-w-md" id="nav-grid">
+            <a href="dashboard.html" class="bg-[#1c1b1b] border-2 border-orange-500/20 p-6 flex flex-col items-center gap-3 hover:border-orange-500/50">
+                <span class="material-symbols-outlined text-3xl">dashboard</span>
                 <span class="text-[10px] font-black uppercase">Home</span>
             </a>
-            <a href="profile.html" class="bg-[#1c1b1b] border-2 border-orange-500/20 p-6 flex flex-col items-center gap-3">
-                <span class="material-symbols-outlined">person</span>
+            <a href="profile.html" class="bg-[#1c1b1b] border-2 border-orange-500/20 p-6 flex flex-col items-center gap-3 hover:border-orange-500/50">
+                <span class="material-symbols-outlined text-3xl">person</span>
                 <span class="text-[10px] font-black uppercase">Profile</span>
             </a>
-            <a href="recruitment.html" class="bg-[#1c1b1b] border-2 border-orange-500/20 p-6 flex flex-col items-center gap-3">
-                <span class="material-symbols-outlined">groups</span>
+            <a href="recruitment.html" class="bg-[#1c1b1b] border-2 border-orange-500/20 p-6 flex flex-col items-center gap-3 hover:border-orange-500/50">
+                <span class="material-symbols-outlined text-3xl">groups</span>
                 <span class="text-[10px] font-black uppercase">Recruit</span>
             </a>
-            <a href="payouts.html" class="bg-[#1c1b1b] border-2 border-orange-500/20 p-6 flex flex-col items-center gap-3">
-                <span class="material-symbols-outlined">payments</span>
+            <a href="payouts.html" class="bg-[#1c1b1b] border-2 border-orange-500/20 p-6 flex flex-col items-center gap-3 hover:border-orange-500/50">
+                <span class="material-symbols-outlined text-3xl">payments</span>
                 <span class="text-[10px] font-black uppercase">Money</span>
             </a>
         </div>
+
+        <!-- Owner Specific Button (Hidden by default) -->
+        <div id="owner-access" class="hidden w-full max-w-md mt-4">
+            <a href="owner.html" class="bg-orange-500 text-black p-4 flex items-center justify-center gap-3 font-black uppercase tracking-widest rounded">
+                <span class="material-symbols-outlined">terminal</span>
+                Owner Command Center
+            </a>
+        </div>
     </main>
+
+    <script>
+        // Mock session check for Owner Access
+        // In production, this would be validated via backend session
+        const currentUserEmail = localStorage.getItem('guild_user_email');
+        if (currentUserEmail === 'chaces15@gmail.com') {
+            document.getElementById('owner-access').classList.remove('hidden');
+        }
+    </script>
 </body>
 </html>
