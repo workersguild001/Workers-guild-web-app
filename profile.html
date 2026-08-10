@@ -1,33 +1,421 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Workers Guild | Profile</title>
-    <script src="https://cdn.tailwindcss.com/"></script>
-    <!-- Source Code from {{DATA:SCREEN:SCREEN_1427}} -->
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Worker Profile | THE WORKERS GUILD</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-high": "#2a2a2a",
+                    "tertiary-container": "#001032",
+                    "secondary-fixed": "#ffe16d",
+                    "secondary": "#fff9ef",
+                    "on-secondary-container": "#725f00",
+                    "on-tertiary-fixed": "#001945",
+                    "surface-container-lowest": "#0e0e0e",
+                    "on-error": "#690005",
+                    "primary-container": "#121212",
+                    "outline-variant": "#444748",
+                    "on-tertiary-fixed-variant": "#00429c",
+                    "tertiary": "#b0c6ff",
+                    "surface": "#131313",
+                    "inverse-on-surface": "#303030",
+                    "surface-dim": "#131313",
+                    "background": "#131313",
+                    "surface-tint": "#c8c6c5",
+                    "on-primary-fixed": "#1c1b1b",
+                    "inverse-surface": "#e4e2e1",
+                    "on-tertiary": "#002d6f",
+                    "on-primary-fixed-variant": "#474646",
+                    "surface-container-highest": "#353535",
+                    "surface-variant": "#353535",
+                    "error": "#ffb4ab",
+                    "on-error-container": "#ffdad6",
+                    "inverse-primary": "#5f5e5e",
+                    "outline": "#8e9192",
+                    "error-container": "#93000a",
+                    "on-primary-container": "#7e7d7d",
+                    "on-secondary-fixed-variant": "#544600",
+                    "on-secondary": "#3a3000",
+                    "tertiary-fixed-dim": "#b0c6ff",
+                    "surface-container-low": "#1b1c1c",
+                    "primary-fixed-dim": "#c8c6c5",
+                    "surface-container": "#1f2020",
+                    "surface-bright": "#393939",
+                    "secondary-fixed-dim": "#e9c400",
+                    "on-surface-variant": "#c4c7c7",
+                    "on-primary": "#313030",
+                    "secondary-container": "#ffdb3c",
+                    "on-background": "#e4e2e1",
+                    "primary-fixed": "#e5e2e1",
+                    "primary": "#c8c6c5",
+                    "on-surface": "#e4e2e1",
+                    "on-secondary-fixed": "#221b00",
+                    "tertiary-fixed": "#d9e2ff",
+                    "on-tertiary-container": "#2276ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "stack-sm": "8px",
+                    "margin-mobile": "20px",
+                    "stack-md": "16px",
+                    "margin-desktop": "40px",
+                    "stack-lg": "32px",
+                    "gutter": "16px",
+                    "unit": "4px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "data-lg": ["JetBrains Mono"],
+                    "body-md": ["Inter"],
+                    "label-caps": ["JetBrains Mono"],
+                    "headline-xl": ["Inter"],
+                    "data-sm": ["JetBrains Mono"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "700"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "data-lg": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-caps": ["10px", {"lineHeight": "12px", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                    "headline-xl": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "data-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 16px;
+        }
+        @media (max-width: 1024px) {
+            .bento-grid { grid-template-columns: repeat(8, 1fr); }
+        }
+        @media (max-width: 640px) {
+            .bento-grid { grid-template-columns: repeat(4, 1fr); }
+        }
+        
+        /* Reanimated Industrial Background Pattern - Frankenstein Steel Plates */
+        body {
+            background-color: #0e0e0e;
+            background-image: 
+                linear-gradient(rgba(25, 25, 25, 0.2) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(25, 25, 25, 0.2) 1px, transparent 1px),
+                radial-gradient(circle at 50% 50%, #1a1a1a 0%, #0e0e0e 100%);
+            background-size: 40px 40px, 40px 40px, auto;
+            position: relative;
+        }
+        
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                url('https://www.transparenttextures.com/patterns/dark-matter.png'),
+                url('https://www.transparenttextures.com/patterns/carbon-fibre.png'),
+                radial-gradient(circle at 20% 30%, rgba(30, 30, 30, 0.4) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(30, 30, 30, 0.4) 0%, transparent 50%);
+            opacity: 0.3;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .industrial-border {
+            border: 1px solid rgba(142, 145, 146, 0.2);
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+            position: relative;
+        }
+
+        /* Rivet effect for "Steel Plate" feel */
+        .industrial-border::after {
+            content: "";
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            width: 4px;
+            height: 4px;
+            background: #444;
+            border-radius: 50%;
+            box-shadow: 0 0 2px rgba(0,0,0,0.8);
+        }
+        
+        .accent-line {
+            border-left: 3px solid #ffdb3c;
+        }
+
+        /* Prevent white boxes */
+        * {
+            background-color: transparent;
+        }
+        
+        .bg-surface-container, 
+        .bg-surface-container-low,
+        .bg-surface-container-high,
+        .bg-surface-container-highest {
+            background-color: #1a1a1a !important;
+        }
+
+        .bg-background {
+            background-color: transparent !important;
+        }
+
+        .gloved-hammer-icon {
+            mask-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBXGos3FJlIY-Y9PJJD9VPyN1wK1TrP0s-RZ35_Ty8ezygAV_TRWCAznOKU9zVB5FoRgDH6fSk5gtFoUWzUqvxM0EAr-Aw8Ue_Rg6CoqE91RySrwM5MmG6U_9MQuNqCwBj_GbNIvryJAqy1LxMq-cq9Fdz5QyszVcnnkCXkdSYMxoaeRjHj-_I8H9MCosNYBRBNzR8_SeP9zfOj3Uf3tU58Aq1Ro0MemdOFrgNdxn0DZPb-TgZMEdoxoYonHb-lniBV2RPgecjbqHA');
+            mask-size: contain;
+            mask-repeat: no-repeat;
+            mask-position: center;
+            background-color: currentColor;
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+        }
+    </style>
 </head>
-<body class="bg-[#131313] text-[#ff8c00] font-sans">
-    <header class="p-6 border-b border-white/10">
-        <h1 class="text-xl font-black uppercase">Professional Profile</h1>
-    </header>
-    <main class="p-6 space-y-6">
-        <div class="text-center">
-            <div class="w-24 h-24 bg-[#1c1b1b] rounded-full mx-auto border-2 border-orange-500/20 mb-4"></div>
-            <h2 class="text-2xl font-black uppercase">(INSERT NAME HERE)</h2>
-            <p class="text-sm opacity-60 uppercase">(TRADE SPECIALIZATION)</p>
-        </div>
-        <div class="bg-[#1c1b1b] border border-white/5 p-6 rounded">
-            <h3 class="text-xs font-black uppercase mb-4 opacity-40">Payment Protocols</h3>
-            <div class="flex justify-between items-center bg-black/40 p-4 rounded border border-white/10">
-                <div class="flex items-center gap-3">
-                    <span class="material-symbols-outlined">payments</span>
-                    <span class="font-bold">PAYPAL ACCOUNT</span>
-                </div>
-                <button class="text-[10px] font-black uppercase border border-orange-500/40 px-3 py-1 rounded">Connect</button>
-            </div>
-        </div>
-        <button class="w-full bg-orange-500 text-black font-black py-4 rounded uppercase">Complete Setup</button>
-    </main>
-</body>
-</html>
+<body class="text-on-surface font-body-md overflow-x-hidden min-h-screen">
+<header class="fixed top-0 left-0 w-full z-50 bg-surface-container/95 backdrop-blur-md flex justify-between items-center px-margin-mobile md:px-margin-desktop border-b border-outline-variant h-20">
+<div class="flex items-center gap-stack-md">
+<button class="material-symbols-outlined text-primary p-2 hover:bg-surface-container-highest rounded-full transition-colors">menu</button>
+<div class="md:hidden"><img alt="The Workers Guild" class="h-12 w-12 object-contain drop-shadow-[0_0_8px_rgba(249,115,22,0.4)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUXbIrvg-HgGzCgVgx5xB9AJeZkOp015YZbsf5--H_QssOHoPc_Yo_DGlR5Qn9idyl5tb_wolAf__Up4Dme1j2Y35cGZWXNTitC7PqWqnwIz2gjoA41FhwOeb7RXtAJC4VmM60il0Znl5ClLk67zHC9ZLqJZd7HJb3dqWlkBOq82u3FUlo6bepxnDEBZNr_7uxXb8uPeaOhTLszZmDev77upf4g_0UzFLY_Z43ozatciodhmMSZM9xMp5QvWxautzRag"/></div>
+</div>
+<div class="absolute left-1/2 -translate-x-1/2 hidden md:block"><div class="relative group">
+<div class="absolute inset-0 bg-orange-500/20 blur-2xl rounded-full"></div>
+<img alt="The Workers Guild" class="h-[120px] w-auto object-contain relative z-10 drop-shadow-[0_0_15px_rgba(249,115,22,0.3)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5w2MHX05_DrRcMdTR17Y1h9_2o9mhasHWqgPj3D0a3_qdBH0zW26KQxxLJeTAF3pKeiQLhVehPdPlG6w69KUIpcYmyYnKTWpRlud7rzCJSJ9ns46K7dIR1u7aC5zh3Nn8hD55lPBU6xGfwJtM7NsVrCYYX0Cdlaf3ik_bsSg1LGKn_OQtu-h40KrUa5ek-gFh11O7-arrF4xyiALezRwYisAS_F-IB5Mgi0nRxnONP_NQS6nv_M6PKCNfHpEcPYaU1A"/>
+</div></div>
+<div class="flex items-center gap-stack-md">
+<div class="hidden md:flex gap-stack-lg mr-stack-md">
+<span class="font-label-caps text-label-caps text-on-surface-variant hover:text-secondary-fixed transition-colors cursor-pointer">DIRECTORY</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant hover:text-secondary-fixed transition-colors cursor-pointer">RESOURCES</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant hover:text-secondary-fixed transition-colors cursor-pointer">COMPLIANCE</span>
+</div>
+<div class="w-10 h-10 rounded-sm overflow-hidden border border-outline-variant bg-surface-container-highest">
+<img alt="Profile" class="w-full h-full object-cover" id="worker-profile-pic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZ7DqdnQno0UXzjAidqLo6DXIv6MnemrSCeQG9BmVREeR_fwmwUKQBWr41FQ4MvgztpdUmlwKkx3BcGqNt3tbas3R02AitegpgpnCmP2VLBzTOFBsv9-5xW3O6o5TAWTGAgAvttWDCJgmTVoHBXZTcnJIyAae8KaVzZNffsz13XWn3LtH3TlxcvxR2BABq8Kz-iktCPKEdJjy3ZHF1ZrDWo-VE2-w2n2EIHzyFB5Yjr6T3zpjSK5Ru3Qf5LNVkC9zk9yLt8s6474o"/>
+</div>
+</div>
+</header>
+<main class="pb-24 px-margin-mobile md:px-margin-desktop max-w-[1200px] mx-auto mt-24">
+<!-- Profile Header Section -->
+<section class="py-stack-lg border-b border-outline-variant">
+<div class="flex flex-col md:flex-row gap-stack-lg items-start md:items-end justify-between">
+<div class="flex flex-col gap-unit">
+<div class="flex items-center gap-stack-sm mb-stack-sm">
+<span class="bg-surface-container-highest text-on-surface-variant border border-outline-variant font-label-caps text-[10px] px-2 py-1 rounded-sm uppercase tracking-widest flex items-center gap-1" id="worker-verification-status">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 0;">help</span>
+                        UNVERIFIED
+                    </span>
+<span class="text-on-surface-variant font-label-caps text-[10px] uppercase tracking-widest flex items-center gap-2">
+<img alt="rank" class="w-4 h-4 opacity-40 grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXGos3FJlIY-Y9PJJD9VPyN1wK1TrP0s-RZ35_Ty8ezygAV_TRWCAznOKU9zVB5FoRgDH6fSk5gtFoUWzUqvxM0EAr-Aw8Ue_Rg6CoqE91RySrwM5MmG6U_9MQuNqCwBj_GbNIvryJAqy1LxMq-cq9Fdz5QyszVcnnkCXkdSYMxoaeRjHj-_I8H9MCosNYBRBNzR8_SeP9zfOj3Uf3tU58Aq1Ro0MemdOFrgNdxn0DZPb-TgZMEdoxoYonHb-lniBV2RPgecjbqHA"/>
+                        RANK: INITIATE
+                    </span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tighter uppercase mb-0" id="worker-name">(INSERT NAME HERE)</h1>
+<p class="font-headline-lg text-headline-lg text-secondary-fixed-dim uppercase tracking-wide" id="worker-trade">(TRADE SPECIALIZATION)</p>
+</div>
+<div class="flex flex-col gap-stack-md w-full md:w-auto">
+<button class="bg-surface-container-highest hover:bg-surface-container-high text-on-surface font-label-caps py-4 px-8 font-bold transition-all duration-200 uppercase flex items-center justify-center gap-stack-sm tracking-[0.2em] industrial-border opacity-50 cursor-not-allowed">
+                    HIRE FOR PROJECT
+                    <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<div class="flex items-center justify-between md:justify-end gap-stack-lg px-2">
+<div class="flex flex-col items-end">
+<span class="font-label-caps text-[10px] text-on-surface-variant uppercase">SYSTEM STATUS</span>
+<span class="flex items-center gap-1 text-on-surface-variant font-data-sm">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 0;">security</span>
+                            LIABILITY: INACTIVE
+                        </span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Bento Grid Content -->
+<div class="bento-grid mt-stack-lg">
+<!-- Bio Section -->
+<div class="col-span-12 lg:col-span-8 bg-surface-container p-stack-lg border border-outline-variant flex flex-col gap-stack-md industrial-border opacity-70">
+<div class="flex justify-between items-center border-b border-outline-variant/30 pb-2">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-[0.2em]">Professional Protocol</h3>
+<img alt="guild" class="w-6 h-6 opacity-20 grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXGos3FJlIY-Y9PJJD9VPyN1wK1TrP0s-RZ35_Ty8ezygAV_TRWCAznOKU9zVB5FoRgDH6fSk5gtFoUWzUqvxM0EAr-Aw8Ue_Rg6CoqE91RySrwM5MmG6U_9MQuNqCwBj_GbNIvryJAqy1LxMq-cq9Fdz5QyszVcnnkCXkdSYMxoaeRjHj-_I8H9MCosNYBRBNzR8_SeP9zfOj3Uf3tU58Aq1Ro0MemdOFrgNdxn0DZPb-TgZMEdoxoYonHb-lniBV2RPgecjbqHA"/>
+</div>
+<p class="font-body-md text-on-surface-variant leading-relaxed max-w-3xl italic" id="worker-bio">
+                Please complete your profile to enable professional protocol data rendering.
+            </p>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-stack-md mt-4">
+<div class="flex flex-col">
+<span class="font-label-caps text-[10px] text-on-surface-variant uppercase opacity-70">Experience</span>
+<span class="font-data-lg text-on-surface-variant" id="worker-experience">0 Years</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-[10px] text-on-surface-variant uppercase opacity-70">Hub</span>
+<span class="font-data-lg text-on-surface-variant" id="worker-location">PENDING</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-[10px] text-on-surface-variant uppercase opacity-70">Accredited</span>
+<span class="font-data-lg text-on-surface-variant" id="worker-accreditation">NONE</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-[10px] text-on-surface-variant uppercase opacity-70">Windows</span>
+<span class="font-data-lg text-on-surface-variant" id="worker-availability">CLOSED</span>
+</div>
+</div>
+</div>
+<!-- Reputation Card -->
+<div class="col-span-12 md:col-span-6 lg:col-span-4 bg-surface-container p-stack-lg border border-outline-variant flex flex-col justify-between industrial-border opacity-70">
+<div class="flex justify-between items-start">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-[0.2em]">Reputation</h3>
+<div class="relative">
+<img alt="Reputation Logo" class="w-8 h-8 opacity-20 grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXGos3FJlIY-Y9PJJD9VPyN1wK1TrP0s-RZ35_Ty8ezygAV_TRWCAznOKU9zVB5FoRgDH6fSk5gtFoUWzUqvxM0EAr-Aw8Ue_Rg6CoqE91RySrwM5MmG6U_9MQuNqCwBj_GbNIvryJAqy1LxMq-cq9Fdz5QyszVcnnkCXkdSYMxoaeRjHj-_I8H9MCosNYBRBNzR8_SeP9zfOj3Uf3tU58Aq1Ro0MemdOFrgNdxn0DZPb-TgZMEdoxoYonHb-lniBV2RPgecjbqHA"/>
+</div>
+</div>
+<div class="py-stack-md">
+<div class="flex items-baseline gap-2">
+<span class="font-headline-xl text-on-surface-variant" id="worker-elo-score">0.0</span>
+<span class="text-on-surface-variant font-data-sm">/ 5.0 ELO</span>
+</div>
+<div class="flex gap-1 mt-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 0;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 0;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 0;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 0;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 0;">star</span>
+</div>
+</div>
+<div class="border-t border-outline-variant/30 pt-4 flex justify-between items-center">
+<span class="font-label-caps text-[10px] text-on-surface-variant">LOGGED OPERATIONS</span>
+<span class="font-data-sm text-on-surface-variant bg-surface-container-highest px-3 py-1 font-bold" id="worker-logged-ops">0 UNITS</span>
+</div>
+</div>
+<!-- Specializations List -->
+<div class="col-span-12 md:col-span-6 lg:col-span-4 bg-surface-container border border-outline-variant flex flex-col industrial-border opacity-70">
+<div class="p-stack-md border-b border-outline-variant/30">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-[0.2em]">Specializations</h3>
+</div>
+<div class="flex-grow flex flex-col p-stack-md items-center justify-center text-center">
+<span class="font-body-md text-on-surface-variant italic">Please complete your profile to add specializations.</span>
+</div>
+</div>
+<!-- Validated Credentials -->
+<div class="col-span-12 md:col-span-12 lg:col-span-4 bg-surface-container border border-outline-variant flex flex-col industrial-border opacity-70">
+<div class="p-stack-md border-b border-outline-variant/30 flex justify-between items-center">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-[0.2em]">Validated Credentials</h3>
+<span class="material-symbols-outlined text-on-surface-variant text-sm">inventory</span>
+</div>
+<div class="flex-grow flex flex-col p-stack-md items-center justify-center text-center">
+<span class="font-body-md text-on-surface-variant italic">Please complete your profile to validate credentials.</span>
+</div>
+</div>
+<!-- Portfolio Glimpse -->
+<div class="col-span-12 md:col-span-12 lg:col-span-8 bg-surface-container border border-outline-variant overflow-hidden group industrial-border opacity-70">
+<div class="flex h-full flex-col md:flex-row">
+<div class="w-full md:w-1/2 h-56 md:h-full overflow-hidden relative bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant text-4xl opacity-50">image</span>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+<div class="absolute bottom-4 left-4">
+<span class="font-label-caps text-[10px] text-on-surface-variant uppercase tracking-widest">No Active Project</span>
+<h4 class="font-data-lg text-on-surface-variant uppercase" id="worker-active-project">PENDING DATA</h4>
+</div>
+</div>
+<div class="w-full md:w-1/2 p-stack-lg flex flex-col justify-between bg-surface-container">
+<div>
+<h3 class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-[0.2em] mb-4">Quality Protocol</h3>
+<p class="font-data-sm text-on-surface-variant leading-relaxed italic">Please complete your profile to log quality metrics.</p>
+</div>
+<div class="flex flex-col gap-2 mt-6">
+<div class="flex justify-between items-center">
+<span class="font-label-caps text-[10px] text-on-surface-variant">SAFETY RATING</span>
+<span class="font-data-sm text-on-surface-variant" id="worker-safety-rating">PENDING</span>
+</div>
+<div class="w-full h-1 bg-surface-container-highest">
+<div class="bg-on-surface-variant h-full w-[0%] opacity-20"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Financial Interface -->
+<div class="col-span-12 md:col-span-12 lg:col-span-4 bg-surface-container border border-outline-variant flex flex-col industrial-border">
+<div class="p-stack-md border-b border-outline-variant/30 flex justify-between items-center">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-[0.2em]">Financial Interface</h3>
+<span class="material-symbols-outlined text-on-surface-variant">payments</span>
+</div>
+<div class="flex-grow flex flex-col">
+<div class="flex items-center justify-between p-stack-md hover:bg-surface-container-high transition-colors border-b border-outline-variant/30 group cursor-pointer">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant">account_balance</span>
+<span class="font-data-sm text-on-surface uppercase group-hover:text-secondary-fixed transition-colors">Direct Deposit</span>
+</div>
+<span class="text-on-surface-variant font-label-caps text-[9px] border border-outline-variant px-2 py-1 rounded-sm bg-surface-container-highest">LINK</span>
+</div>
+<div class="flex items-center justify-between p-stack-md hover:bg-surface-container-high transition-colors group cursor-pointer">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant">credit_card</span>
+<span class="font-data-sm text-on-surface uppercase group-hover:text-secondary-fixed transition-colors">Stripe Terminal</span>
+</div>
+<span class="text-on-surface-variant font-label-caps text-[9px] border border-outline-variant px-2 py-1 rounded-sm bg-surface-container-highest">LINK</span>
+</div>
+<div class="flex items-center justify-between p-stack-md hover:bg-surface-container-high transition-colors group cursor-pointer border-t border-outline-variant/30">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant">attach_money</span>
+<span class="font-data-sm text-on-surface uppercase group-hover:text-secondary-fixed transition-colors">Available Balance</span>
+</div>
+<span class="text-on-surface-variant font-data-sm px-2 py-1" id="worker-balance">$0.00</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 bg-surface-container/95 backdrop-blur-md border-t border-outline-variant px-stack-md">
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-1 hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined">engineering</span>
+<span class="font-label-caps text-[9px] mt-1">OPERATIONS</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-1 hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-label-caps text-[9px] mt-1">LEDGER</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary-fixed border-t-2 border-secondary-fixed pt-1" href="#">
+<div class="flex flex-col items-center">
+<img alt="profile" class="w-6 h-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXGos3FJlIY-Y9PJJD9VPyN1wK1TrP0s-RZ35_Ty8ezygAV_TRWCAznOKU9zVB5FoRgDH6fSk5gtFoUWzUqvxM0EAr-Aw8Ue_Rg6CoqE91RySrwM5MmG6U_9MQuNqCwBj_GbNIvryJAqy1LxMq-cq9Fdz5QyszVcnnkCXkdSYMxoaeRjHj-_I8H9MCosNYBRBNzR8_SeP9zfOj3Uf3tU58Aq1Ro0MemdOFrgNdxn0DZPb-TgZMEdoxoYonHb-lniBV2RPgecjbqHA"/>
+<span class="font-label-caps text-[9px] mt-1">PROFILE</span>
+</div>
+</a>
+</nav>
+<script>
+    // Industrial interaction logic
+    document.querySelectorAll('.bento-grid > div').forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.style.borderColor = 'rgba(255, 225, 109, 0.5)';
+            card.style.transform = 'translateY(-2px)';
+            card.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+            card.style.boxShadow = '0 10px 30px rgba(0,0,0,0.5), inset 0 0 20px rgba(255,225,109,0.02)';
+        });
+        card.addEventListener('mouseleave', () => {
+            card.style.borderColor = 'rgba(142, 145, 146, 0.2)';
+            card.style.transform = 'translateY(0)';
+            card.style.boxShadow = 'inset 0 0 20px rgba(0,0,0,0.5)';
+        });
+    });
+</script>
+</body></html>
