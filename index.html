@@ -1,82 +1,319 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Workers Guild | Launch</title>
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#ff8c00">
-    <script src="https://cdn.tailwindcss.com/"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;700;900&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Hanken Grotesk', sans-serif; background-color: #131313; color: #ff8c00; }
-        .industrial-border { border: 2px solid rgba(255, 140, 0, 0.2); box-shadow: 0 0 20px rgba(0,0,0,0.5); }
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Workers Guild | Launch Terminal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#474747",
+                        "on-error": "#690005",
+                        "secondary-container": "#fabd00",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "on-surface-variant": "#ddc1ae",
+                        "on-primary-container": "#623200",
+                        "on-tertiary": "#303030",
+                        "tertiary-container": "#aaa9a9",
+                        "on-tertiary-container": "#3e3e3e",
+                        "on-secondary": "#3f2e00",
+                        "on-error-container": "#ffdad6",
+                        "surface-bright": "#393939",
+                        "on-secondary-container": "#6a4e00",
+                        "primary-fixed-dim": "#ffb77d",
+                        "on-background": "#e5e2e1",
+                        "surface-container-lowest": "#0e0e0e",
+                        "secondary": "#ffdf9e",
+                        "primary-container": "#ff8c00",
+                        "surface-container-low": "#1c1b1b",
+                        "primary-fixed": "#ffdcc3",
+                        "outline": "#a48c7a",
+                        "inverse-surface": "#e5e2e1",
+                        "inverse-on-surface": "#313030",
+                        "on-primary-fixed": "#2f1500",
+                        "surface-container-high": "#2a2a2a",
+                        "primary": "#ffb77d",
+                        "on-secondary-fixed-variant": "#5b4300",
+                        "tertiary-fixed": "#e4e2e2",
+                        "tertiary-fixed-dim": "#c8c6c6",
+                        "surface-container-highest": "#353534",
+                        "surface-container": "#201f1f",
+                        "outline-variant": "#564334",
+                        "inverse-primary": "#904d00",
+                        "surface-tint": "#ffb77d",
+                        "on-secondary-fixed": "#261a00",
+                        "error-container": "#93000a",
+                        "on-surface": "#e5e2e1",
+                        "on-primary-fixed-variant": "#6e3900",
+                        "surface-dim": "#131313",
+                        "error": "#ffb4ab",
+                        "surface": "#131313",
+                        "background": "#131313",
+                        "secondary-fixed-dim": "#fabd00",
+                        "tertiary": "#c8c6c6",
+                        "surface-variant": "#353534",
+                        "secondary-fixed": "#ffdf9e",
+                        "on-primary": "#4d2600"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "stack-md": "24px",
+                        "stack-sm": "8px",
+                        "stack-lg": "48px",
+                        "edge-margin": "16px",
+                        "gutter": "12px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "title-md": ["Hanken Grotesk"],
+                        "label-md": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+                        "display-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "title-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        .industrial-border {
+            border: 2px solid #333333;
+            position: relative;
+        }
+        
+        .industrial-border::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: 20px;
+            right: 20px;
+            height: 2px;
+            background: repeating-linear-gradient(90deg, #ff8c00, #ff8c00 10px, transparent 10px, transparent 20px);
+            opacity: 0.3;
+        }
+
+        .stitched-steel {
+            border: 1px solid #564334;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+            background: linear-gradient(145deg, #1c1b1b, #131313);
+        }
+
+        .countdown-digit {
+            font-variant-numeric: tabular-nums;
+            text-shadow: 0 0 15px #ff8c00;
+        }
+
+        .grip-strip {
+            width: 4px;
+            height: 24px;
+            background: repeating-linear-gradient(0deg, #564334, #564334 2px, transparent 2px, transparent 4px);
+        }
+        
+        .bg-industrial-skeletal {
+            background-blend-mode: overlay;
+            background-color: rgba(18, 18, 18, 0.92);
+        }
     </style>
 </head>
-<body class="min-h-screen flex flex-col">
-
-    <!-- Header -->
-    <header class="fixed top-0 left-0 w-full z-50 bg-[#131313]/80 backdrop-blur-md border-b border-orange-500/20 px-6 py-4 flex justify-between items-center">
-        <div class="flex items-center gap-2">
-            <img src="{{DATA:IMAGE:IMAGE_1126}}" alt="Logo" class="w-8 h-8">
-            <h1 class="text-lg font-black uppercase tracking-tighter">The Workers Guild</h1>
-        </div>
-        <button class="text-xs font-bold uppercase opacity-60 flex items-center gap-1 hover:opacity-100" onclick="window.location.href='owner.html'">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path></svg>
-            Owner Login
-        </button>
-    </header>
-
-    <main class="min-h-screen pt-28 pb-12 px-6 flex flex-col items-center justify-center text-center">
-        <!-- Guild Seal -->
-        <div class="relative mb-8">
-            <img src="{{DATA:IMAGE:IMAGE_1126}}" alt="Guild Seal" class="w-48 h-48 opacity-20 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 blur-2xl">
-            <img src="{{DATA:IMAGE:IMAGE_1126}}" alt="Guild Seal" class="w-32 h-32 relative z-10 drop-shadow-[0_0_15px_rgba(255,140,0,0.3)]">
-        </div>
-
-        <h2 class="text-4xl font-bold uppercase tracking-tighter mb-2">Time Till Launch</h2>
-        <div class="w-24 h-1 bg-orange-500/40 mx-auto mb-8"></div>
-
-        <!-- Countdown Card -->
-        <div class="w-full max-w-sm bg-[#1c1b1b] border-2 border-orange-500/30 p-8 rounded-lg shadow-[0_0_30px_rgba(0,0,0,0.5)] mb-12">
-            <span class="text-5xl font-black uppercase tracking-widest text-white drop-shadow-[0_0_10px_rgba(255,140,0,0.5)]">Coming Soon</span>
-        </div>
-
-        <!-- Waitlist Form -->
-        <div class="w-full max-w-sm bg-[#1c1b1b] border border-white/5 p-8 rounded-lg text-left relative overflow-hidden industrial-border">
-            <div class="flex items-center gap-2 mb-4">
-                <svg class="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
-                <h3 class="text-lg font-bold uppercase tracking-tight text-white">Join the Waitlist</h3>
+<body class="bg-background text-on-background font-body-lg overflow-x-hidden">
+<!-- Top Navigation Anchor -->
+<header class="fixed top-0 left-0 w-full z-50 bg-background border-b border-outline-variant">
+<div class="flex justify-between items-center px-edge-margin py-stack-sm w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 overflow-hidden rounded-full border border-outline">
+<img alt="The Workers Guild Logo" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEaeKeH6zgrnBOYOjFgf7BSfGamqDnjvxXen6sg7O1wewJlvThho9w4GwBaLIAW6HWbi3ReQnnyiI_Th4k_DOGHnfUqtSha1ulGUF4b0HvZE0ZhowbHjzuC2TPrN8rWbhQyWbNDb2tDBcprwqOC_arxWdK_UBlzq-wO4YDarLKAs4CpbzKBK-g_ckLbD-rEfcciRG37lVaAqcXxaWw0L-ytDEsHG9F_2bJgo5SQAlRjS7QjAk2J6miiZ1lLhpy9u35lgKJ1F2-83Y"/>
+</div>
+<h1 class="font-display-lg text-headline-lg-mobile md:text-headline-lg font-extrabold text-primary uppercase tracking-tighter">
+                    The Workers Guild
+                </h1>
+</div>
+<a class="hidden md:flex items-center gap-2 text-primary font-bold hover:bg-surface-container-high transition-colors px-4 py-2 rounded active:scale-95 duration-100" href="#">
+<span class="material-symbols-outlined">badge</span>
+                Affiliate Access
+            </a>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="min-h-screen pt-24 pb-stack-lg relative flex flex-col items-center justify-center bg-industrial-skeletal" data-alt="A wide cinematic shot of a timber-frame house under construction at night. The skeletal wooden ribs of the structure are illuminated from within by warm, amber work lights, casting long, dramatic shadows across the dirt job site. Semi-transparent glowing architectural blueprints are overlaid on the scene in the sky and on the ground, creating a high-contrast industrial aesthetic with deep blacks and vibrant safety orange glows." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCvBdw6ah8PnjwKJTF_T72aKj52u55Kiqtog6Fg3MiqofgfvlALgZwdaGCiL9C0EXOywr4fx_lfDu6zap_4d3OXV-j8bSA7i7i4bpSAVQDDD8TVp6NI6_a8vyKTSQHUFjvvR14BU_NCJZUMqVRSQN1EI17vZDXBLI3lRpUV2RvcCnXhcq8NMdFReCKSOzSD2f-mCc9n2tHIjMQYpQl8VFnqQkUXtW5iiqjlTKlSMB312jU3aIATCXSn-wOHzu2EfuV1CqloKO9W7D0');">
+<!-- Hero Branding -->
+<section class="w-full max-w-3xl px-edge-margin text-center mb-stack-lg">
+<div class="mb-8 inline-block animate-pulse">
+<img alt="Large Guild Seal" class="w-[60%] max-w-md mx-auto drop-shadow-[0_0_30px_rgba(255,140,0,0.6)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEaeKeH6zgrnBOYOjFgf7BSfGamqDnjvxXen6sg7O1wewJlvThho9w4GwBaLIAW6HWbi3ReQnnyiI_Th4k_DOGHnfUqtSha1ulGUF4b0HvZE0ZhowbHjzuC2TPrN8rWbhQyWbNDb2tDBcprwqOC_arxWdK_UBlzq-wO4YDarLKAs4CpbzKBK-g_ckLbD-rEfcciRG37lVaAqcXxaWw0L-ytDEsHG9F_2bJgo5SQAlRjS7QjAk2J6miiZ1lLhpy9u35lgKJ1F2-83Y"/>
+</div>
+<h2 class="font-display-lg text-display-lg uppercase tracking-[0.2em] text-primary drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)] mb-2 font-extrabold">Time Till Launch</h2>
+<div class="h-1 w-24 bg-primary mx-auto mb-10"></div>
+<!-- Countdown Interface -->
+<div class="stitched-steel p-stack-md rounded-lg grid grid-cols-2 md:grid-cols-4 gap-gutter border-2 border-outline-variant" id="countdown-container">
+<div class="flex flex-col items-center p-4 bg-surface-container-low rounded border border-outline-variant">
+<span class="font-display-lg text-display-lg text-primary-container countdown-digit" id="days">--</span>
+<span class="font-label-md text-label-md uppercase text-on-surface-variant">Days</span>
+</div>
+<div class="flex flex-col items-center p-4 bg-surface-container-low rounded border border-outline-variant">
+<span class="font-display-lg text-display-lg text-primary-container countdown-digit" id="hours">--</span>
+<span class="font-label-md text-label-md uppercase text-on-surface-variant">Hours</span>
+</div>
+<div class="flex flex-col items-center p-4 bg-surface-container-low rounded border border-outline-variant">
+<span class="font-display-lg text-display-lg text-primary-container countdown-digit" id="minutes">--</span>
+<span class="font-label-md text-label-md uppercase text-on-surface-variant">Minutes</span>
+</div>
+<div class="flex flex-col items-center p-4 bg-surface-container-low rounded border border-outline-variant">
+<span class="font-display-lg text-display-lg text-primary-container countdown-digit" id="seconds">--</span>
+<span class="font-label-md text-label-md uppercase text-on-surface-variant">Seconds</span>
+</div>
+</div>
+<div class="hidden font-display-lg text-display-lg text-primary-container tracking-[0.3em] py-stack-lg stitched-steel rounded-lg border-2 border-primary drop-shadow-[0_0_15px_rgba(255,140,0,0.3)] font-extrabold" id="coming-soon-text">
+                COMING SOON
             </div>
+</section>
+<!-- Waitlist Signup Area -->
+<section class="w-full max-w-xl px-edge-margin">
+<div class="bg-surface-container p-stack-md rounded-lg border border-outline-variant relative overflow-hidden">
+<div class="absolute top-0 right-0 p-2 flex gap-1 opacity-20">
+<div class="grip-strip"></div>
+<div class="grip-strip"></div>
+</div>
+<h3 class="font-title-md text-title-md uppercase mb-stack-md flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">how_to_reg</span>
+                    Join The Waitlist
+                </h3>
+<form class="space-y-stack-md" id="waitlist-form">
+<div class="space-y-2">
+<label class="font-label-md text-label-md uppercase text-on-surface-variant" for="full-name">Full Name</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded px-4 py-3 text-on-surface focus:outline-none focus:border-primary transition-colors placeholder:text-surface-variant font-bold" id="full-name" placeholder="E.G. JOHN SMITH" type="text" value=""/>
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-label-md uppercase text-on-surface-variant" for="email">Email Address</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded px-4 py-3 text-on-surface focus:outline-none focus:border-primary transition-colors placeholder:text-surface-variant font-bold" id="email" placeholder="TRADESMAN@GUILD.COM" type="email" value=""/>
+</div>
+<button class="w-full bg-primary-container text-on-primary-container font-extrabold uppercase py-4 rounded-lg flex items-center justify-center gap-3 active:scale-[0.98] transition-all hover:bg-secondary-container" type="submit"><span class="material-symbols-outlined">security</span> JOIN THE GUILD</button>
+</form>
+</div>
+<!-- Mobile Affiliate Action -->
+<div class="mt-8 text-center md:hidden">
+<a class="inline-flex items-center gap-2 text-primary border-2 border-primary px-6 py-3 rounded-lg font-bold uppercase active:scale-95" href="#">
+<span class="material-symbols-outlined">badge</span>
+                    Affiliate Access
+                </a>
+</div>
+</section>
+<!-- Hidden Admin Control -->
+<section class="mt-stack-lg w-full max-w-xs px-edge-margin opacity-30 hover:opacity-100 transition-opacity">
+<div class="p-4 border border-dashed border-outline-variant rounded">
+<label class="block font-label-md text-[10px] uppercase text-on-surface-variant mb-1" for="admin-date">SET LAUNCH DATE</label>
+<input class="w-full bg-transparent border-none text-on-surface-variant text-sm focus:ring-0 p-0 cursor-pointer" id="admin-date" placeholder="mm/dd/yyyy" type="date"/>
+</div>
+</section>
+</main>
+<!-- Footer Shell -->
+<footer class="bg-surface-dim border-t border-outline-variant">
+<div class="flex flex-col md:flex-row justify-between items-center gap-stack-sm px-edge-margin py-stack-md w-full max-w-7xl mx-auto">
+<div class="font-title-md text-title-md text-primary font-bold">THE WORKERS GUILD</div>
+<p class="font-label-md text-label-md text-on-surface-variant text-center md:text-left">© 2024 THE WORKERS GUILD. BUILT FOR THE MODERN WORKER.</p>
+<div class="flex gap-stack-md">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors cursor-pointer" href="#">Terms of Service</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors cursor-pointer" href="#">Privacy Policy</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors cursor-pointer" href="#">Contact Support</a>
+</div>
+</div>
+</footer>
+<script>
+        // Countdown Logic
+        const countdownContainer = document.getElementById('countdown-container');
+        const comingSoonText = document.getElementById('coming-soon-text');
+        const adminInput = document.getElementById('admin-date');
+        
+        let countdownTimer;
 
-            <p class="text-sm text-white/70 mb-6 leading-relaxed border-l-2 border-orange-500/40 pl-4">
-                The Workers Guild is the high-stakes coordination engine for elite tradesmen and business partners. Master your trade and secure your future.
-            </p>
+        function updateCountdown(targetDate) {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
 
-            <form class="space-y-4" action="success.html">
-                <input type="text" placeholder="FULL NAME" required class="w-full bg-black/40 border border-white/10 rounded p-3 text-white text-sm focus:border-orange-500 outline-none">
-                <input type="email" placeholder="EMAIL ADDRESS" required class="w-full bg-black/40 border border-white/10 rounded p-3 text-white text-sm focus:border-orange-500 outline-none">
-                <button type="submit" class="w-full bg-orange-500 hover:bg-orange-600 text-black font-black uppercase py-4 rounded shadow-[0_0_20px_rgba(255,140,0,0.3)] transition-all active:scale-95">
-                    Secure My Status
-                </button>
-            </form>
-        </div>
+            if (distance < 0) {
+                clearInterval(countdownTimer);
+                countdownContainer.classList.add('hidden');
+                comingSoonText.classList.remove('hidden');
+                return;
+            }
 
-        <a href="recruitment.html" class="mt-8 inline-flex items-center gap-2 px-6 py-3 border border-orange-500/30 text-xs font-black uppercase tracking-widest hover:bg-orange-500/5">
-            Affiliate Access
-        </a>
-    </main>
+            countdownContainer.classList.remove('hidden');
+            comingSoonText.classList.add('hidden');
 
-    <footer class="py-12 border-t border-white/5 text-center">
-        <p class="text-[10px] text-white/30 uppercase tracking-[0.2em]">© 2026 THE WORKERS GUILD. BUILT FOR THE MODERN TRADESMAN.</p>
-    </footer>
+            const d = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((distance % (1000 * 60)) / 1000);
 
-    <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('./service-worker.js');
+            document.getElementById('days').innerText = d.toString().padStart(2, '0');
+            document.getElementById('hours').innerText = h.toString().padStart(2, '0');
+            document.getElementById('minutes').innerText = m.toString().padStart(2, '0');
+            document.getElementById('seconds').innerText = s.toString().padStart(2, '0');
+        }
+
+        adminInput.addEventListener('change', (e) => {
+            const dateStr = e.target.value;
+            if (!dateStr) return;
+            
+            const target = new Date(dateStr).getTime();
+            if (isNaN(target)) return;
+
+            localStorage.setItem('launchDate', target);
+            if (countdownTimer) clearInterval(countdownTimer);
+            
+            countdownTimer = setInterval(() => updateCountdown(target), 1000);
+            updateCountdown(target);
         });
-      }
+
+        // Initialize from local storage or show Coming Soon
+        const savedDate = localStorage.getItem('launchDate');
+        if (savedDate) {
+            const target = parseInt(savedDate);
+            countdownTimer = setInterval(() => updateCountdown(target), 1000);
+            updateCountdown(target);
+        } else {
+            countdownContainer.classList.add('hidden');
+            comingSoonText.classList.remove('hidden');
+        }
+
+        // Interactivity
+        const form = document.getElementById('waitlist-form');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = form.querySelector('button');
+            const originalText = btn.innerHTML;
+            
+            btn.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> PROCESSING...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                btn.innerHTML = '<span class="material-symbols-outlined">check_circle</span> ENLISTED';
+                btn.classList.replace('bg-primary-container', 'bg-green-600');
+                form.reset();
+            }, 1500);
+        });
     </script>
-</body>
-</html>
+</body></html>
