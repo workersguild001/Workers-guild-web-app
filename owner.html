@@ -1,43 +1,397 @@
 <!DOCTYPE html>
-<html class="dark" lang="en">
-<head>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>The Workers Guild | Owner Command Center</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <!-- SECURITY SHIELD: This script blocks the page from rendering until authorized -->
-    <script>
-        const token = localStorage.getItem('guild_owner_token');
-        if (!token) { window.location.href = 'index.html'; }
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>THE WORKERS GUILD // OWNER COMMAND</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&amp;family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-high": "#2a2a2a",
+                    "on-secondary-fixed-variant": "#474647",
+                    "surface-container": "#201f1f",
+                    "on-secondary-fixed": "#1c1b1c",
+                    "surface-dim": "#131313",
+                    "background": "#131313",
+                    "on-surface": "#e5e2e1",
+                    "error": "#ffb4ab",
+                    "surface-container-low": "#1c1b1b",
+                    "on-secondary": "#313031",
+                    "on-error": "#690005",
+                    "primary-fixed-dim": "#ffb77d",
+                    "secondary-fixed": "#e5e2e3",
+                    "surface-bright": "#393939",
+                    "secondary-container": "#4a494a",
+                    "on-primary": "#4d2600",
+                    "primary-fixed": "#ffdcc3",
+                    "tertiary-fixed": "#e4e2e1",
+                    "on-background": "#e5e2e1",
+                    "on-primary-fixed-variant": "#6e3900",
+                    "primary-container": "#ff8c00",
+                    "inverse-surface": "#e5e2e1",
+                    "outline-variant": "#564334",
+                    "primary": "#ffb77d",
+                    "on-primary-container": "#623200",
+                    "on-tertiary-fixed": "#1b1c1c",
+                    "surface": "#131313",
+                    "surface-variant": "#353534",
+                    "on-error-container": "#ffdad6",
+                    "tertiary": "#c8c6c5",
+                    "on-tertiary-fixed-variant": "#474746",
+                    "on-tertiary": "#303030",
+                    "on-surface-variant": "#ddc1ae",
+                    "on-secondary-container": "#bab8b9",
+                    "surface-container-highest": "#353534",
+                    "surface-tint": "#ffb77d",
+                    "secondary": "#c8c6c7",
+                    "tertiary-fixed-dim": "#c8c6c5",
+                    "surface-container-lowest": "#0e0e0e",
+                    "tertiary-container": "#aba9a9",
+                    "outline": "#a48c7a",
+                    "secondary-fixed-dim": "#c8c6c7",
+                    "error-container": "#93000a",
+                    "inverse-on-surface": "#313030",
+                    "on-primary-fixed": "#2f1500",
+                    "on-tertiary-container": "#3e3e3e",
+                    "inverse-primary": "#904d00"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "unit": "4px",
+                    "stack-lg": "32px",
+                    "gutter": "24px",
+                    "stack-sm": "8px",
+                    "stack-md": "16px",
+                    "margin-mobile": "16px",
+                    "margin-desktop": "40px"
+            },
+            "fontFamily": {
+                    "body-md": [
+                            "Hanken Grotesk"
+                    ],
+                    "label-md": [
+                            "Courier Prime"
+                    ],
+                    "body-lg": [
+                            "Hanken Grotesk"
+                    ],
+                    "headline-lg-mobile": [
+                            "Hanken Grotesk"
+                    ],
+                    "headline-lg": [
+                            "Hanken Grotesk"
+                    ],
+                    "headline-sm": [
+                            "Hanken Grotesk"
+                    ],
+                    "headline-md": [
+                            "Hanken Grotesk"
+                    ],
+                    "label-sm": [
+                            "Courier Prime"
+                    ]
+            },
+            "fontSize": {
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "1.5",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "label-md": [
+                            "14px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "body-lg": [
+                            "18px",
+                            {
+                                    "lineHeight": "1.6",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-lg-mobile": [
+                            "32px",
+                            {
+                                    "lineHeight": "1.1",
+                                    "fontWeight": "800"
+                            }
+                    ],
+                    "headline-lg": [
+                            "48px",
+                            {
+                                    "lineHeight": "1.1",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "800"
+                            }
+                    ],
+                    "headline-sm": [
+                            "24px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "headline-md": [
+                            "32px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "label-sm": [
+                            "12px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "fontWeight": "400"
+                            }
+                    ]
+            }
+    },
+        },
+      }
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&family=Courier+Prime&display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-    <style>
-        body { background-color: #131313; color: #e5e2e1; font-family: 'Hanken Grotesk', sans-serif; }
-        .industrial-card { background: #1c1b1c; border: 1px solid rgba(255, 255, 255, 0.05); box-shadow: 4px 4px 0px 0px #0e0e0f; position: relative; }
-        .glow-text { text-shadow: 0 0 10px rgba(255, 140, 0, 0.3); }
+<style>
+        body { 
+            background-color: #131313; 
+            color: #e5e2e1; 
+            font-family: 'Hanken Grotesk', sans-serif;
+            background-image: radial-gradient(circle at center, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .font-courier { font-family: 'Courier Prime', monospace; }
+        
+        .industrial-card {
+            background-color: #131313;
+            border: 1px solid rgba(255,255,255,0.05);
+            box-shadow: 4px 4px 0px 0px #0E0E0F;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(4px);
+        }
+        
+        .industrial-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120%;
+            height: 120%;
+            background: radial-gradient(circle, rgba(255,140,0,0.2) 0%, rgba(255,140,0,0) 60%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .industrial-btn-primary {
+            background-color: #FF8C00;
+            color: #0E0E0F;
+            font-family: 'Hanken Grotesk', sans-serif;
+            font-weight: 700;
+            box-shadow: 4px 4px 0px 0px #0E0E0F;
+            transition: all 0.1s ease-in-out;
+            border: 1px solid #FF8C00;
+        }
+        .industrial-btn-primary:active {
+            box-shadow: 0px 0px 0px 0px #0E0E0F;
+            transform: translate(4px, 4px);
+        }
+
+        .industrial-btn-secondary {
+            background-color: transparent;
+            color: #e5e2e1;
+            font-family: 'Courier Prime', monospace;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.2s ease;
+        }
+        .industrial-btn-secondary:hover {
+            background-color: rgba(255,255,255,0.05);
+            border-color: rgba(255,255,255,0.2);
+        }
     </style>
 </head>
-<body class="min-h-screen pb-24">
-
-<!-- HEADER -->
-<header class="w-full top-0 left-0 sticky z-50 flex flex-col items-center pt-4 pb-2 bg-[#131313]/90 backdrop-blur-md border-b border-white/10">
-    <img alt="The Workers Guild" class="h-16 w-auto object-contain mb-2" src="{{DATA:IMAGE:IMAGE_1279}}"/>
-    <div class="flex items-center gap-2">
-        <span class="font-label-caps text-[10px] tracking-[0.2em] text-orange-500 uppercase">GUILD_OWNER_TERMINAL [SECURED]</span>
-    </div>
+<body class="bg-background text-on-background min-h-screen flex flex-col antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top Navigation -->
+<header class="sticky top-0 z-50 bg-background/90 backdrop-blur-md border-b border-white/5 shadow-[4px_4px_0px_0px_#0E0E0F]">
+<div class="flex justify-between items-center w-full px-gutter h-16 max-w-[1440px] mx-auto">
+<div class="flex items-center gap-stack-md">
+<img alt="Guild Seal Logo" class="h-12 w-12 object-contain filter drop-shadow-[0_0_15px_rgba(255,140,0,1)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2yyt92rap1NxLQK6BTEO6vbsDqR0VXO361TD-7OSzg6WpWE3WPYInAOc5Mh9w7M85-r4bjNeJ7I6NGICe0-03tkEygflfliLFuwlYDRBPOMz_k72kGVwMy7OStiSLo9mxX91BcP6y5fZlsveTa-R1JLPOJ-od3rVmzxC0JLyI22ywWKdixGe0tgB14BW6Ar9tZhkBL6j1Fe4QV7WdQMvn8wJ8PLQGWN7GNyj7k1GN9z4m42xoQqglmo1nfQYjIeNCZA"/>
+<div>
+<h1 class="font-headline-sm text-[18px] md:text-headline-sm font-bold text-primary tracking-tighter uppercase">THE WORKERS GUILD // COMMAND</h1>
+<p class="font-label-sm text-[10px] md:text-label-sm text-on-surface-variant uppercase tracking-widest font-courier opacity-70">GUILD_OWNER_TERMINAL [SECURED]</p>
+</div>
+</div>
+<nav class="hidden md:flex gap-stack-lg items-center h-full">
+<a class="text-primary border-b-2 border-primary pb-1 font-bold h-full flex items-center font-label-md text-label-md" href="#">DASHBOARD</a>
+<a class="text-on-surface-variant font-medium hover:text-primary-fixed-dim transition-colors duration-150 h-full flex items-center font-label-md text-label-md" href="#">PERSONNEL</a>
+<a class="text-on-surface-variant font-medium hover:text-primary-fixed-dim transition-colors duration-150 h-full flex items-center font-label-md text-label-md" href="#">LOGISTICS</a>
+<a class="text-on-surface-variant font-medium hover:text-primary-fixed-dim transition-colors duration-150 h-full flex items-center font-label-md text-label-md" href="#">REVENUE</a>
+</nav>
+<div class="flex items-center gap-stack-sm md:gap-stack-md text-on-surface-variant">
+<!-- Mobile Menu Button -->
+<button class="md:hidden hover:text-primary-fixed-dim transition-colors duration-150 flex items-center justify-center h-10 w-10">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">menu</span>
+</button>
+<button class="hidden md:flex hover:text-primary-fixed-dim transition-colors duration-150 items-center justify-center h-10 w-10">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">settings</span>
+</button>
+<button class="hover:text-primary-fixed-dim transition-colors duration-150 flex items-center justify-center h-10 w-10 relative">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-primary-container rounded-full hidden"></span>
+</button>
+<button class="hidden md:flex hover:text-primary-fixed-dim transition-colors duration-150 items-center justify-center h-10 w-10">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">account_circle</span>
+</button>
+</div>
+</div>
 </header>
-
-<main class="p-4 space-y-6">
-    <!-- Rest of the Owner Console Content from DOCUMENT_13 -->
-    <section class="industrial-card p-6">
-        <p class="font-label-caps text-[10px] text-white/40 uppercase tracking-widest mb-1">Gross Revenue</p>
-        <h2 class="text-4xl font-black text-white glow-text">$0.00</h2>
-    </section>
-    <!-- [Content continues...] -->
+<div class="flex flex-1 max-w-[1440px] mx-auto w-full">
+<!-- Side Navigation -->
+<aside class="hidden md:flex flex-col w-64 border-r border-white/5 bg-surface-container-low/50 shadow-[4px_0px_0px_0px_#0E0E0F] h-[calc(100vh-64px)] p-stack-md sticky top-16">
+<nav class="flex-1 flex flex-col gap-unit">
+<a class="bg-primary text-on-primary font-bold shadow-[2px_2px_0px_0px_#0E0E0F] flex items-center gap-stack-md px-4 py-3 font-label-md text-label-md uppercase" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">terminal</span>
+                    TERMINAL
+                </a>
+<a class="text-on-surface-variant hover:bg-surface-variant transition-all hover:text-on-surface flex items-center gap-stack-md px-4 py-3 font-label-md text-label-md uppercase" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">engineering</span>
+                    FLEET
+                </a>
+<a class="text-on-surface-variant hover:bg-surface-variant transition-all hover:text-on-surface flex items-center gap-stack-md px-4 py-3 font-label-md text-label-md uppercase" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">inventory_2</span>
+                    INVENTORY
+                </a>
+<a class="text-on-surface-variant hover:bg-surface-variant transition-all hover:text-on-surface flex items-center gap-stack-md px-4 py-3 font-label-md text-label-md uppercase" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">description</span>
+                    CONTRACTS
+                </a>
+<a class="text-on-surface-variant hover:bg-surface-variant transition-all hover:text-on-surface flex items-center gap-stack-md px-4 py-3 font-label-md text-label-md uppercase" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">security</span>
+                    ARCHIVE
+                </a>
+</nav>
+<div class="mt-auto flex flex-col gap-stack-md pt-stack-md border-t border-white/5">
+<button class="industrial-btn-primary w-full py-3 uppercase tracking-wider font-label-md text-label-md">INITIATE PROTOCOL</button>
+<div class="flex flex-col gap-unit">
+<a class="text-on-surface-variant hover:bg-surface-variant transition-all hover:text-on-surface flex items-center gap-stack-md px-4 py-2 font-label-sm text-label-sm uppercase opacity-70" href="#">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 0;">code</span>
+                        SYSTEM_LOG
+                    </a>
+<a class="text-on-surface-variant hover:bg-surface-variant transition-all hover:text-on-surface flex items-center gap-stack-md px-4 py-2 font-label-sm text-label-sm uppercase opacity-70" href="#">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 0;">help_outline</span>
+                        SUPPORT
+                    </a>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 p-margin-mobile md:p-margin-desktop overflow-y-auto">
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter max-w-7xl mx-auto">
+<!-- Revenue Card (Full width on mobile, spans 8 cols on desktop) -->
+<div class="industrial-card p-gutter col-span-1 md:col-span-8 flex flex-col justify-center min-h-[200px]">
+<div class="industrial-glow"></div>
+<div class="relative z-10">
+<div class="font-label-sm text-label-sm text-on-surface-variant font-courier uppercase tracking-widest mb-stack-sm flex items-center gap-2">
+<span class="w-2 h-2 bg-primary-container inline-block"></span>
+                            METRIC_01 // GROSS REVENUE
+                        </div>
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg font-extrabold text-white tracking-tighter" style="text-shadow: 0 0 20px rgba(255,140,0,0.3);">
+                            $<span class="font-courier text-surface-variant">--.--</span>
+</h2>
+<div class="mt-stack-md flex gap-stack-sm items-center">
+<span class="bg-surface-container-high text-on-surface font-label-sm text-label-sm px-2 py-1 font-courier border border-white/5 uppercase">Fiscal Q3</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm font-courier animate-pulse">Awaiting data stream...</span>
+</div>
+</div>
+</div>
+<!-- System Status (Spans 4 cols on desktop) -->
+<div class="industrial-card p-gutter col-span-1 md:col-span-4 flex flex-col justify-between">
+<div>
+<div class="font-label-sm text-label-sm text-on-surface-variant font-courier uppercase tracking-widest mb-stack-md border-b border-white/5 pb-2">SYS_STATUS</div>
+<div class="flex items-center gap-stack-md mt-stack-md">
+<div class="w-4 h-4 bg-primary-container rounded-sm shadow-[0_0_10px_#ff8c00] animate-pulse"></div>
+<span class="font-label-md text-label-md font-courier text-primary-container uppercase tracking-wider">CONNECTING</span>
+</div>
+</div>
+<div class="mt-stack-lg border-t border-white/5 pt-stack-md">
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-sm text-label-sm font-courier text-on-surface-variant">Server Load</span>
+<span class="font-label-sm text-label-sm font-courier text-on-surface">--%</span>
+</div>
+<div class="w-full bg-surface-container-high h-1 border border-white/10">
+<div class="bg-surface-variant w-[0%] h-full"></div>
+</div>
+</div>
+</div>
+<!-- Personnel Stats (Spans 6 cols) -->
+<div class="industrial-card p-gutter col-span-1 md:col-span-6">
+<div class="font-label-sm text-label-sm text-on-surface-variant font-courier uppercase tracking-widest mb-stack-md">UNIT_02 // PERSONNEL</div>
+<div class="grid grid-cols-2 gap-stack-md border-b border-white/5 pb-stack-md mb-stack-md">
+<div>
+<div class="font-label-sm text-label-sm text-on-surface-variant font-courier uppercase mb-1">Active Craftsmen</div>
+<div class="font-headline-md text-headline-md font-bold font-courier text-surface-variant">--</div>
+</div>
+<div class="pl-stack-md border-l border-white/5">
+<div class="font-label-sm text-label-sm text-on-surface-variant font-courier uppercase mb-1">Pending Verification</div>
+<div class="font-headline-md text-headline-md font-bold font-courier text-surface-variant">--</div>
+</div>
+</div>
+<button class="industrial-btn-secondary w-full py-2 uppercase tracking-widest text-sm flex items-center justify-center gap-2 opacity-50 cursor-not-allowed">
+<span class="material-symbols-outlined text-[18px]">group</span>
+                        View Roster
+                    </button>
+</div>
+<!-- Waitlist Queue (Spans 6 cols) -->
+<div class="industrial-card col-span-1 md:col-span-6 flex flex-col h-[400px]">
+<div class="p-gutter border-b border-white/5 flex justify-between items-center bg-surface-container/50">
+<div class="font-label-sm text-label-sm text-on-surface-variant font-courier uppercase tracking-widest">UNIT_03 // WAITLIST_QUEUE</div>
+<span class="bg-surface-variant text-on-surface-variant px-2 py-0.5 font-label-sm text-label-sm font-courier border border-white/5">STANDBY</span>
+</div>
+<div class="flex-1 overflow-y-auto p-0 m-0 flex items-center justify-center">
+<div class="font-label-sm text-label-sm font-courier text-on-surface-variant uppercase tracking-widest animate-pulse">
+    Awaiting Data Connection...
+</div>
+</div>
+</div>
+</div>
 </main>
-
-<!-- Load external security logic -->
-<script src="security-protocol.js"></script>
-</body>
-</html>
+</div>
+<!-- Footer -->
+<footer class="w-full py-stack-md px-margin-mobile md:px-gutter flex flex-col md:flex-row justify-between items-center gap-stack-md bg-surface-container-lowest border-t border-white/5 mt-auto">
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase font-courier text-center md:text-left">© 2026. BUILT BY WORKERS. FOR WORKERS. VERSION 0.1</p>
+<div class="flex flex-wrap justify-center gap-stack-md">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors font-courier uppercase" href="#">PRIVACY_PROT</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors font-courier uppercase" href="#">USER_AGREE</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors font-courier uppercase" href="#">DEPT_LABOR</a>
+</div>
+</footer>
+<script>
+    // Hardened auth check
+    const checkAuth = () => {
+        const token = localStorage.getItem('guild_owner_token');
+        const session = localStorage.getItem('supabase.auth.token'); // Adjust key based on actual Supabase config
+        
+        if (!token && !session) {
+            window.location.replace('https://workersguild.store');
+        }
+    };
+    
+    // Run immediately and setup listener
+    checkAuth();
+    window.addEventListener('storage', checkAuth);
+</script></body></html>
