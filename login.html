@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>THE WORKERS GUILD // COMMAND // OWNER_LOGIN</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&amp;family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed": "#2f1500",
+                        "tertiary-container": "#aba9a9",
+                        "primary-fixed": "#ffdcc3",
+                        "on-tertiary-fixed-variant": "#474746",
+                        "on-tertiary": "#303030",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "secondary-container": "#4a494a",
+                        "surface-dim": "#131313",
+                        "surface": "#131313",
+                        "on-tertiary-container": "#3e3e3e",
+                        "error": "#ffb4ab",
+                        "background": "#131313",
+                        "tertiary-fixed-dim": "#c8c6c5",
+                        "surface-variant": "#353534",
+                        "surface-tint": "#ffb77d",
+                        "surface-container-low": "#1c1b1b",
+                        "on-secondary-fixed": "#1c1b1c",
+                        "secondary-fixed-dim": "#c8c6c7",
+                        "secondary-fixed": "#e5e2e3",
+                        "on-background": "#e5e2e1",
+                        "primary-container": "#ff8c00",
+                        "primary": "#ffb77d",
+                        "on-secondary-container": "#bab8b9",
+                        "on-secondary-fixed-variant": "#474647",
+                        "on-primary-container": "#623200",
+                        "surface-container-lowest": "#0e0e0e",
+                        "surface-bright": "#393939",
+                        "surface-container": "#201f1f",
+                        "on-error-container": "#ffdad6",
+                        "tertiary": "#c8c6c5",
+                        "primary-fixed-dim": "#ffb77d",
+                        "on-primary": "#4d2600",
+                        "on-surface-variant": "#ddc1ae",
+                        "secondary": "#c8c6c7",
+                        "error-container": "#93000a",
+                        "inverse-on-surface": "#313030",
+                        "inverse-primary": "#904d00",
+                        "on-secondary": "#313031",
+                        "on-primary-fixed-variant": "#6e3900",
+                        "inverse-surface": "#e5e2e1",
+                        "outline-variant": "#564334",
+                        "tertiary-fixed": "#e4e2e1",
+                        "surface-container-highest": "#353534",
+                        "outline": "#a48c7a",
+                        "on-error": "#690005",
+                        "on-surface": "#e5e2e1",
+                        "surface-container-high": "#2a2a2a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "stack-sm": "8px",
+                        "gutter": "24px",
+                        "margin-desktop": "40px",
+                        "margin-mobile": "16px",
+                        "stack-lg": "32px",
+                        "stack-md": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "label-md": ["Courier Prime"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "headline-sm": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "label-sm": ["Courier Prime"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "400" }],
+                        "headline-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "headline-lg-mobile": ["32px", { "lineHeight": "1.1", "fontWeight": "800" }],
+                        "headline-sm": ["24px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "1.2", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .industrial-card {
+            background-color: theme('colors.surface-dim');
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 4px 4px 0px 0px #0E0E0F;
+        }
+        .focal-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 150%;
+            height: 150%;
+            background: radial-gradient(circle, rgba(255,140,0,0.15) 0%, rgba(255,140,0,0) 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+        .btn-primary {
+            background-color: theme('colors.primary-container');
+            color: #000;
+            box-shadow: 4px 4px 0px 0px #0E0E0F;
+            transition: all 0.15s ease-in-out;
+        }
+        .btn-primary:hover {
+            box-shadow: 0px 0px 0px 0px #0E0E0F;
+            transform: translate(2px, 2px);
+        }
+        .input-industrial {
+            background-color: #0E0E0F;
+            border: none;
+            border-bottom: 2px solid theme('colors.surface-container-high');
+            transition: all 0.2s ease;
+        }
+        .input-industrial:focus {
+            outline: none;
+            border-bottom-color: theme('colors.primary-container');
+            box-shadow: 0 4px 20px -4px rgba(255,140,0,0.15);
+        }
+        body {
+            background-color: theme('colors.background');
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 24px 24px;
+            background-position: center center;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between text-on-surface font-body-md overflow-x-hidden relative">
+<!-- Suppress Nav: Transactional/Linear intent -->
+<main class="flex-grow flex items-center justify-center p-gutter relative z-10">
+<div class="relative w-full max-w-md">
+<div class="focal-glow"></div>
+<div class="industrial-card p-stack-lg flex flex-col gap-stack-lg relative">
+<!-- Serial/Header -->
+<div class="absolute top-0 left-0 p-stack-sm bg-surface-container-high border-b border-r border-white/5">
+<span class="font-label-sm text-label-sm text-on-surface-variant">SECURE_TERM // AUTHC</span>
+</div>
+<!-- Brand Seal -->
+<div class="flex justify-center mt-stack-md">
+<img alt="Guild Seal Logo" class="w-32 h-32 rounded-full border border-white/10 shadow-[2px_2px_0px_0px_#0E0E0F] opacity-90" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXibEzkANIm6izNg9zoLGc3Vy3mfOLfLj1xiIAgZ0vPaYzRP1z6WT6Mh1X6ddETxvHbp1K7POPRGN7IGOk2FbxcaozVntpi0s7Eg0_SAPL-GefEWnznLUOp0pEDONLSRetIjqhO0VPjJS1CCd-xwmBPL8zoToz7dXnffUj5G1YMnOx4Rs_lZzfRx6-BpppQGKUoDvVu5jlFgEj76EljRSpXtf0AXJGx1zu7KS_vD0k6REdsuwwxx0O17toUhFE6DNAhg"/>
+</div>
+<div class="text-center">
+<h1 class="font-headline-md text-headline-md mb-stack-sm text-primary">OWNER_CMD</h1>
+<p class="font-label-md text-label-md text-on-surface-variant">IDENTIFICATION REQUIRED</p>
+</div>
+<form action="#" class="flex flex-col gap-stack-md" id="auth-form" method="POST">
+<div class="flex flex-col gap-unit">
+<label class="font-label-md text-label-md text-on-surface-variant uppercase flex items-center gap-2" for="email">
+<span class="material-symbols-outlined text-[16px]">terminal</span>
+                            OPERATIVE_ID
+                        </label>
+<input class="input-industrial font-label-md text-label-md text-on-surface p-stack-sm w-full" id="email" name="email" placeholder="ENTRY FORMAT: EMAIL" required="" type="email"/>
+</div>
+<div class="flex flex-col gap-unit">
+<label class="font-label-md text-label-md text-on-surface-variant uppercase flex items-center gap-2" for="password">
+<span class="material-symbols-outlined text-[16px]">key</span>
+                            SECURITY_CODE
+                        </label>
+<input class="input-industrial font-label-md text-label-md text-on-surface p-stack-sm w-full" id="password" name="password" placeholder="**********" required="" type="password"/>
+</div>
+<div class="flex justify-between items-center mt-unit">
+<label class="flex items-center gap-2 cursor-pointer group">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-4 h-4 border border-white/20 bg-[#0E0E0F] peer-checked:bg-primary-container peer-checked:border-primary-container flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-[12px] text-black opacity-0 peer-checked:opacity-100">check</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant group-hover:text-on-surface transition-colors">MAINTAIN_LINK</span>
+</label>
+<a class="font-label-sm text-label-sm text-primary hover:underline uppercase" href="#">OVERRIDE_KEY?</a>
+</div>
+<button class="btn-primary font-headline-sm text-headline-sm uppercase py-stack-sm w-full mt-stack-md flex justify-center items-center gap-2" type="submit">
+                        INITIATE SESSION
+                        <span class="material-symbols-outlined">login</span>
+</button>
+</form>
+<div class="border-t border-white/5 pt-stack-md mt-stack-sm text-center">
+<p class="font-label-sm text-label-sm text-on-surface-variant">SYSTEM STATUS: <span class="text-primary animate-pulse">AWAITING INPUT</span></p>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Component Execution -->
+<footer class="w-full py-stack-md px-gutter flex justify-between items-center bg-surface-container-lowest border-t border-white/5 relative z-10 flex-col md:flex-row gap-stack-md text-center md:text-left">
+<div class="font-label-sm text-on-surface">
+            © 2026 THE WORKERS GUILD. BUILT BY WORKERS. FOR WORKERS.
+        </div>
+<nav class="flex gap-gutter">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">PRIVACY_PROT</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">USER_AGREE</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">DEPT_LABOR</a>
+</nav>
+</footer>
+<script>
+        document.getElementById('auth-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const authorized = ['workersguild001@gmail.com', 'chaces15@gmail.com'];
+            
+            if (authorized.includes(email.toLowerCase())) {
+                // Proceed with login logic or redirect to dashboard
+                console.log('Access Granted');
+                alert('SESSION INITIATED');
+            } else {
+                window.location.href = '404.html';
+            }
+        });
+    </script></body></html>
