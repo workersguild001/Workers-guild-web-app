@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Account Recovery - The Workers Guild</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;700;800&amp;family=Courier+Prime:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#131313",
+                        "on-primary-fixed-variant": "#6e3900",
+                        "tertiary": "#c8c6c5",
+                        "on-secondary-container": "#bab8b9",
+                        "primary-fixed": "#ffdcc3",
+                        "on-tertiary-container": "#3e3e3e",
+                        "inverse-on-surface": "#313030",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "on-secondary-fixed": "#1c1b1c",
+                        "on-error": "#690005",
+                        "secondary-fixed": "#e5e2e3",
+                        "on-background": "#e5e2e1",
+                        "surface-container": "#201f1f",
+                        "on-primary-fixed": "#2f1500",
+                        "error": "#ffb4ab",
+                        "surface": "#131313",
+                        "surface-container-highest": "#353534",
+                        "inverse-primary": "#904d00",
+                        "inverse-surface": "#e5e2e1",
+                        "secondary": "#c8c6c7",
+                        "surface-tint": "#ffb77d",
+                        "primary-fixed-dim": "#ffb77d",
+                        "on-secondary": "#313031",
+                        "surface-container-low": "#1c1b1b",
+                        "error-container": "#93000a",
+                        "primary-container": "#ff8c00",
+                        "on-primary-container": "#623200",
+                        "surface-variant": "#353534",
+                        "tertiary-container": "#aba9a9",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-error-container": "#ffdad6",
+                        "on-primary": "#4d2600",
+                        "outline-variant": "#564334",
+                        "secondary-fixed-dim": "#c8c6c7",
+                        "on-secondary-fixed-variant": "#474647",
+                        "tertiary-fixed-dim": "#c8c6c5",
+                        "primary": "#ffb77d",
+                        "on-tertiary": "#303030",
+                        "secondary-container": "#4a494a",
+                        "surface-bright": "#393939",
+                        "outline": "#a48c7a",
+                        "tertiary-fixed": "#e4e2e1",
+                        "on-tertiary-fixed-variant": "#474746",
+                        "on-surface-variant": "#ddc1ae",
+                        "background": "#131313",
+                        "on-surface": "#e5e2e1",
+                        "surface-container-high": "#2a2a2a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "margin-desktop": "40px",
+                        "unit": "4px",
+                        "stack-md": "16px",
+                        "margin-mobile": "16px",
+                        "stack-lg": "32px",
+                        "stack-sm": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "label-md": ["Courier Prime"],
+                        "body-md": ["Hanken Grotesk"],
+                        "label-sm": ["Courier Prime"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "headline-sm": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "1.2", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["32px", { "lineHeight": "1.1", "fontWeight": "800" }],
+                        "headline-sm": ["24px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "headline-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .industrial-shadow { box-shadow: 4px 4px 0px 0px #0E0E0F; }
+        .industrial-shadow-hover:hover { box-shadow: 0px 0px 0px 0px #0E0E0F; transform: translate(4px, 4px); }
+        .focal-glow { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 200px; height: 200px; background: rgba(255,140,0,0.15); filter: blur(40px); z-index: 0; pointer-events: none; border-radius: 50%; }
+        .border-metal { border: 1px solid rgba(255,255,255,0.05); }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col items-center justify-center relative overflow-hidden font-body-md" style="background-image: url('https://lh3.googleusercontent.com/aida/AP1WRLstpyaU5YZ76f7vYDkWVBDzfNBDry4NWATVs4El_wJFP9gs3jPPv3Jq9du1vjr-Q0kWvSqmMp-ZVz4cOpWFzpARRxf9KDLXrIWv2v_QuMffk7A9Oy6bfqsB8PROLAtfANPoEL4ht62z3n6NNPhRkLK2CGsgkSOlVA6JKwMLCu1eqsGMY0mDweyq1WBmQsLA9r2XIkAGQtK5fkAJb1Fu346PovdcTSqfi5uFLDWkof5U0PrFgR_b9sktBkU'); background-size: cover; background-attachment: fixed;">
+<!-- Focal Glow -->
+<div class="focal-glow"></div>
+<main class="w-full max-w-md px-gutter relative z-10">
+<!-- Industrial Card Container -->
+<div class="bg-surface-dim border-metal industrial-shadow p-stack-lg relative">
+<!-- Serial Label -->
+<div class="absolute top-stack-sm left-stack-sm text-on-surface-variant font-label-sm text-label-sm">
+                RECV_01 // SECURE
+            </div>
+<div class="flex flex-col items-center mt-stack-md">
+<!-- Brand Seal -->
+<div class="w-24 h-24 mb-stack-md rounded-full border-metal overflow-hidden bg-surface-container-lowest">
+<img alt="Guild Seal Logo" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSoMfGxHDf6qixqIiCdVL1_k-PxyAv4VREwTNdPoG-7-r_CX2INnSEk2y78P3z3d94s-WavvBgJOUTj9eUGkjcu08kp4c7-61RVQpOTap7XRhQAgEDxuE9P163YOB3svLZY9gsk9UzL_2jq6547ISFH-sTCKYDu3tYCHv-__VFrtqS8T2q-Gk_pBn7UoUq1SZ3z05EJcPqYEXHTXEsfQCXxHdRmAezaXtKPQrc5ZWMMM2OHQUaoslC3qazprdiq83wiw"/>
+</div>
+<!-- Header -->
+<h1 class="font-headline-md text-headline-md text-primary mb-stack-lg text-center tracking-tighter">LOST ACCOUNT</h1>
+<!-- Recovery Form -->
+<form class="w-full flex flex-col gap-stack-md">
+<!-- Input Field -->
+<div class="flex flex-col gap-unit">
+<label class="font-label-md text-label-md text-on-surface-variant" for="email">YOUR EMAIL</label>
+<input class="bg-[#0E0E0F] border-0 border-b-2 border-surface-container-high text-on-surface font-label-md text-label-md p-stack-sm focus:ring-0 focus:border-primary-container focus:outline-none transition-colors w-full" id="email" placeholder="OPERATIVE@GUILD.ORG" required="" type="email"/>
+</div>
+<!-- Primary Button -->
+<button class="bg-primary-container text-[#0E0E0F] font-headline-sm text-headline-sm font-bold uppercase py-stack-sm px-stack-md industrial-shadow industrial-shadow-hover transition-all duration-150 mt-stack-md flex items-center justify-center gap-unit border-none" type="submit">SEND RECOVERY LINK
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">send</span></button>
+</form>
+<!-- Footer Link -->
+<div class="mt-stack-lg pt-stack-md border-t border-white/5 w-full text-center">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center gap-unit" href="signin.html">
+<span class="material-symbols-outlined text-[14px]">arrow_back</span>
+                        BACK TO SIGN IN
+                    </a>
+</div>
+</div>
+</div>
+</main>
+<!-- Global Footer (Suppressed Nav Shells as this is transactional) -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const supabase = supabase.createClient('https://wiq8bv9jifkprhtgzqpiw.supabase.co', 'sb_publishable__WiQ8Bv9JIfKpRhtGzqpiw_okzDVCPg');
+
+document.querySelector('form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = document.getElementById('email').value;
+    const button = e.target.querySelector('button');
+    const originalText = button.innerHTML;
+
+    button.disabled = true;
+    button.innerText = 'SENDING...';
+
+    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+        redirectTo: window.location.origin + '/reset-password.html',
+    });
+
+    if (error) {
+        alert('Error: ' + error.message);
+        button.disabled = false;
+        button.innerHTML = originalText;
+    } else {
+        button.innerText = 'LINK SENT!';
+        alert('Check your email for the help link.');
+    }
+});
+</script><footer class="absolute bottom-0 w-full py-stack-md px-gutter flex justify-center items-center">
+<span class="font-label-sm text-label-sm text-on-surface-variant">© 2026 THE WORKERS GUILD. BUILT BY WORKERS. FOR WORKERS.</span>
+</footer>
+</body></html>
