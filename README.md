@@ -1,2 +1,2 @@
 # Workers-guild-web-app
-We find work for tradesmen
+we find temp jobs for tradesmen and we find tradesmen for temp jobs. 
