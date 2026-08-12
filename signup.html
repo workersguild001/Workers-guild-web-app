@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Workers Guild - Create Account</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;700;800&amp;family=Courier+Prime:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "secondary-fixed-dim": "#c8c6c7",
+                "secondary-container": "#4a494a",
+                "surface-container-high": "#2a2a2a",
+                "primary-container": "#ff8c00",
+                "on-secondary-fixed-variant": "#474647",
+                "surface-container-lowest": "#0e0e0e",
+                "on-tertiary-fixed-variant": "#474746",
+                "surface-container-highest": "#353534",
+                "inverse-primary": "#904d00",
+                "on-secondary-fixed": "#1c1b1c",
+                "on-error-container": "#ffdad6",
+                "on-secondary-container": "#bab8b9",
+                "on-tertiary-fixed": "#1b1c1c",
+                "primary-fixed": "#ffdcc3",
+                "surface-dim": "#131313",
+                "on-tertiary-container": "#3e3e3e",
+                "error": "#ffb4ab",
+                "on-secondary": "#313031",
+                "inverse-on-surface": "#313030",
+                "secondary": "#c8c6c7",
+                "on-primary-container": "#623200",
+                "outline": "#a48c7a",
+                "surface-tint": "#ffb77d",
+                "on-tertiary": "#303030",
+                "primary-fixed-dim": "#ffb77d",
+                "tertiary-container": "#aba9a9",
+                "on-surface": "#e5e2e1",
+                "outline-variant": "#564334",
+                "primary": "#ffb77d",
+                "surface-variant": "#353534",
+                "tertiary-fixed": "#e4e2e1",
+                "on-error": "#690005",
+                "tertiary-fixed-dim": "#c8c6c5",
+                "on-primary": "#4d2600",
+                "on-primary-fixed": "#2f1500",
+                "on-surface-variant": "#ddc1ae",
+                "error-container": "#93000a",
+                "on-background": "#e5e2e1",
+                "secondary-fixed": "#e5e2e3",
+                "tertiary": "#c8c6c5",
+                "inverse-surface": "#e5e2e1",
+                "on-primary-fixed-variant": "#6e3900",
+                "surface-container-low": "#1c1b1b",
+                "surface-bright": "#393939",
+                "background": "#131313",
+                "surface": "#131313",
+                "surface-container": "#201f1f"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+        },
+        "spacing": {
+                "unit": "4px",
+                "stack-sm": "8px",
+                "stack-md": "16px",
+                "margin-desktop": "40px",
+                "margin-mobile": "16px",
+                "gutter": "24px",
+                "stack-lg": "32px"
+        },
+        "fontFamily": {
+                "headline-lg": [
+                        "Hanken Grotesk"
+                ],
+                "headline-sm": [
+                        "Hanken Grotesk"
+                ],
+                "headline-lg-mobile": [
+                        "Hanken Grotesk"
+                ],
+                "body-md": [
+                        "Hanken Grotesk"
+                ],
+                "label-sm": [
+                        "Courier Prime"
+                ],
+                "body-lg": [
+                        "Hanken Grotesk"
+                ],
+                "headline-md": [
+                        "Hanken Grotesk"
+                ],
+                "label-md": [
+                        "Courier Prime"
+                ]
+        },
+        "fontSize": {
+                "headline-lg": [
+                        "48px",
+                        {
+                                "lineHeight": "1.1",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "800"
+                        }
+                ],
+                "headline-sm": [
+                        "24px",
+                        {
+                                "lineHeight": "1.2",
+                                "fontWeight": "700"
+                        }
+                ],
+                "headline-lg-mobile": [
+                        "32px",
+                        {
+                                "lineHeight": "1.1",
+                                "fontWeight": "800"
+                        }
+                ],
+                "body-md": [
+                        "16px",
+                        {
+                                "lineHeight": "1.5",
+                                "fontWeight": "400"
+                        }
+                ],
+                "label-sm": [
+                        "12px",
+                        {
+                                "lineHeight": "1.2",
+                                "fontWeight": "400"
+                        }
+                ],
+                "body-lg": [
+                        "18px",
+                        {
+                                "lineHeight": "1.6",
+                                "fontWeight": "400"
+                        }
+                ],
+                "headline-md": [
+                        "32px",
+                        {
+                                "lineHeight": "1.2",
+                                "fontWeight": "700"
+                        }
+                ],
+                "label-md": [
+                        "14px",
+                        {
+                                "lineHeight": "1.2",
+                                "letterSpacing": "0.05em",
+                                "fontWeight": "400"
+                        }
+                ]
+        }
+},
+    },
+  }
+</script>
+<style>
+        .industrial-shadow {
+            box-shadow: 4px 4px 0px 0px #0E0E0F;
+        }
+        .industrial-shadow-hover:hover {
+            box-shadow: 0px 0px 0px 0px #0E0E0F;
+            transform: translate(4px, 4px);
+        }
+        .focal-glow {
+            box-shadow: 0 0 40px rgba(255,140,0,0.15);
+        }
+        .input-glow:focus {
+            box-shadow: 0px 2px 10px rgba(255,140,0,0.15);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+            background: #131313;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #353534;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #ff8c00;
+        }
+      </style>
+</head>
+<body class="bg-background min-h-screen flex items-center justify-center p-gutter relative overflow-hidden text-on-surface selection:bg-primary-container selection:text-on-primary-container">
+<!-- Ambient Glow Background -->
+<div class="absolute inset-0 z-0 flex items-center justify-center pointer-events-none">
+<div class="w-[800px] h-[800px] bg-primary-container/10 rounded-full blur-[120px] opacity-50 mix-blend-screen"></div>
+</div>
+<!-- Main Registration Module -->
+<main class="w-full max-w-md z-10 relative">
+<!-- Registration Card -->
+<article class="bg-surface-dim border border-white/5 industrial-shadow p-stack-lg relative overflow-hidden text-on-surface">
+<!-- Technical Overlay Pattern -->
+<div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: radial-gradient(#fff 1px, transparent 1px); background-size: 20px 20px;"></div>
+<!-- Header Section -->
+<header class="flex flex-col items-center mb-stack-lg relative z-10">
+<span class="font-label-sm text-label-sm text-on-surface-variant absolute top-0 left-0 tracking-widest">UNIT_01 // INIT</span>
+<div class="w-24 h-24 mb-stack-md rounded-full overflow-hidden border-2 border-surface-container-high bg-surface-container-lowest flex items-center justify-center focal-glow" style="box-shadow: 0 0 30px 5px #ff8c00;">
+<img alt="The Workers Guild Bronze Seal" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDS8O3Tei_RzNg47lSYnGtN9QXd1TsfaaO3twcH_Sq8mxMlqyucjuQxL6qYNPwYX7J0jdlDmb1vXRNr8jApxN-FMzXNNH_14NkH0kmLrUjpvDnRQQ2zK8PCsFtgQf-14UNBrqW0_B9J6i4vtMx_-DO3rqAmxMlluVA53T-8_TyQKlO5OKuoQNGWEZM-LTUb65hvaPre2mzjLg-CI2_XqSAxh5MaB07nlboRzf8GuX9rUw5Y3DkykZj_ZpucNM9QK9i3Dw"/>
+</div>
+<h1 class="font-headline-md text-headline-md text-primary tracking-tighter uppercase">Sign Up</h1>
+<p class="font-label-md text-label-md text-on-surface-variant mt-unit text-center">INITIALIZE GUILD CREDENTIALS</p>
+</header>
+<!-- Registration Form -->
+<form action="recruitment.html" class="flex flex-col gap-stack-md relative z-10" method="POST">
+<!-- Full Name Field -->
+<div class="group">
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-unit uppercase tracking-widest" for="fullName">Full Name</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant group-focus-within:text-primary transition-colors text-[20px]">badge</span>
+<input class="w-full bg-surface-container-lowest border-0 border-b-2 border-surface-container-high text-on-surface font-label-md text-label-md px-3 py-3 pl-10 focus:ring-0 focus:border-primary input-glow transition-all placeholder:text-on-surface-variant/50" id="fullName" name="fullName" placeholder="JOHN DOE" required="" type="text"/>
+</div>
+</div>
+<!-- Email Field -->
+<div class="group">
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-unit uppercase tracking-widest" for="email">Email</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant group-focus-within:text-primary transition-colors text-[20px]">mail</span>
+<input class="w-full bg-surface-container-lowest border-0 border-b-2 border-surface-container-high text-on-surface font-label-md text-label-md px-3 py-3 pl-10 focus:ring-0 focus:border-primary input-glow transition-all placeholder:text-on-surface-variant/50" id="email" name="email" placeholder="WORKER@GUILD.COM" required="" type="email"/>
+</div>
+</div>
+<!-- Password Field -->
+<div class="group mb-stack-sm">
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-unit uppercase tracking-widest" for="password">Password</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant group-focus-within:text-primary transition-colors text-[20px]">key</span>
+<input class="w-full bg-surface-container-lowest border-0 border-b-2 border-surface-container-high text-on-surface font-label-md text-label-md px-3 py-3 pl-10 focus:ring-0 focus:border-primary input-glow transition-all placeholder:text-on-surface-variant/50" id="password" name="password" placeholder="••••••••" required="" type="password"/>
+<button aria-label="Toggle password visibility" class="absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-on-surface transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">visibility_off</span>
+</button>
+</div>
+</div>
+<!-- Terms Checkbox -->
+<div class="flex items-center gap-3 mt-2">
+<input class="w-5 h-5 bg-surface-container-lowest border-2 border-surface-container-high rounded-sm text-primary focus:ring-primary focus:ring-offset-0 focus:ring-2 focus:ring-offset-surface-dim transition-all cursor-pointer accent-primary" id="tosCheckbox" required="" type="checkbox"/>
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest cursor-pointer select-none" for="tosCheckbox">
+        I acknowledge the <a class="text-primary hover:text-primary-fixed underline decoration-primary/30 underline-offset-4" href="#" id="openModalBtn">Guild Conditions</a>
+</label>
+</div>
+<!-- Submit Button -->
+<button class="w-full bg-primary-container text-[#0E0E0F] font-headline-sm text-[20px] font-bold py-3 mt-stack-sm uppercase tracking-wide industrial-shadow transition-all duration-150 flex items-center justify-center gap-2 opacity-50 cursor-not-allowed" disabled="" id="submitBtn" type="submit">
+                    Create Account
+                    <span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">how_to_reg</span>
+</button>
+</form>
+<!-- Footer Links -->
+<footer class="mt-stack-lg border-t border-white/5 pt-stack-md flex flex-col items-center justify-center relative z-10 gap-4">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1 group" href="#">
+<span class="material-symbols-outlined text-[16px] group-hover:-translate-x-1 transition-transform">arrow_left</span>
+                    BACK TO SIGN IN
+                </a>
+<p class="font-label-sm text-label-sm text-on-surface-variant/50 text-center uppercase tracking-widest">Built by workers. For workers. 2026</p>
+</footer>
+</article>
+</main>
+<!-- TOS Modal -->
+<div class="fixed inset-0 z-50 hidden items-center justify-center bg-background/90 backdrop-blur-sm p-gutter" id="tosModal">
+<div class="w-full max-w-3xl max-h-[80vh] flex flex-col bg-surface-dim border border-primary/20 shadow-[0_0_40px_rgba(255,140,0,0.15)] relative overflow-hidden industrial-shadow">
+<!-- Modal Header -->
+<header class="p-4 border-b border-white/5 bg-surface-container-highest flex justify-between items-center relative z-10">
+<h2 class="font-headline-sm text-headline-sm text-primary uppercase tracking-tighter">Guild Conditions</h2>
+<button class="text-on-surface-variant hover:text-primary transition-colors" id="closeModalBtn" type="button">
+<span class="material-symbols-outlined">close</span>
+</button>
+</header>
+<!-- Modal Content -->
+<div class="p-gutter overflow-y-auto font-body-md text-on-surface-variant relative z-10 custom-scrollbar prose prose-invert prose-headings:text-on-surface prose-headings:font-headline-sm prose-a:text-primary max-w-none">
+            {{DATA:DOCUMENT:DOCUMENT_6}}
+        </div>
+<!-- Modal Footer -->
+<footer class="p-4 border-t border-white/5 bg-surface-container-highest flex justify-end relative z-10">
+<button class="bg-primary-container text-[#0E0E0F] font-bold px-6 py-2 uppercase tracking-wide hover:brightness-110 transition-all shadow-[4px_4px_0px_0px_#0E0E0F] hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px]" id="acceptBtn" type="button">Accept Conditions</button>
+</footer>
+</div>
+</div>
+<script>
+        // Simple script to toggle password visibility
+        const passwordInput = document.getElementById('password');
+        const toggleBtn = passwordInput.nextElementSibling;
+        const toggleIcon = toggleBtn.querySelector('.material-symbols-outlined');
+
+        toggleBtn.addEventListener('click', () => {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            toggleIcon.textContent = type === 'password' ? 'visibility_off' : 'visibility';
+        });
+
+        // TOS Checkbox Logic
+        const tosCheckbox = document.getElementById('tosCheckbox');
+        const submitBtn = document.getElementById('submitBtn');
+
+        tosCheckbox.addEventListener('change', (e) => {
+            submitBtn.disabled = !e.target.checked;
+            if (e.target.checked) {
+                submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                submitBtn.classList.add('industrial-shadow-hover');
+            } else {
+                submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
+                submitBtn.classList.remove('industrial-shadow-hover');
+            }
+        });
+
+        // Modal Logic
+        const modal = document.getElementById('tosModal');
+        const openBtn = document.getElementById('openModalBtn');
+        const closeBtn = document.getElementById('closeModalBtn');
+        const acceptBtn = document.getElementById('acceptBtn');
+
+        openBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        });
+
+        const closeModal = () => {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        };
+
+        closeBtn.addEventListener('click', closeModal);
+        
+        acceptBtn.addEventListener('click', () => {
+            tosCheckbox.checked = true;
+            tosCheckbox.dispatchEvent(new Event('change'));
+            closeModal();
+        });
+        
+        // Close modal when clicking outside
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+    </script>
+</body></html>
