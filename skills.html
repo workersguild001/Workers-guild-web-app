@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script>
+const supabaseUrl = 'https://wiq8bv9jifkprhtgzqpiw.supabase.co';
+const supabaseKey = 'sb_publishable__WiQ8Bv9JIfKpRhtGzqpiw_okzDVCPg';
+const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
+async function updateSkillsMatrix() {
+    try {
+        const { data: { user } } = await supabase.auth.getUser();
+        if (!user) return;
+
+        const { data: profile, error } = await supabase
+            .from('profiles')
+            .select('*')
+            .eq('id', user.id)
+            .single();
+
+        if (error || !profile) return;
+
+        const skillMap = {
+            'Carpentry': profile.carpentry_lvl || 1,
+            'Driving': profile.driving_lvl || 1,
+            'Electrician': profile.electrician_lvl || 1,
+            'Engineering': profile.engineering_lvl || 1,
+            'Farming': profile.farming_lvl || 1,
+            'Gen. Labor': profile.gen_labor_lvl || 1,
+            'HV/AC': profile.hvac_lvl || 1,
+            'Landscaping': profile.landscaping_lvl || 1,
+            'Mechanics': profile.mechanics_lvl || 1,
+            'Metalwork': profile.metalwork_lvl || 1,
+            'Plumbing': profile.plumbing_lvl || 1,
+            'Roofing': profile.roofing_lvl || 1,
+            'Stonemasonry': profile.stonemasonry_lvl || 1,
+            'Welding': profile.welding_lvl || 1
+        };
+
+        let totalLevel = 0;
+        const cells = document.querySelectorAll('.skill-cell');
+        
+        cells.forEach(cell => {
+            const nameEl = cell.querySelector('.truncate');
+            if (!nameEl) return;
+            
+            const skillName = nameEl.textContent.trim();
+            const level = skillMap[skillName];
+            
+            if (level !== undefined) {
+                const lvlDisplay = cell.querySelector('.text-primary-container');
+                if (lvlDisplay) {
+                    lvlDisplay.textContent = `LVL ${String(level).padStart(2, '0')}`;
+                    totalLevel += level;
+                }
+            }
+        });
+
+        const totalDisplay = document.querySelector('.skill-cell.border-primary .text-primary');
+        if (totalDisplay) {
+            totalDisplay.textContent = totalLevel;
+        }
+    } catch (e) {
+        // Silently handle errors for seamless user experience
+        console.error("Supabase fetch failed", e);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', updateSkillsMatrix);
+</script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>THE WORKERS GUILD // SKILLS MATRIX</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;700;800&amp;family=Courier+Prime:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "inverse-on-surface": "#313030",
+                        "on-primary-fixed-variant": "#6e3900",
+                        "error-container": "#93000a",
+                        "inverse-surface": "#e5e2e1",
+                        "secondary-fixed": "#e5e2e3",
+                        "inverse-primary": "#904d00",
+                        "tertiary-container": "#aba9a9",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "surface-container-lowest": "#0e0e0e",
+                        "surface": "#131313",
+                        "on-secondary-fixed-variant": "#474647",
+                        "on-secondary": "#313031",
+                        "primary-container": "#ff8c00",
+                        "surface-container": "#201f1f",
+                        "background": "#131313",
+                        "primary-fixed-dim": "#ffb77d",
+                        "primary": "#ffb77d",
+                        "on-tertiary-container": "#3e3e3e",
+                        "secondary-container": "#4a494a",
+                        "surface-container-highest": "#353534",
+                        "on-primary-fixed": "#2f1500",
+                        "surface-variant": "#353534",
+                        "tertiary-fixed": "#e4e2e1",
+                        "on-primary-container": "#623200",
+                        "surface-container-low": "#1c1b1b",
+                        "on-background": "#e5e2e1",
+                        "outline": "#a48c7a",
+                        "primary-fixed": "#ffdcc3",
+                        "on-secondary-fixed": "#1c1b1c",
+                        "tertiary": "#c8c6c5",
+                        "surface-dim": "#131313",
+                        "on-tertiary": "#303030",
+                        "on-error": "#690005",
+                        "surface-container-high": "#2a2a2a",
+                        "on-primary": "#4d2600",
+                        "error": "#ffb4ab",
+                        "surface-bright": "#393939",
+                        "secondary-fixed-dim": "#c8c6c7",
+                        "on-surface": "#e5e2e1",
+                        "outline-variant": "#564334",
+                        "tertiary-fixed-dim": "#c8c6c5",
+                        "secondary": "#c8c6c7",
+                        "on-tertiary-fixed-variant": "#474746",
+                        "on-secondary-container": "#bab8b9",
+                        "on-error-container": "#ffdad6",
+                        "on-surface-variant": "#ddc1ae",
+                        "surface-tint": "#ffb77d"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "gutter": "24px",
+                        "margin-mobile": "16px",
+                        "stack-md": "16px",
+                        "margin-desktop": "40px",
+                        "stack-sm": "8px",
+                        "unit": "4px",
+                        "stack-lg": "32px"
+                    },
+                    fontFamily: {
+                        "headline-md": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "label-md": ["Courier Prime"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "headline-sm": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "label-sm": ["Courier Prime"],
+                        "body-md": ["Hanken Grotesk"]
+                    },
+                    fontSize: {
+                        "headline-md": ["32px", { lineHeight: "1.2", fontWeight: "700" }],
+                        "headline-lg": ["48px", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "800" }],
+                        "label-md": ["14px", { lineHeight: "1.2", letterSpacing: "0.05em", fontWeight: "400" }],
+                        "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],
+                        "headline-sm": ["24px", { lineHeight: "1.2", fontWeight: "700" }],
+                        "headline-lg-mobile": ["32px", { lineHeight: "1.1", fontWeight: "800" }],
+                        "label-sm": ["12px", { lineHeight: "1.2", fontWeight: "400" }],
+                        "body-md": ["16px", { lineHeight: "1.5", fontWeight: "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url('https://lh3.googleusercontent.com/aida/AP1WRLsd2xkzu59ZzYobY_Ng0PGVPurk_pOtkiL8_nLj1jz3JXo7TC0-lL7vjahTgU20X5R7ttVb35pr4RCr9PB-HirXa9VQFmrMOF_wHdRP1SyX_sF33F9A6bu5IeXkAQdYcENJZAW6VA4ak7Iv4EGBIhEqqilU3OnsHqgy7igQzlPWdp0JbWNibbKDqjg3Iy1yHTSVUsUtCYlkjdSstEE_qd3LYMqZvzVIANFCP0B8mSDCCjPbTl86f1pRelg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.15;
+            z-index: -1;
+            pointer-events: none;
+            mix-blend-mode: screen;
+        }
+
+        .industrial-card {
+            background-color: #131313;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 4px 4px 0px 0px #0E0E0F;
+        }
+        .skill-sprite-container {
+            width: 48px;
+            height: 48px;
+            overflow: hidden;
+            position: relative;
+            background-color: rgba(255, 140, 0, 0.05);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .skill-sprite {
+            position: absolute;
+            width: 400%; /* 4 columns */
+            height: 400%; /* 4 rows */
+            object-fit: cover;
+            image-rendering: pixelated;
+        }
+        
+        .glow-active {
+            box-shadow: 0 0 20px rgba(255,140,0,0.15);
+            border-color: #ff8c00;
+        }
+        
+        /* Blueprint grid background */
+        .bg-blueprint {
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+
+        .tooltip {
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.2s;
+            position: absolute;
+            z-index: 50;
+            background: rgba(19, 19, 19, 0.95);
+            border: 1px solid rgba(255, 140, 0, 0.5);
+            box-shadow: 4px 4px 0px 0px #0E0E0F;
+            pointer-events: none;
+            backdrop-filter: blur(4px);
+        }
+        .skill-cell.active .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen font-body-md flex flex-col bg-blueprint relative">
+<!-- Top Navigation (Shell) -->
+<header class="bg-background dark:bg-background border-b border-white/5 bg-surface-dim shadow-[4px_4px_0px_0px_#0E0E0F] flex justify-between items-center w-full px-gutter h-16 max-w-[1440px] mx-auto sticky top-0 z-40">
+<div class="flex items-center">
+<span class="font-headline-sm text-headline-sm font-bold text-primary dark:text-primary tracking-tighter uppercase">THE WORKERS GUILD // COMMAND</span>
+</div>
+<nav class="hidden md:flex gap-stack-lg h-full items-end">
+<a class="text-on-surface-variant dark:text-on-surface-variant font-medium font-label-md text-label-md hover:text-primary-fixed-dim transition-colors duration-150 py-4" href="#">DASHBOARD</a>
+<a class="text-primary dark:text-primary border-b-2 border-primary pb-1 font-bold font-label-md text-label-md translate-y-[2px] transition-all" href="#">PERSONNEL</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-medium font-label-md text-label-md hover:text-primary-fixed-dim transition-colors duration-150 py-4" href="#">LOGISTICS</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-medium font-label-md text-label-md hover:text-primary-fixed-dim transition-colors duration-150 py-4" href="#">REVENUE</a>
+</nav>
+<div class="flex items-center gap-stack-sm text-primary dark:text-primary">
+<button class="hover:text-primary-fixed-dim transition-colors"><span class="material-symbols-outlined">settings</span></button>
+<button class="hover:text-primary-fixed-dim transition-colors"><span class="material-symbols-outlined">notifications</span></button>
+<button class="hover:text-primary-fixed-dim transition-colors"><span class="material-symbols-outlined">account_circle</span></button>
+</div>
+</header>
+<main class="flex-grow w-full max-w-[1440px] mx-auto px-margin-mobile md:px-gutter py-stack-lg">
+<!-- Page Header -->
+<div class="mb-stack-lg border-b border-white/5 pb-stack-sm flex justify-between items-end">
+<div>
+<div class="font-label-sm text-label-sm text-primary-container mb-1">UNIT_04 // PERSONNEL_DATA</div>
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface uppercase" style="color: #ff8c00; text-shadow: 0 0 15px rgba(255, 140, 0, 0.6);">Skills Matrix</h1>
+</div>
+<div class="font-label-md text-label-md text-on-surface-variant hidden md:block">
+                STATUS: [ACTIVE] // OPR: ST-99
+            </div>
+</div>
+<!-- Skills Grid Container -->
+<div class="industrial-card p-stack-md md:p-stack-lg relative w-full max-w-2xl mx-auto">
+<div class="font-label-md text-label-md text-on-surface-variant border-b border-white/5 pb-2 mb-stack-md flex justify-between">
+<span>// TRADESMEN SKILLS</span>
+</div>
+<!-- 3 Column Grid for Mobile/Desktop -->
+<div class="grid grid-cols-3 gap-2 sm:gap-4 relative" id="skillsGrid">
+<!-- Skill Cell: Carpentry -->
+<div class="skill-cell relative flex flex-col items-center justify-center p-2 border border-white/5 bg-surface-container-low hover:bg-surface-variant transition-colors cursor-pointer group group-hover:border-primary/50">
+<div class="skill-sprite-container mb-2 group-hover:border-primary/50 transition-colors shadow-[0_0_15px_rgba(255,140,0,0.4)] group-hover:shadow-[0_0_25px_rgba(255,140,0,0.6)]">
+<img alt="" class="w-full h-full object-contain p-1 drop-shadow-[0_0_8px_rgba(255,140,0,0.6)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTDbxtxwDYCfuV6zsqpziM5vdjpMa17UdVZAYcYqnruF08gddBZrgUzW18lJJvQ0dLYmuPrHFUImoBvfAzXS2LYMVmklhC4KP3nZXevFlYEimHDkc8qOThu3er42DYV5NkRzKcQ5Y7sjAXoHMM6ORVkqs-P6cO2rLDdkwrjNdB7NqMSdjI5RVd5to6lqKAC_-93eRgIlLM5gVW_7s_rYPYse8dSFD3X4ahcrtYH2wSGQINw9b2r7VLrjYoZVF2TAOwWg"/>
+</div>
+<div class="font-label-sm text-label-sm text-center truncate w-full text-on-surface">Carpentry</div>
+<div class="font-label-sm text-label-sm text-primary-container">LVL 01</div>
+<div class="tooltip top-full left-1/2 -translate-x-1/2 mt-2 p-2 w-48 text-left">
+<div class="font-label-md text-label-md text-primary-container border-b border-white/10 pb-1 mb-1">CARPENTRY</div>
+<div class="font-label-sm text-label-sm text-on-surface">Current XP: 142,500</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">XP to Level: 8,400</div>
+</div>
+</div>
+<!-- Skill Cell: Commercial Driving -->
+<div class="skill-cell relative flex flex-col items-center justify-center p-2 border border-white/5 bg-surface-container-low hover:bg-surface-variant transition-colors cursor-pointer group group-hover:border-primary/50">
+<div class="skill-sprite-container mb-2 group-hover:border-primary/50 transition-colors shadow-[0_0_15px_rgba(255,140,0,0.4)] group-hover:shadow-[0_0_25px_rgba(255,140,0,0.6)]">
+<img alt="Driving Icon" class="w-full h-full object-contain p-1 drop-shadow-[0_0_8px_rgba(255,140,0,0.6)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDC6tZLP8Itm_lQ2yWAeG7QJZuK_Ouk-_bRdBBACJ34_FFBAbcPKS3-fja7ktpX3Jb7E4YHgjb38odPnpYIHc0Nnyxo-4oVykGnVdwRviJhhl3N3uIVXyMgi39q5nnYOuE24pZEauanI8ntjLl6kb5ClZTBAQgOOvJYGypU8dVAt8mfSONDtCVdHX6vhC0nxe9XX5vqsXAgaJ4g2oGkwA41ZL6dEXH0HdTKV3aI6raa3C8hjGS6v0_qXYPY-Io8XdUgsw"/>
+</div>
+<div class="font-label-sm text-label-sm text-center truncate w-full text-on-surface">Driving</div>
+<div class="font-label-sm text-label-sm text-primary-container">LVL 01</div>
+<div class="tooltip top-full left-1/2 -translate-x-1/2 mt-2 p-2 w-48 text-left">
+<div class="font-label-md text-label-md text-primary-container border-b border-white/10 pb-1 mb-1">COMMERCIAL DRIVING</div>
+<div class="font-label-sm text-label-sm text-on-surface">Current XP: 15,200</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">XP to Level: 1,800</div>
+</div>
+</div>
+<!-- Skill Cell: Electrician -->
+<div class="skill-cell relative flex flex-col items-center justify-center p-2 border border-white/5 bg-surface-container-low hover:bg-surface-variant transition-colors cursor-pointer group group-hover:border-primary/50">
+<div class="skill-sprite-container mb-2 group-hover:border-primary/50 transition-colors shadow-[0_0_15px_rgba(255,140,0,0.4)] group-hover:shadow-[0_0_25px_rgba(255,140,0,0.6)]">
+<img alt="Electrician Icon" class="w-full h-full object-contain p-1 drop-shadow-[0_0_8px_rgba(255,140,0,0.6)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCP3r9KON4cju-t_THWdyAvce8VPzaxWNoaE7mt5VC-yp3kS6qjHH_Obqi43XHd8umrmEx5VEzGePjHrW4Bl7ZDc1YT_Aw4fhT8JVj8eC1hMMsK6DkVgemyIyh1lZn44ENUeSr_at7yl06NKphxSrakcgdviGtZ-ZWxTlMHluPPp1XIPqMvHQ0ltqpXJdN0bkEcMznWTlvmAW8lgecnfqE0oTC2TbrPvCYdvvjNNz-ORiMXOLJGpWP_RBGbnQT6quYVzA"/>
+</div>
+<div class="font-label-sm text-label-sm text-center truncate w-full text-on-surface">Electrician</div>
+<div class="font-label-sm text-label-sm text-primary-container">LVL 01</div>
+<div class="tooltip top-full left-1/2 -translate-x-1/2 mt-2 p-2 w-48 text-left">
+<div class="font-label-md text-label-md text-primary-container border-b border-white/10 pb-1 mb-1">ELECTRICIAN</div>
+<div class="font-label-sm text-label-sm text-on-surface">Current XP: 890,100</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">XP to Level: 24,000</div>
+</div>
+</div>
+<!-- Skill Cell: Engineering -->
+<div class="skill-cell relative flex flex-col items-center justify-center p-2 border border-white/5 bg-surface-container-low hover:bg-surface-variant transition-colors cursor-pointer group group-hover:border-primary/50">
+<div class="skill-sprite-container mb-2 group-hover:border-primary/50 transition-colors shadow-[0_0_15px_rgba(255,140,0,0.4)] group-hover:shadow-[0_0_25px_rgba(255,140,0,0.6)]">
+<img alt="Engineering Icon" class="w-full h-full object-contain p-1 drop-shadow-[0_0_8px_rgba(255,140,0,0.6)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBMaY6xscRneQoAkW5269mmXwo7LlmGvo1qHF8B85z6FIYi-J0-9UlCFIvBjdbze_Bp1a1Uqz5jKR3X5BwE1Fj0MOIri80byCGenbmTETndlShHyKHqzK0zTIrBcNNN8IlqZ-XXI8oFT_ybMsKRaxjmoKkRZVbVSR4ghoh_7cI5YvW-X4DZG0S8DRKM8Xdd-FzBpUZZJo-_msTEoKG-rPmsIWlnydTihi631adCq7u3QkbHirWCYYTX9TE5OMeEDTRbw"/>
+</div>
+<div class="font-label-sm text-label-sm text-center truncate w-full text-on-surface">Engineering</div>
+<div class="font-label-sm text-label-sm text-primary-container">LVL 01</div>
+<div class="tooltip top-full left-1/2 -translate-x-1/2 mt-2 p-2 w-48 text-left">
+<div class="font-label-md text-label-md text-primary-container border-b border-white/10 pb-1 mb-1">ENGINEERING</div>
+<div class="font-label-sm text-label-sm text-on-surface">Current XP: 4,500</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">XP to Level: 800</div>
+</div>
+</div>
+<!-- Skill Cell: Farming -->
+<div class="skill-cell relative flex flex-col items-center justify-center p-2 border border-white/5 bg-surface-container-low hover:bg-surface-variant transition-colors cursor-pointer group group-hover:border-primary/50">
+<div class="skill-sprite-container mb-2 group-hover:border-primary/50 transition-colors shadow-[0_0_15px_rgba(255,140,0,0.4)] group-hover:shadow-[0_0_25px_rgba(255,140,0,0.6)]"><img alt="Farming Icon" class="w-full h-full object-contain p-1 drop-shadow-[0_0_8px_rgba(255,140,0,0.6)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2-8lo8sORmGdxIu73pJAE4-unj1RDIRVNWDN14oQTtxN2Qdt0mqHuplozIyhMSBX2m0PFsqqbXXBZYKCw5_qRvngeuWS893gKyWrK2zbqA54Kv3rXgcFBfnxwdYdBdlTnqqX0vzlsEVL4jKwBLfzgZGO2xkUHbZNs4z5vMFm4OwEfkYOVPBPD8KoV8mUYs4437xmW8wFCRCf82t2vM_o0UprcNblP8LzUu6k-Qk4xS1usg0U1bhxK-oCTrKDWyzAG_Q"/></div>
+<div class="font-label-sm text-label-sm text-center truncate w-full text-on-surface">Farming</div>
+<div class="font-label-sm text-label-sm text-primary-container">LVL 01</div>
+<div class="tooltip top-full left-1/2 -translate-x-1/2 mt-2 p-2 w-48 text-left">
+<div class="font-label-md text-label-md text-primary-container border-b border-white/10 pb-1 mb-1">FARMING</div>
+<div class="font-label-sm text-label-sm text-on-surface">Current XP: 13,034,431</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">XP to Level: MAX</div>
+</div>
+</div>
+<!-- Skill Cell: General Labor -->
+<div class="skill-cell relative flex flex-col items-center justify-center p-2 border border-white/5 bg-surface-container-low hover:bg-surface-variant transition-colors cursor-pointer group group-hover:border-primary/50">
+<div class="skill-sprite-container mb-2 group-hover:border-primary/50 transition-colors shadow-[0_0_15px_rgba(255,140,0,0.4)] group-hover:shadow-[0_0_25px_rgba(255,140,0,0.6)]">
+<img alt="General Labor Icon" class="w-full h-full object-contain p-1 drop-shadow-[0_0_8px_rgba(255,140,0,0.6)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLG6FdvGmsAl6CH7iV2xZYYJkt2X2KC9ACjpN1_U5K04jAxqkKxNyCoBZpOnjefxv64lZT0lcY1RD8Q3twzRj40dQnTeBv0u59tq2foOEejEcfz5DIaTHv3O9ReUwnHSx8MuO-P_AfjlJCHon1ioy7SQb3Ur5PASNA2mY6PMI05XA9Q6HPp2PBm1IVpungsDGuaUpyDZ9ECD_qE8PPCsOi2k6XGHTi_9kMmJ0qCBVfbbK7mNn7oRwO-dcwVDp-uw374g"/>
+</div>
+<div class="font-label-sm text-label-sm text-center truncate w-full text-on-surface">Gen. Labor</div>
+<div class="font-label-sm text-label-sm text-primary-container">LVL 01</div>
+<div class="tooltip top-full left-1/2 -translate-x-1/2 mt-2 p-2 w-48 text-left">
+<div class="font-label-md text-label-md text-primary-container border-b border-white/10 pb-1 mb-1">GENERAL LABOR</div>
+<div class="font-label-sm text-label-sm text-on-surface">Current XP: 87,400</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">XP to Level: 4,200</div>
+</div>
+</div>
+<!-- Skill Cell: HV/AC -->
+<div class="skill-cell relative flex flex-col items-center justify-center p-2 border border-white/5 bg-surface-container-low hover:bg-surface-variant transition-colors cursor-pointer group group-hover:border-primary/50">
+<div class="skill-sprite-container mb-2 group-hover:border-primary/50 transition-colors shadow-[0_0_15px_rgba(255,140,0,0.4)] group-hover:shadow-[0_0_25px_rgba(255,140,0,0.6)]">
+<img alt="HV/AC Icon" class="w-full h-full object-contain p-1 drop-shadow-[0_0_8px_rgba(255,140,0,0.6)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQJeDUSnoezRAC8cEy2ZRgKWA2xmqWN2jkf7a0mjd9K_y_xWotqljrQgZWrdqXQKqDy43xLz0O0MNEP_jWcjFGMl6mQTjHvOclAIGz7D5J6yVLB9XM5UzsNAouxoitF339lhcaSyasWm3-sUDi99lHmZGGVTEdbIB7ozar1fEA4I-vgQFwvSEpcdLRaTMqTtDxADwRfLsdhEAfvNVvRxjUEIuqS8Z7zRZeJ96uKfxDOTrhhC4-ArDyOqyrsyHVFXFeNA"/>
+</div>
+<div class="font-label-sm text-label-sm text-center truncate w-full text-on-surface">HV/AC</div>
+<div class="font-label-sm text-label-sm text-primary-container">LVL 01</div>
+<div class="tooltip top-full left-1/2 -translate-x-1/2 mt-2 p-2 w-48 text-left">
+<div class="font-label-md text-label-md text-primary-container border-b border-white/10 pb-1 mb-1">HV/AC</div>
+<div class="font-label-sm text-label-sm text-on-surface">Current XP: 254,000</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">XP to Level: 12,500</div>
+</div>
+</div>
+<!-- Skill Cell: Landscaping -->
+<div class="skill-cell relative flex flex-col items-center justify-center p-2 border border-white/5 bg-surface-container-low hover:bg-surface-variant transition-colors cursor-pointer group group-hover:border-primary/50">
+<div class="skill-sprite-container mb-2 group-hover:border-primary/50 transition-colors shadow-[0_0_15px_rgba(255,140,0,0.4)] group-hover:shadow-[0_0_25px_rgba(255,140,0,0.6)]"><img alt="Landscaping Icon" class="w-full h-full object-contain p-1 drop-shadow-[0_0_8px_rgba(255,140,0,0.6)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwXKWEKaYNipMDVpGbYoMrAMcTe5bu7tuFAgte05_zbTACKJgXn5Ah1osHTM-w0xgSSkfToWDIss2ECO1-IAgxJJyyksbyo9Z4tKXryNZlEo-vVYN5nS1JR-5Xlj3aL7yTBIlGT2LUvaytgFDlIrlqSAG4IHpprtsftoIjEtcAbtYPq3ouoRSH0ozYp9PBx5guhGxhdCUJ2iKVqCFipapiZYa7qnkSdIgVn99gwtZMX5jxB8lHCU8R5agfe_-l5mChgQ"/></div>
+<div class="font-label-sm text-label-sm text-center truncate w-full text-on-surface">Landscaping</div>
+<div class="font-label-sm text-label-sm text-primary-container">LVL 01</div>
+<div class="tooltip top-full left-1/2 -translate-x-1/2 mt-2 p-2 w-48 text-left">
+<div class="font-label-md text-label-md text-primary-container border-b border-white/10 pb-1 mb-1">LANDSCAPING</div>
+<div class="font-label-sm text-label-sm text-on-surface">Current XP: 34,500</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">XP to Level: 2,100</div>
+</div>
+</div>
+<!-- Skill Cell: Mechanics -->
+<div class="skill-cell relative flex flex-col items-center justify-center p-2 border border-white/5 bg-surface-container-low hover:bg-surface-variant transition-colors cursor-pointer group group-hover:border-primary/50">
+<div class="skill-sprite-container mb-2 group-hover:border-primary/50 transition-colors shadow-[0_0_15px_rgba(255,140,0,0.4)] group-hover:shadow-[0_0_25px_rgba(255,140,0,0.6)]">
+<img alt="Mechanics Icon" class="w-full h-full object-contain p-1 drop-shadow-[0_0_8px_rgba(255,140,0,0.6)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLiviqgdpcJ60tGdvwKk0Vcddo8GiXrRhLE8HVSTjeI3LGj8FyJVHGxqUAWaM-y7ffgsGcoThBF_fOG8bw44I0t6UiegY6IrJ_ONZIjm_znf7yqzHI3R0XEutjE5am7sd5-X4u4O0Zi-f4jOOzdcSl-cIocCMdNDnwjnkNyeflOM8n42zMKBmUhL9oclN1ld_jr-XT6v-6PTrNPmG8Ff-Ls0faIzHS1pK24jicPXpqFriOUPiybS3Aobw_PDz0cwEKFg"/>
+</div>
+<div class="font-label-sm text-label-sm text-center truncate w-full text-on-surface">Mechanics</div>
+<div class="font-label-sm text-label-sm text-primary-container">LVL 01</div>
+<div class="tooltip top-full left-1/2 -translate-x-1/2 mt-2 p-2 w-48 text-left">
+<div class="font-label-md text-label-md text-primary-container border-b border-white/10 pb-1 mb-1">MECHANICS</div>
+<div class="font-label-sm text-label-sm text-on-surface">Current XP: 389,000</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">XP to Level: 15,000</div>
+</div>
+</div>
+<!-- Skill Cell: Metalworking -->
+<div class="skill-cell relative flex flex-col items-center justify-center p-2 border border-white/5 bg-surface-container-low hover:bg-surface-variant transition-colors cursor-pointer group group-hover:border-primary/50"><div class="skill-sprite-container mb-2 group-hover:border-primary/50 transition-colors shadow-[0_0_15px_rgba(255,140,0,0.4)] group-hover:shadow-[0_0_25px_rgba(255,140,0,0.6)]">
+<img alt="Metalwork Icon" class="w-full h-full object-contain p-1 drop-shadow-[0_0_8px_rgba(255,140,0,0.6)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQ8SBNK-I5GYIiZVvstc3Z7QTw6_RwjtRe0e5-9idPzmk4tFi_Mz5Suk7qKU4u1oHhZKDq9HXwTwQKLPPL9ptgQDJosyrv4PJpi1-sU0CyNRdIqb6TMxLoDAiCKW5NnTm5GUGC1vBh-lTFCX3byyQd23w8d8j_LvlqFYYXRo5YSTEKjoal01r6K-qyAFdjnJxi2112ZVWER2hqdSDgWnHhyLGCuj4XDeO6hiH1_jIQRdveAxWZ8K0QuyhQHmfIOUxe9A"/>
+</div>
+<div class="font-label-sm text-label-sm text-center truncate w-full text-on-surface">Metalwork</div>
+<div class="font-label-sm text-label-sm text-primary-container">LVL 01</div>
+<div class="tooltip top-full left-1/2 -translate-x-1/2 mt-2 p-2 w-48 text-left">
+<div class="font-label-md text-label-md text-primary-container border-b border-white/10 pb-1 mb-1">METALWORKING</div>
+<div class="font-label-sm text-label-sm text-on-surface">Current XP: 189,200</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">XP to Level: 9,500</div>
+</div></div>
+<!-- Skill Cell: Plumbing -->
+<div class="skill-cell relative flex flex-col items-center justify-center p-2 border border-white/5 bg-surface-container-low hover:bg-surface-variant transition-colors cursor-pointer group group-hover:border-primary/50">
+<div class="skill-sprite-container mb-2 group-hover:border-primary/50 transition-colors shadow-[0_0_15px_rgba(255,140,0,0.4)] group-hover:shadow-[0_0_25px_rgba(255,140,0,0.6)]">
+<img alt="Plumbing Icon" class="w-full h-full object-contain p-1 drop-shadow-[0_0_8px_rgba(255,140,0,0.6)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAskJP0Dr4PQkIl2D2FSWHl2A6Od4KSA1t7huG9gs2MBHXihlYYuwDuMUhSZWssqJxcUWR7SjgRC80PdE_TCSnS8Ssdw67J3YZzVybD4PYk0VC8a9tb53wruy4xzLHGZMdElp4wI62L_GSsM9QV6tCC7FtEUoKJthVp4jfm9fSSyiccgCYrwlqhRBb6MqHS5dpXHF2xc9nAs9hkXTVqfGy0LACMmfxNh94c0DXDCGcmrs111MZHgmUUFTUyVaLqVEE4SQ"/>
+</div>
+<div class="font-label-sm text-label-sm text-center truncate w-full text-on-surface">Plumbing</div>
+<div class="font-label-sm text-label-sm text-primary-container">LVL 01</div>
+<div class="tooltip top-full left-1/2 -translate-x-1/2 mt-2 p-2 w-48 text-left">
+<div class="font-label-md text-label-md text-primary-container border-b border-white/10 pb-1 mb-1">PLUMBING</div>
+<div class="font-label-sm text-label-sm text-on-surface">Current XP: 1,120,000</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">XP to Level: 32,000</div>
+</div>
+</div>
+<!-- Skill Cell: Roofing -->
+<div class="skill-cell relative flex flex-col items-center justify-center p-2 border border-white/5 bg-surface-container-low hover:bg-surface-variant transition-colors cursor-pointer group group-hover:border-primary/50">
+<div class="skill-sprite-container mb-2 group-hover:border-primary/50 transition-colors shadow-[0_0_15px_rgba(255,140,0,0.4)] group-hover:shadow-[0_0_25px_rgba(255,140,0,0.6)]"><img alt="Roofing Icon" class="w-full h-full object-contain p-1 drop-shadow-[0_0_8px_rgba(255,140,0,0.6)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDG7Pz_WSZPZaP5L9GoFYVmHoKZjSdtQGzZyQfT3iTbbekUZhVN7M6sF-79__AsZoh94Gry7G9wQa-HfcClUO7Gfy3qWhEav1q_SntaGSPgQqNASdpvrzioW3FC9Wjm2n59d82w9VQcpkgYBJtMqS0b7_zJEFnqFMTOlSjQbBAuZ_SzuwFaHCKMASH2JoP3R4qFSLPDnhVOOvYh4pEYRbeGeG26QftHekoJpp01txC8SuSOgIyovS9Ez9qLNR35SwVGuw"/></div>
+<div class="font-label-sm text-label-sm text-center truncate w-full text-on-surface">Roofing</div>
+<div class="font-label-sm text-label-sm text-primary-container">LVL 01</div>
+<div class="tooltip top-full left-1/2 -translate-x-1/2 mt-2 p-2 w-48 text-left">
+<div class="font-label-md text-label-md text-primary-container border-b border-white/10 pb-1 mb-1">ROOFING</div>
+<div class="font-label-sm text-label-sm text-on-surface">Current XP: 22,000</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">XP to Level: 2,500</div>
+</div>
+</div>
+<!-- Skill Cell: Stonemasonry -->
+<div class="skill-cell relative flex flex-col items-center justify-center p-2 border border-white/5 bg-surface-container-low hover:bg-surface-variant transition-colors cursor-pointer group group-hover:border-primary/50">
+<div class="skill-sprite-container mb-2 group-hover:border-primary/50 transition-colors shadow-[0_0_15px_rgba(255,140,0,0.4)] group-hover:shadow-[0_0_25px_rgba(255,140,0,0.6)]">
+<img alt="Stonemasonry Icon" class="w-full h-full object-contain p-1 drop-shadow-[0_0_8px_rgba(255,140,0,0.6)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChSbM8s5gmndVDnyR00F5MhtxcYgY1TLA7L4B0IBnbvq-AuWxu2nSOzCY6MkkiQm4bCj-Is6BqmcIYZlH7ZiUwz1DHXcy5EzEphSj9EPq7y1qKe1uvqZWZBVYWnt8mVcWAqwchpyFTTzcbFJyvgbVzaBu01K0RkdLIT2L3I9vAdQlOStBu-g5EXW3UVjQJtvJ9lluOT_fDU2SUx5I2fWuKdVnS1gr7kOETN_VMNMIsEsn_1Ipf-Tqi7JJVjU8i4cZT7w"/>
+</div>
+<div class="font-label-sm text-label-sm text-center truncate w-full text-on-surface">Stonemasonry</div>
+<div class="font-label-sm text-label-sm text-primary-container">LVL 01</div>
+<div class="tooltip top-full left-1/2 -translate-x-1/2 mt-2 p-2 w-48 text-left">
+<div class="font-label-md text-label-md text-primary-container border-b border-white/10 pb-1 mb-1">STONEMASONRY</div>
+<div class="font-label-sm text-label-sm text-on-surface">Current XP: 0</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">XP to Level: 83</div>
+</div>
+</div>
+<!-- Skill Cell: Welding -->
+<div class="skill-cell relative flex flex-col items-center justify-center p-2 border border-white/5 bg-surface-container-low hover:bg-surface-variant transition-colors cursor-pointer group group-hover:border-primary/50">
+<div class="skill-sprite-container mb-2 group-hover:border-primary/50 transition-colors shadow-[0_0_15px_rgba(255,140,0,0.4)] group-hover:shadow-[0_0_25px_rgba(255,140,0,0.6)]"><img alt="Welding Icon" class="w-full h-full object-contain p-1 drop-shadow-[0_0_8px_rgba(255,140,0,0.6)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVW_b7BNxMZn5M2UiivUV6OxKex7FXu-rHCr6uVVTRrx3-j83rOQjqyOh0-upiqc4kCY51E_4nu-7P8PynqAU7YBKNXcTNRMOvsdyb0uYD4ibFRL8jYTNn1TOyz0oAC0rv-mcVVoeV1eHFMGiJZE_oIseAAhDU55oQ2FJaB7Os0Vfwtf0XG_WR5R4iZDUQmmw9RuCk-LK4TuluzTdsPMK1YdZvT-dEnZIUivRH0uoHsFYnfvvLL5UZxsnhfcNFscD1NA"/></div>
+<div class="font-label-sm text-label-sm text-center truncate w-full text-on-surface">Welding</div>
+<div class="font-label-sm text-label-sm text-primary-container">LVL 01</div>
+<div class="tooltip top-full left-1/2 -translate-x-1/2 mt-2 p-2 w-48 text-left">
+<div class="font-label-md text-label-md text-primary-container border-b border-white/10 pb-1 mb-1">WELDING</div>
+<div class="font-label-sm text-label-sm text-on-surface">Current XP: 812,000</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">XP to Level: 21,500</div>
+</div>
+</div>
+<div class="skill-cell relative flex flex-col items-center justify-center p-2 border-2 border-primary bg-surface-container-low shadow-[0_0_20px_rgba(255,140,0,0.4)]">
+<div class="font-label-sm text-label-sm text-center uppercase text-on-surface-variant mb-1">TOTAL SKILL LEVEL</div>
+<div class="font-bold text-headline-sm text-primary" style="color: #ff8c00; font-size: 32px;">14</div>
+</div></div>
+</div>
+</main>
+<!-- Bottom Mobile Nav -->
+<footer class="w-full max-w-[1440px] mx-auto px-gutter py-stack-md border-t border-white/5 text-center font-label-sm text-label-sm text-on-surface-variant mb-20 md:mb-0">© 2026 THE WORKERS GUILD. BUILT BY WORKERS. FOR WORKERS.</footer><nav class="md:hidden w-full py-stack-md px-gutter flex justify-around items-center bg-surface-container-lowest border-t border-white/5 fixed bottom-0 z-40 shadow-[0px_-4px_0px_0px_#0E0E0F]">
+<a class="flex flex-col items-center text-on-surface-variant gap-1" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-sm text-label-sm">DASH</span>
+</a>
+<a class="flex flex-col items-center text-primary border-t-2 border-primary pt-1 -mt-[2px] font-bold gap-1" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-sm text-label-sm">PERSONNEL</span>
+</a>
+<a class="flex flex-col items-center text-on-surface-variant gap-1" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-label-sm text-label-sm">LOGISTICS</span>
+</a>
+<a class="flex flex-col items-center text-on-surface-variant gap-1" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-label-sm text-label-sm">REVENUE</span>
+</a>
+</nav>
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cells = document.querySelectorAll('.skill-cell');
+            
+            // Simple click outside to close logic
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.skill-cell')) {
+                    cells.forEach(c => c.classList.remove('active', 'glow-active'));
+                }
+            });
+
+            cells.forEach(cell => {
+                cell.addEventListener('click', (e) => {
+                    // Prevent immediate close from document click
+                    e.stopPropagation();
+                    
+                    const isActive = cell.classList.contains('active');
+                    
+                    // Close all
+                    cells.forEach(c => c.classList.remove('active', 'glow-active'));
+                    
+                    // Toggle current
+                    if (!isActive) {
+                        cell.classList.add('active', 'glow-active');
+                    }
+                });
+            });
+        });
+    </script>
+</body></html>
