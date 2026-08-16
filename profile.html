@@ -1,193 +1,709 @@
 <!DOCTYPE html>
-<html class="dark" lang="en">
-<head>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>Craftsman Verified | THE WORKERS GUILD</title>
-    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet"/>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Workers Guild - Craftsman Profile (Supabase Integrated)</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700;800&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script id="tailwind-config">
         tailwind.config = {
-            darkMode: 'class',
+            darkMode: "class",
             theme: {
                 extend: {
-                    colors: {
-                        primary: '#ff8c00',
-                        surface: '#131313',
-                        'surface-container': '#1c1b1b',
+                    "colors": {
+                            "primary": "#ffb77d",
+                            "on-primary-container": "#623200",
+                            "tertiary-container": "#60aeff",
+                            "primary-fixed-dim": "#ffb77d",
+                            "outline-variant": "#564334",
+                            "surface-container-high": "#2a2a2a",
+                            "surface-container": "#201f1f",
+                            "primary-container": "#ff8c00",
+                            "tertiary": "#9fcaff",
+                            "inverse-on-surface": "#313030",
+                            "on-tertiary-fixed-variant": "#00497d",
+                            "on-error": "#690005",
+                            "on-tertiary-fixed": "#001d36",
+                            "surface-bright": "#393939",
+                            "background": "#131313",
+                            "surface-container-lowest": "#0e0e0e",
+                            "on-secondary-container": "#b6b5b4",
+                            "on-background": "#e5e2e1",
+                            "surface-tint": "#ffb77d",
+                            "on-primary-fixed-variant": "#6e3900",
+                            "secondary": "#c8c6c5",
+                            "surface": "#131313",
+                            "secondary-container": "#474746",
+                            "on-tertiary-container": "#00406f",
+                            "error": "#ffb4ab",
+                            "surface-variant": "#353534",
+                            "tertiary-fixed": "#d1e4ff",
+                            "on-tertiary": "#003258",
+                            "on-secondary": "#303030",
+                            "on-primary": "#4d2600",
+                            "on-primary-fixed": "#2f1500",
+                            "surface-container-low": "#1c1b1b",
+                            "primary-fixed": "#ffdcc3",
+                            "on-secondary-fixed": "#1b1c1c",
+                            "surface-dim": "#131313",
+                            "surface-container-highest": "#353534",
+                            "outline": "#a48c7a",
+                            "on-surface": "#e5e2e1",
+                            "on-secondary-fixed-variant": "#474746",
+                            "on-error-container": "#ffdad6",
+                            "on-surface-variant": "#ddc1ae",
+                            "error-container": "#93000a",
+                            "tertiary-fixed-dim": "#9fcaff",
+                            "inverse-primary": "#904d00",
+                            "inverse-surface": "#e5e2e1",
+                            "secondary-fixed": "#e4e2e1",
+                            "secondary-fixed-dim": "#c8c6c5"
                     },
-                    fontFamily: {
-                        sans: ['Hanken Grotesk', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace'],
+                    "borderRadius": {
+                            "DEFAULT": "0.25rem",
+                            "lg": "0.5rem",
+                            "xl": "0.75rem",
+                            "full": "9999px"
                     },
-                },
-            },
+                    "spacing": {
+                            "unit": "4px",
+                            "gutter": "16px",
+                            "margin": "24px",
+                            "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                            "headline-lg": [
+                                    "Hanken Grotesk"
+                            ],
+                            "body-sm": [
+                                    "Hanken Grotesk"
+                            ],
+                            "headline-md": [
+                                    "Hanken Grotesk"
+                            ],
+                            "body-lg": [
+                                    "Hanken Grotesk"
+                            ],
+                            "label-tech": [
+                                    "JetBrains Mono"
+                            ],
+                            "headline-lg-mobile": [
+                                    "Hanken Grotesk"
+                            ],
+                            "label-data": [
+                                    "JetBrains Mono"
+                            ]
+                    },
+                    "fontSize": {
+                            "headline-lg": [
+                                    "40px",
+                                    {
+                                            "lineHeight": "1.1",
+                                            "letterSpacing": "-0.02em",
+                                            "fontWeight": "800"
+                                    }
+                            ],
+                            "body-sm": [
+                                    "14px",
+                                    {
+                                            "lineHeight": "1.4",
+                                            "fontWeight": "400"
+                                    }
+                            ],
+                            "headline-md": [
+                                    "24px",
+                                    {
+                                            "lineHeight": "1.2",
+                                            "fontWeight": "700"
+                                    }
+                            ],
+                            "body-lg": [
+                                    "18px",
+                                    {
+                                            "lineHeight": "1.5",
+                                            "fontWeight": "500"
+                                    }
+                            ],
+                            "label-tech": [
+                                    "12px",
+                                    {
+                                            "lineHeight": "1.2",
+                                            "letterSpacing": "0.05em",
+                                            "fontWeight": "500"
+                                    }
+                            ],
+                            "headline-lg-mobile": [
+                                    "28px",
+                                    {
+                                            "lineHeight": "1.1",
+                                            "fontWeight": "800"
+                                    }
+                            ],
+                            "label-data": [
+                                    "14px",
+                                    {
+                                            "lineHeight": "1.0",
+                                            "fontWeight": "700"
+                                    }
+                            ]
+                    }
+                }
+            }
         }
     </script>
-    <style>
-        body {
-            background-color: #0e0e0e;
-            background-image: 
-                linear-gradient(rgba(255, 140, 0, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 140, 0, 0.05) 1px, transparent 1px);
-            background-size: 40px 40px;
-            color: #e4e2e1;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
+<style>
+        .blueprint-bg {
+            background-color: #1a1a1a;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
         }
-
-        .terminal-container {
-            width: 100%;
-            max-width: 500px;
-            background: #131313;
-            border: 1px solid #ff8c00;
-            padding: 32px;
-            position: relative;
-            box-shadow: 0 0 40px rgba(0,0,0,0.8);
+        .cut-corner {
+            clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
         }
-
-        .guild-seal {
-            width: 120px;
-            height: 120px;
-            margin-bottom: 24px;
-            filter: drop-shadow(0 0 15px rgba(255, 140, 0, 0.4));
+        .rank-glow-master {
+            text-shadow: 0 0 15px rgba(255, 140, 0, 0.8), 0 0 30px rgba(255, 140, 0, 0.4);
+            animation: pulse-glow 2s infinite;
         }
-
-        .verified-badge {
-            color: #00ff88;
-            font-family: 'JetBrains Mono', monospace;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            justify-content: center;
-            margin-bottom: 24px;
-            border-bottom: 1px solid rgba(255, 140, 0, 0.2);
-            padding-bottom: 16px;
-        }
-
-        .label {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 10px;
-            color: #8e9192;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 4px;
-        }
-
-        .data-value {
-            font-size: 24px;
-            font-weight: 800;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-            letter-spacing: -0.02em;
-        }
-
-        .xp-bar-container {
-            width: 100%;
-            height: 8px;
-            background: #1c1b1b;
-            margin-top: 8px;
-            margin-bottom: 24px;
-        }
-
-        .xp-bar-fill {
-            height: 100%;
-            background: #ff8c00;
-            box-shadow: 0 0 10px rgba(255, 140, 0, 0.5);
-        }
-
-        .skill-tag {
-            border: 1px solid #ff8c00;
-            padding: 4px 12px;
-            font-size: 10px;
-            font-family: 'JetBrains Mono', monospace;
-            text-transform: uppercase;
-            margin-right: 8px;
-            margin-bottom: 8px;
-        }
-
-        .return-btn {
-            margin-top: 32px;
-            width: 100%;
-            border: 1px solid #ff8c00;
-            padding: 16px;
-            font-family: 'JetBrains Mono', monospace;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: all 0.2s;
-        }
-
-        .return-btn:hover {
-            background: #ff8c00;
-            color: #131313;
+        @keyframes pulse-glow {
+            0% { text-shadow: 0 0 15px rgba(255, 140, 0, 0.8), 0 0 30px rgba(255, 140, 0, 0.4); }
+            50% { text-shadow: 0 0 25px rgba(255, 140, 0, 1), 0 0 50px rgba(255, 140, 0, 0.6); }
+            100% { text-shadow: 0 0 15px rgba(255, 140, 0, 0.8), 0 0 30px rgba(255, 140, 0, 0.4); }
         }
     </style>
 </head>
-<body>
+<body class="bg-background text-on-background min-h-screen font-body-lg flex flex-col overflow-x-hidden relative">
+<!-- Background Image -->
+<div class="fixed inset-0 z-[-1] opacity-30" style="background-image: url('https://lh3.googleusercontent.com/aida/AP1WRLsd2xkzu59ZzYobY_Ng0PGVPurk_pOtkiL8_nLj1jz3JXo7TC0-lL7vjahTgU20X5R7ttVb35pr4RCr9PB-HirXa9VQFmrMOF_wHdRP1SyX_sF33F9A6bu5IeXkAQdYcENJZAW6VA4ak7Iv4EGBIhEqqilU3OnsHqgy7igQzlPWdp0JbWNibbKDqjg3Iy1yHTSVUsUtCYlkjdSstEE_qd3LYMqZvzVIANFCP0B8mSDCCjPbTl86f1pRelg'); background-size: cover; background-position: center;"></div>
+<div class="fixed inset-0 z-[-1] blueprint-bg opacity-50 mix-blend-overlay"></div>
+<!-- TopNavBar -->
+<header class="bg-background dark:bg-background text-primary dark:text-primary docked full-width top-0 border-b-2 border-outline-variant flat no shadows flex justify-between items-center w-full px-margin h-16 z-50 sticky">
+<div class="flex items-center gap-8 h-full">
+<span class="text-headline-md font-headline-md font-extrabold text-primary dark:text-primary tracking-tighter">THE GUILD</span>
+<nav class="hidden md:flex h-full items-center gap-6"><a class="text-primary font-bold border-b-4 border-primary pb-1 shadow-[0_0_12px_#FF8C00] text-label-tech font-label-tech hover:text-primary transition-colors duration-150 h-full flex items-center pt-1" href="#">PROFILE</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant text-label-tech font-label-tech hover:text-primary transition-colors duration-150 h-full flex items-center" href="#">DASHBOARD</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant text-label-tech font-label-tech hover:text-primary transition-colors duration-150 h-full flex items-center" href="#">SKILLS</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant text-label-tech font-label-tech hover:text-primary transition-colors duration-150 h-full flex items-center" href="#">JOBS</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant text-label-tech font-label-tech hover:text-primary transition-colors duration-150 h-full flex items-center" href="#">SETTINGS</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex items-center gap-2 border border-outline-variant px-3 py-1 bg-surface-container shadow-[0_0_8px_rgba(255,140,0,0.15)] transition-all duration-300" id="header-level-container">
+<span class="text-label-tech font-label-tech text-secondary transition-colors duration-300" id="header-craftsman-label">CRAFTSMAN LVL</span>
+<span class="text-label-data font-label-data text-primary font-bold text-lg transition-all duration-300" id="header-craftsman-level">0</span>
+</div>
+<button class="hover:text-primary transition-colors duration-150 p-2">
+<span class="material-symbols-outlined text-2xl" data-icon="notifications">notifications</span>
+</button>
+<button class="hover:text-primary transition-colors duration-150 p-2">
+<span class="material-symbols-outlined text-2xl" data-icon="person">person</span>
+</button>
+</div>
+</header>
+<main class="flex-1 w-full max-w-[container-max] mx-auto p-gutter flex flex-col lg:flex-row gap-gutter">
+<!-- Left Column (Sidebar) -->
+<aside class="w-full lg:w-80 flex flex-col gap-gutter shrink-0">
+<!-- Profile Card -->
+<div class="bg-surface-container-high border border-outline-variant p-gutter flex flex-col items-center gap-4 cut-corner relative shadow-[4px_4px_0px_#000]">
+<div class="absolute top-2 right-2 text-label-tech font-label-tech text-secondary" id="profile-id">ID-7492</div>
+<div class="w-32 h-32 rounded-none border-2 border-primary overflow-hidden shadow-[0_0_12px_#FF8C00] relative group transition-all duration-300" id="profile-image-container">
+<img class="w-full h-full object-cover" data-alt="A minimalist, industrial-style silhouette of a trade worker wearing a hard hat and overalls, centered on a dark charcoal background. Style: Rugged, flat vector icon, metallic bronze color #ff8c00. Professional and clean avatar placeholder." id="profile-image" src="https://lh3.googleusercontent.com/aida/AP1WRLvqhgSxXToCYKMDir_D3wCe7B0XG9U8wVxgZWNMoRL0Jupdhzvc2N3WU9sLxleNXUgXE-fquHpvvSYA-XdowQx2hk0wJucs8XcLlTkDXi1V1Mk4rDwiie2d4nBGM-3D1UhqbeIUnBLkYyXaOf4veNDDuq-o-O_8PMC8m9cxmAsuJkmqv25yzdO1i_qMsJozbuQ4gIfokObDHcOBA0SXKaNAppkSSJ2uNqVMr_ksJfDX0bVsHkmzBmqomF0"/>
+<button class="absolute bottom-2 right-2 bg-surface border border-primary text-primary p-1 hidden hover:bg-primary hover:text-background transition-colors z-10 shadow-[0_0_8px_rgba(255,140,0,0.5)]" id="avatar-edit-btn" onclick="document.getElementById('avatar-upload').click()" title="Edit Picture">
+<span class="material-symbols-outlined text-lg block leading-none" data-icon="photo_camera">photo_camera</span>
+</button>
+<input accept="image/*" class="hidden" id="avatar-upload" type="file"/>
+</div>
+<div class="text-center">
+<h2 class="text-headline-md font-headline-md text-primary font-bold transition-all duration-300" id="profile-rank-title">CRAFTSMAN</h2>
+<p class="text-body-sm font-body-sm text-secondary tracking-widest mt-1" id="profile-sector-display">LOCATION</p>
+</div>
+<div class="w-full bg-background border border-outline-variant p-4 flex flex-col items-center gap-2 mt-2">
+<p class="text-label-tech font-label-tech text-secondary text-center mb-1">GUILD PASS</p>
+<div class="bg-white p-2 rounded shadow-[0_0_12px_rgba(255,140,0,0.5)]" id="qrcode"></div>
+</div>
+<div class="w-full flex justify-between items-center border-t border-outline-variant pt-4 mt-2">
+<span class="text-label-tech font-label-tech text-secondary">TOTAL XP</span>
+<span class="text-label-data font-label-data text-primary" id="total-xp-display">0</span>
+</div>
+<button class="w-full bg-primary-container text-[#131313] font-bold text-label-tech font-label-tech uppercase py-3 mt-4 hover:shadow-[0_0_12px_#FF8C00] transition-shadow border-2 border-transparent hover:border-black">
+                    GET JOBS
+                </button>
+</div>
+<!-- Credentials Section -->
+<div class="bg-surface-container-high border border-outline-variant p-gutter flex flex-col gap-4 cut-corner shadow-[4px_4px_0px_#000]">
+<div class="border-b border-outline-variant pb-2 flex justify-between items-center">
+<h3 class="text-body-lg font-body-lg font-bold text-on-surface">CREDENTIALS</h3>
+<span class="material-symbols-outlined text-secondary" data-icon="verified">verified</span>
+</div>
+<div class="flex flex-col gap-3" id="credentials-list">
+<!-- Credentials will be populated here dynamically -->
+</div>
+<button class="w-full hidden items-center justify-center gap-2 border border-dashed border-primary text-primary py-2 hover:bg-primary/10 transition-colors mt-2" id="upload-cert-btn" onclick="document.getElementById('cert-upload').click()">
+<span class="material-symbols-outlined text-xl" data-icon="upload_file">upload_file</span>
+<span class="text-label-tech font-label-tech font-bold uppercase">UPLOAD CERTIFICATE</span>
+</button>
+<input accept=".pdf,image/*" class="hidden" id="cert-upload" type="file"/>
+</div>
+</aside>
+<!-- Right Column (Main Feed) -->
+<section class="flex-1 flex flex-col gap-gutter">
+<!-- Profile Hero -->
+<div class="bg-surface-container-high border border-outline-variant p-margin flex flex-col gap-4 cut-corner shadow-[4px_4px_0px_#000]">
+<div class="flex justify-between items-start border-b border-outline-variant pb-4">
+<div>
+<h1 class="text-headline-lg font-headline-lg md:hidden text-on-surface"></h1>
+<h1 class="text-headline-lg font-headline-lg hidden md:block text-on-surface" id="profile-name"></h1>
+<p class="text-headline-md font-headline-md text-primary mt-1" id="profile-trade"></p>
+</div>
+<div class="flex items-center gap-2 text-secondary bg-surface p-2 border border-outline-variant">
+<span class="material-symbols-outlined text-xl" data-icon="location_on">location_on</span>
+<span class="text-label-tech font-label-tech" id="profile-location"></span>
+</div>
+</div>
+<!-- Mastery Progress -> Total Level -->
+<div class="mt-2 flex justify-between items-center bg-surface border border-outline-variant p-4 shadow-[0_0_12px_rgba(255,140,0,0.15)]">
+<span class="text-label-tech font-label-tech text-secondary uppercase tracking-widest">TOTAL LEVEL</span>
+<span class="text-headline-lg font-headline-lg text-primary font-bold leading-none" id="total-level-display">14</span>
+</div>
+</div>
+<!-- Main Content Grid -->
+<div class="grid grid-cols-1 xl:grid-cols-2 gap-gutter">
+<!-- Skills Summary -->
+<div class="bg-surface-container-high border border-outline-variant p-gutter flex flex-col gap-4 cut-corner shadow-[4px_4px_0px_#000]">
+<div class="border-b border-outline-variant pb-2 flex justify-between items-center">
+<h3 class="text-body-lg font-body-lg font-bold text-on-surface">SKILLS MATRIX</h3>
+<span class="text-label-tech font-label-tech text-secondary" id="sys-req-display">SYS-REQ: 14</span>
+</div>
+<div class="grid grid-cols-3 sm:grid-cols-4 gap-2">
+<!-- Skill 1 -->
+<div class="bg-surface border border-outline-variant p-3 flex flex-col items-center justify-center gap-1 hover:border-primary transition-colors group shadow-[0_0_0_rgba(255,140,0,0)] hover:shadow-[0_0_8px_rgba(255,140,0,0.4)]">
+<img alt="Carpentry" class="w-10 h-10 object-contain mb-1 group-hover:shadow-[0_0_12px_#FF8C00] transition-shadow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmKTDMw5HUXIdcvlw0hALgFBp68g5m7keUS4jcJm_c91ksTO710ccvPkRIQ5E1gTfbE9L9_PCkMLkjNbwu69ALUeaH4LRZZOgvOlFfoEBL3UIZG2Sv_yYOJl50Jz_FUrX7ncXPX9HKxptavD4N5qwNaIIzdqFazbN7ArXudShfprnijCNzZ4BKhwCnINbjpZ5h7T2ThqyPy-U1vcgXKwSULHY8Ob2_O_rn7lfpkwQvTIcdXr2Foi-ErG3gLqopzAF0wg"/>
+<span class="text-[10px] font-label-tech text-center text-on-surface truncate w-full">CARPENTRY</span>
+<div class="text-primary font-label-data text-[12px] mt-1" id="skill-carpentry">LVL 01</div>
+</div>
+<!-- Skill 2 -->
+<div class="bg-surface border border-outline-variant p-3 flex flex-col items-center justify-center gap-1 hover:border-primary transition-colors group shadow-[0_0_0_rgba(255,140,0,0)] hover:shadow-[0_0_8px_rgba(255,140,0,0.4)]">
+<img alt="Welding" class="w-10 h-10 object-contain mb-1 group-hover:shadow-[0_0_12px_#FF8C00] transition-shadow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZbJG70A5Q-UlaSebK0lmfvowU_tVyxeshfRVJ_nz-Tx7DbBxnssfeUxSK3qit4o9HsnwpsT8z7dA7bIcpW3jphgGSvTimljqWggbcYPU6FjmOx5n9_Zv--UUYrHVQlF5Rba1fVlxyVCe4UtdAAw5zFMmLbJys7bPB48ik3p7bEqS2J2r5qEJdmSJdcqNzb9dfASmw3NCxi5JOtAzEeYqNRUdp1LRotgoQMw6lnaN8iZZFN4vzhNcE2xYJMeskMuIkLA"/>
+<span class="text-[10px] font-label-tech text-center text-on-surface truncate w-full">WELDING</span>
+<div class="text-primary font-label-data text-[12px] mt-1" id="skill-welding">LVL 01</div>
+</div>
+<!-- Skill 3 -->
+<div class="bg-surface border border-outline-variant p-3 flex flex-col items-center justify-center gap-1 hover:border-primary transition-colors group shadow-[0_0_0_rgba(255,140,0,0)] hover:shadow-[0_0_8px_rgba(255,140,0,0.4)]">
+<img alt="Electrician" class="w-10 h-10 object-contain mb-1 group-hover:shadow-[0_0_12px_#FF8C00] transition-shadow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhzuDD7GAl5yn-SLTT9O0eEzvPXExPhwgafYGGNCi2EaH1kb4-MM00Tc0wJaqXrolRNq2SjAUQijP_UzBO9jg1hckEU1fnEp2FN0_09Bf--SN07tdSQwQPuHDp__1dET99lFDdlq43PAwwINLKieYS--abLmIVdLc8edJEVj72XsYBrLSwttSSFpU1Ki7obmq-rvD3iVEYXq-cPM4aBADa7P-qQDsehWy5S-sAZkqTsc0Oomt7cG_ywRwItJJtHctt2w"/>
+<span class="text-[10px] font-label-tech text-center text-on-surface truncate w-full">ELECTRICIAN</span>
+<div class="text-primary font-label-data text-[12px] mt-1" id="skill-electrician">LVL 01</div>
+</div>
+<!-- Skill 4 -->
+<div class="bg-surface border border-outline-variant p-3 flex flex-col items-center justify-center gap-1 hover:border-primary transition-colors group shadow-[0_0_0_rgba(255,140,0,0)] hover:shadow-[0_0_8px_rgba(255,140,0,0.4)]">
+<img alt="Engineering" class="w-10 h-10 object-contain mb-1 group-hover:shadow-[0_0_12px_#FF8C00] transition-shadow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0PgRSC70AkV5hrrWTJX3vftWY0WHtn5dX_l7FvX1Mu6OOhuOEDMJwpaR6fQtVnXDbHRDfO6x5qCOINRL9TYhNRoFJRG7QoRid0CMa6rbjjrK1v-p4mE1uWJL7sEAzqku4P_TRyS16Wa9KkQd53JOtk8XxP2HRMssolyva8CnLMHtOwnEdx2-tuijEhRGlN7vKbN6wozcduf0375Uzz9Ck4pTfY3fQsdyL5KRABfDXADQ4tTe7ondPAjqOmf24R7V-hw"/>
+<span class="text-[10px] font-label-tech text-center text-on-surface truncate w-full">ENGINEERING</span>
+<div class="text-primary font-label-data text-[12px] mt-1">LVL 01</div>
+</div>
+<!-- Skill 5 -->
+<div class="bg-surface border border-outline-variant p-3 flex flex-col items-center justify-center gap-1 hover:border-primary transition-colors group shadow-[0_0_0_rgba(255,140,0,0)] hover:shadow-[0_0_8px_rgba(255,140,0,0.4)]">
+<img alt="Farming" class="w-10 h-10 object-contain mb-1 group-hover:shadow-[0_0_12px_#FF8C00] transition-shadow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAobMflY0u3WdP7VQUn27bWQ7DuDdFtbJPiVLxSNZlM0EGJjIr8jEbBJJd9OgV-a1o4tg2Ff6JOnFa73WzQPNJ9ICL7l7l761AGlJZ3KsHEng5fiXMEJN-3FaeDPZt_dvOdSu2d8GGU8rAu9n5FdyUmpyW9CoRzzQpuBPL2UjWneNUks_9IKErgd674G5GA2s3qIFPb3X2Rxc5tWh0VWM63b4CjmT7ShzkXvATYQA5VPTC1hvJFnPY4g7Tv-Yu5abUE-g"/>
+<span class="text-[10px] font-label-tech text-center text-on-surface truncate w-full">FARMING</span>
+<div class="text-primary font-label-data text-[12px] mt-1">LVL 01</div>
+</div>
+<!-- Skill 6 -->
+<div class="bg-surface border border-outline-variant p-3 flex flex-col items-center justify-center gap-1 hover:border-primary transition-colors group shadow-[0_0_0_rgba(255,140,0,0)] hover:shadow-[0_0_8px_rgba(255,140,0,0.4)]">
+<img alt="Gen. Labor" class="w-10 h-10 object-contain mb-1 group-hover:shadow-[0_0_12px_#FF8C00] transition-shadow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbIWxSFQE_x-GVzPQG0SYgeWdbX8Vqhz2Y2EFsXoFJbpVwJi7ZnmTP6UImXHe0Uw1HMWJjD6dOyMu3CuCO87xQJNTVQUCfPqZUzc6I8iv4uhuqRQNn9vGl0a6kt2zqAaEra5avL6lSVKq6c6ZoG4QWiC9k5T6XNI4Q_U8SP-jkhciSvBZXvO3AQoTE2um5o3buH7MV_N5T7JWzMcqQUzCJjE9FPEztMqCefpf1QcXAD14qY5dMDh99K70Pve4JyuyCbA"/>
+<span class="text-[10px] font-label-tech text-center text-on-surface truncate w-full">GEN. LABOR</span>
+<div class="text-primary font-label-data text-[12px] mt-1">LVL 01</div>
+</div>
+<!-- Skill 7 -->
+<div class="bg-surface border border-outline-variant p-3 flex flex-col items-center justify-center gap-1 hover:border-primary transition-colors group shadow-[0_0_0_rgba(255,140,0,0)] hover:shadow-[0_0_8px_rgba(255,140,0,0.4)]">
+<img alt="HV/AC" class="w-10 h-10 object-contain mb-1 group-hover:shadow-[0_0_12px_#FF8C00] transition-shadow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnWJHxkUzTVRaA9tasWQp9izaCgSFTTB1Qdgzwze6FaNUAefFfRvczRiNuqNat-klTe3FEgpx6frQC2je2j1qSL-nueHkYcOUfkEqPoMVxtM90wP2-NH1AgOyQezjjOEeaAITfUBfWOvBVtoJVaoE4KnJrQSYvxKe1VGsrTQ2OeaZJ3p2DZ9lyGqwEf9I4TlFWO1u-JaeY1kBitXtmd-0-JNpajpleMQNIWu07QWlO003WXRvQf7P9gt6oOkjVstZq3w"/>
+<span class="text-[10px] font-label-tech text-center text-on-surface truncate w-full">HV/AC</span>
+<div class="text-primary font-label-data text-[12px] mt-1">LVL 01</div>
+</div>
+<!-- Skill 8 -->
+<div class="bg-surface border border-outline-variant p-3 flex flex-col items-center justify-center gap-1 hover:border-primary transition-colors group shadow-[0_0_0_rgba(255,140,0,0)] hover:shadow-[0_0_8px_rgba(255,140,0,0.4)]">
+<img alt="Landscaping" class="w-10 h-10 object-contain mb-1 group-hover:shadow-[0_0_12px_#FF8C00] transition-shadow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCo1nqZzuhvfCB5jZV520kL-Em3SomVAnJ7BjccLwyF3LoFkZAzPWBOrjkIETASyTny2m6qgQgIWB2CnFhZ0NHn_CC84-UPdo2ZW8v-qChOl57aiiujvlU6kJMzxJfTULDl3ZXimtlt74AY-tA50PISM-kVT5fvVk32puxhfx4skw5RkW2mr5L7zBotp9s2bExQxvjJGJ6YhrjnoZeRma7_5nOIVAg1NThIXgKoVMQMXaPcy4mJzSYi6gEVW8Hx_bfWyw"/>
+<span class="text-[10px] font-label-tech text-center text-on-surface truncate w-full">LANDSCAPING</span>
+<div class="text-primary font-label-data text-[12px] mt-1">LVL 01</div>
+</div>
+<!-- Skill 9 -->
+<div class="bg-surface border border-outline-variant p-3 flex flex-col items-center justify-center gap-1 hover:border-primary transition-colors group shadow-[0_0_0_rgba(255,140,0,0)] hover:shadow-[0_0_8px_rgba(255,140,0,0.4)]">
+<img alt="Mechanics" class="w-10 h-10 object-contain mb-1 group-hover:shadow-[0_0_12px_#FF8C00] transition-shadow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTkbMdWBMj-5ZMm0WyYY9pezSHENf6mk6MED1b5UU4zYwpvOX_HatbO54tfochw3h_nbQBqcGwzlIxDtDmpdCsdTXWB5KLPq1fj6zOAM0yGzUvFRNTsbsuhDime2EfqI1bLhijjdHzdljNOkoVHQ9kC-hllkr6WhgUehCHSAggMlUpt8N27DMmVT1qIn3IYnwoP7UjtrMHA7wLfwDAe6hbdbC7ojkhqVsTeTFBtw4V9blQWbA59etll2i7E60hgDYqVw"/>
+<span class="text-[10px] font-label-tech text-center text-on-surface truncate w-full">MECHANICS</span>
+<div class="text-primary font-label-data text-[12px] mt-1">LVL 01</div>
+</div>
+<!-- Skill 10 -->
+<div class="bg-surface border border-outline-variant p-3 flex flex-col items-center justify-center gap-1 hover:border-primary transition-colors group shadow-[0_0_0_rgba(255,140,0,0)] hover:shadow-[0_0_8px_rgba(255,140,0,0.4)]">
+<img alt="Metalwork" class="w-10 h-10 object-contain mb-1 group-hover:shadow-[0_0_12px_#FF8C00] transition-shadow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_7oT8_8gHd1a0LuNC72K8m5vgi3YqO8XbApzLGkH1-eV7QSqDVoCxrHQ48OhCt2J9xoko0Az3MpK02OJdQa450gjg99UkYS1YhegL2vrHsKtKqTFEsQJhKPwHd-BdNg6M0SrynTR5q4O6A5r61rCacgVXxXn6jKcscmn51xb10BxDkurZhujpW5vUF2z7qs98TkcfgNASZkXrHLpZMGjy3zRIN8nopNh6y74xsxVG-sFs-RupoyotDqoLj5VSYTnScA"/>
+<span class="text-[10px] font-label-tech text-center text-on-surface truncate w-full">METALWORK</span>
+<div class="text-primary font-label-data text-[12px] mt-1">LVL 01</div>
+</div>
+<!-- Skill 11 -->
+<div class="bg-surface border border-outline-variant p-3 flex flex-col items-center justify-center gap-1 hover:border-primary transition-colors group shadow-[0_0_0_rgba(255,140,0,0)] hover:shadow-[0_0_8px_rgba(255,140,0,0.4)]">
+<img alt="Plumbing" class="w-10 h-10 object-contain mb-1 group-hover:shadow-[0_0_12px_#FF8C00] transition-shadow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDY4jjLLym7hBPzSN2bJi5aTTJ4fMGVlMfmVoWBmeyu97OQnEy_pcg5OoB1_Z1Gt2P5akeWZcP9Moa8YC_dTqsoYQECAAKXs4DHRqbzPOpxuHD1QIMwV8Z1T4ECFHrSvrbHhPlPvSDLSU0boSTKZrEz60KZDMTIyY6N8rm6R0D8Zfq7gr1dyzn5IcYmzU4Z1v3quSifmfjNoUbdJBDpXzqEOaWC8oAYHBUbuo3RNp9NiD5vVTsLnqnYaf8fk6eykrFMzw"/>
+<span class="text-[10px] font-label-tech text-center text-on-surface truncate w-full">PLUMBING</span>
+<div class="text-primary font-label-data text-[12px] mt-1">LVL 01</div>
+</div>
+<!-- Skill 12 -->
+<div class="bg-surface border border-outline-variant p-3 flex flex-col items-center justify-center gap-1 hover:border-primary transition-colors group shadow-[0_0_0_rgba(255,140,0,0)] hover:shadow-[0_0_8px_rgba(255,140,0,0.4)]">
+<img alt="Roofing" class="w-10 h-10 object-contain mb-1 group-hover:shadow-[0_0_12px_#FF8C00] transition-shadow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXfkkepSwKRwjivl82mtQtLjMYleEHhI1sttwfYqAKeP_rs3LhcQtYh6zPYP1cZ7z6hvNiqoHuNbYXXdHEjTrOcOhauSxWOD0JYiRWKG7XefS8iwqPSqCnppzrNZR708FK94EfE-N30ayTvV5afdRlPDmWlBU3VH963WnXgr7mx_XUq9j2W-sRoSKpmd-sW-9wN2EHKB91Nl5IbH6SbzGaLyP5h-LeIHyBJH3TRyvwB6jQUggjJ9X1hj901KL_gbnH-A"/>
+<span class="text-[10px] font-label-tech text-center text-on-surface truncate w-full">ROOFING</span>
+<div class="text-primary font-label-data text-[12px] mt-1">LVL 01</div>
+</div>
+<!-- Skill 13 -->
+<div class="bg-surface border border-outline-variant p-3 flex flex-col items-center justify-center gap-1 hover:border-primary transition-colors group shadow-[0_0_0_rgba(255,140,0,0)] hover:shadow-[0_0_8px_rgba(255,140,0,0.4)]">
+<img alt="Stonemasonry" class="w-10 h-10 object-contain mb-1 group-hover:shadow-[0_0_12px_#FF8C00] transition-shadow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJ_Zty55HGxcov7BA9lPMI5dRK31G1PGYXFlrn4c78jtQQ0Das6K08iq5dd35uAH4oVfN9fBXbstalkVor19_KoiFMMv_cjuWwNtJGw9J5a6cclgsLx7uVPSMt6-l8FD64D-EeCrXsLM_maj6uZa7EI_sOmQ9edWYwAOaiqyxduRJodzMjOO3Qqpw6sEOA8n1RkiWKPzL5QsQ19BXkRB1YUNj6k2pFh-BbK6nU5RR6HM69HUNwNNwW_lDvMwj9CB4xhw"/>
+<span class="text-[10px] font-label-tech text-center text-on-surface truncate w-full">STONEMASONRY</span>
+<div class="text-primary font-label-data text-[12px] mt-1">LVL 01</div>
+</div>
+<!-- Skill 14 -->
+<div class="bg-surface border border-outline-variant p-3 flex flex-col items-center justify-center gap-1 hover:border-primary transition-colors group shadow-[0_0_0_rgba(255,140,0,0)] hover:shadow-[0_0_8px_rgba(255,140,0,0.4)]">
+<img alt="Driving" class="w-10 h-10 object-contain mb-1 group-hover:shadow-[0_0_12px_#FF8C00] transition-shadow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuADSkVGny696fury3dRLzPidcT6y9UYIsHgjz9H6S2TV7v7N5JKZXY-kTUaMlv0wQM-My_tapSiw4tPav9qDaGpcrhNA-2fR2gDqmlt1YES1Vp_MlQ4N895Iumm9hPFAyfOmtaW1ql_ogUg3Z68mEVq0o7FxRH_-uGrtMMOYCuMYwivHkyldzL1Rp9hJlfbN6cRGx7PPvLuSAnC46WlHYd0ocnvi2SpXwWQeRi2HW9j61nm7D9fZQjlK2T1l4cCBEE40g"/>
+<span class="text-[10px] font-label-tech text-center text-on-surface truncate w-full">DRIVING</span>
+<div class="text-primary font-label-data text-[12px] mt-1">LVL 01</div>
+</div>
+</div>
+</div>
+<!-- Trade History -->
+<div class="bg-surface-container-high border border-outline-variant p-gutter flex flex-col gap-4 cut-corner shadow-[4px_4px_0px_#000]">
+<div class="border-b border-outline-variant pb-2 flex justify-between items-center">
+<h3 class="text-body-lg font-body-lg font-bold text-on-surface">RECENT JOBS</h3>
+<span class="text-label-tech font-label-tech text-secondary">LOG: 14</span>
+</div>
+<div class="flex flex-col gap-2"><div class="py-8 text-center border border-dashed border-outline-variant opacity-50"><p class="text-label-tech font-label-tech uppercase tracking-widest">NO RECENT ACTIVITY</p></div></div>
+</div>
+</div>
+</section>
+</main>
+<script>
+    // Initialize Supabase
+    const SUPABASE_URL = 'YOUR_SUPABASE_URL';
+    const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
+    // const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-    <img src="{{DATA:IMAGE:IMAGE_164}}" alt="Guild Seal" class="guild-seal">
+    // Mock Logged In User (Simulating Supabase Auth for Access Control)
+    const mockLoggedInUser = { id: 'ID-7492' }; // Change to null or different ID to test public view
 
-    <div class="terminal-container">
-        <div class="verified-badge">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            Craftsman Verified
-        </div>
+    // Central worker data logic for Skills Matrix
+    const worker_data = {
+        carpentry_lvl: 1,
+        welding_lvl: 1,
+        electrician_lvl: 1,
+        engineering_lvl: 1,
+        farming_lvl: 1,
+        gen_labor_lvl: 1,
+        hvac_lvl: 1,
+        landscaping_lvl: 1,
+        mechanics_lvl: 1,
+        metalwork_lvl: 1,
+        plumbing_lvl: 1,
+        roofing_lvl: 1,
+        stonemasonry_lvl: 1,
+        driving_lvl: 1,
+        total_xp: 0 // Explicit tracking to minimize updates
+    };
 
-        <div class="text-center">
-            <p class="label">Name</p>
-            <p class="data-value" id="worker-name">John Doe</p>
+    let cachedXp = null;
 
-            <p class="label">Trade</p>
-            <p class="data-value" id="worker-trade" style="font-size: 18px; color: #ff8c00;">Master Carpenter</p>
+    function updateSkillsMatrix() {
+        const skillMap = {
+            'CARPENTRY': worker_data.carpentry_lvl || 1,
+            'WELDING': worker_data.welding_lvl || 1,
+            'ELECTRICIAN': worker_data.electrician_lvl || 1,
+            'ENGINEERING': worker_data.engineering_lvl || 1,
+            'FARMING': worker_data.farming_lvl || 1,
+            'GEN. LABOR': worker_data.gen_labor_lvl || 1,
+            'HV/AC': worker_data.hvac_lvl || 1,
+            'LANDSCAPING': worker_data.landscaping_lvl || 1,
+            'MECHANICS': worker_data.mechanics_lvl || 1,
+            'METALWORK': worker_data.metalwork_lvl || 1,
+            'PLUMBING': worker_data.plumbing_lvl || 1,
+            'ROOFING': worker_data.roofing_lvl || 1,
+            'STONEMASONRY': worker_data.stonemasonry_lvl || 1,
+            'DRIVING': worker_data.driving_lvl || 1
+        };
 
-            <p class="label">Guild ID</p>
-            <p class="data-value" id="worker-id" style="font-size: 16px; color: #ff8c00;">WG-XXXX-XXXX</p>
-
-            <div class="flex justify-between items-center mb-1">
-                <p class="label">Experience Points</p>
-                <p class="label">Level 42</p>
-            </div>
-            <div class="xp-bar-container">
-                <div class="xp-bar-fill" style="width: 75%;"></div>
-            </div>
-
-            <p class="label mb-4">Certified Skills</p>
-            <div class="flex flex-wrap justify-center">
-                <span class="skill-tag">Carpentry</span>
-                <span class="skill-tag">Framing</span>
-                <span class="skill-tag">OSHA Safety</span>
-                <span class="skill-tag">Blueprint Reading</span>
-            </div>
-
-            <div class="mt-8 pt-8 border-t border-white/5 opacity-40 text-[10px] uppercase font-mono">
-                This craftsman is a verified member of The Workers Guild.
-                <br>Credentials are encrypted and immutable.
-            </div>
-        </div>
-    </div>
-
-    <button onclick="window.location.href='index.html'" class="return-btn max-w-[500px]">
-        Return to Terminal
-    </button>
-
-    <script>
-        // Future: Add Supabase logic here to fetch profile by ID from URL
-        async function loadProfile() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const profileId = urlParams.get('id');
+        let totalLevel = 0;
+        const skillCells = document.querySelectorAll('.grid.grid-cols-3.sm\\:grid-cols-4 > div');
+        
+        skillCells.forEach(cell => {
+            const nameEl = cell.querySelector('span.text-\\[10px\\]');
+            if (!nameEl) return;
             
-            if (profileId) {
-                console.log("Loading profile for ID: " + profileId);
-                // Supabase fetch logic will go here
+            const skillName = nameEl.textContent.trim().toUpperCase();
+            const level = skillMap[skillName];
+            
+            if (level !== undefined) {
+                const lvlDisplay = cell.querySelector('.text-primary.font-label-data');
+                if (lvlDisplay) {
+                    lvlDisplay.textContent = `LVL ${String(level).padStart(2, '0')}`;
+                    totalLevel += level;
+                }
+            }
+        });
+
+        // Determine if XP needs an update (simulate minimizing Supabase usage)
+        let currentXp = worker_data.total_xp || (totalLevel * 2); // default xp for logic test
+        if (cachedXp !== null && cachedXp === currentXp) {
+            return;
+        }
+        cachedXp = currentXp;
+
+        const totalDisplay = document.getElementById('total-level-display');
+        if (totalDisplay) {
+            totalDisplay.textContent = totalLevel;
+        }
+        
+        const sysReqDisplay = document.getElementById('sys-req-display');
+        if (sysReqDisplay) {
+            sysReqDisplay.textContent = `SYS-REQ: ${totalLevel}`;
+        }
+
+        const totalXpDisplay = document.getElementById('total-xp-display');
+        if (totalXpDisplay) {
+            totalXpDisplay.textContent = currentXp;
+        }
+
+        // Logic update: Craftsman Level = Total XP / 2
+        const craftsmanLevel = Math.floor(currentXp / 2);
+        
+        const headerCraftsmanLvl = document.getElementById('header-craftsman-level');
+        const headerCraftsmanLabel = document.getElementById('header-craftsman-label');
+        const profileRankTitle = document.getElementById('profile-rank-title');
+        const profileImageContainer = document.getElementById('profile-image-container');
+        const headerLevelContainer = document.getElementById('header-level-container');
+        
+        const isMaster = craftsmanLevel >= 99;
+
+        if (headerCraftsmanLvl) {
+            // Cap display at 99 for now, or allow >99 based on logic. Let's allow >99 but rank caps at Master.
+            headerCraftsmanLvl.textContent = craftsmanLevel > 99 ? 99 : craftsmanLevel;
+            
+            if(isMaster) {
+                 headerCraftsmanLvl.classList.add('text-[#ffdcc3]', 'rank-glow-master');
+                 headerCraftsmanLvl.classList.remove('text-primary');
+            } else {
+                 headerCraftsmanLvl.classList.remove('text-[#ffdcc3]', 'rank-glow-master');
+                 headerCraftsmanLvl.classList.add('text-primary');
             }
         }
-        loadProfile();
-    </script>
-</body>
-</html>
+        
+        if (headerCraftsmanLabel) {
+             headerCraftsmanLabel.textContent = isMaster ? "MASTER LVL" : "CRAFTSMAN LVL";
+             if(isMaster) {
+                 headerCraftsmanLabel.classList.add('text-[#ffb77d]', 'font-bold');
+                 headerCraftsmanLabel.classList.remove('text-secondary');
+             } else {
+                 headerCraftsmanLabel.classList.remove('text-[#ffb77d]', 'font-bold');
+                 headerCraftsmanLabel.classList.add('text-secondary');
+             }
+        }
+
+        if (profileRankTitle) {
+            profileRankTitle.textContent = isMaster ? "MASTER CRAFTSMAN" : "CRAFTSMAN";
+            if (isMaster) {
+                profileRankTitle.classList.add('rank-glow-master', 'text-[#ffdcc3]', 'text-3xl');
+                profileRankTitle.classList.remove('text-primary', 'text-headline-md');
+            } else {
+                profileRankTitle.classList.remove('rank-glow-master', 'text-[#ffdcc3]', 'text-3xl');
+                profileRankTitle.classList.add('text-primary', 'text-headline-md');
+            }
+        }
+
+        if (profileImageContainer) {
+            if (isMaster) {
+                profileImageContainer.classList.add('border-[#ffdcc3]', 'shadow-[0_0_25px_#FF8C00]');
+                profileImageContainer.classList.remove('border-primary', 'shadow-[0_0_12px_#FF8C00]');
+            } else {
+                profileImageContainer.classList.remove('border-[#ffdcc3]', 'shadow-[0_0_25px_#FF8C00]');
+                profileImageContainer.classList.add('border-primary', 'shadow-[0_0_12px_#FF8C00]');
+            }
+        }
+        
+        if (headerLevelContainer) {
+             if (isMaster) {
+                 headerLevelContainer.classList.add('border-[#ffb77d]', 'shadow-[0_0_15px_rgba(255,140,0,0.4)]');
+                 headerLevelContainer.classList.remove('border-outline-variant', 'shadow-[0_0_8px_rgba(255,140,0,0.15)]');
+             } else {
+                 headerLevelContainer.classList.remove('border-[#ffb77d]', 'shadow-[0_0_15px_rgba(255,140,0,0.4)]');
+                 headerLevelContainer.classList.add('border-outline-variant', 'shadow-[0_0_8px_rgba(255,140,0,0.15)]');
+             }
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        // Run Skills Matrix sync
+        updateSkillsMatrix();
+
+        // --- Access Control Logic ---
+        const urlParams = new URLSearchParams(window.location.search);
+        const urlProfileId = urlParams.get('id');
+        const profileIdElement = document.getElementById('profile-id');
+        
+        // Use URL param if exists, otherwise fallback to UI element text
+        const currentProfileId = urlProfileId || profileIdElement.innerText.trim();
+        if (urlProfileId) {
+            profileIdElement.innerText = currentProfileId;
+        }
+
+        const isOwner = mockLoggedInUser && mockLoggedInUser.id === currentProfileId;
+
+        const editAvatarBtn = document.getElementById('avatar-edit-btn');
+        const uploadCertBtn = document.getElementById('upload-cert-btn');
+
+        if (isOwner) {
+            if (editAvatarBtn) editAvatarBtn.classList.remove('hidden');
+            if (uploadCertBtn) {
+                uploadCertBtn.classList.remove('hidden');
+                uploadCertBtn.classList.add('flex');
+            }
+        } else {
+            if (editAvatarBtn) editAvatarBtn.classList.add('hidden');
+            if (uploadCertBtn) {
+                uploadCertBtn.classList.add('hidden');
+                uploadCertBtn.classList.remove('flex');
+            }
+        }
+        // --- End Access Control Logic ---
+
+        // Mocking affiliate_id for UI logic equivalent to affiliate console
+        const affiliateId = currentProfileId;
+        const qrUrl = `https://workersguild.store/profile.html?id=${affiliateId}`;
+        
+        new QRCode(document.getElementById("qrcode"), {
+            text: qrUrl,
+            width: 100,
+            height: 100,
+            colorDark : "#ff8c00", // Using primary container color
+            colorLight : "#ffffff",
+            correctLevel : QRCode.CorrectLevel.H
+        });
+
+        // Call loadCredentials when Supabase is properly configured
+        // loadCredentials();
+    });
+
+    async function loadCredentials() {
+        /* Uncomment when Supabase is configured
+        const { data, error } = await supabaseClient
+            .from('credentials')
+            .select('name, status, url');
+            
+        if (error) {
+            console.error('Error fetching credentials:', error);
+            return;
+        }
+        */
+        const data = []; // Mock empty data for now
+        
+        const certList = document.getElementById('credentials-list');
+        certList.innerHTML = ''; // Clear loading state or existing items
+        
+        if (data && data.length > 0) {
+            data.forEach(cert => {
+                const statusColor = cert.status === 'VERIFIED' ? 'text-primary border-primary' : 'text-secondary border-secondary';
+                const certHtml = `
+                    <div class="flex items-center justify-between bg-surface border border-outline-variant p-2">
+                        <div class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-secondary text-xl" data-icon="description">description</span>
+                            <a href="${cert.url || '#'}" target="_blank" class="text-label-tech font-label-tech text-on-surface hover:text-primary truncate max-w-[120px] transition-colors">${cert.name}</a>
+                        </div>
+                        <span class="text-[10px] font-label-tech border px-1 ${statusColor}">${cert.status}</span>
+                    </div>
+                `;
+                certList.insertAdjacentHTML('beforeend', certHtml);
+            });
+        } else {
+            certList.innerHTML = '<div class="text-center text-label-tech font-label-tech text-secondary py-2 border border-dashed border-outline-variant opacity-50">NO CREDENTIALS FOUND</div>';
+        }
+    }
+
+    // Handle Image Upload Preview (Mock)
+    document.getElementById('avatar-upload').addEventListener('change', function(e) {
+        if (e.target.files && e.target.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('profile-image').src = e.target.result;
+            }
+            reader.readAsDataURL(e.target.files[0]);
+            // In a real app, you would upload to Supabase storage here
+            console.log("Mock Supabase upload: " + e.target.files[0].name);
+        }
+    });
+
+    // Handle Certificate Upload
+    document.getElementById('cert-upload').addEventListener('change', async function(e) {
+        if (e.target.files && e.target.files[0]) {
+            const file = e.target.files[0];
+            const fileName = file.name;
+            const certList = document.getElementById('credentials-list');
+            
+            // Remove empty state if present
+            if(certList.innerHTML.includes('NO CREDENTIALS FOUND')) {
+                certList.innerHTML = '';
+            }
+
+            const uploadId = 'upload-' + Date.now();
+            const newCertHtml = `
+                <div id="${uploadId}" class="flex items-center justify-between bg-surface border border-outline-variant p-2">
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-secondary text-xl" data-icon="description">description</span>
+                        <span class="text-label-tech font-label-tech text-on-surface truncate max-w-[120px]">${fileName}</span>
+                    </div>
+                    <span class="text-[10px] font-label-tech text-secondary border border-secondary px-1 status-badge">UPLOADING...</span>
+                </div>
+            `;
+            
+            certList.insertAdjacentHTML('beforeend', newCertHtml);
+            
+            // Supabase Upload Logic preparation
+            try {
+                // 1. Upload file to Storage
+                const fileExt = fileName.split('.').pop();
+                const filePath = `${Date.now()}-${Math.random().toString(36).substring(7)}.${fileExt}`;
+                
+                /* Uncomment when Supabase is configured
+                const { error: uploadError } = await supabaseClient.storage
+                    .from('certificates')
+                    .upload(filePath, file);
+
+                if (uploadError) throw uploadError;
+
+                // 2. Get public URL
+                const { data: urlData } = supabaseClient.storage
+                    .from('certificates')
+                    .getPublicUrl(filePath);
+
+                // 3. Insert into credentials table
+                const { error: insertError } = await supabaseClient
+                    .from('credentials')
+                    .insert([
+                        { name: fileName, status: 'PENDING', url: urlData.publicUrl }
+                    ]);
+
+                if (insertError) throw insertError;
+                */
+
+                // Simulate successful upload for now
+                setTimeout(() => {
+                     const el = document.getElementById(uploadId);
+                     if(el) {
+                        el.querySelector('.status-badge').textContent = 'PENDING';
+                     }
+                }, 1500);
+
+                console.log("Prepared for Supabase upload: " + fileName);
+
+            } catch (error) {
+                console.error('Upload failed:', error);
+                const el = document.getElementById(uploadId);
+                if(el) {
+                    el.querySelector('.status-badge').textContent = 'FAILED';
+                    el.querySelector('.status-badge').className = 'text-[10px] font-label-tech text-error border border-error px-1 status-badge';
+                }
+            }
+        }
+    });
+</script>
+</body></html>
