@@ -3,364 +3,157 @@
 <html class="dark" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Workers Guild Master Console</title>
+<title>THE WORKERS GUILD // COMMAND - Mobile Gateway</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Courier+Prime&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
             theme: {
                 extend: {
-                    "colors": {
-                        "surface-container": "#201f1f",
-                        "primary": "#ff8c00",
-                        "on-tertiary-container": "#610002",
-                        "on-secondary": "#412d00",
-                        "on-surface": "#e5e2e1",
-                        "primary-fixed": "#ffdbce",
+                    colors: {
+                        "on-secondary-fixed": "#1c1b1c",
+                        "on-secondary": "#313031",
+                        "outline-variant": "#564334",
                         "inverse-on-surface": "#313030",
-                        "surface-container-highest": "#353534",
-                        "on-primary-fixed-variant": "#7f2b00",
-                        "outline": "#ab8a7d",
-                        "secondary": "#ffdb9d",
-                        "on-primary-fixed": "#370e00",
-                        "surface-variant": "#353534",
-                        "on-primary": "#5a1c00",
-                        "on-secondary-fixed": "#271900",
-                        "tertiary-fixed": "#ffdad5",
-                        "on-tertiary": "#690003",
-                        "on-background": "#e5e2e1",
-                        "primary-container": "#ff5f00",
-                        "on-error-container": "#ffdad6",
-                        "tertiary-container": "#ff5c4c",
-                        "outline-variant": "#5b4137",
-                        "tertiary": "#ffb4aa",
-                        "surface": "#131313",
-                        "on-error": "#690005",
-                        "inverse-surface": "#e5e2e1",
-                        "surface-container-lowest": "#0e0e0e",
-                        "on-surface-variant": "#e4bfb1",
-                        "on-secondary-fixed-variant": "#5e4200",
-                        "tertiary-fixed-dim": "#ffb4aa",
-                        "primary-fixed-dim": "#ffb599",
-                        "on-tertiary-fixed-variant": "#930005",
-                        "secondary-fixed": "#ffdea8",
-                        "secondary-container": "#feb700",
-                        "on-secondary-container": "#6b4b00",
-                        "error": "#ffb4ab",
+                        "tertiary-fixed-dim": "#c8c6c5",
                         "error-container": "#93000a",
-                        "surface-tint": "#ffb599",
-                        "surface-container-high": "#2a2a2a",
-                        "on-tertiary-fixed": "#410001",
-                        "surface-bright": "#393939",
-                        "surface-dim": "#131313",
+                        "inverse-surface": "#e5e2e1",
+                        "tertiary-fixed": "#e4e2e1",
+                        "primary-container": "#ff8c00",
+                        "tertiary-container": "#aba9a9",
+                        "on-secondary-fixed-variant": "#474647",
+                        "on-tertiary-container": "#3e3e3e",
                         "background": "#131313",
-                        "on-primary-container": "#531a00",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-tertiary-fixed-variant": "#474746",
+                        "surface-container": "#201f1f",
+                        "surface-tint": "#ffb77d",
+                        "on-secondary-container": "#bab8b9",
+                        "secondary-fixed": "#e5e2e3",
+                        "on-surface-variant": "#ddc1ae",
+                        "secondary": "#c8c6c7",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "error": "#ffb4ab",
+                        "on-primary-container": "#623200",
+                        "secondary-fixed-dim": "#c8c6c7",
+                        "on-primary-fixed": "#2f1500",
+                        "primary-fixed-dim": "#ffb77d",
+                        "primary": "#ffb77d",
+                        "outline": "#a48c7a",
+                        "tertiary": "#c8c6c5",
+                        "on-error": "#690005",
+                        "on-primary": "#4d2600",
+                        "on-primary-fixed-variant": "#6e3900",
+                        "surface-container-highest": "#353534",
+                        "on-background": "#e5e2e1",
+                        "secondary-container": "#4a494a",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-high": "#2a2a2a",
+                        "surface-dim": "#131313",
+                        "surface-bright": "#393939",
+                        "on-tertiary": "#303030",
+                        "inverse-primary": "#904d00",
+                        "surface": "#131313",
+                        "surface-variant": "#353534",
+                        "primary-fixed": "#ffdcc3",
                         "surface-container-low": "#1c1b1b",
-                        "inverse-primary": "#a63b00",
-                        "secondary-fixed-dim": "#ffba20"
+                        "on-surface": "#e5e2e1"
                     },
-                    "borderRadius": {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
+                    borderRadius: {
+                        DEFAULT: "0.25rem",
+                        lg: "0.5rem",
+                        xl: "0.75rem",
+                        full: "9999px"
                     },
-                    "spacing": {
+                    spacing: {
                         "stack-md": "16px",
-                        "gutter": "24px",
-                        "stack-lg": "32px",
-                        "margin-desktop": "64px",
+                        "margin-desktop": "40px",
                         "unit": "4px",
+                        "gutter": "24px",
                         "stack-sm": "8px",
-                        "margin-mobile": "16px"
+                        "margin-mobile": "16px",
+                        "stack-lg": "32px"
                     },
-                    "fontFamily": {
-                        "headline-xl": ["Hanken Grotesk"],
+                    fontFamily: {
+                        "body-md": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"],
                         "headline-lg": ["Hanken Grotesk"],
-                        "title-md": ["Hanken Grotesk"],
-                        "label-caps": ["Hanken Grotesk"],
-                        "code-md": ["Courier Prime"],
+                        "headline-sm": ["Hanken Grotesk"],
                         "body-lg": ["Hanken Grotesk"],
+                        "label-sm": ["Courier Prime"],
                         "headline-lg-mobile": ["Hanken Grotesk"],
-                        "body-md": ["Hanken Grotesk"]
+                        "label-md": ["Courier Prime"]
                     },
-                    "fontSize": {
-                        "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
-                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
-                        "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
-                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700"}],
-                        "code-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
-                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
-                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
-                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    fontSize: {
+                        "body-md": ["16px", { lineHeight: "1.5", fontWeight: "400" }],
+                        "headline-md": ["32px", { lineHeight: "1.2", fontWeight: "700" }],
+                        "headline-lg": ["48px", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "800" }],
+                        "headline-sm": ["24px", { lineHeight: "1.2", fontWeight: "700" }],
+                        "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],
+                        "label-sm": ["12px", { lineHeight: "1.2", fontWeight: "400" }],
+                        "headline-lg-mobile": ["32px", { lineHeight: "1.1", fontWeight: "800" }],
+                        "label-md": ["14px", { lineHeight: "1.2", letterSpacing: "0.05em", fontWeight: "400" }]
                     }
                 }
             }
-        }
+        };
     </script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;700;800&amp;family=Courier+Prime:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <style>
-        body { background-color: #131313; color: #e5e2e1; overflow-x: hidden; }
-        .industrial-border { border: 2px solid #2E2E2E; position: relative; }
-        .industrial-border::before { content: ''; position: absolute; top: -2px; left: -2px; right: -2px; bottom: -2px; border: 1px solid #5b4137; pointer-events: none; }
-        .safety-stripe { background: repeating-linear-gradient(45deg, #feb700, #feb700 10px, #131313 10px, #131313 20px); }
-        .scanline { position: fixed; top: 0; left: 0; width: 100%; height: 2px; background: rgba(255, 140, 0, 0.1); animation: scan 8s linear infinite; pointer-events: none; z-index: 100; }
-        @keyframes scan { 0% { top: 0; } 100% { top: 100%; } }
-        .bolt { width: 8px; height: 8px; background: #2E2E2E; border-radius: 50%; border: 1px solid #5b4137; }
-        .terminal-glow { text-shadow: 0 0 10px rgba(255, 140, 0, 0.4); }
-        .active-scale:active { transform: scale(0.98); transition: transform 0.1s ease-out; }
+        body { font-family: 'Hanken Grotesk', sans-serif; background-color: #131313; color: #e5e2e1; }
+        .mono { font-family: 'Courier Prime', monospace; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 1, 'wght' 400; }
+        
+        .industrial-glow { box-shadow: 0 0 40px rgba(255, 140, 0, 0.15); }
+        .seal-glow { filter: drop-shadow(0 0 30px rgba(255, 140, 0, 0.4)); }
+        
+        /* Utility styles for Industrial-Brutalist look */
+        .card-shadow { box-shadow: 4px 4px 0px 0px #0E0E0F; }
+        .card-border { border: 1px solid rgba(255, 255, 255, 0.05); }
+        
+        /* Mobile specific fixes */
+        .h-safe-screen { height: 100vh; /* Fallback */ height: 100dvh; }
     </style>
 </head>
-<body class="font-body-md text-body-md selection:bg-primary selection:text-on-primary">
-<div class="scanline"></div>
-<!-- Navigation Shell -->
-<nav class="fixed top-0 w-full z-50 bg-surface border-b-2 border-surface-container-highest flex justify-between items-center px-gutter md:px-margin-desktop h-16 max-w-[1440px] mx-auto">
-<div class="flex items-center gap-4">
-<span class="material-symbols-outlined text-primary cursor-pointer" data-icon="menu">menu</span>
-<span class="font-headline-md text-headline-md font-bold text-primary tracking-tighter uppercase font-headline-xl">WORKERS GUILD CONSOLE</span>
+<body class="bg-background text-on-background min-h-screen flex flex-col items-center justify-center p-margin-mobile md:hidden">
+<!-- Top Status Bar Indicator (Simulated) -->
+<!-- Central Gateway Content -->
+<main class="w-full max-w-md flex flex-col items-center gap-stack-lg mt-stack-lg pb-margin-mobile">
+<!-- Header / Seal Area -->
+<header class="flex flex-col items-center text-center gap-stack-sm w-full relative">
+<div class="relative w-48 h-48 mb-stack-md flex items-center justify-center">
+<!-- Background glow pulse effect -->
+<div class="absolute inset-0 bg-primary-container opacity-20 rounded-full blur-2xl animate-pulse"></div>
+<img alt="Guild Brand Seal" class="w-full h-full object-contain seal-glow relative z-10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCrJFy2LrB5ZG4Hj-tjmO1ql0lqf-33qP5YGs8XvXzaJD-gJgtz61UlQGlFBv_J_ojD3XfzUGfQ9AaEDeali7wtiwgnxmuizIWSF8wSxlOZBTB98qHtzUleNLbDSYNuIAuKS4bQESQYlM6TYfcK-3JDOLXC5scneAhbXpMCLWykie0U1cez7sCe5ljrqxqOWOO7zhFgBsFBJOf1WCF6Yt3NzK9A8YlgrMJZON8DUvk_ljpE8ddbOIZjBj_oJTqL7sUyQ"/>
 </div>
-<div class="flex items-center gap-6">
-<div class="hidden md:flex gap-8">
-<a class="font-label-caps text-label-caps text-primary hover:text-primary transition-colors" href="index.html">DASHBOARD</a>
-<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="admin.html">TERMINALS</a>
-<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="#">PROTOCOLS</a>
-</div>
-<div class="w-10 h-10 bg-surface-container-highest border border-outline rounded-full flex items-center justify-center overflow-hidden">
-<img alt="User profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOQWQH2DxLZBMcvyauIi44UXBrJ6EGtZj3b1seYkuGh7z8PnB3ClZWIfw-8s2fWXHKKT2vXjE6H1_YlBClDueK7sHCpSl1It9QEIcMV8vBjm4fqDf8sHbNUbGVUJ0xVLFNoGmiSycokyw3s83vqH1FUBdOkeOpzBTp6FnpuRVCsWsp3OWP70sdwf0ExBrfw5dZuzX3RSkQIe73bJFdIc7KXidn3Vxm4PuE-QQJ0sVe-CVeGgiNLLb-iXE_mPWPuxviz8BCjBYhQ-M"/>
-</div>
-</div>
-</nav>
-<!-- Main Content Canvas -->
-<main class="pt-24 pb-32 px-gutter md:px-margin-desktop max-w-[1440px] mx-auto min-h-screen">
-<!-- Header / Identity Section -->
-<header class="mb-stack-lg relative industrial-border bg-surface-container-low p-6 flex flex-col items-center text-center gap-8">
-<div class="absolute top-2 left-2 bolt"></div>
-<div class="absolute top-2 right-2 bolt"></div>
-<div class="absolute bottom-2 left-2 bolt"></div>
-<div class="absolute bottom-2 right-2 bolt"></div>
-<div class="flex flex-col gap-2">
-<div class="flex items-center justify-center gap-3">
-<span class="px-2 py-0.5 bg-primary text-on-primary font-label-caps text-label-caps rounded-sm">SYSTEM: REFRESHED</span>
-<span class="px-2 py-0.5 bg-secondary-container text-on-secondary-container font-label-caps text-label-caps rounded-sm">PILOT: READY</span>
-</div>
-<h1 class="font-headline-xl text-headline-xl text-on-surface uppercase terminal-glow">Guild System Gateway</h1>
-<p class="font-code-md text-code-md text-on-surface-variant">Uptime: 2,431 hrs | Latency: 12ms | Security: Level Alpha | Status: Refreshed</p>
-</div>
-<div class="w-32 h-32 md:w-48 md:h-48 relative">
-<img alt="Workers Guild Logo" class="w-full h-full object-contain filter drop-shadow-[0_0_15px_rgba(255,140,0,0.3)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzYqvq8IbyX2ijhn7Wo77Qrjdqqm7yvSF7x0l3TMCTPo6KstAQzhDPxgo6vBxr9gpdBNEdJHSHfD7yHLrOVa83Io8qRxa-Zda3lghQI9njB2Dd6PWVdVwMavP006Bh-l_NnqcUpeKM0L0Li6HkBzUCB8mQL2S-2wYzDWl4gZzeMb1dWcxJbpYPRvoR7mqF-2O9B_VqsRUvJyPvF6wGnSctec426hw0hc1CIeqmrh6KgskGaHeUOl-3UjHAAljMIddCYUS72PUTy-0"/>
-</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary tracking-tighter uppercase mb-unit">Guild Gateway</h1>
 </header>
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
-<!-- Core Terminals Grid (Left Column) -->
-<section class="lg:col-span-8 space-y-stack-lg">
-<div class="flex items-center gap-4 mb-stack-sm">
-<div class="h-[2px] flex-grow bg-primary shadow-[0_0_10px_rgba(255,140,0,0.5)]"></div>
-<h2 class="font-label-caps text-label-caps text-primary tracking-widest uppercase">Core Terminals</h2>
-<div class="h-[2px] w-12 bg-primary shadow-[0_0_10px_rgba(255,140,0,0.5)]"></div>
+<!-- Terminals Stack -->
+<nav class="w-full flex flex-col gap-stack-md">
+<!-- Terminal 1: Affiliate -->
+<a class="w-full bg-surface-container border card-border card-shadow flex items-stretch text-left group active:translate-y-[2px] active:shadow-none transition-all focus:outline-none focus:border-primary" href="recruitment.html"><div class="bg-surface-variant w-12 flex flex-col items-center justify-center border-r card-border"><span class="mono text-[10px] text-on-surface-variant transform -rotate-90 whitespace-nowrap tracking-widest uppercase">Trmnl 01</span></div><div class="flex-1 p-stack-md flex items-center justify-between"><div><span class="mono text-label-sm text-primary mb-unit block">ACTIVATE</span><h2 class="font-headline-sm text-headline-sm uppercase text-on-surface">Affiliate</h2></div><span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform">arrow_forward</span></div></a>
+<!-- Terminal 2: Craftsman -->
+<a class="w-full bg-surface-container border card-border card-shadow flex items-stretch text-left group active:translate-y-[2px] active:shadow-none transition-all focus:outline-none focus:border-primary" href="profile.html"><div class="bg-surface-variant w-12 flex flex-col items-center justify-center border-r card-border"><span class="mono text-[10px] text-on-surface-variant transform -rotate-90 whitespace-nowrap tracking-widest uppercase">Trmnl 02</span></div><div class="flex-1 p-stack-md flex items-center justify-between"><div><span class="mono text-label-sm text-primary mb-unit block">ACTIVATE</span><h2 class="font-headline-sm text-headline-sm uppercase text-on-surface">Craftsman</h2></div><span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform">arrow_forward</span></div></a>
+<!-- Terminal 3: Poster -->
+<a class="w-full bg-surface-container border card-border card-shadow flex items-stretch text-left group active:translate-y-[2px] active:shadow-none transition-all focus:outline-none focus:border-primary" href="client-dashboard.html"><div class="bg-surface-variant w-12 flex flex-col items-center justify-center border-r card-border"><span class="mono text-[10px] text-on-surface-variant transform -rotate-90 whitespace-nowrap tracking-widest uppercase">Trmnl 03</span></div><div class="flex-1 p-stack-md flex items-center justify-between"><div><span class="mono text-label-sm text-primary mb-unit block">ACTIVATE JOB POSTING</span><h2 class="font-headline-sm text-headline-sm uppercase text-on-surface">Job Posting</h2></div><span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform">arrow_forward</span></div></a>
+<!-- Terminal 4: Tool Rental (Locked) -->
+<button class="w-full bg-surface-dim border card-border opacity-50 flex items-stretch text-left cursor-not-allowed" disabled="">
+<div class="bg-surface-lowest w-12 flex flex-col items-center justify-center border-r card-border">
+<span class="mono text-[10px] text-on-surface-variant/50 transform -rotate-90 whitespace-nowrap tracking-widest uppercase">Trmnl 04</span>
 </div>
-<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4">
-<!-- Dashboard -->
-<a class="group block industrial-border bg-surface-container hover:bg-surface-container-highest transition-all duration-300 p-6 relative overflow-hidden active-scale" href="dashboard.html">
-<div class="absolute top-0 left-0 w-1 h-full bg-primary transform -translate-x-full group-hover:translate-x-0 transition-transform"></div>
-<div class="flex justify-between items-start mb-4">
-<span class="material-symbols-outlined text-primary text-4xl" data-icon="dashboard">dashboard</span>
-<span class="font-code-md text-code-md text-on-surface-variant opacity-50">#T-263</span>
+<div class="flex-1 p-stack-md flex items-center justify-between opacity-50">
+<div>
+<span class="mono text-label-sm text-error mb-unit block">Trmnl 04</span>
+<h2 class="font-headline-sm text-headline-sm uppercase text-on-surface-variant">Tool Rental</h2>
 </div>
-<h3 class="font-title-md text-title-md text-on-surface uppercase group-hover:text-primary transition-colors">Dashboard</h3>
-<p class="mt-2 text-on-surface-variant font-body-md opacity-80">Real-time ecosystem metrics and activity streams.</p>
-<div class="mt-4 flex items-center text-primary font-label-caps text-label-caps gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                        INITIALIZE CONNECTION <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+<span class="material-symbols-outlined text-on-surface-variant">lock</span>
 </div>
-</a>
-<!-- Professional Profile -->
-<a class="group block industrial-border bg-surface-container hover:bg-surface-container-highest transition-all duration-300 p-6 relative overflow-hidden active-scale" href="profile.html">
-<div class="absolute top-0 left-0 w-1 h-full bg-secondary-container transform -translate-x-full group-hover:translate-x-0 transition-transform"></div>
-<div class="flex justify-between items-start mb-4">
-<span class="material-symbols-outlined text-secondary-container text-4xl" data-icon="account_circle">account_circle</span>
-<span class="font-code-md text-code-md text-on-surface-variant opacity-50">#T-234</span>
-</div>
-<h3 class="font-title-md text-title-md text-on-surface uppercase group-hover:text-secondary-container transition-colors">Professional Profile</h3>
-<p class="mt-2 text-on-surface-variant font-body-md opacity-80">Credential management and guild status verification.</p>
-<div class="mt-4 flex items-center text-secondary-container font-label-caps text-label-caps gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                        LOAD IDENTITY <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
-</div>
-</a>
-<!-- Affiliate Master Console -->
-<a class="group block industrial-border bg-surface-container hover:bg-surface-container-highest transition-all duration-300 p-6 relative overflow-hidden active-scale" href="recruitment.html">
-<div class="absolute top-0 left-0 w-1 h-full bg-tertiary-container transform -translate-x-full group-hover:translate-x-0 transition-transform"></div>
-<div class="flex justify-between items-start mb-4">
-<span class="material-symbols-outlined text-tertiary-container text-4xl" data-icon="hub">hub</span>
-<span class="font-code-md text-code-md text-on-surface-variant opacity-50">#T-228</span>
-</div>
-<h3 class="font-title-md text-title-md text-on-surface uppercase group-hover:text-tertiary-container transition-colors">Recruitment</h3>
-<p class="mt-2 text-on-surface-variant font-body-md opacity-80">Network expansion and referral orchestration.</p>
-<div class="mt-4 flex items-center text-tertiary-container font-label-caps text-label-caps gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                        ACCESS NETWORK <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
-</div>
-</a>
-<!-- Admin Distribution Vault -->
-<a class="group block industrial-border bg-surface-container hover:bg-surface-container-highest transition-all duration-300 p-6 relative overflow-hidden active-scale" href="admin.html">
-<div class="absolute top-0 left-0 w-1 h-full bg-on-tertiary-container transform -translate-x-full group-hover:translate-x-0 transition-transform"></div>
-<div class="flex justify-between items-start mb-4">
-<span class="material-symbols-outlined text-primary text-4xl" data-icon="token">token</span>
-<span class="font-code-md text-code-md text-on-surface-variant opacity-50">#T-139</span>
-</div>
-<h3 class="font-title-md text-title-md text-on-surface uppercase group-hover:text-primary transition-colors">Admin Area</h3>
-<p class="mt-2 text-on-surface-variant font-body-md opacity-80">High-level resource allocation and governance.</p>
-<div class="mt-4 flex items-center text-primary font-label-caps text-label-caps gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                        UNLOCK VAULT <span class="material-symbols-outlined text-sm" data-icon="lock_open">lock_open</span>
-</div>
-</a>
-<!-- Payouts -->
-<a class="group block industrial-border bg-surface-container hover:bg-surface-container-highest transition-all duration-300 p-6 relative overflow-hidden active-scale" href="payouts.html">
-<div class="absolute top-0 left-0 w-1 h-full bg-primary transform -translate-x-full group-hover:translate-x-0 transition-transform"></div>
-<div class="flex justify-between items-start mb-4">
-<span class="material-symbols-outlined text-primary text-4xl" data-icon="payments">payments</span>
-<span class="font-code-md text-code-md text-on-surface-variant opacity-50">#T-442</span>
-</div>
-<h3 class="font-title-md text-title-md text-on-surface uppercase group-hover:text-primary transition-colors">Payouts</h3>
-<p class="mt-2 text-on-surface-variant font-body-md opacity-80">View transaction history and manage payouts.</p>
-<div class="mt-4 flex items-center text-primary font-label-caps text-label-caps gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                        ACCESS RECORDS <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
-</div>
-</a>
-</div>
-</section>
-<!-- System Protocols (Right Column) -->
-<aside class="lg:col-span-4 space-y-stack-lg">
-<div class="industrial-border bg-surface-container-low p-6 flex flex-col gap-6">
-<h2 class="font-label-caps text-label-caps text-primary border-b border-outline-variant pb-2 uppercase tracking-widest">System Protocols</h2>
-<div class="space-y-4">
-<!-- Job Dispatch -->
-<a class="flex items-center justify-between p-3 border border-outline-variant hover:bg-surface-variant transition-colors group active-scale" href="{{DATA:SCREEN:SCREEN_224}}">
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-secondary-container" data-icon="assignment_late">assignment_late</span>
-<span class="font-label-caps text-label-caps">JOB DISPATCH</span>
-</div>
-<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
-</a>
-<!-- Workforce Matrix -->
-<a class="flex items-center justify-between p-3 border border-outline-variant hover:bg-surface-variant transition-colors group active-scale" href="{{DATA:SCREEN:SCREEN_258}}">
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-secondary-container" data-icon="groups">groups</span>
-<span class="font-label-caps text-label-caps">WORKFORCE MATRIX</span>
-</div>
-<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
-</a>
-<!-- Payroll Audit -->
-<a class="flex items-center justify-between p-3 border border-outline-variant hover:bg-surface-variant transition-colors group active-scale" href="payouts.html">
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-secondary-container" data-icon="payments">payments</span>
-<span class="font-label-caps text-label-caps">PAYROLL AUDIT</span>
-</div>
-<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
-</a>
-<!-- Guild Shield -->
-<a class="flex items-center justify-between p-3 border border-outline-variant hover:bg-surface-variant transition-colors group active-scale" href="{{DATA:SCREEN:SCREEN_13}}">
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-secondary-container" data-icon="shield">shield</span>
-<span class="font-label-caps text-label-caps">GUILD SHIELD</span>
-</div>
-<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
-</a>
-</div>
-<div class="mt-4 p-4 bg-surface-container-highest border-l-4 border-error">
-<p class="font-code-md text-code-md text-error font-bold flex items-center gap-2">
-<span class="material-symbols-outlined text-sm" data-icon="warning">warning</span> ALERT: 3 PENDING AUDITS
-                    </p>
-</div>
-</div>
-</aside>
-</div>
-<!-- Strategy & Docs Section -->
-<section class="mt-stack-lg">
-<div class="flex items-center gap-4 mb-stack-md">
-<div class="h-[2px] w-12 bg-outline-variant"></div>
-<h2 class="font-label-caps text-label-caps text-secondary-container tracking-widest uppercase">Launch Strategy &amp; Docs</h2>
-<div class="h-[2px] flex-grow bg-outline-variant"></div>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-<!-- SEO Engine -->
-<a class="industrial-border p-6 bg-surface-container-high hover:border-primary transition-colors group active-scale block" href="{{DATA:SCREEN:SCREEN_191}}">
-<div class="flex items-center gap-4 mb-4">
-<div class="p-2 bg-surface-container-highest rounded border border-outline-variant">
-<span class="material-symbols-outlined text-primary" data-icon="search_insights">search_insights</span>
-</div>
-<h4 class="font-title-md text-title-md uppercase">SEO Engine</h4>
-</div>
-<p class="font-body-md text-on-surface-variant opacity-80">Optimize guild visibility across the digital frontier.</p>
-</a>
-<!-- Marketing Templates -->
-<a class="industrial-border p-6 bg-surface-container-high hover:border-primary transition-colors group active-scale block" href="{{DATA:SCREEN:SCREEN_305}}">
-<div class="flex items-center gap-4 mb-4">
-<div class="p-2 bg-surface-container-highest rounded border border-outline-variant">
-<span class="material-symbols-outlined text-primary" data-icon="campaign">campaign</span>
-</div>
-<h4 class="font-title-md text-title-md uppercase">Marketing Templates</h4>
-</div>
-<p class="font-body-md text-on-surface-variant opacity-80">Pre-loaded assets for field operative outreach.</p>
-</a>
-<!-- Master TOS -->
-<a class="industrial-border p-6 bg-surface-container-high hover:border-primary transition-colors group active-scale block" href="{{DATA:SCREEN:SCREEN_354}}">
-<div class="flex items-center gap-4 mb-4">
-<div class="p-2 bg-surface-container-highest rounded border border-outline-variant">
-<span class="material-symbols-outlined text-primary" data-icon="gavel">gavel</span>
-</div>
-<h4 class="font-title-md text-title-md uppercase">Master TOS</h4>
-</div>
-<p class="font-body-md text-on-surface-variant opacity-80">Legal framework and arbitration protocols.</p>
-</a>
-</div>
-</section>
-<!-- Aesthetic Footer Block -->
-<footer class="mt-stack-lg border-t-2 border-outline-variant pt-stack-md flex flex-col md:flex-row justify-between items-center opacity-60 grayscale hover:grayscale-0 transition-all">
-<div class="font-code-md text-code-md" id="terminal-clock">PROPERTY OF THE WORKERS GUILD COOPERATIVE © 2024</div>
-<div class="flex gap-4 mt-4 md:mt-0">
-<span class="px-3 py-1 bg-surface-container-highest font-label-caps text-label-caps border border-outline-variant">ID: {{DATA:SCREEN:SCREEN_74}}</span>
-<span class="px-3 py-1 bg-surface-container-highest font-label-caps text-label-caps border border-outline-variant">LOC: MAIN_HUB_7</span>
-</div>
-</footer>
-</main>
-<!-- Bottom Navigation Shell (For Mobile) -->
-<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 bg-surface-container-high flex justify-around items-center h-20 px-4 pb-2 border-t-2 border-outline-variant shadow-[0_-4px_10px_rgba(255,140,0,0.1)]">
-<a class="flex flex-col items-center justify-center text-primary font-bold scale-110 active-scale transition-all duration-200" href="{{DATA:SCREEN:SCREEN_224}}">
-<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
-<span class="font-label-caps text-label-caps">Status</span>
-</a>
-<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:opacity-100 active-scale transition-all duration-200" href="{{DATA:SCREEN:SCREEN_258}}">
-<span class="material-symbols-outlined" data-icon="share">share</span>
-<span class="font-label-caps text-label-caps">Links</span>
-</a>
-<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:opacity-100 active-scale transition-all duration-200" href="{{DATA:SCREEN:SCREEN_234}}">
-<span class="material-symbols-outlined" data-icon="lock_open">lock_open</span>
-<span class="font-label-caps text-label-caps">Chest</span>
-</a>
-<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:opacity-100 active-scale transition-all duration-200" href="#">
-<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
-<span class="font-label-caps text-label-caps">Wallet</span>
-</a>
+</button>
 </nav>
-<script>
-    // Visual indicator for interactive industrial borders
-    const cards = document.querySelectorAll('.industrial-border');
-    cards.forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            card.style.borderColor = '#ff8c00';
-        });
-        card.addEventListener('mouseleave', () => {
-            card.style.borderColor = '#2E2E2E';
-        });
-    });
-
-    // Initialize simple terminal clock
-    setInterval(() => {
-        const footerDate = document.getElementById('terminal-clock');
-        if (footerDate) {
-            const now = new Date();
-            const timeStr = now.toTimeString().split(' ')[0];
-            footerDate.innerHTML = `PROPERTY OF THE WORKERS GUILD COOPERATIVE © 2024 | T-${timeStr}`;
-        }
-    }, 1000);
-</script>
+<!-- Action / Override Button -->
+</main>
+<!-- Footer -->
+<footer class="w-full border-t card-border mt-auto pt-stack-md pb-stack-lg text-center flex flex-col items-center"><span class="mono text-label-sm text-on-surface-variant opacity-70">V0.1 // 2026 // WORKERS GUILD</span></footer>
 </body></html>
