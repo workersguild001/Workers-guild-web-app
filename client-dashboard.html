@@ -3,418 +3,226 @@
 <html class="dark" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Guild Terminal - Client Dashboard</title>
+<title>GUILD_JOBS - The Workers Guild</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&amp;family=Hanken+Grotesk:wght@400;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;700;800&amp;family=Courier+Prime&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@100..900&amp;family=Hanken+Grotesk:wght@100..900&amp;display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
         tailwind.config = {
-          darkMode: "class",
-          theme: {
-            extend: {
-              "colors": {
-                      "tertiary-container": "#aba9a9",
-                      "error": "#ffb4ab",
-                      "secondary-fixed-dim": "#c8c6c7",
-                      "on-tertiary-container": "#3e3e3e",
-                      "on-error-container": "#ffdad6",
-                      "on-surface-variant": "#ddc1ae",
-                      "secondary-fixed": "#e5e2e3",
-                      "primary-fixed-dim": "#ffb77d",
-                      "surface-dim": "#131313",
-                      "on-secondary": "#313031",
-                      "outline-variant": "#564334",
-                      "on-secondary-fixed": "#1c1b1c",
-                      "on-tertiary-fixed": "#1b1c1c",
-                      "primary-container": "#ff8c00",
-                      "inverse-on-surface": "#313030",
-                      "on-tertiary-fixed-variant": "#474746",
-                      "on-error": "#690005",
-                      "surface-container-low": "#1c1b1b",
-                      "inverse-primary": "#904d00",
-                      "secondary": "#c8c6c7",
-                      "surface-container-highest": "#353534",
-                      "on-surface": "#e5e2e1",
-                      "inverse-surface": "#e5e2e1",
-                      "tertiary-fixed": "#e4e2e1",
-                      "on-primary-fixed-variant": "#6e3900",
-                      "on-tertiary": "#303030",
-                      "surface-container-lowest": "#0e0e0e",
-                      "surface-tint": "#ffb77d",
-                      "surface-container-high": "#2a2a2a",
-                      "on-background": "#e5e2e1",
-                      "surface-bright": "#393939",
-                      "primary": "#ffb77d",
-                      "on-secondary-container": "#bab8b9",
-                      "surface-variant": "#353534",
-                      "on-primary-container": "#623200",
-                      "error-container": "#93000a",
-                      "primary-fixed": "#ffdcc3",
-                      "secondary-container": "#4a494a",
-                      "surface-container": "#201f1f",
-                      "outline": "#a48c7a",
-                      "on-primary-fixed": "#2f1500",
-                      "on-secondary-fixed-variant": "#474647",
-                      "on-primary": "#4d2600",
-                      "background": "#131313",
-                      "surface": "#131313",
-                      "tertiary": "#c8c6c5",
-                      "tertiary-fixed-dim": "#c8c6c5"
-              },
-              "borderRadius": {
-                      "DEFAULT": "0.25rem",
-                      "lg": "0.5rem",
-                      "xl": "0.75rem",
-                      "full": "9999px"
-              },
-              "spacing": {
-                      "stack-md": "16px",
-                      "margin-desktop": "40px",
-                      "gutter": "24px",
-                      "stack-sm": "8px",
-                      "unit": "4px",
-                      "stack-lg": "32px",
-                      "margin-mobile": "16px"
-              },
-              "fontFamily": {
-                      "headline-lg-mobile": ["Hanken Grotesk"],
-                      "label-md": ["Courier Prime"],
-                      "body-lg": ["Hanken Grotesk"],
-                      "headline-md": ["Hanken Grotesk"],
-                      "label-sm": ["Courier Prime"],
-                      "headline-lg": ["Hanken Grotesk"],
-                      "headline-sm": ["Hanken Grotesk"],
-                      "body-md": ["Hanken Grotesk"]
-              },
-              "fontSize": {
-                      "headline-lg-mobile": ["32px", {"lineHeight": "1.1", "fontWeight": "800"}],
-                      "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "400"}],
-                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
-                      "headline-md": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
-                      "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "400"}],
-                      "headline-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}],
-                      "headline-sm": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
-                      "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}]
-              }
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-tertiary-fixed-variant": "#474746",
+                        "secondary-fixed-dim": "#c8c6c7",
+                        "tertiary-fixed": "#e4e2e1",
+                        "secondary": "#c8c6c7",
+                        "primary-fixed-dim": "#ffb77d",
+                        "on-secondary-fixed": "#1c1b1c",
+                        "error-container": "#93000a",
+                        "inverse-surface": "#e5e2e1",
+                        "primary-fixed": "#ffdcc3",
+                        "on-surface": "#e5e2e1",
+                        "on-secondary": "#313031",
+                        "surface": "#131313",
+                        "surface-container-high": "#2a2a2a",
+                        "on-background": "#e5e2e1",
+                        "surface-dim": "#131313",
+                        "on-primary-fixed": "#2f1500",
+                        "primary-container": "#ff8c00",
+                        "surface-bright": "#393939",
+                        "surface-variant": "#353534",
+                        "on-secondary-fixed-variant": "#474647",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "surface-container-highest": "#353534",
+                        "on-error-container": "#ffdad6",
+                        "background": "#131313",
+                        "inverse-primary": "#904d00",
+                        "primary": "#ffb77d",
+                        "on-secondary-container": "#bab8b9",
+                        "secondary-container": "#4a494a",
+                        "on-tertiary": "#303030",
+                        "surface-container": "#201f1f",
+                        "surface-container-low": "#1c1b1b",
+                        "on-error": "#690005",
+                        "outline": "#a48c7a",
+                        "tertiary-fixed-dim": "#c8c6c5",
+                        "inverse-on-surface": "#313030",
+                        "surface-container-lowest": "#0e0e0e",
+                        "secondary-fixed": "#e5e2e3",
+                        "tertiary-container": "#aba9a9",
+                        "surface-tint": "#ffb77d",
+                        "on-surface-variant": "#ddc1ae",
+                        "on-primary": "#4d2600",
+                        "tertiary": "#c8c6c5",
+                        "on-tertiary-container": "#3e3e3e",
+                        "on-primary-fixed-variant": "#6e3900",
+                        "outline-variant": "#564334",
+                        "on-primary-container": "#623200",
+                        "error": "#ffb4ab"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "unit": "4px",
+                        "gutter": "24px",
+                        "stack-lg": "32px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "40px",
+                        "stack-sm": "8px",
+                        "stack-md": "16px"
+                    },
+                    fontFamily: {
+                        "headline-md": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "label-sm": ["Courier Prime"],
+                        "headline-sm": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "label-md": ["Courier Prime"]
+                    },
+                    fontSize: {
+                        "headline-md": ["32px", { lineHeight: "1.2", fontWeight: "700" }],
+                        "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],
+                        "label-sm": ["12px", { lineHeight: "1.2", fontWeight: "400" }],
+                        "headline-sm": ["24px", { lineHeight: "1.2", fontWeight: "700" }],
+                        "body-md": ["16px", { lineHeight: "1.5", fontWeight: "400" }],
+                        "headline-lg-mobile": ["32px", { lineHeight: "1.1", fontWeight: "800" }],
+                        "headline-lg": ["48px", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "800" }],
+                        "label-md": ["14px", { lineHeight: "1.2", letterSpacing: "0.05em", fontWeight: "400" }]
+                    }
+                }
             }
-          }
         }
     </script>
 <style>
-        .blueprint-bg {
+        .industrial-card {
             background-color: #131313;
-            background-image: 
-                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-            background-size: 24px 24px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 4px 4px 0px 0px #0E0E0F;
         }
-        
-        .industrial-shadow {
-            box-shadow: 4px 4px 0px 0px #0e0e0f;
+        .btn-primary {
+            background-color: #FF8C00;
+            color: #000;
+            font-family: 'Hanken Grotesk', sans-serif;
+            font-weight: 700;
+            border-radius: 0;
+            box-shadow: 4px 4px 0px 0px #0E0E0F;
+            transition: all 0.1s ease;
         }
-        
-        .industrial-shadow-hover:hover {
-            box-shadow: 0px 0px 0px 0px #0e0e0f;
+        .btn-primary:hover {
+            box-shadow: 0px 0px 0px 0px #0E0E0F;
             transform: translate(4px, 4px);
         }
-        
-        .focal-glow {
-            position: relative;
+        .btn-secondary {
+            background-color: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #e5e2e1;
+            font-family: 'Courier Prime', monospace;
+            border-radius: 0;
         }
-        
-        .focal-glow::before {
-            content: '';
-            position: absolute;
-            inset: -4px;
-            background: rgba(255, 140, 0, 0.15);
-            filter: blur(20px);
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.2s ease;
+        .input-industrial {
+            background-color: #0E0E0F;
+            border: none;
+            border-bottom: 2px solid #2A2A2A;
+            color: #e5e2e1;
+            font-family: 'Courier Prime', monospace;
         }
-        
-        .focal-glow:hover::before {
-            opacity: 1;
+        .input-industrial:focus {
+            border-bottom-color: #FF8C00;
+            outline: none;
+            box-shadow: 0 4px 12px rgba(255, 140, 0, 0.15);
         }
-        
-        /* Hide scrollbar for clean industrial look */
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #131313;
-            border-left: 1px solid rgba(255,255,255,0.05);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #2a2a2a;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #FF8C00;
+        .blueprint-bg {
+            background-image: linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 20px 20px;
         }
     </style>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
-<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col md:flex-row overflow-hidden blueprint-bg">
-<!-- TopAppBar -->
-<header class="bg-surface dark:bg-surface border-b border-white/5 shadow-[4px_4px_0px_0px_#0e0e0f] fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16">
-<div class="font-headline-sm text-headline-sm font-extrabold tracking-tighter text-primary dark:text-primary uppercase">
-            GUILD_TERMINAL
-        </div>
-<div class="flex items-center gap-stack-md text-on-surface-variant">
-<button class="hover:bg-surface-variant transition-colors p-unit rounded-none hover:text-primary flex items-center justify-center">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">qr_code_scanner</span>
-</button>
-<button class="hover:bg-surface-variant transition-colors p-unit rounded-none hover:text-primary flex items-center justify-center relative">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">notifications</span>
-<span class="absolute top-0 right-0 w-2 h-2 bg-primary-container rounded-full shadow-[0_0_8px_rgba(255,140,0,0.8)]"></span>
-</button>
-<button class="hover:bg-surface-variant transition-colors p-unit rounded-none hover:text-primary flex items-center justify-center">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">account_circle</span>
-</button>
+<body class="bg-background text-on-surface font-body-md blueprint-bg min-h-screen flex">
+<!-- SideNavBar -->
+<nav class="hidden lg:flex flex-col h-screen p-gutter gap-4 bg-surface-container dark:bg-surface-container w-64 border-r-2 border-outline-variant fixed left-0 top-0">
+<div class="mb-8">
+<h1 class="text-headline-md font-headline-md text-primary tracking-tighter">THE GUILD</h1>
 </div>
+<div class="mb-8 flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-variant rounded-none border border-white/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface">person</span>
+</div>
+<div>
+<div class="text-label-sm font-label-sm text-primary">MASTER RANK</div>
+<div class="text-body-md font-body-md text-on-surface">SECTOR 7</div>
+</div>
+</div>
+<div class="flex-1 flex flex-col gap-2">
+<a class="flex items-center gap-3 p-3 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-variant transition-all duration-200" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="text-label-tech font-label-tech">STATS</span>
+</a>
+<a class="flex items-center gap-3 p-3 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-variant transition-all duration-200" href="#">
+<span class="material-symbols-outlined">qr_code</span>
+<span class="text-label-tech font-label-tech">GUILD PASS</span>
+</a>
+<a class="flex items-center gap-3 p-3 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-variant transition-all duration-200" href="#">
+<span class="material-symbols-outlined">group_add</span>
+<span class="text-label-tech font-label-tech">RECRUIT</span>
+</a>
+<a class="flex items-center gap-3 p-3 bg-primary text-on-primary font-bold shadow-[0_0_12px_#FF8C00] opacity-80" href="#">
+<span class="material-symbols-outlined">work</span>
+<span class="text-label-tech font-label-tech">JOBS</span>
+</a>
+</div>
+<div class="mt-auto">
+<button class="btn-primary w-full py-3 text-label-md uppercase">GET JOBS</button>
+<a class="flex items-center gap-3 p-3 mt-4 text-on-surface-variant hover:bg-surface-variant transition-all duration-200" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="text-label-tech font-label-tech">LOGOUT</span>
+</a>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-1 lg:ml-64 p-margin-mobile md:p-margin-desktop">
+<!-- TopNavBar (Mobile only) -->
+<header class="flex lg:hidden justify-between items-center w-full pb-margin-mobile border-b-2 border-outline-variant mb-margin-mobile">
+<h1 class="text-headline-sm font-headline-sm font-extrabold text-primary tracking-tighter">THE GUILD</h1>
+<button class="text-on-surface">
+<span class="material-symbols-outlined">menu</span>
+</button>
 </header>
-<!-- SideNavBar (Desktop) -->
-<nav class="bg-surface-container dark:bg-surface-container border-r border-white/5 shadow-[4px_0px_0px_0px_#0e0e0f] h-full w-64 hidden md:flex flex-col fixed left-0 top-16 h-[calc(100vh-64px)] z-40 p-stack-md pt-stack-lg">
-<div class="mb-stack-lg pb-stack-md border-b border-white/5 flex items-center gap-stack-sm">
-<div class="w-10 h-10 bg-surface-variant border border-white/10 flex items-center justify-center industrial-shadow">
-<span class="material-symbols-outlined text-primary">engineering</span>
+<!-- Command Center Header -->
+<div class="mb-stack-lg border-b border-white/5 pb-4">
+<h2 class="text-headline-lg-mobile md:text-headline-lg font-headline-lg uppercase text-on-surface">Work Orders</h2>
+<p class="text-body-lg font-body-lg text-secondary mt-2">Available contracts in your sector. Earn a baseline of -- XP/HR + LVL bonuses on all active work orders.</p>
 </div>
-<div>
-<div class="font-label-md text-label-md text-primary font-bold">OPERATOR_01</div>
-<div class="font-label-sm text-label-sm text-on-surface-variant opacity-70">Verified Client</div>
+<!-- Filters & Search -->
+<div class="industrial-card p-4 mb-stack-lg flex flex-col md:flex-row gap-4">
+<div class="flex-1">
+<label class="block text-label-sm font-label-sm text-secondary mb-1">SYS_QUERY // TRADE</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-secondary">search</span>
+<input class="input-industrial w-full pl-10 py-3 text-body-md focus:ring-0" placeholder="Search trades (e.g., Welding)..." type="text"/>
 </div>
 </div>
-<ul class="flex flex-col gap-unit flex-1">
-<li>
-<a class="flex items-center gap-stack-sm p-stack-sm w-full text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all font-label-md text-label-md rounded-none" href="post-job.html">
-<span class="material-symbols-outlined">add_box</span>
-<span>Post a Job</span>
-</a>
-</li>
-<li>
-<a class="flex items-center gap-stack-sm p-stack-sm w-full bg-primary text-on-primary font-bold shadow-[4px_4px_0px_0px_#0e0e0f] translate-x-1 transition-all font-label-md text-label-md rounded-none focal-glow" href="#">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">format_list_bulleted</span>
-<span>Your Jobs</span>
-</a>
-</li>
-<li>
-<a class="flex items-center gap-stack-sm p-stack-sm w-full text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all font-label-md text-label-md rounded-none" href="#">
-<span class="material-symbols-outlined">verified_user</span>
-<span>Verify Workers</span>
-</a>
-</li>
-<li>
-<a class="flex items-center gap-stack-sm p-stack-sm w-full text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all font-label-md text-label-md rounded-none" href="#">
-<span class="material-symbols-outlined">payments</span>
-<span>Pay Workers</span>
-</a>
-</li>
-</ul>
-<footer class="mt-auto pt-stack-md pb-stack-lg border-t border-white/5">
-<p class="font-label-sm text-label-sm text-on-surface-variant opacity-40 uppercase">VERSION 0.1</p>
-<p class="font-label-sm text-label-sm text-on-surface-variant opacity-40 uppercase mt-1">2026 BUILT BY WORKERS. FOR WORKERS.</p>
+<div class="w-full md:w-64">
+<label class="block text-label-sm font-label-sm text-secondary mb-1">LOC_PARAM // SECTOR</label>
+<select class="input-industrial w-full py-3 px-3 text-body-md focus:ring-0 appearance-none">
+<option>All Sectors</option>
+<option>Sector 7</option>
+<option>Sector 3</option>
+</select>
+</div>
+</div>
+<!-- Work Orders Feed -->
+<div class="grid grid-cols-1 xl:grid-cols-2 gap-6"><div class="col-span-full py-12 text-center border border-dashed border-white/10 bg-surface-container-low"><span class="material-symbols-outlined text-primary text-4xl mb-4 block">terminal</span><p class="text-body-lg font-body-lg text-on-surface uppercase tracking-widest">Loading terminal data...</p><p class="text-label-sm font-label-sm text-secondary mt-2">ESTABLISHING SECURE CONNECTION TO SECTOR NODES</p></div></div>
+<footer class="mt-margin-desktop border-t border-white/5 pt-8 text-center">
+<p class="text-label-sm font-label-sm text-secondary">© 2026 THE WORKERS GUILD. BUILT BY WORKERS. FOR WORKERS.</p>
 </footer>
-</nav>
-<!-- Main Content Canvas -->
-<main class="flex-1 w-full md:ml-64 mt-16 p-margin-mobile md:p-margin-desktop overflow-y-auto h-[calc(100vh-64px)] pb-32 md:pb-margin-desktop">
-<!-- Header Section -->
-<div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-stack-md mb-stack-lg border-b border-white/5 pb-stack-sm">
-<div>
-<div class="font-label-sm text-label-sm text-primary-container mb-unit">OVERVIEW</div>
-<h1 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg font-extrabold uppercase tracking-tight text-on-surface">Main Dashboard</h1>
-</div>
-<div class="relative w-full md:w-auto mt-stack-sm md:mt-0">
-<div class="absolute inset-0 bg-primary-container blur-xl opacity-20 z-0"></div>
-<a class="w-full md:w-auto bg-primary-container text-[#000000] font-headline-sm text-headline-sm font-bold uppercase px-gutter py-stack-sm border border-primary-container industrial-shadow industrial-shadow-hover transition-all relative z-10 flex items-center justify-center gap-stack-sm cursor-pointer" href="post-job.html">
-<span class="material-symbols-outlined font-bold" style="font-variation-settings: 'wght' 700;">add</span>
-                    Post a Job
-                </a>
-</div>
-</div>
-<!-- Metrics Row -->
-<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-stack-lg">
-<!-- Metric 1 -->
-<div class="bg-surface border border-white/5 p-stack-md industrial-shadow relative overflow-hidden group">
-<div class="absolute top-0 right-0 p-unit bg-surface-variant border-l border-b border-white/5 text-on-surface-variant font-label-sm">
-                    METRIC 1
-                </div>
-<div class="font-label-md text-label-md text-on-surface-variant mb-stack-sm uppercase">Your Jobs</div>
-<div class="font-headline-md text-headline-md text-primary font-bold" id="metric-active-jobs">-</div>
-<div class="w-full h-1 bg-surface-variant mt-stack-sm">
-<div class="h-full bg-primary-container w-[0%]" id="metric-active-jobs-bar"></div>
-</div>
-</div>
-<!-- Metric 2 -->
-<div class="bg-surface border border-white/5 p-stack-md industrial-shadow relative overflow-hidden group">
-<div class="absolute top-0 right-0 p-unit bg-surface-variant border-l border-b border-white/5 text-on-surface-variant font-label-sm">
-                    METRIC 2
-                </div>
-<div class="font-label-md text-label-md text-on-surface-variant mb-stack-sm uppercase">New Workers</div>
-<div class="font-headline-md text-headline-md text-on-surface font-bold" id="metric-new-applicants">-</div>
-<div class="font-label-sm text-label-sm text-primary-container mt-unit flex items-center gap-1">
-<span class="material-symbols-outlined text-[16px]">trending_up</span> <span id="metric-applicants-trend">Calculating...</span>
-</div>
-</div>
-<!-- Metric 3 -->
-<div class="bg-surface border border-white/5 p-stack-md industrial-shadow relative overflow-hidden group">
-<div class="absolute top-0 right-0 p-unit bg-surface-variant border-l border-b border-white/5 text-on-surface-variant font-label-sm">
-                    METRIC 3
-                </div>
-<div class="font-label-md text-label-md text-on-surface-variant mb-stack-sm uppercase">Money Spent</div>
-<div class="font-headline-md text-headline-md text-on-surface font-bold font-label-md tracking-widest" id="metric-total-spent">$0<span class="text-on-surface-variant">.00</span></div>
-</div>
-</div>
-<!-- Main Layout Grid -->
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
-<!-- Left Column: Active Jobs (Bento-style list) -->
-<div class="lg:col-span-8 flex flex-col gap-stack-md">
-<div class="flex justify-between items-end border-b border-white/10 pb-unit">
-<h2 class="font-headline-sm text-headline-sm font-bold uppercase text-on-surface">Your Open Jobs</h2>
-<div class="font-label-sm text-label-sm text-on-surface-variant">SORT: NEWEST</div>
-</div>
-<div class="flex flex-col gap-stack-md" id="active-listings-container">
-<!-- Job Cards will be injected here by Supabase JS -->
-<div class="text-on-surface-variant font-label-sm py-stack-md text-center">LOADING JOBS...</div>
-</div>
-</div>
-<!-- Right Column: Applicant Feed -->
-<div class="lg:col-span-4 flex flex-col gap-stack-md">
-<div class="flex justify-between items-end border-b border-white/10 pb-unit">
-<h2 class="font-headline-sm text-headline-sm font-bold uppercase text-on-surface">New Workers Feed</h2>
-<div class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
-<span class="w-2 h-2 bg-primary-container rounded-full animate-pulse"></span> LIVE
-                    </div>
-</div>
-<div class="bg-surface border border-white/5 industrial-shadow p-unit flex flex-col gap-unit h-[500px] overflow-y-auto" id="applicant-feed-container">
-<!-- Applicant Items will be injected here by Supabase JS -->
-<div class="text-on-surface-variant font-label-sm py-stack-md text-center">WAITING FOR WORKERS...</div>
-</div>
-</div>
-</div>
 </main>
-<!-- BottomNavBar (Mobile) -->
-<nav class="bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-white/10 shadow-[0px_-4px_0px_0px_#0e0e0f] docked full-width bottom-0 md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 bg-surface pb-safe">
-<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:text-primary transition-colors w-full h-full" href="post-job.html">
-<span class="material-symbols-outlined mb-1">add_circle</span>
-<span class="font-label-sm text-label-sm-mobile font-label-sm">Post</span>
-</a>
-<a class="flex flex-col items-center justify-center text-primary font-bold scale-110 active:scale-90 transition-transform w-full h-full relative" href="#">
-<div class="absolute inset-0 bg-primary-container blur-md opacity-10 rounded-full w-12 h-12 m-auto z-0"></div>
-<span class="material-symbols-outlined mb-1 relative z-10" style="font-variation-settings: 'FILL' 1;">list_alt</span>
-<span class="font-label-sm text-label-sm-mobile font-label-sm relative z-10">Jobs</span>
-</a>
-<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:text-primary transition-colors w-full h-full" href="#">
-<span class="material-symbols-outlined mb-1">badge</span>
-<span class="font-label-sm text-label-sm-mobile font-label-sm">Verify</span>
-</a>
-<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:text-primary transition-colors w-full h-full" href="#">
-<span class="material-symbols-outlined mb-1">account_balance_wallet</span>
-<span class="font-label-sm text-label-sm-mobile font-label-sm">Pay</span>
-</a>
-</nav>
-<script>
-    // Initialize Supabase Client (Replace with actual credentials)
-    const SUPABASE_URL = 'YOUR_SUPABASE_URL';
-    const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
-    const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
-    async function loadDashboardData() {
-        try {
-            // Fetch Jobs
-            const { data: jobs, error: jobsError } = await supabase
-                .from('jobs')
-                .select('*')
-                .order('created_at', { ascending: false });
-            
-            if (jobsError) throw jobsError;
-
-            // Fetch Applications
-            const { data: applications, error: applicationsError } = await supabase
-                .from('applications')
-                .select('*, jobs(title)')
-                .order('created_at', { ascending: false });
-
-            if (applicationsError) throw applicationsError;
-
-            // Update Metrics
-            document.getElementById('metric-active-jobs').innerText = jobs ? jobs.length : 0;
-            document.getElementById('metric-active-jobs-bar').style.width = jobs ? Math.min(jobs.length * 10, 100) + '%' : '0%';
-            
-            document.getElementById('metric-new-applicants').innerText = applications ? applications.length : 0;
-            document.getElementById('metric-applicants-trend').innerText = 'Live Feed Active';
-
-            // We mock total spent for this example since we need billing data
-            document.getElementById('metric-total-spent').innerHTML = '$0<span class="text-on-surface-variant">.00</span>';
-
-            // Render Jobs
-            const listingsContainer = document.getElementById('active-listings-container');
-            if (jobs && jobs.length > 0) {
-                listingsContainer.innerHTML = jobs.map(job => `
-                    <div class="bg-surface border border-white/5 p-stack-md industrial-shadow relative group hover:border-primary-container/30 transition-colors">
-                        <div class="absolute top-0 left-0 bg-[#2a2a2a] px-2 py-1 font-label-sm text-label-sm text-on-surface-variant border-r border-b border-white/5">
-                            JOB_${job.id || 'NEW'}
-                        </div>
-                        <div class="mt-stack-sm flex flex-col md:flex-row justify-between gap-stack-md">
-                            <div class="flex-1">
-                                <div class="flex items-center gap-stack-sm mb-unit">
-                                    ${job.urgent ? `<span class="bg-primary-container text-[#000] font-label-sm px-1 py-0.5 uppercase font-bold">URGENT</span>` : ''}
-                                    <span class="text-on-surface-variant font-label-sm border border-white/10 px-1 py-0.5">${job.category || 'GENERAL'}</span>
-                                </div>
-                                <h3 class="font-headline-sm text-headline-sm font-bold text-primary">${job.title || 'No Title'}</h3>
-                                <div class="font-label-md text-label-md text-on-surface-variant mt-stack-sm font-label-md">
-                                    TIME: ${job.duration || 'TBD'} // PAY: $${job.budget || 'TBD'}
-                                </div>
-                            </div>
-                            <div class="flex flex-row md:flex-col items-center md:items-end justify-between md:justify-center border-t md:border-t-0 md:border-l border-white/10 pt-stack-sm md:pt-0 md:pl-stack-md min-w-[120px]">
-                                <div class="text-center">
-                                    <div class="font-headline-md text-headline-md text-on-surface">${applications.filter(a => a.job_id === job.id).length || 0}</div>
-                                    <div class="font-label-sm text-label-sm text-on-surface-variant uppercase">Workers</div>
-                                </div>
-                                <button class="mt-stack-sm bg-transparent border border-white/10 text-on-surface hover:text-primary hover:border-primary px-stack-sm py-unit font-label-sm text-label-sm uppercase transition-colors">
-                                    Look
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                `).join('');
-            } else {
-                listingsContainer.innerHTML = '<div class="text-on-surface-variant p-stack-md">NO JOBS FOUND.</div>';
-            }
-
-            // Render Applications Feed
-            const feedContainer = document.getElementById('applicant-feed-container');
-            if (applications && applications.length > 0) {
-                feedContainer.innerHTML = applications.map(app => `
-                    <div class="border-b border-white/5 p-stack-sm hover:bg-[#1a1a1a] transition-colors flex items-center gap-stack-sm">
-                        <div class="w-12 h-12 border border-white/10 bg-surface-variant flex items-center justify-center text-on-surface-variant font-label-sm uppercase">
-                            ${(app.applicant_name || 'U').substring(0,2)}
-                        </div>
-                        <div class="flex-1 min-w-0">
-                            <div class="flex justify-between items-baseline mb-1">
-                                <div class="font-label-md text-label-md font-bold text-on-surface truncate">${app.applicant_name || 'Unknown Worker'}</div>
-                                <div class="font-label-sm text-label-sm text-primary-container">LVL ${app.level || '1'}</div>
-                            </div>
-                            <div class="font-label-sm text-label-sm text-on-surface-variant truncate">${app.role || 'WORKER'} // Wants Job: ${app.jobs?.title || 'Unknown Job'}</div>
-                        </div>
-                    </div>
-                `).join('');
-            } else {
-                feedContainer.innerHTML = '<div class="text-on-surface-variant p-stack-md text-center">NO RECENT WORKERS.</div>';
-            }
-
-        } catch (error) {
-            console.error('Error fetching dashboard data:', error);
-            document.getElementById('active-listings-container').innerHTML = '<div class="text-error p-stack-md">ERROR LOADING JOBS. CHECK CONNECTION.</div>';
-            document.getElementById('applicant-feed-container').innerHTML = '<div class="text-error p-stack-md text-center">ERROR LOADING WORKERS.</div>';
-        }
-    }
-
-    // Call on load
-    document.addEventListener('DOMContentLoaded', loadDashboardData);
-
-    // Optional: Set up Supabase real-time subscriptions here if needed
-</script>
 </body></html>
