@@ -1,196 +1,226 @@
 <!DOCTYPE html>
-<html class="dark" lang="en">
-<head>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>Craftsman Verified | THE WORKERS GUILD</title>
-    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet"/>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#ff8c00',
-                        surface: '#131313',
-                        'surface-container': '#1c1b1b',
-                    },
-                    fontFamily: {
-                        sans: ['Hanken Grotesk', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace'],
-                    },
-                },
-            },
-        }
-    </script>
-    <style>
-        body {
-            background-color: #0e0e0e;
-            background-image: 
-                linear-gradient(rgba(255, 140, 0, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 140, 0, 0.05) 1px, transparent 1px);
-            background-size: 40px 40px;
-            color: #e4e2e1;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
 
-        .terminal-container {
-            width: 100%;
-            max-width: 500px;
-            background: #131313;
-            border: 1px solid #ff8c00;
-            padding: 32px;
-            position: relative;
-            box-shadow: 0 0 40px rgba(0,0,0,0.8);
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Workers Guild - Craftsman Profile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'guild-dark': '#131313',
+            'guild-bronze': '#CD7F32',
+            'guild-orange': '#ff8c00',
+            'guild-green': '#10b981',
+            'guild-red': '#ef4444',
+          },
+          fontFamily: {
+            'industrial': ['"Share Tech Mono"', 'monospace', 'sans-serif'],
+          },
+          boxShadow: {
+            'glow-orange': '0 0 25px 5px rgba(255, 140, 0, 0.4)',
+          }
         }
-
-        .guild-seal {
-            width: 120px;
-            height: 120px;
-            margin-bottom: 24px;
-            filter: drop-shadow(0 0 15px rgba(255, 140, 0, 0.4));
-        }
-
-        .verified-badge {
-            color: #00ff88;
-            font-family: 'JetBrains Mono', monospace;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            justify-content: center;
-            margin-bottom: 24px;
-            border-bottom: 1px solid rgba(255, 140, 0, 0.2);
-            padding-bottom: 16px;
-        }
-
-        .label {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 10px;
-            color: #8e9192;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 4px;
-        }
-
-        .data-value {
-            font-size: 24px;
-            font-weight: 800;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-            letter-spacing: -0.02em;
-        }
-
-        .xp-bar-container {
-            width: 100%;
-            height: 8px;
-            background: #1c1b1b;
-            margin-top: 8px;
-            margin-bottom: 24px;
-        }
-
-        .xp-bar-fill {
-            height: 100%;
-            background: #ff8c00;
-            box-shadow: 0 0 10px rgba(255, 140, 0, 0.5);
-        }
-
-        .skill-tag {
-            border: 1px solid #ff8c00;
-            padding: 4px 12px;
-            font-size: 10px;
-            font-family: 'JetBrains Mono', monospace;
-            text-transform: uppercase;
-            margin-right: 8px;
-            margin-bottom: 8px;
-        }
-
-        .return-btn {
-            margin-top: 32px;
-            width: 100%;
-            border: 1px solid #ff8c00;
-            padding: 16px;
-            font-family: 'JetBrains Mono', monospace;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: all 0.2s;
-            cursor: pointer;
-            text-align: center;
-            display: block;
-        }
-
-        .return-btn:hover {
-            background: #ff8c00;
-            color: #131313;
-        }
-    </style>
+      }
+    }
+  </script>
+<style data-purpose="custom-fonts">
+    @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+    body {
+      font-family: 'Share Tech Mono', monospace;
+    }
+  </style>
+<style data-purpose="background-styles">
+    /* Background setup */
+    .bg-blueprint {
+      background-image: url('https://lh3.googleusercontent.com/aida/AP1WRLstpyaU5YZ76f7vYDkWVBDzfNBDry4NWATVs4El_wJFP9gs3jPPv3Jq9du1vjr-Q0kWvSqmMp-ZVz4cOpWFzpARRxf9KDLXrIWv2v_QuMffk7A9Oy6bfqsB8PROLAtfANPoEL4ht62z3n6NNPhRkLK2CGsgkSOlVA6JKwMLCu1eqsGMY0mDweyq1WBmQsLA9r2XIkAGQtK5fkAJb1Fu346PovdcTSqfi5uFLDWkof5U0PrFgR_b9sktBkU');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      position: relative;
+    }
+    .bg-blueprint::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(19, 19, 19, 0.85); /* guild-dark overlay */
+      z-index: 0;
+    }
+    .content-wrapper {
+      position: relative;
+      z-index: 10;
+    }
+    
+    .blink {
+      animation: blinker 1.5s linear infinite;
+    }
+    @keyframes blinker {
+      50% { opacity: 0; }
+    }
+  </style>
 </head>
-<body>
-
-    <img src="{{DATA:IMAGE:IMAGE_6}}" alt="Guild Seal" class="guild-seal">
-
-    <div class="terminal-container">
-        <div class="verified-badge">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            Craftsman Verified
+<body class="bg-blueprint text-gray-300 min-h-screen flex flex-col items-center justify-center p-4">
+<!-- BEGIN: MainContent -->
+<main class="content-wrapper w-full max-w-md flex flex-col items-center gap-6">
+<!-- BEGIN: GuildSeal -->
+<div class="relative w-32 h-32 md:w-40 md:h-40 rounded-full shadow-glow-orange flex items-center justify-center bg-guild-dark border-4 border-guild-bronze overflow-hidden">
+<img alt="The Workers Guild Seal" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMHVxzEvd51koNOmtyOqUK4cVZ6oMeXvFIiCV2PGu_0bBZYJQmQLQZ-z46lBetO2R5262okIrpy8pWmHm_-OJBbLWz0CeEiOiu8UNvnxauoPCpwHIFu0cG2XZS_XboxJM0RBpR-6ilfcuxnFCg3k0u2gNuf5DMzr0tO3hAkZZzaMMNTM6jRos7FANaS9wJ-uojmAlmtGMTPlHIjMGmo_JnBmRF6dIbQ1HrKcKDHrsCifS1RGciauumRs6Jy9RXmhp6PQ"/>
+</div>
+<!-- END: GuildSeal -->
+<!-- BEGIN: VerificationCard -->
+<section class="w-full bg-guild-dark/90 border-2 border-guild-bronze rounded-lg p-6 shadow-xl flex flex-col gap-6 backdrop-blur-sm">
+<!-- Status Header -->
+<header class="text-center border-b border-guild-bronze/50 pb-4 flex flex-col items-center gap-2">
+<div class="flex items-center gap-2 font-bold text-xl uppercase tracking-wider text-gray-400 blink" id="verification-status">
+<svg class="w-6 h-6 animate-spin" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+          INITIALIZING...
         </div>
+</header>
+<!-- Profile Details -->
+<article class="flex flex-col gap-4 text-center">
+<div>
+<h2 class="text-sm text-guild-bronze uppercase tracking-widest mb-1">Name</h2>
+<p class="text-2xl font-bold text-white uppercase" id="profile-name">--</p>
+</div>
+<div>
+<h2 class="text-sm text-guild-bronze uppercase tracking-widest mb-1">Trade</h2>
+<p class="text-xl text-gray-200 uppercase" id="profile-trade">--</p>
+</div>
+<div>
+<h2 class="text-sm text-guild-bronze uppercase tracking-widest mb-1">Guild ID</h2>
+<p class="text-lg text-guild-orange font-bold uppercase" id="profile-id">--</p>
+</div>
+</article>
+<!-- Experience Section -->
+<div class="flex flex-col gap-2">
+<div class="flex justify-between text-sm text-guild-bronze uppercase tracking-wider">
+<span>Experience Points</span>
+<span>LEVEL --</span>
+</div>
+<div class="w-full bg-gray-800 rounded-full h-3 border border-guild-bronze/30 overflow-hidden">
+<div class="bg-guild-orange h-3 rounded-full" style="width: 0%"></div>
+</div>
+</div>
+<!-- Skills Tags -->
+<div class="flex flex-col gap-2">
+<h3 class="text-sm text-guild-bronze uppercase tracking-widest text-center">Certified Skills</h3>
+<div class="flex flex-wrap justify-center gap-2" id="skills-container"></div>
+</div>
+<!-- Footer Info -->
+<footer class="mt-4 pt-4 border-t border-guild-bronze/30 text-center text-xs text-gray-500 leading-relaxed">
+<p id="verification-msg">Authenticating credentials...</p>
+<p>Credentials are encrypted and immutable.</p>
+</footer>
+</section>
+<!-- END: VerificationCard -->
+<!-- BEGIN: Navigation -->
+<a class="px-6 py-3 bg-transparent border-2 border-guild-orange text-guild-orange font-bold uppercase tracking-wider hover:bg-guild-orange hover:text-guild-dark transition-colors duration-300 rounded focus:outline-none focus:ring-2 focus:ring-guild-orange focus:ring-offset-2 focus:ring-offset-guild-dark" href="https://workersguild.store">
+      Return to Terminal
+    </a>
+<!-- END: Navigation -->
+</main>
+<!-- END: MainContent -->
+<script data-purpose="dynamic-profile-data">
+    // Mock Supabase Setup - Replace with actual credentials if available
+    const SUPABASE_URL = 'https://your-project.supabase.co';
+    const SUPABASE_ANON_KEY = 'your-anon-key';
+    const supabase = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
 
-        <div class="text-center">
-            <p class="label">Name</p>
-            <p class="data-value" id="worker-name">John Doe</p>
+    document.addEventListener('DOMContentLoaded', async () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const workerId = urlParams.get('id');
+      const jobId = urlParams.get('job');
+      
+      const statusElement = document.getElementById('verification-status');
+      const idElement = document.getElementById('profile-id');
+      const nameElement = document.getElementById('profile-name');
+      const tradeElement = document.getElementById('profile-trade');
+      const msgElement = document.getElementById('verification-msg');
 
-            <p class="label">Trade</p>
-            <p class="data-value" id="worker-trade" style="font-size: 18px; color: #ff8c00;">Master Carpenter</p>
-
-            <p class="label">Guild ID</p>
-            <p class="data-value" id="worker-id" style="font-size: 16px; color: #ff8c00;">WG-XXXX-XXXX</p>
-
-            <div class="flex justify-between items-center mb-1">
-                <p class="label">Experience Points</p>
-                <p class="label">Level 42</p>
-            </div>
-            <div class="xp-bar-container">
-                <div class="xp-bar-fill" style="width: 75%;"></div>
-            </div>
-
-            <p class="label mb-4">Certified Skills</p>
-            <div class="flex flex-wrap justify-center">
-                <span class="skill-tag">Carpentry</span>
-                <span class="skill-tag">Framing</span>
-                <span class="skill-tag">OSHA Safety</span>
-                <span class="skill-tag">Blueprint Reading</span>
-            </div>
-
-            <div class="mt-8 pt-8 border-t border-white/5 opacity-40 text-[10px] uppercase font-mono">
-                This craftsman is a verified member of The Workers Guild.
-                <br>Credentials are encrypted and immutable.
-            </div>
-        </div>
-    </div>
-
-    <button onclick="window.location.href='index.html'" class="return-btn max-w-[500px]">
-        Return to Terminal
-    </button>
-
-    <script>
-        // Fetches profile data based on ID in URL (e.g., verify.html?id=WG-1234)
-        async function loadVerifiedProfile() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const profileId = urlParams.get('id');
-            
-            if (profileId) {
-                console.log("Loading public verification data for: " + profileId);
-                // Supabase fetch logic for public data goes here
-            }
+      // Update Basic Info immediately
+      if (workerId) {
+        idElement.textContent = `WG-${workerId.toUpperCase()}`;
+        // Basic mock data based on ID for visual completeness during init
+        if (workerId.toLowerCase() === 'smith') {
+          nameElement.textContent = 'Robert Smith';
+          tradeElement.textContent = 'Master Blacksmith';
+        } else if (workerId.toLowerCase() === 'miller') {
+          nameElement.textContent = 'Sarah Miller';
+          tradeElement.textContent = 'Journeyman Electrician';
+        } else {
+          nameElement.textContent = 'John Doe';
+          tradeElement.textContent = 'Master Carpenter';
         }
-        loadVerifiedProfile();
-    </script>
-</body>
-</html>
+      } else {
+         idElement.textContent = `WG-UNKNOWN`;
+         nameElement.textContent = 'UNKNOWN';
+         tradeElement.textContent = 'UNKNOWN';
+      }
+
+      // Verification Protocol Simulation
+      setTimeout(async () => {
+        try {
+           if (!workerId) {
+             setUnverifiedState("NO GUILD ID PROVIDED");
+             return;
+           }
+
+           if (!jobId) {
+             setPendingState("CRAFTSMAN IDENTITY PENDING JOB CONTEXT");
+             return;
+           }
+
+           // Simulate Supabase Query
+           // In real implementation:
+           // const { data, error } = await supabase.from('applications').select('*').eq('worker_id', workerId).eq('job_id', jobId).eq('status', 'ACCEPTED').single();
+           
+           // Mocking the result:
+           const isVerified = (workerId && jobId && jobId !== 'invalid'); 
+
+           if (isVerified) {
+             setVerifiedState();
+           } else {
+             setUnverifiedState("JOB ASSIGNMENT NOT AUTHORIZED");
+           }
+
+        } catch (error) {
+           console.error("Verification Error", error);
+           setUnverifiedState("VERIFICATION ERROR");
+        }
+      }, 1500); // 1.5s simulated loading
+
+      function setVerifiedState() {
+        statusElement.className = "flex items-center gap-2 text-guild-green font-bold text-xl uppercase tracking-wider";
+        statusElement.innerHTML = `
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></path></svg>
+          Craftsman Verified
+        `;
+        msgElement.textContent = "This craftsman is a verified member of The Workers Guild and authorized for this assignment.";
+      }
+
+      function setUnverifiedState(msg) {
+        statusElement.className = "flex items-center gap-2 text-guild-red font-bold text-xl uppercase tracking-wider";
+        statusElement.innerHTML = `
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+          UNVERIFIED
+        `;
+        msgElement.textContent = msg;
+      }
+
+      function setPendingState(msg) {
+         statusElement.className = "flex items-center gap-2 text-guild-orange font-bold text-xl uppercase tracking-wider";
+         statusElement.innerHTML = `
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          PENDING VERIFICATION
+        `;
+        msgElement.textContent = msg;
+      }
+    });
+  </script>
+</body></html>
