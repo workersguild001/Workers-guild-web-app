@@ -138,8 +138,8 @@
 <!-- SideNavBar -->
 <nav class="hidden md:flex flex-col fixed left-0 top-16 h-[calc(100vh-64px)] z-40 p-stack-md bg-surface-container w-64 border-r border-white/5 shadow-[4px_0px_0px_0px_#0e0e0f]">
 <div class="mb-stack-lg pb-stack-md border-b border-white/5">
-<div class="font-headline-sm text-primary mb-1" id="sidebar-operator-name">LOADING...</div>
-<div class="font-label-md text-label-md text-on-surface-variant" id="sidebar-operator-status">Checking Status</div>
+<div class="font-headline-sm text-primary mb-1">OPERATOR_01</div>
+<div class="font-label-md text-label-md text-on-surface-variant">Verified Client</div>
 </div>
 <ul class="flex flex-col gap-unit">
 <li>
@@ -194,11 +194,11 @@
 <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
 <div class="flex flex-col gap-unit">
 <label class="font-label-md text-label-md text-on-surface uppercase" for="job-title">Job Name</label>
-<input class="w-full bg-[#0E0E0F] border-0 border-b-2 border-[#2A2A2A] text-on-background font-body-md text-body-md py-3 px-4 focus:ring-0 focus:border-primary-container focus:outline-none focus:shadow-[0_0_15px_rgba(255,140,0,0.15)] transition-all" id="job-title" name="job-title" placeholder="e.g. Master Plumber Needed" required="" type="text" value=""/>
+<input class="w-full bg-[#0E0E0F] border-0 border-b-2 border-[#2A2A2A] text-on-background font-body-md text-body-md py-3 px-4 focus:ring-0 focus:border-primary-container focus:outline-none focus:shadow-[0_0_15px_rgba(255,140,0,0.15)] transition-all" id="job-title" name="job-title" placeholder="" required="" type="text"/>
 </div>
 <div class="flex flex-col gap-unit md:col-span-1">
-<label class="font-label-md text-label-md text-on-surface uppercase" for="trade-category">Type of Work <span class="text-primary-container text-xs ml-2 tracking-widest">80 XP/HR MINIMUM REQUIRED</span> <span class="text-on-surface-variant text-[10px] block mt-1">1.1x XP MULTIPLIER PER ADDITIONAL SKILL</span></label>
-<div class="grid grid-cols-2 gap-2 mt-2 max-h-64 overflow-y-auto pr-2 custom-scrollbar">
+<label class="font-label-md text-label-md text-on-surface uppercase" for="trade-category">Type of Work <span class="text-primary-container text-xs ml-2 tracking-widest">120 XP/HR + LVL MINIMUM REQUIRED</span></label>
+<div class="grid grid-cols-2 gap-2 mt-2">
 <label class="flex items-center gap-2 p-2 bg-[#0E0E0F] border border-[#2A2A2A] hover:border-primary-container cursor-pointer transition-colors">
 <input class="form-checkbox text-primary-container bg-surface border-[#2A2A2A] focus:ring-primary-container rounded-none" name="skills" type="checkbox" value="carpentry"/>
 <span class="text-on-background text-sm font-label-md uppercase">Carpentry</span>
@@ -208,52 +208,12 @@
 <span class="text-on-background text-sm font-label-md uppercase">Welding</span>
 </label>
 <label class="flex items-center gap-2 p-2 bg-[#0E0E0F] border border-[#2A2A2A] hover:border-primary-container cursor-pointer transition-colors">
-<input class="form-checkbox text-primary-container bg-surface border-[#2A2A2A] focus:ring-primary-container rounded-none" name="skills" type="checkbox" value="farming"/>
-<span class="text-on-background text-sm font-label-md uppercase">Farming</span>
-</label>
-<label class="flex items-center gap-2 p-2 bg-[#0E0E0F] border border-[#2A2A2A] hover:border-primary-container cursor-pointer transition-colors">
-<input class="form-checkbox text-primary-container bg-surface border-[#2A2A2A] focus:ring-primary-container rounded-none" name="skills" type="checkbox" value="commercial_driving"/>
-<span class="text-on-background text-sm font-label-md uppercase">Commercial Driving</span>
-</label>
-<label class="flex items-center gap-2 p-2 bg-[#0E0E0F] border border-[#2A2A2A] hover:border-primary-container cursor-pointer transition-colors">
-<input class="form-checkbox text-primary-container bg-surface border-[#2A2A2A] focus:ring-primary-container rounded-none" name="skills" type="checkbox" value="roofing"/>
-<span class="text-on-background text-sm font-label-md uppercase">Roofing</span>
+<input class="form-checkbox text-primary-container bg-surface border-[#2A2A2A] focus:ring-primary-container rounded-none" name="skills" type="checkbox" value="electrician"/>
+<span class="text-on-background text-sm font-label-md uppercase">Electrician</span>
 </label>
 <label class="flex items-center gap-2 p-2 bg-[#0E0E0F] border border-[#2A2A2A] hover:border-primary-container cursor-pointer transition-colors">
 <input class="form-checkbox text-primary-container bg-surface border-[#2A2A2A] focus:ring-primary-container rounded-none" name="skills" type="checkbox" value="plumbing"/>
 <span class="text-on-background text-sm font-label-md uppercase">Plumbing</span>
-</label>
-<label class="flex items-center gap-2 p-2 bg-[#0E0E0F] border border-[#2A2A2A] hover:border-primary-container cursor-pointer transition-colors">
-<input class="form-checkbox text-primary-container bg-surface border-[#2A2A2A] focus:ring-primary-container rounded-none" name="skills" type="checkbox" value="engineering"/>
-<span class="text-on-background text-sm font-label-md uppercase">Engineering</span>
-</label>
-<label class="flex items-center gap-2 p-2 bg-[#0E0E0F] border border-[#2A2A2A] hover:border-primary-container cursor-pointer transition-colors">
-<input class="form-checkbox text-primary-container bg-surface border-[#2A2A2A] focus:ring-primary-container rounded-none" name="skills" type="checkbox" value="stonemasonry"/>
-<span class="text-on-background text-sm font-label-md uppercase">Stonemasonry</span>
-</label>
-<label class="flex items-center gap-2 p-2 bg-[#0E0E0F] border border-[#2A2A2A] hover:border-primary-container cursor-pointer transition-colors">
-<input class="form-checkbox text-primary-container bg-surface border-[#2A2A2A] focus:ring-primary-container rounded-none" name="skills" type="checkbox" value="gen_labor"/>
-<span class="text-on-background text-sm font-label-md uppercase">Gen. Labor</span>
-</label>
-<label class="flex items-center gap-2 p-2 bg-[#0E0E0F] border border-[#2A2A2A] hover:border-primary-container cursor-pointer transition-colors">
-<input class="form-checkbox text-primary-container bg-surface border-[#2A2A2A] focus:ring-primary-container rounded-none" name="skills" type="checkbox" value="landscaping"/>
-<span class="text-on-background text-sm font-label-md uppercase">Landscaping</span>
-</label>
-<label class="flex items-center gap-2 p-2 bg-[#0E0E0F] border border-[#2A2A2A] hover:border-primary-container cursor-pointer transition-colors">
-<input class="form-checkbox text-primary-container bg-surface border-[#2A2A2A] focus:ring-primary-container rounded-none" name="skills" type="checkbox" value="metalworking"/>
-<span class="text-on-background text-sm font-label-md uppercase">Metalworking</span>
-</label>
-<label class="flex items-center gap-2 p-2 bg-[#0E0E0F] border border-[#2A2A2A] hover:border-primary-container cursor-pointer transition-colors">
-<input class="form-checkbox text-primary-container bg-surface border-[#2A2A2A] focus:ring-primary-container rounded-none" name="skills" type="checkbox" value="mechanics"/>
-<span class="text-on-background text-sm font-label-md uppercase">Mechanics</span>
-</label>
-<label class="flex items-center gap-2 p-2 bg-[#0E0E0F] border border-[#2A2A2A] hover:border-primary-container cursor-pointer transition-colors">
-<input class="form-checkbox text-primary-container bg-surface border-[#2A2A2A] focus:ring-primary-container rounded-none" name="skills" type="checkbox" value="hvac"/>
-<span class="text-on-background text-sm font-label-md uppercase">HV/AC</span>
-</label>
-<label class="flex items-center gap-2 p-2 bg-[#0E0E0F] border border-[#2A2A2A] hover:border-primary-container cursor-pointer transition-colors">
-<input class="form-checkbox text-primary-container bg-surface border-[#2A2A2A] focus:ring-primary-container rounded-none" name="skills" type="checkbox" value="electrician"/>
-<span class="text-on-background text-sm font-label-md uppercase">Electrician</span>
 </label>
 </div>
 </div>
@@ -264,14 +224,14 @@
 <label class="font-label-md text-label-md text-on-surface uppercase" for="location">Location</label>
 <div class="relative">
 <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">location_on</span>
-<input class="w-full bg-[#0E0E0F] border-0 border-b-2 border-[#2A2A2A] text-on-background font-body-md text-body-md py-3 pl-10 pr-4 focus:ring-0 focus:border-primary-container focus:outline-none focus:shadow-[0_0_15px_rgba(255,140,0,0.15)] transition-all" id="location" name="location" placeholder="City, State or Zip" required="" type="text" value=""/>
+<input class="w-full bg-[#0E0E0F] border-0 border-b-2 border-[#2A2A2A] text-on-background font-body-md text-body-md py-3 pl-10 pr-4 focus:ring-0 focus:border-primary-container focus:outline-none focus:shadow-[0_0_15px_rgba(255,140,0,0.15)] transition-all" id="location" name="location" placeholder="" required="" type="text"/>
 </div>
 </div>
 <div class="flex flex-col gap-unit">
 <label class="font-label-md text-label-md text-on-surface uppercase" for="pay-rate">Pay Rate (per hour)</label>
 <div class="relative">
 <span class="absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant font-label-md text-label-md">$</span>
-<input class="w-full bg-[#0E0E0F] border-0 border-b-2 border-[#2A2A2A] text-on-background font-body-md text-body-md py-3 pl-8 pr-4 focus:ring-0 focus:border-primary-container focus:outline-none focus:shadow-[0_0_15px_rgba(255,140,0,0.15)] transition-all" id="pay-rate" name="pay-rate" placeholder="0.00" required="" type="text" value=""/>
+<input class="w-full bg-[#0E0E0F] border-0 border-b-2 border-[#2A2A2A] text-on-background font-body-md text-body-md py-3 pl-8 pr-4 focus:ring-0 focus:border-primary-container focus:outline-none focus:shadow-[0_0_15px_rgba(255,140,0,0.15)] transition-all" id="pay-rate" name="pay-rate" placeholder="" required="" type="text"/>
 </div>
 </div>
 </div>
@@ -281,32 +241,32 @@
 <label class="font-label-md text-label-md text-on-surface uppercase" for="mission-date">Mission Date</label>
 <div class="relative">
 <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">calendar_today</span>
-<input class="w-full bg-[#0E0E0F] border-0 border-b-2 border-[#2A2A2A] text-on-background font-body-md text-body-md py-3 pl-10 pr-4 focus:ring-0 focus:border-primary-container focus:outline-none focus:shadow-[0_0_15px_rgba(255,140,0,0.15)] transition-all" id="mission-date" name="mission-date" required="" type="date" value=""/>
+<input class="w-full bg-[#0E0E0F] border-0 border-b-2 border-[#2A2A2A] text-on-background font-body-md text-body-md py-3 pl-10 pr-4 focus:ring-0 focus:border-primary-container focus:outline-none focus:shadow-[0_0_15px_rgba(255,140,0,0.15)] transition-all" id="mission-date" name="mission-date" required="" type="date"/>
 </div>
 </div>
 <div class="flex flex-col gap-unit">
 <label class="font-label-md text-label-md text-on-surface uppercase" for="mission-time">Mission Time</label>
 <div class="relative">
 <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">schedule</span>
-<input class="w-full bg-[#0E0E0F] border-0 border-b-2 border-[#2A2A2A] text-on-background font-body-md text-body-md py-3 pl-10 pr-4 focus:ring-0 focus:border-primary-container focus:outline-none focus:shadow-[0_0_15px_rgba(255,140,0,0.15)] transition-all" id="mission-time" name="mission-time" required="" type="time" value=""/>
+<input class="w-full bg-[#0E0E0F] border-0 border-b-2 border-[#2A2A2A] text-on-background font-body-md text-body-md py-3 pl-10 pr-4 focus:ring-0 focus:border-primary-container focus:outline-none focus:shadow-[0_0_15px_rgba(255,140,0,0.15)] transition-all" id="mission-time" name="mission-time" required="" type="time"/>
 </div>
 </div>
 </div>
 <!-- Row 4: Description -->
 <div class="flex flex-col gap-unit">
 <label class="font-label-md text-label-md text-on-surface uppercase" for="job-description">Job Details</label>
-<textarea class="w-full bg-[#0E0E0F] border-0 border-b-2 border-[#2A2A2A] text-on-background font-body-md text-body-md py-3 px-4 resize-none focus:ring-0 focus:border-primary-container focus:outline-none focus:shadow-[0_0_15px_rgba(255,140,0,0.15)] transition-all" id="job-description" name="job-description" placeholder="Describe the work required, tools needed, and expectations..." required="" rows="5"></textarea>
+<textarea class="w-full bg-[#0E0E0F] border-0 border-b-2 border-[#2A2A2A] text-on-background font-body-md text-body-md py-3 px-4 resize-none focus:ring-0 focus:border-primary-container focus:outline-none focus:shadow-[0_0_15px_rgba(255,140,0,0.15)] transition-all" id="job-description" name="job-description" placeholder="" required="" rows="5"></textarea>
 </div>
 <!-- Financial Gateway Protocol -->
 <div class="border border-[#2A2A2A] bg-[#0E0E0F] p-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
 <div class="flex items-center gap-3">
 <span class="material-symbols-outlined text-primary-container text-3xl">account_balance</span>
 <div>
-<div class="font-label-md text-on-surface uppercase tracking-widest text-sm" id="payment-status-title">Payment Setup</div>
-<div class="text-xs text-on-surface-variant uppercase mt-1" id="payment-status-desc">Checking verification status...</div>
+<div class="font-label-md text-on-surface uppercase tracking-widest text-sm">Payment Setup</div>
+<div class="text-xs text-on-surface-variant uppercase mt-1">Connect PayPal to start this job</div>
 </div>
 </div>
-<button class="w-full md:w-auto px-6 py-3 bg-[#2A2A2A] text-on-surface hover:text-black hover:bg-primary-container transition-colors uppercase text-sm font-bold tracking-widest border border-white/5" id="verify-paypal-btn" type="button">Verify PayPal</button>
+<button class="w-full md:w-auto px-6 py-3 bg-[#2A2A2A] text-on-surface hover:text-black hover:bg-primary-container transition-colors uppercase text-sm font-bold tracking-widest border border-white/5" type="button">Verify PayPal</button>
 </div>
 <!-- Submit CTA -->
 <div class="pt-stack-md flex justify-end">
@@ -356,98 +316,33 @@
         const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY'; // Replace with actual Key
         const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-        let currentUserProfile = null;
-
-        // Session & Profile Initialization
-        async function initSession() {
-            try {
-                // Mocking session logic - in reality, use supabase.auth.getSession()
-                // const { data: { session } } = await supabase.auth.getSession();
-                
-                // Fetch user profile (mocking user id for example)
-                // const { data: profile } = await supabase.from('profiles').select('*').eq('id', session.user.id).single();
-                
-                // MOCK DATA for demonstration
-                currentUserProfile = {
-                    id: 'user-123',
-                    operator_id: 'OPERATOR_77',
-                    status: 'Verified Client',
-                    paypal_email: 'client@example.com' // Set to null to test unverified state
-                };
-
-                // Update UI based on session
-                document.getElementById('sidebar-operator-name').textContent = currentUserProfile.operator_id;
-                document.getElementById('sidebar-operator-status').textContent = currentUserProfile.status;
-
-                const paymentTitle = document.getElementById('payment-status-title');
-                const paymentDesc = document.getElementById('payment-status-desc');
-                const verifyBtn = document.getElementById('verify-paypal-btn');
-
-                if (currentUserProfile.paypal_email) {
-                    paymentTitle.textContent = 'Payment Verified';
-                    paymentTitle.classList.add('text-[#00C853]');
-                    paymentDesc.textContent = `Connected: ${currentUserProfile.paypal_email}`;
-                    verifyBtn.textContent = 'Manage';
-                } else {
-                    paymentTitle.textContent = 'Payment Required';
-                    paymentTitle.classList.add('text-error');
-                    paymentDesc.textContent = 'Connect PayPal to start this job';
-                }
-
-            } catch (error) {
-                console.error("Error initializing session:", error);
-            }
-        }
-
-        initSession();
-
         const form = document.getElementById('job-form');
         const submitBtn = document.getElementById('submit-btn');
 
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
             
-            // Payment Verification Gate
-            if (!currentUserProfile || !currentUserProfile.paypal_email) {
-                alert("PAYMENT GATEWAY LOCKED: You must verify your PayPal account before deploying a job.");
-                return;
-            }
-
             // Update button state
             const originalText = submitBtn.innerHTML;
             submitBtn.innerHTML = 'POSTING...';
             submitBtn.disabled = true;
             
             // Gather selected skills
-            const selectedSkillNodes = document.querySelectorAll('input[name="skills"]:checked');
-            const selectedSkillsArray = Array.from(selectedSkillNodes).map(cb => cb.value);
-            const selectedSkills = selectedSkillsArray.join(', ');
-
-            // Calculate XP Multiplier
-            let xpMultiplier = 1.0;
-            if (selectedSkillsArray.length > 1) {
-                xpMultiplier = 1.0 + (0.1 * (selectedSkillsArray.length - 1)); // 1.1x per extra skill
-            }
+            const selectedSkills = Array.from(document.querySelectorAll('input[name="skills"]:checked'))
+                .map(cb => cb.value)
+                .join(', ');
 
             const jobData = {
-                client_id: currentUserProfile.id,
                 title: document.getElementById('job-title').value,
                 category: selectedSkills,
                 location: document.getElementById('location').value,
-                pay_rate: parseFloat(document.getElementById('pay-rate').value),
+                pay_rate: document.getElementById('pay-rate').value,
                 mission_date: document.getElementById('mission-date').value,
                 mission_time: document.getElementById('mission-time').value,
                 description: document.getElementById('job-description').value,
                 status: 'active',
-                xp_multiplier: xpMultiplier,
-                metadata: {
-                    skill_count: selectedSkillsArray.length,
-                    calculated_multiplier: xpMultiplier
-                },
                 created_at: new Date().toISOString()
             };
-
-            console.log("Deploying Payload:", jobData);
 
             const { data, error } = await supabase
                 .from('jobs')
@@ -459,9 +354,9 @@
 
             if (error) {
                 console.error('Error inserting job:', error);
-                alert('Deployment failed. Database protocol error.');
+                alert('Deployment failed. Please try again.');
             } else {
-                alert(`Job deployed successfully. XP Multiplier set to ${xpMultiplier.toFixed(1)}x. Contract initiated.`);
+                alert('Job deployed successfully. Contract initiated.');
                 form.reset();
             }
         });
