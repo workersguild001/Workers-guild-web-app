@@ -8,6 +8,10 @@ const ASSETS_TO_CACHE = [
   '/404.html',
   '/owner.html',
   '/recruitment.html',
+  '/matrix.html',
+  '/profile.html',
+  '/payouts.html',
+  '/terms.html',
   '/manifest.json'
 ];
 
