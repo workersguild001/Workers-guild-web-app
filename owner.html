@@ -7,6 +7,24 @@
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&amp;family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Hard-Gate Security Script -->
+<script>
+    (function() {
+        // Run immediately before body parsing
+        const session = localStorage.getItem('supabase.auth.token'); // Replace with actual key
+        const token = localStorage.getItem('guild_owner_token');
+        
+        if (!token && !session) {
+            window.location.replace('index.html');
+        } else {
+            // Once DOM is interactive, reveal body
+            document.addEventListener("DOMContentLoaded", function() {
+                document.body.style.display = '';
+                document.body.classList.remove('hidden');
+            });
+        }
+    })();
+</script>
 <script id="tailwind-config">
       tailwind.config = {
         darkMode: "class",
@@ -224,12 +242,12 @@
         }
     </style>
 </head>
-<body class="bg-background text-on-background min-h-screen flex flex-col antialiased selection:bg-primary-container selection:text-on-primary-container">
+<body class="bg-background text-on-background min-h-screen flex flex-col antialiased selection:bg-primary-container selection:text-on-primary-container hidden" style="display: none;">
 <!-- Top Navigation -->
 <header class="sticky top-0 z-50 bg-background/90 backdrop-blur-md border-b border-white/5 shadow-[4px_4px_0px_0px_#0E0E0F]">
 <div class="flex justify-between items-center w-full px-gutter h-16 max-w-[1440px] mx-auto">
 <div class="flex items-center gap-stack-md">
-<img alt="Guild Seal Logo" class="h-12 w-12 object-contain filter drop-shadow-[0_0_15px_rgba(255,140,0,1)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2yyt92rap1NxLQK6BTEO6vbsDqR0VXO361TD-7OSzg6WpWE3WPYInAOc5Mh9w7M85-r4bjNeJ7I6NGICe0-03tkEygflfliLFuwlYDRBPOMz_k72kGVwMy7OStiSLo9mxX91BcP6y5fZlsveTa-R1JLPOJ-od3rVmzxC0JLyI22ywWKdixGe0tgB14BW6Ar9tZhkBL6j1Fe4QV7WdQMvn8wJ8PLQGWN7GNyj7k1GN9z4m42xoQqglmo1nfQYjIeNCZA"/>
+<img alt="Guild Seal Logo" class="h-12 w-12 object-contain filter drop-shadow-[0_0_8px_rgba(255,140,0,0.8)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB097tZ9xGBxrgWTfTadxubYyC80GlTi2Kog2vlyct-yccVlxCsgzjkmxDpCtn1CM37TytBpAY-ZiVbOky-iJgf0Jvvi0aaC-d6j4XyKOS4xhyhdr8qjwgCC7TSGjLn19d2fj4C1A52oqLrr0mIby8bY0fssA51YS4keJDKbiRvPRMajvvSWvIrYKlcZ_7_FDP8ZFe1zBPVEfmBB4sCL7LBNYkF1lz_rL0V-jHs1FUA0tYPhgfxu4q-F9IhE5Dnn8b9nQ"/>
 <div>
 <h1 class="font-headline-sm text-[18px] md:text-headline-sm font-bold text-primary tracking-tighter uppercase">THE WORKERS GUILD // COMMAND</h1>
 <p class="font-label-sm text-[10px] md:text-label-sm text-on-surface-variant uppercase tracking-widest font-courier opacity-70">GUILD_OWNER_TERMINAL [SECURED]</p>
@@ -281,6 +299,10 @@
                 </a>
 <a class="text-on-surface-variant hover:bg-surface-variant transition-all hover:text-on-surface flex items-center gap-stack-md px-4 py-3 font-label-md text-label-md uppercase" href="#">
 <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">security</span>
+                    SECURITY
+                </a>
+<a class="text-on-surface-variant hover:bg-surface-variant transition-all hover:text-on-surface flex items-center gap-stack-md px-4 py-3 font-label-md text-label-md uppercase" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">history</span>
                     ARCHIVE
                 </a>
 </nav>
@@ -380,18 +402,4 @@
 <a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors font-courier uppercase" href="#">DEPT_LABOR</a>
 </div>
 </footer>
-<script>
-    // Hardened auth check
-    const checkAuth = () => {
-        const token = localStorage.getItem('guild_owner_token');
-        const session = localStorage.getItem('supabase.auth.token'); // Adjust key based on actual Supabase config
-        
-        if (!token && !session) {
-            window.location.replace('https://workersguild.store');
-        }
-    };
-    
-    // Run immediately and setup listener
-    checkAuth();
-    window.addEventListener('storage', checkAuth);
-</script></body></html>
+</body></html>
