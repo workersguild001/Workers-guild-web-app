@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Job Tracker | GUILD_TERMINAL</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&amp;family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-dim": "#131313",
+                        "surface-variant": "#353534",
+                        "surface-tint": "#ffb77d",
+                        "error-container": "#93000a",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-low": "#1c1b1b",
+                        "primary": "#ffb77d",
+                        "on-primary-container": "#623200",
+                        "surface-container": "#201f1f",
+                        "surface-bright": "#393939",
+                        "on-secondary-container": "#bab8b9",
+                        "surface-container-highest": "#353534",
+                        "surface-container-high": "#2a2a2a",
+                        "inverse-primary": "#904d00",
+                        "tertiary-fixed-dim": "#c8c6c5",
+                        "on-secondary-fixed": "#1c1b1c",
+                        "on-background": "#e5e2e1",
+                        "on-tertiary": "#303030",
+                        "inverse-on-surface": "#313030",
+                        "tertiary-container": "#aba9a9",
+                        "on-secondary-fixed-variant": "#474647",
+                        "surface": "#131313",
+                        "secondary": "#c8c6c7",
+                        "background": "#131313",
+                        "primary-fixed-dim": "#ffb77d",
+                        "on-surface": "#e5e2e1",
+                        "secondary-fixed-dim": "#c8c6c7",
+                        "on-tertiary-container": "#3e3e3e",
+                        "secondary-fixed": "#e5e2e3",
+                        "on-error": "#690005",
+                        "secondary-container": "#4a494a",
+                        "on-primary-fixed-variant": "#6e3900",
+                        "primary-container": "#ff8c00",
+                        "primary-fixed": "#ffdcc3",
+                        "outline-variant": "#564334",
+                        "on-secondary": "#313031",
+                        "tertiary-fixed": "#e4e2e1",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "on-primary": "#4d2600",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-primary-fixed": "#2f1500",
+                        "outline": "#a48c7a",
+                        "on-surface-variant": "#ddc1ae",
+                        "tertiary": "#c8c6c5",
+                        "error": "#ffb4ab",
+                        "on-tertiary-fixed-variant": "#474746",
+                        "inverse-surface": "#e5e2e1"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "stack-sm": "8px",
+                        "margin-desktop": "40px",
+                        "unit": "4px",
+                        "margin-mobile": "16px",
+                        "stack-md": "16px",
+                        "stack-lg": "32px",
+                        "gutter": "24px"
+                    },
+                    fontFamily: {
+                        "label-md": ["Courier Prime"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "label-sm": ["Courier Prime"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "headline-sm": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"]
+                    },
+                    fontSize: {
+                        "label-md": ["14px", { lineHeight: "1.2", letterSpacing: "0.05em", fontWeight: "400" }],
+                        "headline-lg-mobile": ["32px", { lineHeight: "1.1", fontWeight: "800" }],
+                        "label-sm": ["12px", { lineHeight: "1.2", fontWeight: "400" }],
+                        "headline-lg": ["48px", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "800" }],
+                        "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],
+                        "headline-sm": ["24px", { lineHeight: "1.2", fontWeight: "700" }],
+                        "body-md": ["16px", { lineHeight: "1.5", fontWeight: "400" }],
+                        "headline-md": ["32px", { lineHeight: "1.2", fontWeight: "700" }]
+                    }
+                }
+            }
+        };
+    </script>
+<style>
+        .blueprint-bg {
+            background-color: #131313;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .industrial-card {
+            background-color: #131313;
+            border: 1px solid rgba(255,255,255,0.05);
+            box-shadow: 4px 4px 0px 0px #0E0E0F;
+        }
+        .glow-orange {
+            box-shadow: 0 0 20px rgba(255,140,0,0.15);
+        }
+        .text-glow {
+            text-shadow: 0 0 8px rgba(255,140,0,0.4);
+        }
+    </style>
+<!-- Supabase JS Client for Real-time Connections -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body class="bg-background text-on-surface font-body-md blueprint-bg min-h-screen flex flex-col pt-16 pb-20 md:pb-0 md:pl-64">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16 bg-surface dark:bg-surface border-b border-white/5 shadow-[4px_4px_0px_0px_#0e0e0f]">
+<div class="flex items-center gap-4">
+<a aria-label="Back to Gateway" class="flex items-center justify-center p-2 rounded hover:bg-surface-variant transition-colors text-primary" href="gateway.html">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</a>
+<h1 class="font-headline-sm text-headline-sm font-extrabold tracking-tighter text-primary dark:text-primary">GUILD_TERMINAL</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:bg-surface-variant transition-colors p-2 rounded">
+<span class="material-symbols-outlined" data-icon="qr_code_scanner">qr_code_scanner</span>
+</button>
+<button class="text-on-surface-variant hover:bg-surface-variant transition-colors p-2 rounded">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:bg-surface-variant transition-colors p-2 rounded">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</header>
+<!-- SideNavBar (Desktop) -->
+<nav class="h-full w-64 hidden md:flex flex-col fixed left-0 top-16 h-[calc(100vh-64px)] z-40 p-stack-md bg-surface-container dark:bg-surface-container border-r border-white/5 shadow-[4px_0px_0px_0px_#0e0e0f]">
+<div class="mb-8 px-4">
+<h2 class="text-primary font-headline-sm">Worker 01</h2>
+<p class="font-label-md text-label-md text-on-surface-variant">Verified Worker</p>
+</div>
+<ul class="space-y-2 flex-grow">
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="add_box">add_box</span>
+<span class="font-label-md text-label-md">Post Job</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded bg-primary text-on-primary font-bold shadow-[4px_4px_0px_0px_#0e0e0f] scale-95 duration-100 translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="format_list_bulleted">format_list_bulleted</span>
+<span class="font-label-md text-label-md">Active Jobs</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="verified_user">verified_user</span>
+<span class="font-label-md text-label-md">Verification</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span class="font-label-md text-label-md">Payouts</span>
+</a>
+</li>
+</ul>
+</nav>
+<!-- BottomNavBar (Mobile) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 bg-surface pb-safe docked full-width md:hidden border-t border-white/10 shadow-[0px_-4px_0px_0px_#0e0e0f] bg-surface-container-lowest dark:bg-surface-container-lowest">
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+<span class="font-label-sm text-label-sm">Post</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary font-bold scale-110 scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="list_alt">list_alt</span>
+<span class="font-label-sm text-label-sm">Jobs</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="badge">badge</span>
+<span class="font-label-sm text-label-sm">Verify</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-label-sm text-label-sm">Pay</span>
+</a>
+</nav>
+<main class="flex-grow p-margin-mobile md:p-margin-desktop w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Header Section -->
+<div class="col-span-1 md:col-span-12 mb-stack-md flex justify-between items-end border-b border-white/10 pb-4">
+<div>
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary tracking-tighter uppercase text-glow">Job Tracker</h2>
+<p class="font-label-md text-label-md text-on-surface-variant mt-2">// Live Site View</p>
+</div>
+<div class="hidden md:flex items-center gap-4">
+<span class="font-label-md text-label-md text-on-surface-variant" id="terminal-status">STATUS: INITIALIZING</span>
+<button class="bg-primary-container text-[#000000] font-bold font-headline-sm px-6 py-2 shadow-[4px_4px_0px_0px_#0E0E0F] hover:shadow-[0px_0px_0px_0px_#0E0E0F] hover:translate-y-[4px] hover:translate-x-[4px] transition-all" onclick="handleDeploy()">
+                    Send Out
+                </button>
+</div>
+</div>
+<!-- Active Site Map (Bento Grid Style) -->
+<div class="col-span-1 md:col-span-8 industrial-card p-4 relative glow-orange overflow-hidden group">
+<div class="absolute top-4 left-4 z-10 flex items-center gap-2">
+<span class="font-label-md text-label-md text-primary bg-surface/80 px-2 py-1 border border-primary/30 backdrop-blur-sm">Job Map</span>
+</div>
+<div class="w-full h-96 bg-surface-container relative border border-white/5 mt-8">
+<!-- Decorative grid overlay for blueprint feel -->
+<div class="absolute inset-0 bg-[linear-gradient(rgba(255,140,0,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,140,0,0.05)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+<img class="w-full h-full object-cover opacity-60 mix-blend-luminosity group-hover:opacity-80 transition-opacity duration-500" data-alt="A dark, industrial blueprint-style satellite map showing a futuristic construction site with glowing orange nodes representing active machinery and logistics routes. The aesthetic is raw, high-contrast, and utilitarian, fitting a worker's command interface." data-location="Sector 7G Industrial Zone" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsI6kbw7UkrzzC2Wd7Z8BYnDriP70fRRDHKB6l7vXPlAgS_ggFbHNJHU7xRNn--EJchVBXL78_iikET41FqBfYiUj4GU92vW-qF0Z8mbBwxiLd-m_hMiHGawOK_4nCCuYIj9M22fXJBd9ipuuJbfIKkoa4QV_dNavxI-7sbxG505L8hwgTWNaRF57jNEPVit3vl0tMkm5Hi9urM_NuNswgxa0NtV2MZ6wE6rUkgvzVuOKLE20BCKC7"/>
+<!-- Map Nodes/Overlays (Awaiting Supabase Data) -->
+<div id="map-nodes-container"></div>
+</div>
+<div class="mt-4 flex justify-between items-center border-t border-white/10 pt-4">
+<div class="font-label-sm text-label-sm text-on-surface-variant flex gap-4">
+<span class="flex items-center gap-1"><span class="w-2 h-2 bg-primary inline-block"></span> Active</span>
+<span class="flex items-center gap-1"><span class="w-2 h-2 bg-error inline-block"></span> Issue</span>
+</div>
+<button class="bg-transparent border border-white/10 text-on-surface font-label-md px-4 py-1 hover:border-primary/50 transition-colors" onclick="handleScan()">
+                     Scan Area
+                 </button>
+</div>
+</div>
+<!-- Right Column Stack -->
+<div class="col-span-1 md:col-span-4 flex flex-col gap-gutter">
+<!-- Supply Uplink Status -->
+<div class="industrial-card p-4">
+<h3 class="font-label-md text-label-md text-on-surface-variant border-b border-white/10 pb-2 mb-4">Connection</h3>
+<div class="flex items-center justify-between mb-4">
+<span class="font-body-lg text-body-lg text-on-surface" id="uplink-name">Awaiting Data...</span>
+<span class="font-label-md text-label-md bg-surface-container-high text-on-surface-variant px-2 py-1 border border-white/10" id="uplink-status">Offline</span>
+</div>
+<div class="w-full bg-surface-container h-2 mb-2 border border-white/5">
+<div class="bg-primary h-full w-[0%] shadow-[0_0_8px_#FF8C00] transition-all duration-500" id="uplink-bar" style="width: 0%;"></div>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant text-right" id="uplink-bandwidth">Signal: 0%</p>
+</div>
+<!-- Equipment Dispatch List -->
+<div class="industrial-card p-0 flex-grow flex flex-col overflow-hidden">
+<div class="p-4 border-b border-white/10 bg-surface-container-high/50 flex justify-between items-center">
+<h3 class="font-label-md text-label-md text-on-surface-variant">Active Equipment</h3>
+<span class="material-symbols-outlined text-primary text-sm animate-spin" data-icon="refresh">refresh</span>
+</div>
+<div class="flex-grow overflow-y-auto max-h-[300px]">
+<table class="w-full text-left border-collapse">
+<thead class="font-label-sm text-label-sm text-on-surface-variant bg-surface-container border-b border-white/10">
+<tr>
+<th class="p-3 font-normal">Tool ID</th>
+<th class="p-3 font-normal">Type</th>
+<th class="p-3 font-normal">Status</th>
+</tr>
+</thead>
+<tbody class="font-label-md text-label-md" id="dispatch-tbody"><tr class="border-b border-white/5"><td class="p-3 text-center text-on-surface-variant py-8" colspan="3">Waiting for data...</td></tr></tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+<footer class="w-full text-center py-6 border-t border-white/5 mt-auto bg-surface-container-lowest z-10 hidden md:block">
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">
+            V0.1 // 2026 // BUILT BY WORKERS. FOR WORKERS. // <span class="text-primary ml-2">Status: Finalized</span>
+</p>
+</footer>
+<script>
+    // Supabase Integration Mockup & Empty Handlers
+    
+    // Configuration would go here
+    // const supabaseUrl = 'YOUR_SUPABASE_URL';
+    // const supabaseKey = 'YOUR_SUPABASE_ANON_KEY';
+    // const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
+    // Empty state handlers
+    function handleDeploy() {
+        console.log("DEPLOY UNIT triggered");
+        alert("Deploy sequence initiated. Awaiting backend confirmation.");
+    }
+
+    function handleScan() {
+        console.log("SCAN SECTOR triggered");
+        alert("Sector scan initiated. Awaiting sensor data streams.");
+    }
+
+    // Example logic for how Supabase real-time would populate the dashboard
+    /*
+    async function initRealtimeLogistics() {
+        // Initial fetch
+        const { data: fleetData, error } = await supabase.from('fleet').select('*');
+        if (fleetData) renderDispatchLog(fleetData);
+
+        // Subscribe to changes
+        const fleetSubscription = supabase
+            .channel('fleet_updates')
+            .on('postgres_changes', { event: '*', schema: 'public', table: 'fleet' }, payload => {
+                console.log('Real-time fleet update received!', payload);
+                // Trigger re-render of components
+            })
+            .subscribe();
+            
+        // Update Uplink Status when connected
+        document.getElementById('terminal-status').textContent = 'STATUS: ACTIVE';
+        document.getElementById('terminal-status').classList.add('text-primary', 'animate-pulse');
+        document.getElementById('terminal-status').classList.remove('text-on-surface-variant');
+        
+        document.getElementById('uplink-name').textContent = 'Main Trunk';
+        document.getElementById('uplink-status').textContent = 'ONLINE';
+        document.getElementById('uplink-status').className = 'font-label-md text-label-md bg-primary/20 text-primary px-2 py-1 border border-primary/30';
+        document.getElementById('uplink-bar').style.width = '87%';
+        document.getElementById('uplink-bandwidth').textContent = 'BANDWIDTH: 87%';
+    }
+    
+    // Call on load
+    // initRealtimeLogistics();
+    */
+</script>
+</body></html>
