@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Post Job - The Workers Guild</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;700;800&amp;family=Courier+Prime:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Subtle blueprint grid background */
+        body {
+            background-color: #131313;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#aba9a9",
+                        "error": "#ffb4ab",
+                        "secondary-fixed-dim": "#c8c6c7",
+                        "on-tertiary-container": "#3e3e3e",
+                        "on-error-container": "#ffdad6",
+                        "on-surface-variant": "#ddc1ae",
+                        "secondary-fixed": "#e5e2e3",
+                        "primary-fixed-dim": "#ffb77d",
+                        "surface-dim": "#131313",
+                        "on-secondary": "#313031",
+                        "outline-variant": "#564334",
+                        "on-secondary-fixed": "#1c1b1c",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "primary-container": "#ff8c00",
+                        "inverse-on-surface": "#313030",
+                        "on-tertiary-fixed-variant": "#474746",
+                        "on-error": "#690005",
+                        "surface-container-low": "#1c1b1b",
+                        "inverse-primary": "#904d00",
+                        "secondary": "#c8c6c7",
+                        "surface-container-highest": "#353534",
+                        "on-surface": "#e5e2e1",
+                        "inverse-surface": "#e5e2e1",
+                        "tertiary-fixed": "#e4e2e1",
+                        "on-primary-fixed-variant": "#6e3900",
+                        "on-tertiary": "#303030",
+                        "surface-container-lowest": "#0e0e0e",
+                        "surface-tint": "#ffb77d",
+                        "surface-container-high": "#2a2a2a",
+                        "on-background": "#e5e2e1",
+                        "surface-bright": "#393939",
+                        "primary": "#ffb77d",
+                        "on-secondary-container": "#bab8b9",
+                        "surface-variant": "#353534",
+                        "on-primary-container": "#623200",
+                        "error-container": "#93000a",
+                        "primary-fixed": "#ffdcc3",
+                        "secondary-container": "#4a494a",
+                        "surface-container": "#201f1f",
+                        "outline": "#a48c7a",
+                        "on-primary-fixed": "#2f1500",
+                        "on-secondary-fixed-variant": "#474647",
+                        "on-primary": "#4d2600",
+                        "background": "#131313",
+                        "surface": "#131313",
+                        "tertiary": "#c8c6c5",
+                        "tertiary-fixed-dim": "#c8c6c5"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-md": "16px",
+                        "margin-desktop": "40px",
+                        "gutter": "24px",
+                        "stack-sm": "8px",
+                        "unit": "4px",
+                        "stack-lg": "32px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "label-md": ["Courier Prime"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "label-sm": ["Courier Prime"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "headline-sm": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["32px", { "lineHeight": "1.1", "fontWeight": "800" }],
+                        "label-md": ["14px", { "lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-md": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "1.2", "fontWeight": "400" }],
+                        "headline-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "headline-sm": ["24px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background antialiased min-h-screen flex flex-col font-body-md">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16 bg-surface border-b border-white/5 shadow-[4px_4px_0px_0px_#0e0e0f]">
+<div class="font-headline-sm text-headline-sm font-extrabold tracking-tighter text-primary">
+            GUILD_TERMINAL
+        </div>
+<div class="flex items-center gap-stack-sm">
+<button class="p-2 text-on-surface-variant hover:bg-surface-variant transition-colors hover:text-primary">
+<span class="material-symbols-outlined text-2xl" data-icon="qr_code_scanner">qr_code_scanner</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-variant transition-colors hover:text-primary relative">
+<span class="material-symbols-outlined text-2xl" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-primary-container rounded-full"></span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-variant transition-colors hover:text-primary">
+<span class="material-symbols-outlined text-2xl" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</header>
+<div class="flex flex-1 pt-16">
+<!-- SideNavBar -->
+<nav class="hidden md:flex flex-col fixed left-0 top-16 h-[calc(100vh-64px)] z-40 p-stack-md bg-surface-container w-64 border-r border-white/5 shadow-[4px_0px_0px_0px_#0e0e0f]">
+<div class="mb-stack-lg pb-stack-md border-b border-white/5">
+<div class="font-headline-sm text-primary mb-1">OPERATOR_01</div>
+<div class="font-label-md text-label-md text-on-surface-variant">Verified Client</div>
+</div>
+<ul class="flex flex-col gap-unit">
+<li>
+<a class="flex items-center gap-stack-sm p-3 bg-primary text-on-primary font-bold shadow-[4px_4px_0px_0px_#0e0e0f] transition-all scale-95 duration-100 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="add_box">add_box</span>
+                        Post Job
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-stack-sm p-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="format_list_bulleted">format_list_bulleted</span>
+                        Active Jobs
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-stack-sm p-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="verified_user">verified_user</span>
+                        Verification
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-stack-sm p-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+                        Payouts
+                    </a>
+</li>
+</ul>
+<div class="mt-auto pt-stack-md border-t border-white/5">
+<p class="font-label-md text-xs text-on-surface-variant opacity-50 uppercase">VERSION 0.1</p>
+<p class="font-label-md text-xs text-on-surface-variant opacity-50 uppercase mt-1">2026 BUILT BY WORKERS. FOR WORKERS.</p>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-1 w-full md:pl-64 pb-24 md:pb-0 p-margin-mobile md:p-margin-desktop">
+<div class="max-w-4xl mx-auto relative">
+<!-- Brand Seal -->
+<div class="absolute -top-4 right-0 opacity-10 pointer-events-none hidden md:block">
+<span class="material-symbols-outlined text-9xl text-primary" data-icon="engineering">engineering</span>
+</div>
+<div class="mb-stack-lg relative z-10">
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-background mb-unit">NEW JOB DEPLOYMENT</h1>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">UNIT_01 // INITIATE CONTRACT</p>
+</div>
+<!-- Form Card -->
+<div class="bg-[#131313] border border-primary/20 shadow-[0_0_30px_rgba(255,140,0,0.05)] p-stack-lg md:p-margin-desktop relative overflow-hidden group">
+<!-- Deco elements -->
+<div class="absolute top-0 right-0 p-2 opacity-20 font-label-sm text-label-sm">FORM_ID: A-774</div>
+<div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary-container/40 to-transparent"></div>
+<div class="absolute -inset-1 bg-primary/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+<form action="#" class="space-y-gutter relative z-10" id="job-form" method="POST">
+<!-- Row 1: Title & Skills -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="flex flex-col gap-unit">
+<label class="font-label-md text-label-md text-on-surface uppercase" for="job-title">Job Title</label>
+<input class="w-full bg-[#0E0E0F] border-0 border-b-2 border-[#2A2A2A] text-on-background font-body-md text-body-md py-3 px-4 focus:ring-0 focus:border-primary-container focus:outline-none focus:shadow-[0_0_15px_rgba(255,140,0,0.15)] transition-all" id="job-title" name="job-title" placeholder="e.g. Master Plumber Needed" required="" type="text"/>
+</div>
+<div class="flex flex-col gap-unit md:col-span-1">
+<label class="font-label-md text-label-md text-on-surface uppercase" for="trade-category">Trade Category <span class="text-primary-container text-xs ml-2 tracking-widest">1.1X XP MULTIPLIER ACTIVE</span></label>
+<div class="grid grid-cols-2 gap-2 mt-2">
+<label class="flex items-center gap-2 p-2 bg-[#0E0E0F] border border-[#2A2A2A] hover:border-primary-container cursor-pointer transition-colors">
+<input class="form-checkbox text-primary-container bg-surface border-[#2A2A2A] focus:ring-primary-container rounded-none" name="skills" type="checkbox" value="carpentry"/>
+<span class="text-on-background text-sm font-label-md uppercase">Carpentry</span>
+</label>
+<label class="flex items-center gap-2 p-2 bg-[#0E0E0F] border border-[#2A2A2A] hover:border-primary-container cursor-pointer transition-colors">
+<input class="form-checkbox text-primary-container bg-surface border-[#2A2A2A] focus:ring-primary-container rounded-none" name="skills" type="checkbox" value="welding"/>
+<span class="text-on-background text-sm font-label-md uppercase">Welding</span>
+</label>
+<label class="flex items-center gap-2 p-2 bg-[#0E0E0F] border border-[#2A2A2A] hover:border-primary-container cursor-pointer transition-colors">
+<input class="form-checkbox text-primary-container bg-surface border-[#2A2A2A] focus:ring-primary-container rounded-none" name="skills" type="checkbox" value="electrician"/>
+<span class="text-on-background text-sm font-label-md uppercase">Electrician</span>
+</label>
+<label class="flex items-center gap-2 p-2 bg-[#0E0E0F] border border-[#2A2A2A] hover:border-primary-container cursor-pointer transition-colors">
+<input class="form-checkbox text-primary-container bg-surface border-[#2A2A2A] focus:ring-primary-container rounded-none" name="skills" type="checkbox" value="plumbing"/>
+<span class="text-on-background text-sm font-label-md uppercase">Plumbing</span>
+</label>
+</div>
+</div>
+</div>
+<!-- Row 2: Location & Pay -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="flex flex-col gap-unit">
+<label class="font-label-md text-label-md text-on-surface uppercase" for="location">Location</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">location_on</span>
+<input class="w-full bg-[#0E0E0F] border-0 border-b-2 border-[#2A2A2A] text-on-background font-body-md text-body-md py-3 pl-10 pr-4 focus:ring-0 focus:border-primary-container focus:outline-none focus:shadow-[0_0_15px_rgba(255,140,0,0.15)] transition-all" id="location" name="location" placeholder="City, State or Zip" required="" type="text"/>
+</div>
+</div>
+<div class="flex flex-col gap-unit">
+<label class="font-label-md text-label-md text-on-surface uppercase" for="pay-rate">Pay Rate (Hourly/Flat)</label>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant font-label-md text-label-md">$</span>
+<input class="w-full bg-[#0E0E0F] border-0 border-b-2 border-[#2A2A2A] text-on-background font-body-md text-body-md py-3 pl-8 pr-4 focus:ring-0 focus:border-primary-container focus:outline-none focus:shadow-[0_0_15px_rgba(255,140,0,0.15)] transition-all" id="pay-rate" name="pay-rate" placeholder="0.00" required="" type="text"/>
+</div>
+</div>
+</div>
+<!-- Row 3: Description -->
+<div class="flex flex-col gap-unit">
+<label class="font-label-md text-label-md text-on-surface uppercase" for="job-description">Job Description</label>
+<textarea class="w-full bg-[#0E0E0F] border-0 border-b-2 border-[#2A2A2A] text-on-background font-body-md text-body-md py-3 px-4 resize-none focus:ring-0 focus:border-primary-container focus:outline-none focus:shadow-[0_0_15px_rgba(255,140,0,0.15)] transition-all" id="job-description" name="job-description" placeholder="Describe the work required, tools needed, and expectations..." required="" rows="5"></textarea>
+</div>
+<!-- Financial Gateway Protocol -->
+<div class="border border-[#2A2A2A] bg-[#0E0E0F] p-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary-container text-3xl">account_balance</span>
+<div>
+<div class="font-label-md text-on-surface uppercase tracking-widest text-sm">Financial Gateway Protocol</div>
+<div class="text-xs text-on-surface-variant uppercase mt-1">PayPal Verification Required to initiate contract</div>
+</div>
+</div>
+<button class="w-full md:w-auto px-6 py-3 bg-[#2A2A2A] text-on-surface hover:text-black hover:bg-primary-container transition-colors uppercase text-sm font-bold tracking-widest border border-white/5" type="button">Verify PayPal</button>
+</div>
+<!-- Submit CTA -->
+<div class="pt-stack-md flex justify-end">
+<button class="w-full md:w-auto relative group bg-[#FF8C00] text-black font-headline-sm text-headline-sm py-4 px-12 shadow-[4px_4px_0px_0px_#0e0e0f] hover:shadow-[0px_0px_0px_0px_#0e0e0f] hover:translate-x-[4px] hover:translate-y-[4px] transition-all duration-150 uppercase tracking-wide" id="submit-btn" type="submit">
+<div class="absolute inset-0 bg-[#FF8C00] blur-xl opacity-20 group-hover:opacity-40 transition-opacity -z-10"></div>
+                                Post Job
+                            </button>
+</div>
+</form>
+</div>
+</div>
+</main>
+</div>
+<!-- BottomNavBar (Mobile) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 bg-surface pb-safe md:hidden border-t border-white/10 shadow-[0px_-4px_0px_0px_#0e0e0f]">
+<a class="flex flex-col items-center justify-center text-primary font-bold scale-110 font-label-sm text-label-sm-mobile gap-1" href="#">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+<span>Post</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:text-primary transition-colors font-label-sm text-label-sm-mobile gap-1" href="#">
+<span class="material-symbols-outlined" data-icon="list_alt">list_alt</span>
+<span>Jobs</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:text-primary transition-colors font-label-sm text-label-sm-mobile gap-1" href="#">
+<span class="material-symbols-outlined" data-icon="badge">badge</span>
+<span>Verify</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:text-primary transition-colors font-label-sm text-label-sm-mobile gap-1" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span>Pay</span>
+</a>
+</nav>
+<script>
+        // Add subtle hover effects to form inputs
+        const inputs = document.querySelectorAll('input[type="text"], input[type="number"], textarea');
+        inputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.classList.add('glow-active');
+            });
+            input.addEventListener('blur', () => {
+                input.parentElement.classList.remove('glow-active');
+            });
+        });
+
+        // Supabase Integration
+        const SUPABASE_URL = 'YOUR_SUPABASE_URL'; // Replace with actual URL
+        const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY'; // Replace with actual Key
+        const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        const form = document.getElementById('job-form');
+        const submitBtn = document.getElementById('submit-btn');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // Update button state
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = 'POSTING...';
+            submitBtn.disabled = true;
+            
+            // Gather selected skills
+            const selectedSkills = Array.from(document.querySelectorAll('input[name="skills"]:checked'))
+                .map(cb => cb.value)
+                .join(', ');
+
+            const jobData = {
+                title: document.getElementById('job-title').value,
+                category: selectedSkills,
+                location: document.getElementById('location').value,
+                pay_rate: document.getElementById('pay-rate').value,
+                description: document.getElementById('job-description').value,
+                status: 'active',
+                created_at: new Date().toISOString()
+            };
+
+            const { data, error } = await supabase
+                .from('jobs')
+                .insert([jobData]);
+
+            // Reset button state
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+
+            if (error) {
+                console.error('Error inserting job:', error);
+                alert('Deployment failed. Please try again.');
+            } else {
+                alert('Job deployed successfully. Contract initiated.');
+                form.reset();
+            }
+        });
+    </script>
+</body></html>
