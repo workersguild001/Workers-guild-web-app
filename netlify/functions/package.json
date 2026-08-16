@@ -1,0 +1,16 @@
+{
+  "name": "the-workers-guild-terminal",
+  "version": "0.1.0",
+  "description": "Production terminal for The Workers Guild",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@supabase/supabase-client": "^2.39.0",
+    "@paypal/payouts-sdk": "^1.0.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
