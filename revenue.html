@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GUILD TERMINAL - Revenue Command</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&amp;family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-dim": "#131313",
+                    "surface-variant": "#353534",
+                    "surface-tint": "#ffb77d",
+                    "error-container": "#93000a",
+                    "on-error-container": "#ffdad6",
+                    "surface-container-low": "#1c1b1b",
+                    "primary": "#ffb77d",
+                    "on-primary-container": "#623200",
+                    "surface-container": "#201f1f",
+                    "surface-bright": "#393939",
+                    "on-secondary-container": "#bab8b9",
+                    "surface-container-highest": "#353534",
+                    "surface-container-high": "#2a2a2a",
+                    "inverse-primary": "#904d00",
+                    "tertiary-fixed-dim": "#c8c6c5",
+                    "on-secondary-fixed": "#1c1b1c",
+                    "on-background": "#e5e2e1",
+                    "on-tertiary": "#303030",
+                    "inverse-on-surface": "#313030",
+                    "tertiary-container": "#aba9a9",
+                    "on-secondary-fixed-variant": "#474647",
+                    "surface": "#131313",
+                    "secondary": "#c8c6c7",
+                    "background": "#131313",
+                    "primary-fixed-dim": "#ffb77d",
+                    "on-surface": "#e5e2e1",
+                    "secondary-fixed-dim": "#c8c6c7",
+                    "on-tertiary-container": "#3e3e3e",
+                    "secondary-fixed": "#e5e2e3",
+                    "on-error": "#690005",
+                    "secondary-container": "#4a494a",
+                    "on-primary-fixed-variant": "#6e3900",
+                    "primary-container": "#ff8c00",
+                    "primary-fixed": "#ffdcc3",
+                    "outline-variant": "#564334",
+                    "on-secondary": "#313031",
+                    "tertiary-fixed": "#e4e2e1",
+                    "on-tertiary-fixed": "#1b1c1c",
+                    "on-primary": "#4d2600",
+                    "surface-container-lowest": "#0e0e0e",
+                    "on-primary-fixed": "#2f1500",
+                    "outline": "#a48c7a",
+                    "on-surface-variant": "#ddc1ae",
+                    "tertiary": "#c8c6c5",
+                    "error": "#ffb4ab",
+                    "on-tertiary-fixed-variant": "#474746",
+                    "inverse-surface": "#e5e2e1"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-sm": "8px",
+                    "margin-desktop": "40px",
+                    "unit": "4px",
+                    "margin-mobile": "16px",
+                    "stack-md": "16px",
+                    "stack-lg": "32px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "label-md": [
+                            "Courier Prime"
+                    ],
+                    "headline-lg-mobile": [
+                            "Hanken Grotesk"
+                    ],
+                    "label-sm": [
+                            "Courier Prime"
+                    ],
+                    "headline-lg": [
+                            "Hanken Grotesk"
+                    ],
+                    "body-lg": [
+                            "Hanken Grotesk"
+                    ],
+                    "headline-sm": [
+                            "Hanken Grotesk"
+                    ],
+                    "body-md": [
+                            "Hanken Grotesk"
+                    ],
+                    "headline-md": [
+                            "Hanken Grotesk"
+                    ]
+            },
+            "fontSize": {
+                    "label-md": [
+                            "14px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-lg-mobile": [
+                            "32px",
+                            {
+                                    "lineHeight": "1.1",
+                                    "fontWeight": "800"
+                            }
+                    ],
+                    "label-sm": [
+                            "12px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-lg": [
+                            "48px",
+                            {
+                                    "lineHeight": "1.1",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "800"
+                            }
+                    ],
+                    "body-lg": [
+                            "18px",
+                            {
+                                    "lineHeight": "1.6",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-sm": [
+                            "24px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "1.5",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-md": [
+                            "32px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "fontWeight": "700"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+        // Supabase Initialization (Mock/Placeholder for actual implementation)
+        const supabaseUrl = 'YOUR_SUPABASE_URL';
+        const supabaseKey = 'YOUR_SUPABASE_ANON_KEY';
+        // const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mock empty states and interaction
+            document.getElementById('forceReconBtn').addEventListener('click', function() {
+                this.innerHTML = '<span class="material-symbols-outlined text-sm animate-spin">sync</span> RECONCILING...';
+                setTimeout(() => {
+                    this.innerHTML = '<span class="material-symbols-outlined text-sm">check</span> RECONCILIATION COMPLETE';
+                    setTimeout(() => {
+                        this.innerHTML = '<span class="material-symbols-outlined text-sm">sync_alt</span> FORCE RECONCILIATION';
+                    }, 2000);
+                }, 1500);
+            });
+
+            document.getElementById('exportCsvBtn').addEventListener('click', function() {
+                this.innerHTML = '<span class="material-symbols-outlined text-sm animate-bounce">download</span> EXPORTING...';
+                setTimeout(() => {
+                    this.innerHTML = '<span class="material-symbols-outlined text-sm">check</span> EXPORTED TO CSV';
+                    setTimeout(() => {
+                         this.innerHTML = '<span class="material-symbols-outlined text-sm">download</span> EXPORT CSV';
+                    }, 2000);
+                }, 1000);
+            });
+            
+            // In a real implementation, you would fetch data here and populate the DOM elements
+            /*
+            async function fetchFinancialData() {
+                // Fetch transaction volume
+                const { data: volumeData, error: volumeErr } = await supabase
+                    .from('transactions')
+                    .select('gross_amount, date')
+                    .gte('date', new Date(Date.now() - 30*24*60*60*1000).toISOString());
+                
+                if (!volumeErr) {
+                    // Calculate and update volume DOM elements
+                    // document.getElementById('grossVolume').innerText = ...
+                }
+
+                // Fetch logs
+                const { data: logData, error: logErr } = await supabase
+                    .from('commission_logs')
+                    .select('*')
+                    .order('created_at', { ascending: false })
+                    .limit(10);
+                
+                if (!logErr) {
+                     // Render table rows
+                }
+            }
+            fetchFinancialData();
+            */
+        });
+    </script>
+<style>
+        /* Blueprint Grid Background */
+        body {
+            background-color: #131313;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        
+        /* Custom Scrollbar for Industrial Look */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #131313;
+            border-left: 1px solid rgba(255,255,255,0.05);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2a2a2a;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ff8c00;
+        }
+
+        /* Ambient Glow Utility */
+        .ambient-glow {
+            position: relative;
+        }
+        .ambient-glow::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: 80%;
+            background: rgba(255, 140, 0, 0.15);
+            filter: blur(40px);
+            z-index: -1;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="text-on-surface bg-background min-h-screen flex flex-col font-body-md antialiased selection:bg-primary-container selection:text-background">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface border-b border-white/5 shadow-[4px_4px_0px_0px_#0e0e0f] fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary font-bold text-2xl">terminal</span>
+<a class="font-headline-sm text-headline-sm font-extrabold tracking-tighter text-primary dark:text-primary hover:text-surface-tint transition-colors" href="gateway.html">
+                GUILD_TERMINAL
+            </a>
+</div>
+<nav class="hidden md:flex gap-8 h-full">
+<!-- Simplified nav for visual consistency, Payouts is active -->
+<a class="h-full flex items-center text-on-surface-variant hover:bg-surface-variant transition-colors px-4 border-b-2 border-transparent" href="#">
+<span class="font-label-md text-label-md">DASHBOARD</span>
+</a>
+<a class="h-full flex items-center text-on-surface-variant hover:bg-surface-variant transition-colors px-4 border-b-2 border-transparent" href="#">
+<span class="font-label-md text-label-md">OPERATIONS</span>
+</a>
+<a class="h-full flex items-center text-primary border-b-2 border-primary bg-surface-variant/20 px-4" href="#">
+<span class="font-label-md text-label-md font-bold">REVENUE</span>
+</a>
+</nav>
+<div class="flex items-center gap-4 text-primary dark:text-primary">
+<button class="hover:bg-surface-variant transition-colors p-2 rounded-none flex items-center justify-center border border-transparent hover:border-white/10">
+<span class="material-symbols-outlined">qr_code_scanner</span>
+</button>
+<button class="hover:bg-surface-variant transition-colors p-2 rounded-none flex items-center justify-center border border-transparent hover:border-white/10 relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-primary-container rounded-full animate-pulse"></span>
+</button>
+<button class="hover:bg-surface-variant transition-colors p-2 rounded-none flex items-center justify-center border border-transparent hover:border-white/10">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</header>
+<!-- SideNavBar (Desktop) -->
+<aside class="bg-surface-container dark:bg-surface-container h-[calc(100vh-64px)] w-64 hidden md:flex flex-col border-r border-white/5 shadow-[4px_0px_0px_0px_#0e0e0f] fixed left-0 top-16 z-40 p-stack-md">
+<div class="mb-stack-lg border-b border-white/5 pb-stack-md">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-surface-variant border border-white/10 flex items-center justify-center shadow-[2px_2px_0px_0px_#0e0e0f]">
+<span class="material-symbols-outlined text-primary">engineering</span>
+</div>
+<div>
+<h2 class="text-primary font-headline-sm text-[16px] leading-tight font-bold" id="operatorName">OPR_N/A</h2>
+<p class="font-label-md text-[12px] text-on-surface-variant mt-1">Connecting...</p>
+</div>
+</div>
+</div>
+<nav class="flex flex-col gap-unit flex-grow">
+<a class="flex items-center gap-3 p-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">add_box</span>
+                Post Job
+            </a>
+<a class="flex items-center gap-3 p-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">format_list_bulleted</span>
+                Active Jobs
+            </a>
+<a class="flex items-center gap-3 p-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">verified_user</span>
+                Verification
+            </a>
+<a class="flex items-center gap-3 p-3 bg-primary text-on-primary font-bold shadow-[4px_4px_0px_0px_#0e0e0f] font-label-md text-label-md translate-x-1" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">payments</span>
+                Payouts
+            </a>
+</nav>
+<div class="mt-auto pt-stack-md border-t border-white/5">
+<div class="bg-surface-container-high p-3 border border-white/5 text-center">
+<p class="font-label-sm text-label-sm text-on-surface-variant">SYS_STATUS: ONLINE</p>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-[80px] md:pt-[96px] pb-[100px] md:pb-[64px] px-margin-mobile md:pl-[288px] md:pr-margin-desktop w-full max-w-[1600px] mx-auto">
+<!-- Page Header -->
+<div class="mb-stack-lg flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-white/5 pb-stack-sm">
+<div>
+<span class="font-label-md text-label-md text-primary-container mb-2 block">MODULE // FIN_CTRL</span>
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface uppercase tracking-tight">PAYMENT TRACKER</h1>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant bg-surface-container p-2 border border-white/5">
+<span class="material-symbols-outlined text-sm animate-spin">sync</span>
+<span class="font-label-md text-label-md">SYNC: AWAITING DATA...</span>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Guild Treasury (Total Volume) - Primary Focal Point -->
+<section class="md:col-span-8 bg-surface-dim border border-white/5 shadow-[4px_4px_0px_0px_#0e0e0f] p-stack-md flex flex-col relative overflow-hidden ambient-glow">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary-container/5 blur-3xl rounded-full"></div>
+<header class="flex justify-between items-start mb-stack-lg relative z-10">
+<span class="font-label-md text-label-md text-on-surface-variant border-b border-white/10 pb-1">VOL_01 // GUILD TREASURY</span>
+<span class="bg-surface-variant text-on-surface font-label-sm text-label-sm px-2 py-1 border border-white/10 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] animate-spin">autorenew</span>
+                        FETCHING
+                    </span>
+</header>
+<div class="flex-grow flex flex-col justify-center relative z-10">
+<p class="font-label-md text-label-md text-on-surface-variant mb-2">GROSS TRANSACTION VOLUME (30D)</p>
+<div class="flex items-baseline gap-2">
+<span class="font-headline-lg text-[64px] font-extrabold text-on-surface tracking-tighter" id="grossVolume">$---,---</span>
+<span class="font-label-md text-label-md text-primary-container" id="grossCents">.--</span>
+</div>
+<div class="mt-stack-md flex gap-4">
+<div class="bg-surface-container px-4 py-2 border border-white/5 border-l-2 border-l-surface-variant">
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-1">DELTA</p>
+<p class="font-label-md text-label-md text-on-surface flex items-center gap-1" id="volumeDelta">
+                                --%
+                            </p>
+</div>
+<div class="bg-surface-container px-4 py-2 border border-white/5 border-l-2 border-l-surface-variant">
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-1">PROJ (EOM)</p>
+<p class="font-label-md text-label-md text-on-surface" id="volumeProj">$---</p>
+</div>
+</div>
+</div>
+<!-- Abstract Chart placeholder (CSS based) -->
+<div class="absolute bottom-0 left-0 w-full h-32 flex items-end opacity-10 pointer-events-none z-0" id="chartBars">
+<div class="w-1/12 h-[10%] bg-surface-variant border-t border-r border-background"></div>
+<div class="w-1/12 h-[10%] bg-surface-variant border-t border-r border-background"></div>
+<div class="w-1/12 h-[10%] bg-surface-variant border-t border-r border-background"></div>
+<div class="w-1/12 h-[10%] bg-surface-variant border-t border-r border-background"></div>
+<div class="w-1/12 h-[10%] bg-surface-variant border-t border-r border-background"></div>
+<div class="w-1/12 h-[10%] bg-surface-variant border-t border-r border-background"></div>
+<div class="w-1/12 h-[10%] bg-surface-variant border-t border-r border-background"></div>
+<div class="w-1/12 h-[10%] bg-surface-variant border-t border-r border-background"></div>
+<div class="w-1/12 h-[10%] bg-surface-variant border-t border-r border-background"></div>
+<div class="w-1/12 h-[10%] bg-surface-variant border-t border-r border-background"></div>
+<div class="w-1/12 h-[10%] bg-surface-variant border-t border-r border-background"></div>
+<div class="w-1/12 h-[10%] bg-surface-variant border-t border-r border-background"></div>
+</div>
+</section>
+<!-- Integration / Actions -->
+<section class="md:col-span-4 flex flex-col gap-gutter">
+<!-- PayPal Integration Card -->
+<div class="bg-surface-dim border border-white/5 shadow-[4px_4px_0px_0px_#0e0e0f] p-stack-md flex-1">
+<header class="flex justify-between items-start mb-stack-md">
+<span class="font-label-md text-label-md text-on-surface-variant">GATEWAY // PAYPAL</span>
+<span class="material-symbols-outlined text-on-surface-variant">account_balance</span>
+</header>
+<div class="flex items-center gap-3 mb-stack-md">
+<div class="w-12 h-12 bg-surface-variant flex items-center justify-center border border-white/10">
+<!-- Simple geometric representation for branding rules -->
+<span class="font-headline-sm font-bold text-on-surface-variant italic">P</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant">AWAITING_LINK</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">link_off</span> DISCONNECTED
+                            </p>
+</div>
+</div>
+<button class="w-full bg-transparent border border-white/10 hover:border-primary-container hover:text-primary-container text-on-surface font-label-md text-label-md py-3 transition-colors flex items-center justify-center gap-2" id="forceReconBtn">
+<span class="material-symbols-outlined text-sm">sync_alt</span>
+                        FORCE RECONCILIATION
+                    </button>
+</div>
+<!-- Tax Protocol -->
+<div class="bg-surface-dim border border-white/5 shadow-[4px_4px_0px_0px_#0e0e0f] p-stack-md flex-1 relative overflow-hidden">
+<header class="flex justify-between items-start mb-stack-md">
+<span class="font-label-md text-label-md text-on-surface-variant">PROTOCOL // TAX_01</span>
+</header>
+<div class="flex justify-between items-end mb-2">
+<p class="font-label-sm text-label-sm text-on-surface-variant">WITHHELD (YTD)</p>
+<p class="font-label-md text-label-md text-on-surface-variant font-bold" id="taxWithheld">$---,---</p>
+</div>
+<div class="w-full h-2 bg-surface-container border border-white/5 mb-4">
+<div class="h-full bg-surface-variant" id="taxBar" style="width: 0%;"></div>
+</div>
+<button class="w-full bg-surface-container border border-white/5 hover:bg-surface-variant text-on-surface font-label-md text-label-md py-2 transition-colors flex items-center justify-center gap-2" id="exportCsvBtn">
+<span class="material-symbols-outlined text-sm">download</span>
+                        EXPORT CSV
+                    </button>
+</div>
+</section>
+<!-- Commission Feed (Table) -->
+<section class="md:col-span-12 bg-surface-dim border border-white/5 shadow-[4px_4px_0px_0px_#0e0e0f] mt-stack-md">
+<header class="p-stack-md border-b border-white/5 flex justify-between items-center bg-surface-container-lowest">
+<span class="font-label-md text-label-md text-on-surface-variant">LOG // COMMISSION FEED</span>
+<div class="flex gap-2">
+<input class="bg-surface-container border-b-2 border-transparent focus:border-primary-container focus:ring-0 text-on-surface font-label-sm text-label-sm px-3 py-1 w-48 placeholder:text-on-surface-variant/50 transition-colors" placeholder="SEARCH TX_ID..." type="text"/>
+</div>
+</header>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse min-w-[800px]">
+<thead>
+<tr class="border-b border-white/10 bg-surface-container">
+<th class="p-3 font-label-sm text-label-sm text-on-surface-variant font-normal">TX_ID</th>
+<th class="p-3 font-label-sm text-label-sm text-on-surface-variant font-normal">TIMESTAMP</th>
+<th class="p-3 font-label-sm text-label-sm text-on-surface-variant font-normal">OPERATOR</th>
+<th class="p-3 font-label-sm text-label-sm text-on-surface-variant font-normal">GROSS</th>
+<th class="p-3 font-label-sm text-label-sm text-on-surface-variant font-normal">FEE (5%)</th>
+<th class="p-3 font-label-sm text-label-sm text-on-surface-variant font-normal">STATUS</th>
+</tr>
+</thead>
+<tbody class="font-label-md text-label-md text-on-surface" id="commissionLogsTable"><tr class="border-b border-white/5"><td class="p-8 text-center text-on-surface-variant" colspan="6"><div class="flex flex-col items-center justify-center gap-2"><span class="material-symbols-outlined text-3xl animate-pulse">cloud_download</span><p class="font-label-md">AWAITING DATA...</p></div></td></tr></tbody>
+</table>
+</div>
+<div class="p-3 border-t border-white/5 text-center bg-surface-container-lowest">
+<button class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary-container transition-colors disabled:opacity-50" disabled="">
+                        LOAD MORE RECORDS [ + ]
+                    </button>
+</div>
+</section>
+</div>
+</main>
+<!-- Global Footer -->
+<footer class="bg-surface-container-lowest border-t border-white/5 py-4 px-margin-mobile md:px-margin-desktop mt-auto w-full z-10 relative md:ml-64 md:w-[calc(100%-16rem)]">
+<div class="flex flex-col md:flex-row justify-between items-center gap-2 max-w-[1600px] mx-auto">
+<span class="font-label-sm text-label-sm text-on-surface-variant opacity-70">V0.1 // 2026 // BUILT BY WORKERS. FOR WORKERS.</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant opacity-70 flex items-center gap-2">
+                Status: <span class="text-primary-container">[FINALIZED]</span>
+</span>
+</div>
+</footer>
+<!-- BottomNavBar (Mobile) -->
+<nav class="bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-white/10 shadow-[0px_-4px_0px_0px_#0e0e0f] fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 bg-surface pb-safe md:hidden">
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:text-primary w-full h-full" href="#">
+<span class="material-symbols-outlined mb-1">add_circle</span>
+<span class="font-label-sm text-label-sm-mobile">Post</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:text-primary w-full h-full" href="#">
+<span class="material-symbols-outlined mb-1">list_alt</span>
+<span class="font-label-sm text-label-sm-mobile">Jobs</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:text-primary w-full h-full" href="#">
+<span class="material-symbols-outlined mb-1">badge</span>
+<span class="font-label-sm text-label-sm-mobile">Verify</span>
+</a>
+<!-- Active Tab logic applied here based on Revenue/Payout intent -->
+<a class="flex flex-col items-center justify-center text-primary font-bold scale-110 active:scale-90 transition-transform w-full h-full" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+<span class="font-label-sm text-label-sm-mobile">Pay</span>
+</a>
+</nav>
+</body></html>
