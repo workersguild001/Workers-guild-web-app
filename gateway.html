@@ -3,157 +3,216 @@
 <html class="dark" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>THE WORKERS GUILD // COMMAND - Mobile Gateway</title>
+<title>GUILD_GATEWAY // COMMAND</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "on-secondary-fixed": "#1c1b1c",
-                        "on-secondary": "#313031",
-                        "outline-variant": "#564334",
-                        "inverse-on-surface": "#313030",
-                        "tertiary-fixed-dim": "#c8c6c5",
-                        "error-container": "#93000a",
-                        "inverse-surface": "#e5e2e1",
-                        "tertiary-fixed": "#e4e2e1",
-                        "primary-container": "#ff8c00",
-                        "tertiary-container": "#aba9a9",
-                        "on-secondary-fixed-variant": "#474647",
-                        "on-tertiary-container": "#3e3e3e",
-                        "background": "#131313",
-                        "surface-container-lowest": "#0e0e0e",
-                        "on-tertiary-fixed-variant": "#474746",
-                        "surface-container": "#201f1f",
-                        "surface-tint": "#ffb77d",
-                        "on-secondary-container": "#bab8b9",
-                        "secondary-fixed": "#e5e2e3",
-                        "on-surface-variant": "#ddc1ae",
-                        "secondary": "#c8c6c7",
-                        "on-tertiary-fixed": "#1b1c1c",
-                        "error": "#ffb4ab",
-                        "on-primary-container": "#623200",
-                        "secondary-fixed-dim": "#c8c6c7",
-                        "on-primary-fixed": "#2f1500",
-                        "primary-fixed-dim": "#ffb77d",
-                        "primary": "#ffb77d",
-                        "outline": "#a48c7a",
-                        "tertiary": "#c8c6c5",
-                        "on-error": "#690005",
-                        "on-primary": "#4d2600",
-                        "on-primary-fixed-variant": "#6e3900",
-                        "surface-container-highest": "#353534",
-                        "on-background": "#e5e2e1",
-                        "secondary-container": "#4a494a",
-                        "on-error-container": "#ffdad6",
-                        "surface-container-high": "#2a2a2a",
-                        "surface-dim": "#131313",
-                        "surface-bright": "#393939",
-                        "on-tertiary": "#303030",
-                        "inverse-primary": "#904d00",
-                        "surface": "#131313",
-                        "surface-variant": "#353534",
-                        "primary-fixed": "#ffdcc3",
-                        "surface-container-low": "#1c1b1b",
-                        "on-surface": "#e5e2e1"
-                    },
-                    borderRadius: {
-                        DEFAULT: "0.25rem",
-                        lg: "0.5rem",
-                        xl: "0.75rem",
-                        full: "9999px"
-                    },
-                    spacing: {
-                        "stack-md": "16px",
-                        "margin-desktop": "40px",
-                        "unit": "4px",
-                        "gutter": "24px",
-                        "stack-sm": "8px",
-                        "margin-mobile": "16px",
-                        "stack-lg": "32px"
-                    },
-                    fontFamily: {
-                        "body-md": ["Hanken Grotesk"],
-                        "headline-md": ["Hanken Grotesk"],
-                        "headline-lg": ["Hanken Grotesk"],
-                        "headline-sm": ["Hanken Grotesk"],
-                        "body-lg": ["Hanken Grotesk"],
-                        "label-sm": ["Courier Prime"],
-                        "headline-lg-mobile": ["Hanken Grotesk"],
-                        "label-md": ["Courier Prime"]
-                    },
-                    fontSize: {
-                        "body-md": ["16px", { lineHeight: "1.5", fontWeight: "400" }],
-                        "headline-md": ["32px", { lineHeight: "1.2", fontWeight: "700" }],
-                        "headline-lg": ["48px", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "800" }],
-                        "headline-sm": ["24px", { lineHeight: "1.2", fontWeight: "700" }],
-                        "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],
-                        "label-sm": ["12px", { lineHeight: "1.2", fontWeight: "400" }],
-                        "headline-lg-mobile": ["32px", { lineHeight: "1.1", fontWeight: "800" }],
-                        "label-md": ["14px", { lineHeight: "1.2", letterSpacing: "0.05em", fontWeight: "400" }]
-                    }
-                }
-            }
-        };
-    </script>
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;700;800&amp;family=Courier+Prime:wght@400;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-fixed": "#1c1b1c",
+                    "on-secondary": "#313031",
+                    "outline-variant": "#564334",
+                    "inverse-on-surface": "#313030",
+                    "tertiary-fixed-dim": "#c8c6c5",
+                    "error-container": "#93000a",
+                    "inverse-surface": "#e5e2e1",
+                    "tertiary-fixed": "#e4e2e1",
+                    "primary-container": "#ff8c00",
+                    "tertiary-container": "#aba9a9",
+                    "on-secondary-fixed-variant": "#474647",
+                    "on-tertiary-container": "#3e3e3e",
+                    "background": "#131313",
+                    "surface-container-lowest": "#0e0e0e",
+                    "on-tertiary-fixed-variant": "#474746",
+                    "surface-container": "#201f1f",
+                    "surface-tint": "#ffb77d",
+                    "on-secondary-container": "#bab8b9",
+                    "secondary-fixed": "#e5e2e3",
+                    "on-surface-variant": "#ddc1ae",
+                    "secondary": "#c8c6c7",
+                    "on-tertiary-fixed": "#1b1c1c",
+                    "error": "#ffb4ab",
+                    "on-primary-container": "#623200",
+                    "secondary-fixed-dim": "#c8c6c7",
+                    "on-primary-fixed": "#2f1500",
+                    "primary-fixed-dim": "#ffb77d",
+                    "primary": "#ffb77d",
+                    "outline": "#a48c7a",
+                    "tertiary": "#c8c6c5",
+                    "on-error": "#690005",
+                    "on-primary": "#4d2600",
+                    "on-primary-fixed-variant": "#6e3900",
+                    "surface-container-highest": "#353534",
+                    "on-background": "#e5e2e1",
+                    "secondary-container": "#4a494a",
+                    "on-error-container": "#ffdad6",
+                    "surface-container-high": "#2a2a2a",
+                    "surface-dim": "#131313",
+                    "surface-bright": "#393939",
+                    "on-tertiary": "#303030",
+                    "inverse-primary": "#904d00",
+                    "surface": "#131313",
+                    "surface-variant": "#353534",
+                    "primary-fixed": "#ffdcc3",
+                    "surface-container-low": "#1c1b1b",
+                    "on-surface": "#e5e2e1"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-md": "16px",
+                    "margin-desktop": "40px",
+                    "unit": "4px",
+                    "gutter": "24px",
+                    "stack-sm": "8px",
+                    "margin-mobile": "16px",
+                    "stack-lg": "32px"
+            },
+            "fontFamily": {
+                    "body-md": ["Hanken Grotesk"],
+                    "headline-md": ["Hanken Grotesk"],
+                    "headline-lg": ["Hanken Grotesk"],
+                    "headline-sm": ["Hanken Grotesk"],
+                    "body-lg": ["Hanken Grotesk"],
+                    "label-sm": ["Courier Prime"],
+                    "headline-lg-mobile": ["Hanken Grotesk"],
+                    "label-md": ["Courier Prime"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-md": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "headline-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "headline-sm": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "1.1", "fontWeight": "800"}],
+                    "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "400"}]
+            }
+          }
+        }
+      }
+    </script>
 <style>
-        body { font-family: 'Hanken Grotesk', sans-serif; background-color: #131313; color: #e5e2e1; }
-        .mono { font-family: 'Courier Prime', monospace; }
-        .material-symbols-outlined { font-variation-settings: 'FILL' 1, 'wght' 400; }
+        .industrial-card {
+            box-shadow: 4px 4px 0px 0px #0E0E0F;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.15s ease-in-out;
+        }
+        .industrial-card:hover:not(.disabled-card) {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px 0px #0E0E0F;
+            border-color: rgba(255, 140, 0, 0.3);
+        }
+        .industrial-card:active:not(.disabled-card) {
+            transform: translate(4px, 4px);
+            box-shadow: 0px 0px 0px 0px #0E0E0F;
+        }
         
-        .industrial-glow { box-shadow: 0 0 40px rgba(255, 140, 0, 0.15); }
-        .seal-glow { filter: drop-shadow(0 0 30px rgba(255, 140, 0, 0.4)); }
+        .disabled-card {
+            opacity: 0.5;
+            cursor: not-allowed;
+            filter: grayscale(100%);
+        }
+
+        .focal-glow {
+            box-shadow: 0 0 40px 10px rgba(255, 140, 0, 0.15);
+        }
         
-        /* Utility styles for Industrial-Brutalist look */
-        .card-shadow { box-shadow: 4px 4px 0px 0px #0E0E0F; }
-        .card-border { border: 1px solid rgba(255, 255, 255, 0.05); }
+        /* Grid overlay for texture */
+        .bg-grid-pattern {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        }
         
-        /* Mobile specific fixes */
-        .h-safe-screen { height: 100vh; /* Fallback */ height: 100dvh; }
+        .zero-gap-glow {
+            position: relative;
+        }
+        .zero-gap-glow::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            background: rgba(255, 140, 0, 0.8);
+            filter: blur(20px);
+            z-index: -1;
+            border-radius: 50%;
+        }
     </style>
 </head>
-<body class="bg-background text-on-background min-h-screen flex flex-col items-center justify-center p-margin-mobile md:hidden">
-<!-- Top Status Bar Indicator (Simulated) -->
-<!-- Central Gateway Content -->
-<main class="w-full max-w-md flex flex-col items-center gap-stack-lg mt-stack-lg pb-margin-mobile">
-<!-- Header / Seal Area -->
-<header class="flex flex-col items-center text-center gap-stack-sm w-full relative">
-<div class="relative w-48 h-48 mb-stack-md flex items-center justify-center">
-<!-- Background glow pulse effect -->
-<div class="absolute inset-0 bg-primary-container opacity-20 rounded-full blur-2xl animate-pulse"></div>
-<img alt="Guild Brand Seal" class="w-full h-full object-contain seal-glow relative z-10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCrJFy2LrB5ZG4Hj-tjmO1ql0lqf-33qP5YGs8XvXzaJD-gJgtz61UlQGlFBv_J_ojD3XfzUGfQ9AaEDeali7wtiwgnxmuizIWSF8wSxlOZBTB98qHtzUleNLbDSYNuIAuKS4bQESQYlM6TYfcK-3JDOLXC5scneAhbXpMCLWykie0U1cez7sCe5ljrqxqOWOO7zhFgBsFBJOf1WCF6Yt3NzK9A8YlgrMJZON8DUvk_ljpE8ddbOIZjBj_oJTqL7sUyQ"/>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col relative overflow-x-hidden">
+<!-- Background Blueprint Image -->
+<div class="fixed inset-0 z-[-2] opacity-20 pointer-events-none mix-blend-screen" style="background-image: url('https://lh3.googleusercontent.com/aida/AP1WRLsd2xkzu59ZzYobY_Ng0PGVPurk_pOtkiL8_nLj1jz3JXo7TC0-lL7vjahTgU20X5R7ttVb35pr4RCr9PB-HirXa9VQFmrMOF_wHdRP1SyX_sF33F9A6bu5IeXkAQdYcENJZAW6VA4ak7Iv4EGBIhEqqilU3OnsHqgy7igQzlPWdp0JbWNibbKDqjg3Iy1yHTSVUsUtCYlkjdSstEE_qd3LYMqZvzVIANFCP0B8mSDCCjPbTl86f1pRelg'); background-size: cover; background-position: center;"></div>
+<!-- Grid Overlay -->
+<div class="fixed inset-0 z-[-1] pointer-events-none bg-grid-pattern"></div>
+<!-- Top Navigation (TopAppBar) -->
+<nav class="docked full-width top-0 border-b border-white/5 bg-surface-dim shadow-[4px_4px_0px_0px_#0E0E0F] z-50">
+<div class="flex justify-between items-center w-full px-gutter h-16 max-w-[1440px] mx-auto">
+<div class="flex items-center gap-4">
+<div class="font-headline-sm text-headline-sm font-bold text-primary dark:text-primary tracking-tighter">
+                    THE WORKERS GUILD // COMMAND
+                </div>
+<div class="hidden md:flex ml-8 gap-6"><a class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface-variant font-medium hover:text-primary-fixed-dim transition-colors duration-150" href="gateway.html">GATEWAY</a>
+<a class="font-label-md text-label-md text-primary dark:text-primary border-b-2 border-primary pb-1 font-bold" href="#">DASHBOARD</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface-variant font-medium hover:text-primary-fixed-dim transition-colors duration-150" href="#">PERSONNEL</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface-variant font-medium hover:text-primary-fixed-dim transition-colors duration-150" href="#">LOGISTICS</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface-variant font-medium hover:text-primary-fixed-dim transition-colors duration-150" href="#">REVENUE</a>
 </div>
-<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary tracking-tighter uppercase mb-unit">Guild Gateway</h1>
-</header>
-<!-- Terminals Stack -->
-<nav class="w-full flex flex-col gap-stack-md">
-<!-- Terminal 1: Affiliate -->
-<a class="w-full bg-surface-container border card-border card-shadow flex items-stretch text-left group active:translate-y-[2px] active:shadow-none transition-all focus:outline-none focus:border-primary" href="recruitment.html"><div class="bg-surface-variant w-12 flex flex-col items-center justify-center border-r card-border"><span class="mono text-[10px] text-on-surface-variant transform -rotate-90 whitespace-nowrap tracking-widest uppercase">Trmnl 01</span></div><div class="flex-1 p-stack-md flex items-center justify-between"><div><span class="mono text-label-sm text-primary mb-unit block">ACTIVATE</span><h2 class="font-headline-sm text-headline-sm uppercase text-on-surface">Affiliate</h2></div><span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform">arrow_forward</span></div></a>
-<!-- Terminal 2: Craftsman -->
-<a class="w-full bg-surface-container border card-border card-shadow flex items-stretch text-left group active:translate-y-[2px] active:shadow-none transition-all focus:outline-none focus:border-primary" href="profile.html"><div class="bg-surface-variant w-12 flex flex-col items-center justify-center border-r card-border"><span class="mono text-[10px] text-on-surface-variant transform -rotate-90 whitespace-nowrap tracking-widest uppercase">Trmnl 02</span></div><div class="flex-1 p-stack-md flex items-center justify-between"><div><span class="mono text-label-sm text-primary mb-unit block">ACTIVATE</span><h2 class="font-headline-sm text-headline-sm uppercase text-on-surface">Craftsman</h2></div><span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform">arrow_forward</span></div></a>
-<!-- Terminal 3: Poster -->
-<a class="w-full bg-surface-container border card-border card-shadow flex items-stretch text-left group active:translate-y-[2px] active:shadow-none transition-all focus:outline-none focus:border-primary" href="client-dashboard.html"><div class="bg-surface-variant w-12 flex flex-col items-center justify-center border-r card-border"><span class="mono text-[10px] text-on-surface-variant transform -rotate-90 whitespace-nowrap tracking-widest uppercase">Trmnl 03</span></div><div class="flex-1 p-stack-md flex items-center justify-between"><div><span class="mono text-label-sm text-primary mb-unit block">ACTIVATE JOB POSTING</span><h2 class="font-headline-sm text-headline-sm uppercase text-on-surface">Job Posting</h2></div><span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform">arrow_forward</span></div></a>
-<!-- Terminal 4: Tool Rental (Locked) -->
-<button class="w-full bg-surface-dim border card-border opacity-50 flex items-stretch text-left cursor-not-allowed" disabled="">
-<div class="bg-surface-lowest w-12 flex flex-col items-center justify-center border-r card-border">
-<span class="mono text-[10px] text-on-surface-variant/50 transform -rotate-90 whitespace-nowrap tracking-widest uppercase">Trmnl 04</span>
 </div>
-<div class="flex-1 p-stack-md flex items-center justify-between opacity-50">
-<div>
-<span class="mono text-label-sm text-error mb-unit block">Trmnl 04</span>
-<h2 class="font-headline-sm text-headline-sm uppercase text-on-surface-variant">Tool Rental</h2>
-</div>
-<span class="material-symbols-outlined text-on-surface-variant">lock</span>
-</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface hover:text-primary transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">settings</span>
 </button>
+<button class="text-on-surface hover:text-primary transition-colors relative">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-primary rounded-full"></span>
+</button>
+<button class="text-on-surface hover:text-primary transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">account_circle</span>
+</button>
+</div>
+</div>
 </nav>
-<!-- Action / Override Button -->
+<!-- Main Content Area -->
+<main class="flex-grow flex flex-col items-center justify-center p-gutter relative z-10 w-full max-w-[1440px] mx-auto py-margin-desktop">
+<!-- Finalized Marker -->
+<!-- Central Branding -->
+<div class="mb-16 flex flex-col items-center relative">
+<div class="zero-gap-glow mb-6">
+<img alt="Guild Seal Logo" class="w-32 h-32 md:w-48 md:h-48 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrkRv8uq8NiYnkSqqGeFfqetMOIrcvvTwzCcYGJv4R6DPiy-B16UOKEiGwtTWl73-40SDVeyLUiwCFzsfO6szjLh89NpQQlJukS-ec56ujAT2ss0GWi_4k0NgRR7aoRw4-zYKYd2yJy_VblYslG_EojMcLWexTbvutP_dqYZdXyji_-AUwnCBlGEkKkku4Ayh1jPlZqA5z_2QH9BXJkrWxuZVBEiIrR_WUVwr678vcJl73pTWTMP-9lRoQowI_-0yQrg"/>
+</div>
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface text-center uppercase tracking-widest border-b border-primary/30 pb-4 mb-2">GUILD GATEWAY</h1>
+</div>
+<!-- Terminal Grid (Bento Layout) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-lg w-full max-w-5xl">
+<!-- Terminal 1: Affiliate Network -->
+<a class="industrial-card bg-surface block p-stack-md group relative overflow-hidden" href="recruitment.html"><div class="absolute top-0 left-0 w-1 h-full bg-primary/20 group-hover:bg-primary transition-colors"></div><div class="flex justify-between items-start mb-12"><div class="font-label-sm text-label-sm text-on-surface-variant px-2 py-1 inline-block">TERM 01</div><span class="material-symbols-outlined text-primary text-3xl group-hover:scale-110 transition-transform">share</span></div><div><h2 class="font-headline-sm text-headline-sm text-on-surface mb-2 uppercase">AFFILIATE</h2><p class="font-label-md text-label-md text-on-surface-variant opacity-70">Initiate recruitment protocols. Manage downline operatives and structural growth.</p></div></a>
+<!-- Terminal 2: Craftsman Terminal -->
+<a class="industrial-card bg-surface block p-stack-md group relative overflow-hidden" href="profile.html"><div class="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-primary/20 group-hover:border-primary transition-colors m-2"></div><div class="flex justify-between items-start mb-12"><div class="font-label-sm text-label-sm text-on-surface-variant px-2 py-1 inline-block">TERM 02</div><span class="material-symbols-outlined text-primary text-3xl group-hover:scale-110 transition-transform">engineering</span></div><div><h2 class="font-headline-sm text-headline-sm text-on-surface mb-2 uppercase">CRAFTSMAN</h2><p class="font-label-md text-label-md text-on-surface-variant opacity-70">Access personal metrics, skill validations, and clearance levels.</p></div></a>
+<!-- Terminal 3: Poster Command -->
+<a class="industrial-card bg-surface block p-stack-md group relative overflow-hidden md:col-span-1" href="client-dashboard.html"><div class="absolute bottom-0 left-0 w-full h-1 bg-primary/20 group-hover:bg-primary transition-colors"></div><div class="flex justify-between items-start mb-12"><div class="font-label-sm text-label-sm text-on-surface-variant px-2 py-1 inline-block">TERM 03</div><span class="material-symbols-outlined text-primary text-3xl group-hover:scale-110 transition-transform">assignment</span></div><div><h2 class="font-headline-sm text-headline-sm text-on-surface mb-2 uppercase">JOB POSTING</h2><p class="font-label-md text-label-md text-on-surface-variant opacity-70">Client interface. Post contracts, review bids, and authorize payments.</p></div></a>
+<!-- Terminal 4: Tool Rental (Gated) -->
+<div class="industrial-card bg-surface p-stack-md relative overflow-hidden disabled-card select-none"><div class="absolute inset-0 bg-[repeating-linear-gradient(45deg,transparent,transparent_10px,rgba(255,255,255,0.02)_10px,rgba(255,255,255,0.02)_20px)]"></div><div class="flex justify-between items-start mb-12 relative z-10"><div class="font-label-sm text-label-sm text-on-surface-variant px-2 py-1 inline-block">TERM 04</div><div class="bg-surface-container-highest p-2 border border-white/10"><span class="material-symbols-outlined text-on-surface-variant text-xl">lock</span></div></div><div class="relative z-10"><h2 class="font-headline-sm text-headline-sm text-on-surface mb-2 uppercase">TOOL RENTAL</h2><p class="font-label-md text-label-md text-on-surface-variant opacity-70 mb-4">Secure high-grade equipment for verified contracts.</p><div class="inline-flex items-center gap-2 bg-surface-container-low border border-white/5 px-3 py-1 font-label-sm text-label-sm text-on-surface"><span class="w-2 h-2 bg-on-surface-variant block rounded-sm"></span>LEVEL 30 REQUIRED</div></div></div>
+</div>
 </main>
 <!-- Footer -->
-<footer class="w-full border-t card-border mt-auto pt-stack-md pb-stack-lg text-center flex flex-col items-center"><span class="mono text-label-sm text-on-surface-variant opacity-70">V0.1 // 2026 // WORKERS GUILD</span></footer>
+<footer class="full-width bottom-0 border-t border-white/5 bg-surface-container-lowest w-full py-stack-md px-gutter flex justify-between items-center z-50">
+<div class="font-label-sm text-label-sm text-on-surface font-label-sm text-on-surface">
+            V0.1 // 2026 // BUILT BY WORKERS. FOR WORKERS.
+        </div>
+<div class="flex gap-4">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">PRIVACY PROT</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">USER AGREE</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">DEPT LABOR</a>
+</div>
+</footer>
 </body></html>
