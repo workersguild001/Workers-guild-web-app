@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Job Poster Dashboard | THE WORKERS GUILD</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#ff8c00',
+                        surface: '#131313',
+                        'surface-container': '#1c1b1b',
+                    },
+                    fontFamily: {
+                        sans: ['Hanken Grotesk', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0e0e0e;
+            background-image: 
+                linear-gradient(rgba(255, 140, 0, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 140, 0, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            color: #e4e2e1;
+            min-height: 100vh;
+        }
+        .glow-box {
+            box-shadow: 0 0 20px rgba(255, 140, 0, 0.15);
+            border: 1px solid rgba(255, 140, 0, 0.2);
+        }
+    </style>
+</head>
+<body class="flex">
+    <!-- Side Nav -->
+    <aside class="w-64 border-r border-white/5 h-screen sticky top-0 bg-surface flex flex-col p-6">
+        <div class="mb-12">
+            <h1 class="text-primary font-black tracking-tighter text-2xl">GUILD_TERMINAL</h1>
+            <p class="text-[10px] font-mono opacity-50 uppercase mt-1">Operator // CLIENT_CMD</p>
+        </div>
+        
+        <nav class="space-y-4 flex-1">
+            <a href="client-dashboard.html" class="flex items-center gap-3 p-3 bg-primary text-surface font-bold">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                DASHBOARD
+            </a>
+            <a href="post-job.html" class="flex items-center gap-3 p-3 hover:bg-white/5 transition-colors font-bold opacity-60">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4"></path></svg>
+                POST JOB
+            </a>
+        </nav>
+
+        <footer class="mt-auto pt-6 border-t border-white/5">
+            <p class="text-[10px] font-mono opacity-40 uppercase">V0.1 // 2026</p>
+            <p class="text-[10px] font-mono opacity-40 uppercase">BUILT BY WORKERS. FOR WORKERS.</p>
+        </footer>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-12">
+        <header class="flex justify-between items-end mb-12">
+            <div>
+                <p class="text-primary font-mono text-xs mb-2 uppercase tracking-widest">SYS.DIR // OVERVIEW</p>
+                <h2 class="text-5xl font-black uppercase tracking-tighter italic">Command Center</h2>
+            </div>
+            <button onclick="window.location.href='post-job.html'" class="bg-primary text-surface px-8 py-4 font-black uppercase tracking-tighter hover:scale-105 transition-transform italic">
+                + Post New Job
+            </button>
+        </header>
+
+        <div class="grid grid-cols-3 gap-6 mb-12">
+            <div class="glow-box bg-surface p-6">
+                <div class="flex justify-between items-start mb-4">
+                    <p class="text-[10px] font-mono opacity-50 uppercase">Active Jobs</p>
+                    <span class="text-[10px] font-mono text-primary">MTRC_01</span>
+                </div>
+                <p class="text-4xl font-black" id="active-jobs-count">--</p>
+                <div class="h-1 bg-white/5 mt-4">
+                    <div class="h-full bg-primary" style="width: 40%"></div>
+                </div>
+            </div>
+            <div class="glow-box bg-surface p-6">
+                <div class="flex justify-between items-start mb-4">
+                    <p class="text-[10px] font-mono opacity-50 uppercase">New Applicants</p>
+                    <span class="text-[10px] font-mono text-primary">MTRC_02</span>
+                </div>
+                <p class="text-4xl font-black" id="applicants-count">--</p>
+                <p class="text-[10px] font-mono text-primary mt-2 uppercase italic tracking-widest animate-pulse">Calculating...</p>
+            </div>
+            <div class="glow-box bg-surface p-6">
+                <div class="flex justify-between items-start mb-4">
+                    <p class="text-[10px] font-mono opacity-50 uppercase">Total Spent</p>
+                    <span class="text-[10px] font-mono text-primary">MTRC_03</span>
+                </div>
+                <p class="text-4xl font-black">$ 0.00</p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-3 gap-12">
+            <div class="col-span-2">
+                <h3 class="text-xl font-black uppercase tracking-tighter mb-6 flex items-center gap-3">
+                    Active Listings
+                    <span class="h-px flex-1 bg-white/5"></span>
+                    <span class="text-[10px] font-mono opacity-40">SORT: PRIORITY_DESC</span>
+                </h3>
+                <div class="text-center py-24 border border-dashed border-white/10 opacity-30 font-mono text-xs uppercase tracking-widest">
+                    Initializing Terminal Uplink...
+                </div>
+            </div>
+            <div>
+                <h3 class="text-xl font-black uppercase tracking-tighter mb-6 flex items-center gap-3">
+                    Applicant Feed
+                    <span class="h-px flex-1 bg-white/5"></span>
+                    <span class="flex items-center gap-2 text-[10px] font-mono text-primary uppercase italic">
+                        <span class="w-2 h-2 rounded-full bg-primary animate-ping"></span>
+                        Live
+                    </span>
+                </h3>
+                <div class="bg-surface p-8 text-center border border-white/5 font-mono text-xs opacity-40 uppercase tracking-widest h-[400px] flex items-center justify-center">
+                    Awaiting Feed Data...
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Supabase Initialization & Logic will go here
+        // Sourced from centralized config
+    </script>
+</body>
+</html>
