@@ -3,7 +3,7 @@
 <html class="dark" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>The Workers Guild - Affiliate Console (Preview Mode)</title>
+<title>The Workers Guild - Worker Console</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;700;800&amp;family=Courier+Prime:wght@400;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -110,42 +110,94 @@
             50% { transform: translateY(200px); }
             100% { transform: translateY(-10px); }
         }
+        @media print {
+            body {
+                background: white !important;
+                color: black !important;
+            }
+            body * {
+                visibility: hidden;
+            }
+            .print-zone, .print-zone * {
+                visibility: visible;
+            }
+            .print-zone {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                background: white !important;
+                color: black !important;
+                padding: 2rem;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .print-high-contrast {
+                border: 4px solid black !important;
+                background: white !important;
+                color: black !important;
+                box-shadow: none !important;
+            }
+            .print-high-contrast-text {
+                color: black !important;
+                opacity: 1 !important;
+            }
+        }
     </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-    const supabaseUrl = 'https://your-project-url.supabase.co';
-    const supabaseKey = 'your-anon-key';
-    const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+        const supabaseUrl = 'https://your-project-url.supabase.co';
+        const supabaseKey = 'your-anon-key';
+        const supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
-    async function fetchRevenue() {
-        const { data, error } = await supabase
-            .from('affiliate_stats')
-            .select('revenue')
-            .single();
-        
-        if (data && !error) {
-            document.querySelector('#revenue-display').textContent = `$${data.revenue.toFixed(2)}`;
+        let userAffiliateId = 'WORKER-123'; // Default fallback
+
+        async function initializeAuth() {
+            const { data: { session }, error } = await supabase.auth.getSession();
+            if (session && session.user) {
+                userAffiliateId = session.user.id;
+            }
+            updateJobQR(userAffiliateId);
         }
-    }
 
-    async function handleWithdrawal() {
-        console.log('Initiating PayPal withdrawal process...');
-        // Logic for withdrawal trigger goes here
-    }
+        async function fetchRevenue() {
+            const { data, error } = await supabase
+                .from('affiliate_stats')
+                .select('revenue')
+                .single();
+            
+            if (data && !error) {
+                document.querySelector('#revenue-display').textContent = `$${data.revenue.toFixed(2)}`;
+            }
+        }
 
-    document.addEventListener('DOMContentLoaded', () => {
-        fetchRevenue();
-        document.querySelector('#withdraw-btn').addEventListener('click', handleWithdrawal);
-    });
-</script><script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script></head>
+        async function handleWithdrawal() {
+            console.log('Initiating PayPal withdrawal process...');
+            // Logic for withdrawal trigger goes here
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeAuth();
+            fetchRevenue();
+            document.querySelector('#withdraw-btn').addEventListener('click', handleWithdrawal);
+        });
+    </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
 <body class="bg-[#131313] text-on-background font-body-md min-h-screen flex flex-col relative overflow-x-hidden">
 <!-- Background Blueprint -->
-<div class="fixed inset-0 pointer-events-none z-0 mix-blend-screen opacity-15" style="background-image: url('https://lh3.googleusercontent.com/aida/AP1WRLstpyaU5YZ76f7vYDkWVBDzfNBDry4NWATVs4El_wJFP9gs3jPPv3Jq9du1vjr-Q0kWvSqmMp-ZVz4cOpWFzpARRxf9KDLXrIWv2v_QuMffk7A9Oy6bfqsB8PROLAtfANPoEL4ht62z3n6NNPhRkLK2CGsgkSOlVA6JKwMLCu1eqsGMY0mDweyq1WBmQsLA9r2XIkAGQtK5fkAJb1Fu346PovdcTSqfi5uFLDWkof5U0PrFgR_b9sktBkU'); background-size: cover; background-position: center;"></div>
+<div class="fixed inset-0 pointer-events-none z-0 mix-blend-screen opacity-15 no-print" style="background-image: url('https://lh3.googleusercontent.com/aida/AP1WRLstpyaU5YZ76f7vYDkWVBDzfNBDry4NWATVs4El_wJFP9gs3jPPv3Jq9du1vjr-Q0kWvSqmMp-ZVz4cOpWFzpARRxf9KDLXrIWv2v_QuMffk7A9Oy6bfqsB8PROLAtfANPoEL4ht62z3n6NNPhRkLK2CGsgkSOlVA6JKwMLCu1eqsGMY0mDweyq1WBmQsLA9r2XIkAGQtK5fkAJb1Fu346PovdcTSqfi5uFLDWkof5U0PrFgR_b9sktBkU'); background-size: cover; background-position: center;"></div>
 <!-- Header -->
-<header class="relative z-10 w-full border-b border-white/5 bg-surface-dim shadow-[4px_4px_0px_0px_#0E0E0F]">
+<header class="relative z-10 w-full border-b border-white/5 bg-surface-dim shadow-[4px_4px_0px_0px_#0E0E0F] no-print">
 <div class="flex justify-between items-center w-full px-gutter h-16 max-w-[1440px] mx-auto">
 <div class="flex items-center gap-4">
-<img alt="Guild Seal Logo" class="w-10 h-10 object-contain drop-shadow-[0_0_10px_rgba(255,140,0,0.5)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7O_CT6P-H9-2O8RSEH8DRo2NhOvQxWOZBARgzoZSeUiMM_TOTjRa1Kyh_Jonl_YzZ1Ik3bmi94RGN-AM2ojJGRG0oSQiqnjzVInZhpfVZmf-xyIhd0QwmZgB9uY8VooMyhNnVMceJXEml20GcT0GJ934OXGPme0p6QFZcZCi4KLQkZeAiN6hHJqJmIyMMTmJrsK1beWk9B6MbwWr2aOA2ea7z0in_Y-baqylIHUUfRLVZExsUOOWaL2NgS5Zk_x1IRA"/>
+<img alt="Guild Seal Logo" class="w-10 h-10 object-contain drop-shadow-[0_0_10px_rgba(255,140,0,0.5)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpu2t2D5Lsm-jlUgHlGgBtJgtxcMZQgapPwDV0XiL9g9Kd8yEbM4B0wP-r7RgQe6t0dDaAZDwveC0W40wq3un_iBmiHexl0Id46gsmoKaHjZC6S6QT05t-m4AKBDAiMmpp2liNWxWkqSZxQCRyM6wNEf_YewCpuS07-z5kXNhM3A45f2gl5qxp0URbSya5iMwwJFcoYzagnxs94VfJyjOTrkmiLdqjblRcoDDBz98gnYM_TP6D1-0cEhE1_UyTOgL20g"/>
 <h1 class="font-headline-sm text-headline-sm font-bold text-[#ff8c00] tracking-tighter uppercase">THE WORKERS GUILD</h1>
 </div>
 <div class="hidden md:flex gap-6">
@@ -158,103 +210,104 @@
 <!-- Main Content -->
 <main class="relative z-10 flex-grow p-gutter md:p-margin-desktop max-w-[1440px] mx-auto w-full flex flex-col items-center justify-start pt-12 gap-12">
 <!-- Hero Section -->
-<div class="text-center w-full flex flex-col items-center">
-<img alt="Guild Seal Hero" class="w-64 h-64 object-contain hero-glow mb-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVdeTYac6-pisxipAqs6sVQ3PuLqGj7kfmHFF2qgnYXXRvTxaBkrtVN6GhY6R3zFB6ugc-5nGVVfk79WmsgMHDJbd28Riy33YdYOV5AQz74XVFSl7G4ZYh94MibEw2-GIivunFFscs9ulhXrUJQRBQcjz48GnxvHgtPZ9CB6nMVbY0agoDbr3M7VlgDUhX9zLCA_7UEDtDE7bhV5hi5YdfoCy9hVfU_3DlXK2_HeF-Itir0V_D9wUl3p2OkKY68oytKQ"/>
+<div class="text-center w-full flex flex-col items-center no-print">
+<img alt="Guild Seal Hero" class="w-64 h-64 object-contain hero-glow mb-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA91NZStUu-TPVrLOKfG6WplhgvK3ZES-ARKbaw3FMq-oDJcITVxfhxY7v0uA978uNrTSOSXsXf1TdbJZSFObl0CSu1Kd7neRMFcCRaR28i6hH5diYM1YUfN9Jhvbl8P-_zG6Xg4GzsI5ppO-UlSZ_6hw4SjwZo6-UtKZ_5JV1ZqrP1qnVHNDuaP2mzeonYhBGYtnT5wqeP50t_Yqsoggi-qQGsCVsCZ3CSc2Yt_1lbaESnL61jlP0ett3r3SuE1mbocA"/>
 <h2 class="font-headline-lg text-headline-lg font-black text-[#ff8c00] tracking-tighter uppercase mb-8">WORKER CONSOLE</h2>
 </div>
 <!-- Cards Container -->
 <div class="w-full flex flex-col md:flex-row gap-gutter items-start justify-center">
 <!-- Revenue Card -->
-<div class="w-full md:w-1/2 lg:w-1/3 bg-background border border-white/5 p-6 rounded industrial-shadow relative">
+<div class="w-full md:w-1/2 lg:w-1/3 bg-background border border-white/5 p-6 rounded industrial-shadow relative no-print">
 <div class="text-center mt-4">
-<h3 class="font-label-md text-label-md text-on-surface-variant uppercase mb-2">YOUR REVENUE</h3>
+<h3 class="font-label-md text-label-md text-on-surface-variant uppercase mb-2">YOUR PAY</h3>
 <div class="relative inline-block mb-8">
 <div class="absolute inset-0 bg-[#ff8c00] blur-2xl opacity-20 rounded-full"></div>
 <span class="relative text-headline-lg font-headline-lg text-[#ff8c00] block font-black" id="revenue-display">$0.00</span>
 </div>
 <button class="w-full bg-orange-500 text-black font-headline-sm text-headline-sm py-4 rounded uppercase industrial-shadow transition-all industrial-shadow-hover flex items-center justify-center gap-2" id="withdraw-btn">
 <span class="material-symbols-outlined">payments</span>
-                        WITHDRAW TO PAYPAL
+                        SEND TO PAYPAL
                     </button>
 <p class="font-label-sm text-label-sm mt-4 text-on-surface-variant uppercase flex items-center justify-center gap-1">
 <span class="material-symbols-outlined text-[16px]">verified_user</span>
-                        Secure PayPal Transfer Ready
+                        Ready for Transfer
                     </p>
 </div>
 </div>
-<!-- Logistics Card -->
-<div class="w-full md:w-1/2 lg:w-1/3 bg-background border border-white/5 p-6 rounded industrial-shadow relative glow-effect">
-<div class="text-center mt-4">
-<h3 class="font-label-md text-label-md text-[#ff8c00] uppercase mb-6 flex items-center justify-center gap-2"><span class="material-symbols-outlined">badge</span> PERMANENT GUILD PASS</h3>
-<div class="bg-surface-container-high border border-white/10 p-6 inline-block rounded mb-4 w-full text-center relative overflow-hidden group">
+<!-- ID Card -->
+<div class="w-full md:w-1/2 lg:w-1/3 bg-background border border-white/5 p-6 rounded industrial-shadow relative glow-effect print-zone print-high-contrast">
+<div class="text-center mt-4 flex flex-col items-center">
+<img alt="Guild Seal Hero" class="w-24 h-24 object-contain mb-4 hidden print:block" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_XblFqOEfOPJcxULuDyTX8x0EXAk52eK9yjCKOlOeL9G2X8Jzdm9kuq-qT2DZRwefYLGBKkSAxtKP1dO8kiDIevw-OiVSXuPSw5m2RYD7Sht0vRfR_oaNVpSxIhTOEKq83DQVfuQfgKQBP501jEOh65Cebx4JFbVdjOKOHGzK_kDpeNmFp-FMvRAXdt9DOOkOunymXTyFNWcspgF_zCTWFztt8KOujkj769j3cK-QTa-4GmjUhsXwavwYVJ6UcyzbiA"/>
+<h3 class="font-label-md text-label-md text-[#ff8c00] print-high-contrast-text uppercase mb-6 flex items-center justify-center gap-2"><span class="material-symbols-outlined">badge</span> WORKER ID CARD</h3>
+<div class="bg-surface-container-high border border-white/10 p-6 inline-block rounded mb-4 w-full text-center relative overflow-hidden group print-high-contrast">
 <!-- Scanner beam effect -->
-<div class="absolute top-0 left-0 w-full h-1 bg-[#ff8c00] opacity-50 shadow-[0_0_10px_#ff8c00] transform -translate-y-full group-hover:animate-[scan_2s_ease-in-out_infinite]"></div>
-<div class="w-48 h-48 mx-auto border-4 border-surface-container-lowest p-2 bg-white flex items-center justify-center text-black font-bold text-center" id="job-qr-code">GENERATING PASS...</div>
-</div><button class="w-full bg-orange-500 text-black font-label-md text-label-md py-2 mb-4 rounded uppercase industrial-shadow transition-all industrial-shadow-hover flex items-center justify-center gap-2" onclick="document.getElementById('template-modal').classList.remove('hidden')">
+<div class="absolute top-0 left-0 w-full h-1 bg-[#ff8c00] opacity-50 shadow-[0_0_10px_#ff8c00] transform -translate-y-full group-hover:animate-[scan_2s_ease-in-out_infinite] no-print"></div>
+<div class="w-48 h-48 mx-auto border-4 border-surface-container-lowest p-2 bg-white flex items-center justify-center text-black font-bold text-center print-high-contrast" id="job-qr-code">GENERATING PASS...</div>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase mb-4 opacity-50 print-high-contrast-text">YOUR ID CARD • READY TO PRINT</p>
+<button class="w-full bg-orange-500 text-black font-headline-sm text-headline-sm py-4 rounded uppercase industrial-shadow transition-all industrial-shadow-hover flex items-center justify-center gap-2 mb-4 no-print" onclick="document.getElementById('template-modal').classList.remove('hidden')">
 <span class="material-symbols-outlined">description</span>
-    GET TEMPLATE
-</button><p class="font-label-sm text-label-sm text-on-surface-variant uppercase mb-4 opacity-50">PERMANENT LIFETIME PASS • READY FOR PRINT</p>
-<div class="flex justify-between items-center text-left border-t border-white/5 pt-4 mt-2">
-<div class="font-label-sm text-label-sm text-on-surface-variant">AFFILIATE ID:</div>
-<div class="font-label-sm text-label-sm text-[#ff8c00] flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-[#ff8c00] inline-block"></span> VERIFIED</div>
+                        GET POSTER
+                    </button>
+<div class="flex justify-between w-full items-center text-left border-t border-white/5 pt-4 mt-2 print:border-black">
+<div class="font-label-sm text-label-sm text-on-surface-variant print-high-contrast-text">WORKER ID:</div>
+<div class="font-label-sm text-label-sm text-[#ff8c00] flex items-center gap-1 print-high-contrast-text"><span class="w-2 h-2 rounded-full bg-[#ff8c00] inline-block print:bg-black"></span> VERIFIED</div>
 </div>
 </div>
 </div>
 </div>
 </main>
 <!-- Footer -->
-<footer class="relative z-10 w-full border-t border-white/5 bg-surface-container-lowest py-stack-md px-gutter mt-auto">
-<div class="max-w-[1440px] mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest text-center md:text-left">
-                © 2026 THE WORKERS GUILD. BUILT BY WORKERS. FOR WORKERS.
+<footer class="relative z-10 w-full border-t border-white/5 bg-surface-container-lowest py-stack-md px-gutter mt-auto no-print">
+<div class="max-w-[1440px] mx-auto flex flex-col items-center justify-center gap-4">
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest text-center">
+                VERSION 0.1 // 2026 // BUILT BY WORKERS. FOR WORKERS.
             </p>
-<div class="font-label-sm text-label-sm text-[#ff8c00] uppercase bg-surface-container-low px-3 py-1 border border-white/5">
-                VERSION 0.1
-            </div>
 </div>
 </footer>
 <script>
-    async function updateJobQR() {
-        const qrContainer = document.getElementById('job-qr-code');
-        try {
-            const data = { id: 'JOB-99B-ALPHA', client: 'Guild Master', location: 'Sector 7' };
-
-            qrContainer.innerHTML = '';
-            new QRCode(qrContainer, {
-                text: `https://workersguild.com/jobs/${data.id}`,
-                width: 176,
-                height: 176,
-                colorDark: "#000000",
-                colorLight: "#ffffff",
-                correctLevel: QRCode.CorrectLevel.H
-            });
-        } catch (err) {
-            qrContainer.innerHTML = '<span class="text-sm uppercase">Error Loading</span>';
+        async function updateJobQR(affiliateId) {
+            const qrContainer = document.getElementById('job-qr-code');
+            try {
+                qrContainer.innerHTML = '';
+                new QRCode(qrContainer, {
+                    text: `https://workersguild.com/verify/${affiliateId}`,
+                    width: 176,
+                    height: 176,
+                    colorDark: "#000000",
+                    colorLight: "#ffffff",
+                    correctLevel: QRCode.CorrectLevel.H
+                });
+            } catch (err) {
+                qrContainer.innerHTML = '<span class="text-sm uppercase">Error Loading</span>';
+            }
         }
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-        updateJobQR();
-    });
-</script><div class="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 hidden" id="template-modal">
+    </script>
+<!-- Template Modal -->
+<div class="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 hidden no-print" id="template-modal">
 <div class="bg-surface-container-high border border-[#ff8c00] p-6 rounded industrial-shadow max-w-md w-full mx-4">
 <div class="flex justify-between items-center mb-6 border-b border-white/10 pb-2">
-<h3 class="font-headline-sm text-[#ff8c00] uppercase tracking-tighter">SELECT RECRUITMENT TEMPLATE</h3>
+<h3 class="font-headline-sm text-[#ff8c00] uppercase tracking-tighter">CHOOSE A POSTER</h3>
 <span class="material-symbols-outlined cursor-pointer hover:text-[#ff8c00]" onclick="document.getElementById('template-modal').classList.add('hidden')">close</span>
 </div>
 <div class="flex flex-col gap-4">
 <div class="p-4 bg-background border border-white/5 hover:border-[#ff8c00] cursor-pointer transition-colors group">
 <h4 class="font-label-md text-[#ff8c00] mb-1">THE HAMMER</h4>
-<p class="text-label-sm text-on-surface-variant opacity-70">Direct action recruitment for heavy industry sectors.</p>
+<p class="text-label-sm text-on-surface-variant opacity-70">For heavy work.</p>
 </div>
 <div class="p-4 bg-background border border-white/5 hover:border-[#ff8c00] cursor-pointer transition-colors group">
 <h4 class="font-label-md text-[#ff8c00] mb-1">THE BLUEPRINT</h4>
-<p class="text-label-sm text-on-surface-variant opacity-70">Strategic outreach for technical and design roles.</p>
+<p class="text-label-sm text-on-surface-variant opacity-70">For planners and designers.</p>
 </div>
 <div class="p-4 bg-background border border-white/5 hover:border-[#ff8c00] cursor-pointer transition-colors group">
 <h4 class="font-label-md text-[#ff8c00] mb-1">THE HARVEST</h4>
-<p class="text-label-sm text-on-surface-variant opacity-70">Resource-focused campaign for logistics and supply.</p>
+<p class="text-label-sm text-on-surface-variant opacity-70">For drivers and movers.</p>
+</div>
+<button class="w-full bg-orange-500 text-black font-label-md text-label-md py-4 mt-2 rounded uppercase industrial-shadow transition-all industrial-shadow-hover flex items-center justify-center gap-2" onclick="window.print()">
+<span class="material-symbols-outlined">print</span>
+                    PRINT POSTER
+                </button>
 </div>
 </div>
 </div>
-</div></body></html>
+</body></html>
