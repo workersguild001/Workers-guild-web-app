@@ -1,322 +1,253 @@
 <!DOCTYPE html>
 
-<html class="dark" lang="en"><head>
+<html class="dark" lang="en">
+<head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>The Workers Guild - Desktop (Trade Workers &amp; Gamified XP)</title>
-<link href="manifest.json" rel="manifest"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
+<title>THE WORKERS GUILD | OPENING SOON</title>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;800&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script>
         tailwind.config = {
-            darkMode: "class",
+            darkMode: 'class',
             theme: {
                 extend: {
-                    "colors": {
-                        "on-tertiary-fixed-variant": "#474747",
-                        "on-error": "#690005",
-                        "secondary-container": "#fabd00",
-                        "on-tertiary-fixed": "#1b1c1c",
-                        "on-surface-variant": "#ddc1ae",
-                        "on-primary-container": "#623200",
-                        "on-tertiary": "#303030",
-                        "tertiary-container": "#aaa9a9",
-                        "on-tertiary-container": "#3e3e3e",
-                        "on-secondary": "#3f2e00",
-                        "on-error-container": "#ffdad6",
-                        "surface-bright": "#393939",
-                        "on-secondary-container": "#6a4e00",
-                        "primary-fixed-dim": "#ffb77d",
-                        "on-background": "#e5e2e1",
-                        "surface-container-lowest": "#0e0e0e",
-                        "secondary": "#ffdf9e",
-                        "primary-container": "#ff8c00",
-                        "surface-container-low": "#1c1b1b",
-                        "primary-fixed": "#ffdcc3",
-                        "outline": "#a48c7a",
-                        "inverse-surface": "#e5e2e1",
-                        "inverse-on-surface": "#313030",
-                        "on-primary-fixed": "#2f1500",
-                        "surface-container-high": "#2a2a2a",
-                        "primary": "#ffb77d",
-                        "on-secondary-fixed-variant": "#5b4300",
-                        "tertiary-fixed": "#e4e2e2",
-                        "tertiary-fixed-dim": "#c8c6c6",
-                        "surface-container-highest": "#353534",
-                        "surface-container": "#201f1f",
-                        "outline-variant": "#564334",
-                        "inverse-primary": "#904d00",
-                        "surface-tint": "#ffb77d",
-                        "on-secondary-fixed": "#261a00",
-                        "error-container": "#93000a",
-                        "on-surface": "#e5e2e1",
-                        "on-primary-fixed-variant": "#6e3900",
-                        "surface-dim": "#131313",
-                        "error": "#ffb4ab",
-                        "surface": "#131313",
-                        "background": "#131313",
-                        "secondary-fixed-dim": "#fabd00",
-                        "tertiary": "#c8c6c6",
-                        "surface-variant": "#353534",
-                        "secondary-fixed": "#ffdf9e",
-                        "on-primary": "#4d2600"
+                    colors: {
+                        primary: '#ff8c00',
+                        surface: '#131313',
+                        'surface-container': '#1c1b1b',
                     },
-                    "borderRadius": {
-                        "DEFAULT": "0.125rem",
-                        "lg": "0.25rem",
-                        "xl": "0.5rem",
-                        "full": "0.75rem"
+                    fontFamily: {
+                        sans: ['Hanken Grotesk', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
                     },
-                    "spacing": {
-                        "unit": "4px",
-                        "stack-md": "24px",
-                        "stack-sm": "8px",
-                        "stack-lg": "48px",
-                        "edge-margin": "16px",
-                        "gutter": "12px"
-                    },
-                    "fontFamily": {
-                        "body-lg": ["Hanken Grotesk"],
-                        "headline-lg-mobile": ["Hanken Grotesk"],
-                        "headline-lg": ["Hanken Grotesk"],
-                        "display-lg": ["Hanken Grotesk"],
-                        "title-md": ["Hanken Grotesk"],
-                        "label-md": ["Hanken Grotesk"]
-                    },
-                    "fontSize": {
-                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
-                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
-                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
-                        "display-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
-                        "title-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
-                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }]
-                    }
                 },
             },
         }
     </script>
 <style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        body {
+            background-color: #0e0e0e;
+            background-image: url('https://lh3.googleusercontent.com/aida/AEtjO1VFJSiMfSqpZBE_EARZNm77ftbX0hel28c8SaGW4-dfP0VBDqA0p-SnexAdy_926-FVBVob3QSu5pZm8cXaKIx03JHo3fdXRlHoyR-ndBAx4ESwq8eDBk4ig1vdYs8Br8YgICWI5HQ7C9ooXYtPwt0vV1JVJP4Pl-t5R0bWT4hfdp6g-YBKrmDrfaLSwlTAcqv5FvlG1wylQ7ZTy5Qfp7oQVHyNam1QWRmw13PNueGsYQc4pXhT7nk2zlk');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #e4e2e1;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
-        
-        .industrial-border {
-            border: 2px solid #333333;
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 0;
+        }
+        .content-layer {
+            position: relative;
+            z-index: 1;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .caution-tape {
+            background: #ffc400;
+            background: repeating-linear-gradient(
+                45deg,
+                #ffc400,
+                #ffc400 20px,
+                #000 20px,
+                #000 40px
+            );
+            height: 24px;
+            width: 100%;
+        }
+        .glow-effect {
             position: relative;
         }
-        
-        .industrial-border::before {
+        .glow-effect::after {
             content: '';
             position: absolute;
-            top: -2px;
-            left: 20px;
-            right: 20px;
-            height: 2px;
-            background: repeating-linear-gradient(90deg, #ff8c00, #ff8c00 10px, transparent 10px, transparent 20px);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: 80%;
+            background: #ff8c00;
+            filter: blur(60px);
             opacity: 0.3;
+            z-index: -1;
         }
-
-        .stitched-steel {
-            border: 1px solid #564334;
-            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
-            background: linear-gradient(145deg, #1c1b1b, #131313);
+        .terminal-card {
+            background: #131313;
+            border: 1px solid rgba(255, 140, 0, 0.1);
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
         }
-
-        .countdown-digit {
-            font-variant-numeric: tabular-nums;
-            text-shadow: 0 0 15px #ff8c00;
+        .input-field {
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.2s ease;
         }
-
-        .grip-strip {
-            width: 4px;
-            height: 24px;
-            background: repeating-linear-gradient(0deg, #564334, #564334 2px, transparent 2px, transparent 4px);
+        .input-field:focus {
+            outline: none;
+            border-color: #ff8c00;
+            background: rgba(255, 140, 0, 0.05);
         }
-        
-        .bg-industrial-skeletal {
-            background-blend-mode: overlay;
-            background-color: rgba(18, 18, 18, 0.92);
+        .locked-btn {
+            opacity: 0.5;
+            cursor: not-allowed;
         }
     </style>
 </head>
-<body class="bg-background text-on-background font-body-lg overflow-x-hidden">
-<!-- Top Navigation Anchor -->
-<header class="fixed top-0 left-0 w-full z-50 bg-background border-b border-outline-variant">
-<div class="flex justify-between items-center px-edge-margin py-stack-sm w-full max-w-7xl mx-auto">
-<div class="flex items-center gap-3">
-<h1 class="font-display-lg text-headline-lg-mobile md:text-headline-lg font-extrabold text-primary uppercase tracking-tighter">
-                    The Workers Guild
-                </h1>
+<body>
+<div class="content-layer">
+<!-- Top Navigation -->
+<nav class="border-b border-white/5 bg-surface/80 backdrop-blur-md sticky top-0 z-50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex justify-between items-center">
+<div class="flex items-center gap-4 sm:gap-8">
+<span class="text-primary font-black tracking-tighter text-lg sm:text-xl uppercase italic">The Workers Guild</span>
 </div>
-<div class="hidden md:flex items-center gap-2 opacity-30 grayscale pointer-events-none relative group">
-<a class="flex items-center gap-2 text-primary font-bold px-4 py-2 rounded" href="#">
-<span class="material-symbols-outlined">door_open</span> Gateway Access
-    </a>
-<span class="absolute -top-2 -right-4 bg-surface-container-highest text-[10px] px-1 rounded border border-outline-variant text-on-surface-variant font-bold">LOGIN REQUIRED</span>
-</div><a class="hidden md:flex items-center gap-2 text-primary font-bold hover:bg-surface-container-high transition-colors px-4 py-2 rounded active:scale-95 duration-100" href="#"><span class="material-symbols-outlined">badge</span> Affiliate Access</a>
-<a class="hidden md:flex items-center gap-2 text-primary font-bold hover:bg-surface-container-high transition-colors px-4 py-2 rounded active:scale-95 duration-100" href="https://auth.workersguild.com/login"><span class="material-symbols-outlined">admin_panel_settings</span> Owner Login</a></div>
-</header>
-<!-- Main Content Canvas -->
-<main class="min-h-screen pt-24 pb-stack-lg relative flex flex-col items-center justify-center bg-industrial-skeletal" data-alt="A wide cinematic shot of a timber-frame house under construction at night. The skeletal wooden ribs of the structure are illuminated from within by warm, amber work lights, casting long, dramatic shadows across the dirt job site. Semi-transparent glowing architectural blueprints are overlaid on the scene in the sky and on the ground, creating a high-contrast industrial aesthetic with deep blacks and vibrant safety orange glows." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCvBdw6ah8PnjwKJTF_T72aKj52u55Kiqtog6Fg3MiqofgfvlALgZwdaGCiL9C0EXOywr4fx_lfDu6zap_4d3OXV-j8bSA7i7i4bpSAVQDDD8TVp6NI6_a8vyKTSQHUFjvvR14BU_NCJZUMqVRSQN1EI17vZDXBLI3lRpUV2RvcCnXhcq8NMdFReCKSOzSD2f-mCc9n2tHIjMQYpQl8VFnqQkUXtW5iiqjlTKlSMB312jU3aIATCXSn-wOHzu2EfuV1CqloKO9W7D0');">
-<!-- Hero Branding -->
-<section class="w-full max-w-3xl px-edge-margin text-center mb-stack-lg">
-<div class="mb-8 inline-block animate-pulse">
-<img alt="The Workers Guild Seal" class="w-[60%] max-w-md mx-auto drop-shadow-[0_0_60px_rgba(255,140,0,0.9)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyAQgzXcBkqbewYTKe1hgyqgEKk1x6CYg-dl7q9pOhwRByhgUXSHC2M1tmj_l7u278p0ZRKNe1kr-GyZnQoCmgwVagwa7QB2pcBLokwjCv1QtDICZ-n5_bDFweA2hC6TaVoDcie4RstyFoH8rSt9R6IsLSCipqKSVi2_1LRNx5AGURdPEpv5iz6HY0YsQ4AurymXo52AWX5PNhtlMqqq3HFdubwz9Lnb_p8wFrSd2nbjG24i19pnvrmzpRrW02xXLBDw"/>
+<div class="flex items-center gap-2 sm:gap-6">
+<!-- Gated Gateway Access -->
+<div class="hidden sm:flex items-center gap-2 px-3 py-1.5 border border-white/10 opacity-40" id="gateway-link">
+<svg fill="none" height="14" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="14"><path d="M12 15v2m-6 4h12a2 2(0 002-2v-6a2 2(0 00-2-2H6a2 2(0 00-2 2v6a2 2(0 002 2zm10-10V7a4 4(0 00-8 0v4h8z"></path></svg>
+<span class="text-[10px] font-mono uppercase tracking-widest">Gateway Access</span>
+<span class="text-[8px] font-mono bg-white/5 px-1 ml-1">LOGIN REQUIRED</span>
 </div>
-<h2 class="font-display-lg text-display-lg uppercase tracking-[0.2em] text-primary drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)] mb-2 font-extrabold">COMING SOON</h2>
-<div class="h-1 w-24 bg-primary mx-auto mb-10"></div>
-<!-- Countdown Interface -->
-<div class="stitched-steel p-stack-md rounded-lg grid grid-cols-2 md:grid-cols-4 gap-gutter border-2 border-outline-variant" id="countdown-container">
-<div class="flex flex-col items-center p-4 bg-surface-container-low rounded border border-outline-variant">
-<span class="font-display-lg text-display-lg text-primary-container countdown-digit" id="days">--</span>
-<span class="font-label-md text-label-md uppercase text-on-surface-variant">Days</span>
-</div>
-<div class="flex flex-col items-center p-4 bg-surface-container-low rounded border border-outline-variant">
-<span class="font-display-lg text-display-lg text-primary-container countdown-digit" id="hours">--</span>
-<span class="font-label-md text-label-md uppercase text-on-surface-variant">Hours</span>
-</div>
-<div class="flex flex-col items-center p-4 bg-surface-container-low rounded border border-outline-variant">
-<span class="font-display-lg text-display-lg text-primary-container countdown-digit" id="minutes">--</span>
-<span class="font-label-md text-label-md uppercase text-on-surface-variant">Minutes</span>
-</div>
-<div class="flex flex-col items-center p-4 bg-surface-container-low rounded border border-outline-variant">
-<span class="font-display-lg text-display-lg text-primary-container countdown-digit" id="seconds">--</span>
-<span class="font-label-md text-label-md uppercase text-on-surface-variant">Seconds</span>
+<a class="hidden sm:block opacity-60 hover:opacity-100 text-[10px] font-mono uppercase tracking-widest transition-opacity mr-2" href="login.html">Owner Login</a><a class="bg-primary/10 border border-primary/20 text-primary px-3 sm:px-4 py-1.5 text-[10px] sm:text-xs font-bold uppercase tracking-widest hover:bg-primary hover:text-surface transition-all" href="signup.html">
+                        Affiliate Access
+                    </a>
+<a class="opacity-60 hover:opacity-100 transition-opacity" href="login.html">
+<svg class="sm:w-6 sm:h-6" fill="none" height="20" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="20"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h10a7 7 0 00-7-7z"></path></svg>
+</a>
 </div>
 </div>
-<div class="h-4 w-full mb-2" style="background: repeating-linear-gradient(45deg, #fabd00, #fabd00 20px, #131313 20px, #131313 40px);"></div><div class="hidden font-display-lg text-display-lg text-primary-container tracking-[0.3em] py-stack-lg stitched-steel rounded-lg border-2 border-primary drop-shadow-[0_0_15px_rgba(255,140,0,0.3)] font-extrabold" id="coming-soon-text">IN CONSTRUCTION</div><div class="h-4 w-full mt-2" style="background: repeating-linear-gradient(45deg, #fabd00, #fabd00 20px, #131313 20px, #131313 40px);"></div>
-</section>
-<!-- Waitlist Signup Area -->
-<section class="w-full max-w-xl px-edge-margin"><p class="mx-auto max-w-[600px] text-center text-on-surface-variant font-body-lg mb-8 leading-relaxed">The job board for trade workers. We verify skills and track every job. Earn XP and level up. Reliable craftsmen for everyone.</p>
-<div class="bg-surface-container p-stack-md rounded-lg border border-outline-variant relative overflow-hidden">
-<div class="absolute top-0 right-0 p-2 flex gap-1 opacity-20">
-<div class="grip-strip"></div>
-<div class="grip-strip"></div>
+</nav>
+<main class="flex-1 flex flex-col items-center justify-center p-6 sm:p-12 text-center">
+<!-- Brand Seal Section -->
+<div class="glow-effect mb-8 sm:mb-12">
+<img alt="The Workers Guild Seal" class="w-48 h-48 sm:w-80 sm:h-80 mx-auto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCRqD1tIxw4fRkQB4Te-ZomYcqoSMWlc_Fp_55WMhC4FhTxKrLYGiOz1vRiKtj-c5j4SvLPlI6z7TQ32oOcjqLaloSY4j12SuzXPjfxXxb_4zKmN7Kd4enwGFAQA32MuC2XlZsgCkN43_GnqkTnL7ubAuHg4qUQZcQb4_iiT0ZjjWOqurglUj3o2duVWdwIvDbn0r3p0bn_-qtLXA5-wG0na-L5TEU0kwUM10MTP7snnhNm6ggcbIUsfxovA-IXHuYWw"/>
 </div>
-<h3 class="font-title-md text-title-md uppercase mb-stack-md flex items-center gap-2"><span class="material-symbols-outlined text-primary">how_to_reg</span> JOIN THE LIST</h3>
-<form class="space-y-stack-md" id="waitlist-form">
-<div class="space-y-2">
-<label class="font-label-md text-label-md uppercase text-on-surface-variant" for="full-name">YOUR NAME</label>
-<input class="w-full bg-surface-container-lowest border border-outline-variant rounded px-4 py-3 text-on-surface focus:outline-none focus:border-primary transition-colors placeholder:text-surface-variant font-bold" id="full-name" placeholder="NAME" type="text" value=""/>
+<!-- Status Indicator -->
+<div class="w-full max-w-2xl mb-8 sm:mb-12">
+<div class="caution-tape mb-2"></div>
+<div class="border-y border-primary/30 py-4 sm:py-8 bg-black/40 backdrop-blur-sm">
+<h2 class="text-4xl sm:text-7xl font-black italic tracking-tighter uppercase text-primary">In Construction</h2>
 </div>
-<div class="space-y-2">
-<label class="font-label-md text-label-md uppercase text-on-surface-variant" for="email">YOUR EMAIL</label>
-<input class="w-full bg-surface-container-lowest border border-outline-variant rounded px-4 py-3 text-on-surface focus:outline-none focus:border-primary transition-colors placeholder:text-surface-variant font-bold" id="email" placeholder="EMAIL" type="email" value=""/>
+<div class="caution-tape mt-2"></div>
 </div>
-<button class="w-full bg-primary-container text-on-primary-container font-extrabold uppercase py-4 rounded-lg flex items-center justify-center gap-3 active:scale-[0.98] transition-all hover:bg-secondary-container" type="submit"><span class="material-symbols-outlined">security</span> SIGN UP</button>
+<!-- Descriptive Text -->
+<div class="max-w-xl mb-12 sm:mb-16 px-4">
+<h3 class="text-2xl sm:text-4xl font-black uppercase italic tracking-tighter mb-4">Opening Soon</h3>
+<p class="text-sm sm:text-lg opacity-80 leading-relaxed font-medium">
+                    The job board for trade workers. We verify skills and track every job. Earn XP and level up. One click to find a job.
+                </p>
+</div>
+<!-- Waitlist Terminal -->
+<div class="terminal-card w-full max-w-md p-8 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-3 opacity-20">
+<svg fill="none" height="24" stroke="currentColor" stroke-width="1" viewbox="0 0 24 24" width="24"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>
+</div>
+<div class="flex items-center gap-3 mb-8">
+<div class="w-10 h-10 bg-primary/20 flex items-center justify-center rounded">
+<svg fill="none" height="20" stroke="#ff8c00" stroke-width="2" viewbox="0 0 24 24" width="20"><path d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path></svg>
+</div>
+<div class="text-left">
+<h4 class="text-xl font-black uppercase italic tracking-tighter">Join the List</h4>
+<p class="text-[10px] font-mono opacity-50 uppercase tracking-widest">Enlistment Protocol v0.1</p>
+</div>
+</div>
+<form class="space-y-6" id="waitlist-form">
+<div class="text-left">
+<label class="block text-[10px] font-mono uppercase opacity-50 tracking-widest mb-2">Your Name</label>
+<input class="w-full input-field p-4 text-sm font-bold uppercase tracking-widest text-white" id="name" placeholder="OPERATIVE NAME" required="" type="text"/>
+</div>
+<div class="text-left">
+<label class="block text-[10px] font-mono uppercase opacity-50 tracking-widest mb-2">Your Email</label>
+<input class="w-full input-field p-4 text-sm font-bold uppercase tracking-widest text-white" id="email" placeholder="COMM_CHANNEL@DOMAIN.COM" required="" type="email"/>
+</div>
+<button class="w-full bg-primary text-surface font-black uppercase py-5 text-xl italic tracking-tighter shadow-lg shadow-primary/20 hover:scale-[1.02] transition-transform" type="submit">
+                        Initalize Enlistment
+                    </button>
 </form>
+<div class="mt-4 hidden font-mono text-[10px] uppercase tracking-widest text-primary animate-pulse" id="form-feedback">
+                    Processing Transmission...
+                </div>
+</div><div class="sm:hidden w-full max-w-md mt-4">
+<a class="block w-full bg-white/5 border border-white/10 text-white/60 px-4 py-4 text-xs font-bold uppercase tracking-widest text-center hover:bg-white/10 transition-all" href="login.html">
+        Owner Login
+    </a>
 </div>
-<!-- Mobile Affiliate Action -->
-<div class="mt-8 text-center md:hidden">
-<a class="inline-flex items-center gap-2 text-primary border-2 border-primary px-6 py-3 rounded-lg font-bold uppercase active:scale-95" href="#"><span class="material-symbols-outlined">badge</span> Affiliate Access</a><a class="inline-flex items-center gap-2 text-primary border-2 border-primary px-6 py-3 rounded-lg font-bold uppercase active:scale-95 ml-2" href="https://auth.workersguild.com/login"><span class="material-symbols-outlined">admin_panel_settings</span> Owner Login</a>
+<!-- Secure Admin Control (Owner Only) -->
+<div class="mt-12 opacity-0 transition-opacity" id="owner-controls">
+<label class="text-[9px] font-mono uppercase opacity-30 tracking-[0.3em]">Set Launch Date</label>
+<input class="bg-transparent border border-white/10 text-[10px] font-mono p-2 mt-2 opacity-30 focus:opacity-100" type="date"/>
 </div>
-</section>
-<!-- Hidden Admin Control -->
-<section class="mt-stack-lg w-full max-w-xs px-edge-margin opacity-30 hover:opacity-100 transition-opacity hidden" id="admin-controls">
-<div class="p-4 border border-dashed border-outline-variant rounded">
-<label class="block font-label-md text-[10px] uppercase text-on-surface-variant mb-1" for="admin-date">SET LAUNCH DATE</label>
-<input class="w-full bg-transparent border-none text-on-surface-variant text-sm focus:ring-0 p-0 cursor-pointer" id="admin-date" placeholder="mm/dd/yyyy" type="date"/>
-</div>
-</section>
 </main>
-<!-- Footer Shell -->
-<footer class="bg-surface-dim border-t border-outline-variant">
-<div class="flex flex-col md:flex-row justify-between items-center gap-stack-sm px-edge-margin py-stack-md w-full max-w-7xl mx-auto">
-<p class="font-label-md text-label-md text-on-surface-variant text-center md:text-left">© 2026 BUILT BY WORKERS. FOR WORKERS. VERSION 0.1</p>
-<div class="flex gap-stack-md">
-<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors cursor-pointer" href="#">Terms of Service</a>
-<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors cursor-pointer" href="#">Privacy Policy</a>
-<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors cursor-pointer" href="#">Contact Support</a>
-</div>
+<!-- Footer -->
+<footer class="py-8 sm:py-12 border-t border-white/5 bg-surface/50 backdrop-blur-sm flex flex-col items-center gap-4 sm:gap-6">
+<p class="text-[10px] sm:text-xs font-mono opacity-40 uppercase tracking-[0.3em]">© 2026 BUILT BY WORKERS. FOR WORKERS. VERSION 0.1</p>
+<div class="flex flex-wrap justify-center gap-6 sm:gap-12 text-[10px] font-mono uppercase tracking-widest opacity-60">
+<a class="hover:text-primary transition-colors" href="terms.html">Terms of Service</a>
+<a class="hover:text-primary transition-colors" href="terms.html">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Contact Support</a>
 </div>
 </footer>
+</div>
 <script>
-        // Owner Session Logic
-        const checkOwnerSession = async () => {
-            // Simulated Supabase session check
-            const hasOwnerToken = localStorage.getItem('ownerSessionToken'); // In real app, check supabase auth
-            
-            if (hasOwnerToken) {
-                document.getElementById('admin-controls').classList.remove('hidden');
-            }
-        };
+        // Supabase Configuration
+        const supabaseUrl = 'https://WiQ8Bv9JIfKpRhtGzqpiw_okDVCPg.supabase.co';
+        const supabaseKey = 'sb_publishable__WiQ8Bv9JIfKpRhtGzqpiw_okDVCPg';
+        const supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
-        checkOwnerSession();
-
-        // Countdown Logic
-        const countdownContainer = document.getElementById('countdown-container');
-        const comingSoonText = document.getElementById('coming-soon-text');
-        const adminInput = document.getElementById('admin-date');
-        
-        let countdownTimer;
-
-        function updateCountdown(targetDate) {
-            const now = new Date().getTime();
-            const distance = targetDate - now;
-
-            if (distance < 0) {
-                clearInterval(countdownTimer);
-                countdownContainer.classList.add('hidden');
-                comingSoonText.classList.remove('hidden');
-                return;
-            }
-
-            countdownContainer.classList.remove('hidden');
-            comingSoonText.classList.add('hidden');
-
-            const d = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const s = Math.floor((distance % (1000 * 60)) / 1000);
-
-            document.getElementById('days').innerText = d.toString().padStart(2, '0');
-            document.getElementById('hours').innerText = h.toString().padStart(2, '0');
-            document.getElementById('minutes').innerText = m.toString().padStart(2, '0');
-            document.getElementById('seconds').innerText = s.toString().padStart(2, '0');
-        }
-
-        adminInput.addEventListener('change', (e) => {
-            const dateStr = e.target.value;
-            if (!dateStr) return;
-            
-            const target = new Date(dateStr).getTime();
-            if (isNaN(target)) return;
-
-            localStorage.setItem('launchDate', target);
-            if (countdownTimer) clearInterval(countdownTimer);
-            
-            countdownTimer = setInterval(() => updateCountdown(target), 1000);
-            updateCountdown(target);
-        });
-
-        // Initialize from local storage or show Coming Soon
-        const savedDate = localStorage.getItem('launchDate');
-        if (savedDate) {
-            const target = parseInt(savedDate);
-            countdownTimer = setInterval(() => updateCountdown(target), 1000);
-            updateCountdown(target);
-        } else {
-            countdownContainer.classList.add('hidden');
-            comingSoonText.classList.remove('hidden');
-        }
-
-        // Interactivity
         const form = document.getElementById('waitlist-form');
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const btn = form.querySelector('button');
-            const originalText = btn.innerHTML;
-            
-            btn.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> PROCESSING...';
-            btn.disabled = true;
+        const feedback = document.getElementById('form-feedback');
 
-            setTimeout(() => {
-                btn.innerHTML = '<span class="material-symbols-outlined">check_circle</span> ENLISTED';
-                btn.classList.replace('bg-primary-container', 'bg-green-600');
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+
+            feedback.classList.remove('hidden');
+            feedback.innerText = 'Transmitting credentials...';
+
+            const { data, error } = await supabase
+                .from('waitlist')
+                .insert([{ email: email, joined_at: new Date() }]);
+
+            if (error) {
+                feedback.innerText = 'Transmission error: ' + error.message;
+                feedback.classList.add('text-red-500');
+            } else {
+                feedback.innerText = 'Transmission successful. Operative logged.';
+                feedback.classList.add('text-green-500');
                 form.reset();
-            }, 1500);
+            }
+            
+            setTimeout(() => {
+                feedback.classList.add('hidden');
+            }, 3000);
         });
+
+        // Gateway Access Check
+        async function checkSession() {
+            const { data: { session } } = await supabase.auth.getSession();
+            if (session) {
+                document.getElementById('gateway-link').classList.remove('hidden', 'opacity-40');
+                document.getElementById('gateway-link').innerHTML = `
+                    <a href="gateway.html" class="flex items-center gap-2">
+                        <svg width="14" height="14" fill="none" stroke="#ff8c00" stroke-width="2" viewBox="0 0 24 24"><path d="M12 15v2m-6 4h12a2 2(0 002-2v-6a2 2(0 00-2-2H6a2 2(0 00-2 2v6a2 2(0 002 2zm10-10V7a4 4(0 00-8 0v4h8z"></path></svg>
+                        <span class="text-[10px] font-mono text-primary uppercase tracking-widest">Gateway Access</span>
+                    </a>
+                `;
+            }
+        }
+        checkSession();
     </script>
-</body></html>
+</body>
+</html>
