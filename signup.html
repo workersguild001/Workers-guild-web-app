@@ -3,7 +3,7 @@
 <html lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>The Workers Guild - Sign Up</title>
+<title>The Workers Guild - Sign Up</title><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <!-- Fonts: Hanken Grotesk and Courier Prime -->
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -189,6 +189,11 @@
 <!-- BEGIN: Interactive Scripts -->
 <script data-purpose="form-and-modal-logic">
     document.addEventListener('DOMContentLoaded', () => {
+      // Supabase Configuration
+      const supabaseUrl = 'https://your-project.supabase.co'; // Replace with actual project URL
+      const supabaseKey = 'sb_publishable__WiQ8Bv9JIfKpRhtGzqpiw_okzDVCPg';
+      const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+
       // Elements
       const form = document.getElementById('signupForm');
       const passwordInput = document.getElementById('password');
@@ -242,16 +247,17 @@
       closeModalBtnBottom.addEventListener('click', closeModal);
       modalBackdrop.addEventListener('click', closeModal);
 
-      // Simple Form Validation
-      form.addEventListener('submit', (e) => {
+      // Form Validation and Supabase Submission
+      form.addEventListener('submit', async (e) => {
         e.preventDefault();
         
         // Reset errors
         document.querySelectorAll('[id$="Error"]').forEach(el => el.classList.add('hidden'));
         
         let isValid = true;
+        const fullNameVal = document.getElementById('fullName').value.trim();
         
-        if(!document.getElementById('fullName').value.trim()) {
+        if(!fullNameVal) {
           document.getElementById('nameError').classList.remove('hidden');
           isValid = false;
         }
@@ -273,18 +279,37 @@
         }
 
         if(isValid) {
-          // Simulate successful registration
           const btn = form.querySelector('button[type="submit"]');
           const originalText = btn.innerHTML;
           btn.innerHTML = '<span class="relative z-10 italic">ENLISTING...</span>';
           btn.disabled = true;
           
-          setTimeout(() => {
-            alert('Enlistment successful. Welcome to the Guild.');
+          try {
+            const { data, error } = await supabase.auth.signUp({
+              email: emailVal,
+              password: passwordInput.value,
+              options: {
+                data: {
+                  full_name: fullNameVal
+                }
+              }
+            });
+
+            if (error) {
+              alert(`Enlistment failed: ${error.message}`);
+              btn.innerHTML = originalText;
+              btn.disabled = false;
+            } else {
+              alert('Enlistment successful. Welcome to the Guild.');
+              btn.innerHTML = originalText;
+              btn.disabled = false;
+              form.reset();
+            }
+          } catch (error) {
+            alert('An unexpected error occurred during enlistment.');
             btn.innerHTML = originalText;
             btn.disabled = false;
-            form.reset();
-          }, 1500);
+          }
         }
       });
     });
