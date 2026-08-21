@@ -1,231 +1,189 @@
 <!DOCTYPE html>
 
-<html class="dark" lang="en"><head>
+<html lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>THE WORKERS GUILD // COMMAND // OWNER_LOGIN</title>
+<title>The Workers Guild - Owner Login</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&amp;family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    "colors": {
-                        "on-primary-fixed": "#2f1500",
-                        "tertiary-container": "#aba9a9",
-                        "primary-fixed": "#ffdcc3",
-                        "on-tertiary-fixed-variant": "#474746",
-                        "on-tertiary": "#303030",
-                        "on-tertiary-fixed": "#1b1c1c",
-                        "secondary-container": "#4a494a",
-                        "surface-dim": "#131313",
-                        "surface": "#131313",
-                        "on-tertiary-container": "#3e3e3e",
-                        "error": "#ffb4ab",
-                        "background": "#131313",
-                        "tertiary-fixed-dim": "#c8c6c5",
-                        "surface-variant": "#353534",
-                        "surface-tint": "#ffb77d",
-                        "surface-container-low": "#1c1b1b",
-                        "on-secondary-fixed": "#1c1b1c",
-                        "secondary-fixed-dim": "#c8c6c7",
-                        "secondary-fixed": "#e5e2e3",
-                        "on-background": "#e5e2e1",
-                        "primary-container": "#ff8c00",
-                        "primary": "#ffb77d",
-                        "on-secondary-container": "#bab8b9",
-                        "on-secondary-fixed-variant": "#474647",
-                        "on-primary-container": "#623200",
-                        "surface-container-lowest": "#0e0e0e",
-                        "surface-bright": "#393939",
-                        "surface-container": "#201f1f",
-                        "on-error-container": "#ffdad6",
-                        "tertiary": "#c8c6c5",
-                        "primary-fixed-dim": "#ffb77d",
-                        "on-primary": "#4d2600",
-                        "on-surface-variant": "#ddc1ae",
-                        "secondary": "#c8c6c7",
-                        "error-container": "#93000a",
-                        "inverse-on-surface": "#313030",
-                        "inverse-primary": "#904d00",
-                        "on-secondary": "#313031",
-                        "on-primary-fixed-variant": "#6e3900",
-                        "inverse-surface": "#e5e2e1",
-                        "outline-variant": "#564334",
-                        "tertiary-fixed": "#e4e2e1",
-                        "surface-container-highest": "#353534",
-                        "outline": "#a48c7a",
-                        "on-error": "#690005",
-                        "on-surface": "#e5e2e1",
-                        "surface-container-high": "#2a2a2a"
-                    },
-                    "borderRadius": {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
-                    },
-                    "spacing": {
-                        "unit": "4px",
-                        "stack-sm": "8px",
-                        "gutter": "24px",
-                        "margin-desktop": "40px",
-                        "margin-mobile": "16px",
-                        "stack-lg": "32px",
-                        "stack-md": "16px"
-                    },
-                    "fontFamily": {
-                        "headline-md": ["Hanken Grotesk"],
-                        "body-lg": ["Hanken Grotesk"],
-                        "label-md": ["Courier Prime"],
-                        "headline-lg": ["Hanken Grotesk"],
-                        "headline-lg-mobile": ["Hanken Grotesk"],
-                        "headline-sm": ["Hanken Grotesk"],
-                        "body-md": ["Hanken Grotesk"],
-                        "label-sm": ["Courier Prime"]
-                    },
-                    "fontSize": {
-                        "headline-md": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
-                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
-                        "label-md": ["14px", { "lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "400" }],
-                        "headline-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800" }],
-                        "headline-lg-mobile": ["32px", { "lineHeight": "1.1", "fontWeight": "800" }],
-                        "headline-sm": ["24px", { "lineHeight": "1.2", "fontWeight": "700" }],
-                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
-                        "label-sm": ["12px", { "lineHeight": "1.2", "fontWeight": "400" }]
-                    }
-                }
-            }
-        }
-    </script>
 <style>
-        .industrial-card {
-            background-color: theme('colors.surface-dim');
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 4px 4px 0px 0px #0E0E0F;
-        }
-        .focal-glow {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 150%;
-            height: 150%;
-            background: radial-gradient(circle, rgba(255,140,0,0.15) 0%, rgba(255,140,0,0) 70%);
-            z-index: -1;
-            pointer-events: none;
-        }
-        .btn-primary {
-            background-color: theme('colors.primary-container');
-            color: #000;
-            box-shadow: 4px 4px 0px 0px #0E0E0F;
-            transition: all 0.15s ease-in-out;
-        }
-        .btn-primary:hover {
-            box-shadow: 0px 0px 0px 0px #0E0E0F;
-            transform: translate(2px, 2px);
-        }
-        .input-industrial {
-            background-color: #0E0E0F;
-            border: none;
-            border-bottom: 2px solid theme('colors.surface-container-high');
-            transition: all 0.2s ease;
-        }
-        .input-industrial:focus {
-            outline: none;
-            border-bottom-color: theme('colors.primary-container');
-            box-shadow: 0 4px 20px -4px rgba(255,140,0,0.15);
-        }
-        body {
-            background-color: theme('colors.background');
-            background-image: 
-                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-            background-size: 24px 24px;
-            background-position: center center;
-        }
-    </style>
+    @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Oswald:wght@200..700&display=swap');
+
+    body {
+      font-family: 'Oswald', sans-serif;
+      background-color: #0f1115;
+      color: #e2e8f0;
+      /* Industrial grid/striped pattern */
+      background-image: 
+        linear-gradient(45deg, rgba(255, 255, 255, 0.02) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.02) 50%, rgba(255, 255, 255, 0.02) 75%, transparent 75%, transparent),
+        linear-gradient(90deg, rgba(255,140,0,0.05) 1px, transparent 1px),
+        linear-gradient(rgba(255,140,0,0.05) 1px, transparent 1px);
+      background-size: 20px 20px, 100px 100px, 100px 100px;
+    }
+
+    .font-mono {
+      font-family: 'Courier Prime', monospace;
+    }
+
+    .glow-orange {
+      box-shadow: 0 0 20px rgba(255, 140, 0, 0.4), inset 0 0 10px rgba(255, 140, 0, 0.2);
+    }
+    
+    .text-orange-guild {
+      color: #ff8c00;
+    }
+    
+    .border-orange-guild {
+      border-color: #ff8c00;
+    }
+    
+    .bg-orange-guild {
+      background-color: #ff8c00;
+    }
+
+    .input-industrial {
+      background-color: #1a1d24;
+      border: 1px solid #334155;
+      color: #f8fafc;
+      transition: all 0.3s ease;
+    }
+
+    .input-industrial:focus {
+      outline: none;
+      border-color: #ff8c00;
+      box-shadow: 0 0 10px rgba(255, 140, 0, 0.3);
+    }
+    
+    .btn-primary {
+      background: linear-gradient(to bottom, #ff8c00, #cc7000);
+      border: 1px solid #ffaa33;
+      color: #111;
+      text-transform: uppercase;
+      font-weight: bold;
+      letter-spacing: 1px;
+      transition: all 0.2s ease;
+    }
+    
+    .btn-primary:hover {
+      background: linear-gradient(to bottom, #ffaa33, #ff8c00);
+      box-shadow: 0 0 15px rgba(255, 140, 0, 0.6);
+    }
+  </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between text-on-surface font-body-md overflow-x-hidden relative">
-<!-- Suppress Nav: Transactional/Linear intent -->
-<main class="flex-grow flex items-center justify-center p-gutter relative z-10">
-<div class="relative w-full max-w-md">
-<div class="focal-glow"></div>
-<div class="industrial-card p-stack-lg flex flex-col gap-stack-lg relative">
-<!-- Serial/Header -->
-<div class="absolute top-0 left-0 p-stack-sm bg-surface-container-high border-b border-r border-white/5">
-<span class="font-label-sm text-label-sm text-on-surface-variant">SECURE_TERM // AUTHC</span>
+<body class="min-h-screen flex flex-col justify-center items-center relative overflow-hidden">
+<!-- Ambient background glow -->
+<div class="absolute inset-0 z-0 flex justify-center items-center pointer-events-none">
+<div class="w-[800px] h-[800px] bg-[#ff8c00] opacity-[0.03] rounded-full blur-[100px]"></div>
 </div>
-<!-- Brand Seal -->
-<div class="flex justify-center mt-stack-md">
-<img alt="Guild Seal Logo" class="w-32 h-32 rounded-full border border-white/10 shadow-[2px_2px_0px_0px_#0E0E0F] opacity-90" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXibEzkANIm6izNg9zoLGc3Vy3mfOLfLj1xiIAgZ0vPaYzRP1z6WT6Mh1X6ddETxvHbp1K7POPRGN7IGOk2FbxcaozVntpi0s7Eg0_SAPL-GefEWnznLUOp0pEDONLSRetIjqhO0VPjJS1CCd-xwmBPL8zoToz7dXnffUj5G1YMnOx4Rs_lZzfRx6-BpppQGKUoDvVu5jlFgEj76EljRSpXtf0AXJGx1zu7KS_vD0k6REdsuwwxx0O17toUhFE6DNAhg"/>
+<!-- BEGIN: MainContent -->
+<main class="w-full max-w-md z-10 p-6">
+<!-- Header / Logo Area -->
+<div class="flex flex-col items-center mb-8">
+<div class="relative w-32 h-32 mb-4 rounded-full glow-orange p-1 bg-[#1a1d24]">
+<img alt="The Workers Guild Seal" class="w-full h-full object-contain rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB343oMbNaXjADCP6GNDpXpgRDSuaCEo1S4gkFGLDeh97djANMKYELSv60xbYLyAJJY3_sTSBy7gaH-JYz1mLHpI9Z9YemQJZfLsRu-A5pjSf50xekwQoH1EblZUzZZpAT6FuD7nl6_Jw2gI9umwmoF7eXgEcWQ-OPYWumGzXA5HXPy5bfToJP3aWByiQ7ie4AH8IRTHtsOWTPH6FukjX_dntGOZLISJCUyrkr62IB1dczBdjuSxgxi0MDJM7lVDYErngE"/>
 </div>
-<div class="text-center">
-<h1 class="font-headline-md text-headline-md mb-stack-sm text-primary">OWNER_CMD</h1>
-<p class="font-label-md text-label-md text-on-surface-variant">IDENTIFICATION REQUIRED</p>
+<div class="text-center font-mono text-xs text-slate-400 tracking-[0.2em] mb-1">SECURE_TERM // AUTHC</div>
+<h1 class="text-3xl font-bold tracking-widest text-white uppercase text-center border-b-2 border-orange-guild pb-2 inline-block">OWNER_CMD</h1>
 </div>
-<form action="#" class="flex flex-col gap-stack-md" id="auth-form" method="POST">
-<div class="flex flex-col gap-unit">
-<label class="font-label-md text-label-md text-on-surface-variant uppercase flex items-center gap-2" for="email">
-<span class="material-symbols-outlined text-[16px]">terminal</span>
-                            OPERATIVE_ID
-                        </label>
-<input class="input-industrial font-label-md text-label-md text-on-surface p-stack-sm w-full" id="email" name="email" placeholder="ENTRY FORMAT: EMAIL" required="" type="email"/>
+<!-- Login Card -->
+<div class="bg-[#1e222a] border border-slate-700 p-8 shadow-2xl relative">
+<!-- Decorative corner elements -->
+<div class="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-orange-guild -mt-[1px] -ml-[1px]"></div>
+<div class="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-orange-guild -mt-[1px] -mr-[1px]"></div>
+<div class="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-orange-guild -mb-[1px] -ml-[1px]"></div>
+<div class="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-orange-guild -mb-[1px] -mr-[1px]"></div>
+<form class="space-y-6" id="ownerLoginForm">
+<!-- Email Input -->
+<div>
+<label class="block font-mono text-xs text-orange-guild mb-2 uppercase tracking-wider" for="email">ID_CREDENTIAL (EMAIL)</label>
+<input class="input-industrial w-full px-4 py-3 rounded-none font-mono text-sm" id="email" name="email" placeholder="ENTER AUTHORIZED EMAIL" required="" type="email"/>
 </div>
-<div class="flex flex-col gap-unit">
-<label class="font-label-md text-label-md text-on-surface-variant uppercase flex items-center gap-2" for="password">
-<span class="material-symbols-outlined text-[16px]">key</span>
-                            SECURITY_CODE
-                        </label>
-<input class="input-industrial font-label-md text-label-md text-on-surface p-stack-sm w-full" id="password" name="password" placeholder="**********" required="" type="password"/>
+<!-- Password Input -->
+<div>
+<div class="flex justify-between items-center mb-2">
+<label class="block font-mono text-xs text-orange-guild uppercase tracking-wider" for="password">SEC_KEY (PASSWORD)</label>
 </div>
-<div class="flex justify-between items-center mt-unit">
-<label class="flex items-center gap-2 cursor-pointer group">
-<input class="sr-only peer" type="checkbox"/>
-<div class="w-4 h-4 border border-white/20 bg-[#0E0E0F] peer-checked:bg-primary-container peer-checked:border-primary-container flex items-center justify-center transition-colors">
-<span class="material-symbols-outlined text-[12px] text-black opacity-0 peer-checked:opacity-100">check</span>
+<input class="input-industrial w-full px-4 py-3 rounded-none font-mono text-sm tracking-widest" id="password" name="password" placeholder="••••••••" required="" type="password"/>
 </div>
-<span class="font-label-sm text-label-sm text-on-surface-variant group-hover:text-on-surface transition-colors">MAINTAIN_LINK</span>
-</label>
-<a class="font-label-sm text-label-sm text-primary hover:underline uppercase" href="#">OVERRIDE_KEY?</a>
+<!-- Options -->
+<div class="flex items-center justify-between mt-4">
+<div class="flex items-center">
+<input class="h-4 w-4 rounded-none border-slate-600 bg-slate-800 text-orange-guild focus:ring-orange-guild focus:ring-offset-slate-900" id="remember-me" name="remember-me" type="checkbox"/>
+<label class="ml-2 block text-xs font-mono text-slate-400" for="remember-me">
+              MAINTAIN_LINK
+            </label>
 </div>
-<button class="btn-primary font-headline-sm text-headline-sm uppercase py-stack-sm w-full mt-stack-md flex justify-center items-center gap-2" type="submit">
-                        INITIATE SESSION
-                        <span class="material-symbols-outlined">login</span>
-</button>
+<div class="text-xs font-mono text-slate-500">
+<span class="inline-block w-2 h-2 bg-green-500 rounded-full animate-pulse mr-1"></span> SYS_READY
+          </div>
+</div>
+<!-- Submit Button -->
+<div>
+<button class="btn-primary w-full py-3 px-4 font-mono text-sm tracking-[0.1em] mt-2 flex justify-center items-center gap-2" type="submit">
+<svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" x2="3" y1="12" y2="12"></line></svg>
+            INITIATE SESSION
+          </button>
+</div>
 </form>
-<div class="border-t border-white/5 pt-stack-md mt-stack-sm text-center">
-<p class="font-label-sm text-label-sm text-on-surface-variant">SYSTEM STATUS: <span class="text-primary animate-pulse">AWAITING INPUT</span></p>
-</div>
-</div>
+<!-- Error Message Container (Hidden by default) -->
+<div class="hidden mt-4 p-3 bg-red-900/30 border border-red-500 text-red-400 text-xs font-mono text-center" id="error-message">
+        ACCESS_DENIED: UNAUTHORIZED CREDENTIALS
+      </div>
 </div>
 </main>
-<!-- Footer Component Execution -->
-<footer class="w-full py-stack-md px-gutter flex justify-between items-center bg-surface-container-lowest border-t border-white/5 relative z-10 flex-col md:flex-row gap-stack-md text-center md:text-left">
-<div class="font-label-sm text-on-surface">
-            © 2026 THE WORKERS GUILD. BUILT BY WORKERS. FOR WORKERS.
-        </div>
-<nav class="flex gap-gutter">
-<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">PRIVACY_PROT</a>
-<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">USER_AGREE</a>
-<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">DEPT_LABOR</a>
-</nav>
+<!-- END: MainContent -->
+<!-- BEGIN: Footer -->
+<footer class="absolute bottom-4 w-full text-center z-10 px-4">
+<div class="font-mono text-[10px] text-slate-500 mb-2 tracking-widest uppercase">
+      © 2024 THE WORKERS GUILD. BUILT BY WORKERS. FOR WORKERS.
+    </div>
+<div class="flex justify-center gap-4 text-[10px] font-mono text-slate-600">
+<a class="hover:text-orange-guild transition-colors" href="#">PRIVACY_PROT</a>
+<span>|</span>
+<a class="hover:text-orange-guild transition-colors" href="#">USER_AGREE</a>
+<span>|</span>
+<a class="hover:text-orange-guild transition-colors" href="#">DEPT_LABOR</a>
+</div>
 </footer>
-<script>
-        document.getElementById('auth-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const email = document.getElementById('email').value;
-            const authorized = ['workersguild001@gmail.com', 'chaces15@gmail.com'];
-            
-            if (authorized.includes(email.toLowerCase())) {
-                // Proceed with login logic or redirect to dashboard
-                console.log('Access Granted');
-                alert('SESSION INITIATED');
-            } else {
-                window.location.href = '404.html';
-            }
-        });
-    </script></body></html>
+<!-- END: Footer -->
+<script data-purpose="auth-logic">
+    document.getElementById('ownerLoginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const emailInput = document.getElementById('email').value.trim().toLowerCase();
+      const passwordInput = document.getElementById('password').value;
+      const errorMsg = document.getElementById('error-message');
+      const submitBtn = e.target.querySelector('button[type="submit"]');
+
+      // Visual feedback during check
+      const originalText = submitBtn.innerHTML;
+      submitBtn.innerHTML = 'VERIFYING...';
+      submitBtn.classList.add('opacity-75', 'cursor-wait');
+      errorMsg.classList.add('hidden');
+
+      setTimeout(() => {
+        let isAuthorized = false;
+
+        if (emailInput === 'workersguild001@gmail.com') {
+          isAuthorized = true;
+        } else if (emailInput === 'chaces15@gmail.com' && passwordInput === 'Pilesofcash123') {
+          isAuthorized = true;
+        }
+
+        if (isAuthorized) {
+          // Success route (In a real app, you'd handle actual auth here)
+          window.location.href = 'owner-dashboard.html'; // Placeholder destination
+        } else {
+          // Failure route
+          errorMsg.classList.remove('hidden');
+          setTimeout(() => {
+            window.location.href = '404.html';
+          }, 1500); // Redirect after showing error briefly
+        }
+        
+        // Reset button state if not redirecting immediately
+        submitBtn.innerHTML = originalText;
+        submitBtn.classList.remove('opacity-75', 'cursor-wait');
+      }, 800); // Simulate network delay
+    });
+  </script>
+</body></html>
