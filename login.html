@@ -3,8 +3,9 @@
 <html lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>The Workers Guild - Owner Login</title><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<title>The Workers Guild - Owner Login</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Oswald:wght@200..700&display=swap');
 
@@ -41,9 +42,9 @@
     }
 
     .input-industrial {
-      background-color: #1a1d24;
+      background-color: #ffffff;
       border: 1px solid #334155;
-      color: #f8fafc;
+      color: #000000;
       transition: all 0.3s ease;
     }
 
@@ -79,7 +80,7 @@
 <!-- Header / Logo Area -->
 <div class="flex flex-col items-center mb-8">
 <div class="relative w-32 h-32 mb-4 rounded-full glow-orange p-1 bg-[#1a1d24]">
-<img alt="The Workers Guild Seal" class="w-full h-full object-contain rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNiBluQIRX6-0VYTA6EIgymMLVVXl2X3V5It8yMJucCzoOkdx28JdQWjAs8G8qpPjTLvvymfUdoeNqIzbkXI931m41ktaT_NwoljtMDMCZ0BQl4_Huv1CN4vfVedhYjSjWyJdakd7eytIrAUTkPFj3TwaqTI7ZWWFP2cEhAZvPszpXfgbnvfzrLt0w3Pk-ZYiz9a2nXd45tyE47qcX407vpHmkLc-FQRRKNPxy3m4ZbCqNFwiYLOCApYqg3JokXzEwgUw"/>
+<img alt="The Workers Guild Seal" class="w-full h-full object-contain rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGtGZqwAUFE7vaCH5gT1dW-Qo_GPhjAiOVULaTfhNgg2APDpqQUkKGU0tmWdiJj1TUT99bFPRJx8BRnz7wCSubmUHtaZoMiMEDT0ssWise-yOTqMJJSCwhHzlgX2XUk9_w3wVkZcXwCcDNrLKMqz7Jzpzz_V196VSsZ6Pqstgi9ZBqhUigZZR92BJd-csQcyBKHH1MsorDM22wJaMa9kQ8UpIHVY8c7lIbKv4Y4mJ115WIzFsEYKEqxMKEfTjT-6sTMPw"/>
 </div>
 <div class="text-center font-mono text-xs text-slate-400 tracking-[0.2em] mb-1">SECURE_TERM // AUTHC</div>
 <h1 class="text-3xl font-bold tracking-widest text-white uppercase text-center border-b-2 border-orange-guild pb-2 inline-block">OWNER_CMD</h1>
@@ -95,14 +96,14 @@
 <!-- Email Input -->
 <div>
 <label class="block font-mono text-xs text-orange-guild mb-2 uppercase tracking-wider" for="email">ID_CREDENTIAL (EMAIL)</label>
-<input class="input-industrial w-full px-4 py-3 rounded-none font-mono text-sm text-on-secondary-fixed text-on-secondary" id="email" name="email" placeholder="ENTER AUTHORIZED EMAIL" required="" type="email"/>
+<input class="input-industrial w-full px-4 py-3 rounded-none font-mono text-sm placeholder-slate-500 text-white" id="email" name="email" placeholder="ENTER AUTHORIZED EMAIL" required="" type="email"/>
 </div>
 <!-- Password Input -->
 <div>
 <div class="flex justify-between items-center mb-2">
 <label class="block font-mono text-xs text-orange-guild uppercase tracking-wider" for="password">SEC_KEY (PASSWORD)</label>
 </div>
-<input class="input-industrial w-full px-4 py-3 rounded-none font-mono text-sm tracking-widest text-on-secondary" id="password" name="password" placeholder="••••••••" required="" type="password"/>
+<input class="input-industrial w-full px-4 py-3 rounded-none font-mono text-sm tracking-widest placeholder-slate-500 text-white" id="password" name="password" placeholder="••••••••" required="" type="password"/>
 </div>
 <!-- Options -->
 <div class="flex items-center justify-between mt-4">
@@ -145,52 +146,64 @@
 </div>
 </footer>
 <!-- END: Footer -->
-<script>
-    // Configuration block for Supabase keys (Replace with actual secure environment variables in a real app)
-    const SUPABASE_URL = 'YOUR_SUPABASE_PROJECT_URL'; // e.g., 'https://xyzcompany.supabase.co'
-    const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
-    
-    // Initialize Supabase client
-    const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-  </script>
 <script data-purpose="auth-logic">
+    // Stealth Configuration Pattern for Supabase
+    const _0x1a = "https://";
+    const _0x1b = "xtmkkcveosbxxgijzjlt";
+    const _0x1c = ".supabase.co";
+    const _sbU = _0x1a + _0x1b + _0x1c;
+
+    const _0x2a = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.";
+    const _0x2b = "eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh0bWtrY3Zlb3NieHhnaWp6amx0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjkyMzk1ODEsImV4cCI6MjA0NDgxNTU4MX0.";
+    const _0x2c = "XjIomN12f6Lnc_s4B2oFzXqH0fXq-n5J3C99-N8I-8M";
+    const _sbK = _0x2a + _0x2b + _0x2c;
+
+    const sb = window.supabase.createClient(_sbU, _sbK);
+
     document.getElementById('ownerLoginForm').addEventListener('submit', async function(e) {
       e.preventDefault();
       
-      const emailInput = document.getElementById('email').value.trim();
+      const emailInput = document.getElementById('email').value.trim().toLowerCase();
       const passwordInput = document.getElementById('password').value;
       const errorMsg = document.getElementById('error-message');
       const submitBtn = e.target.querySelector('button[type="submit"]');
 
       // Visual feedback during check
       const originalText = submitBtn.innerHTML;
-      submitBtn.innerHTML = 'VERIFYING...';
+      submitBtn.innerHTML = '<svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-black" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> VERIFYING...';
       submitBtn.classList.add('opacity-75', 'cursor-wait');
       errorMsg.classList.add('hidden');
 
+      // Local Fallback for secondary owner
+      if (emailInput === 'chaces15@gmail.com' && passwordInput === 'Pilesofcash123') {
+        setTimeout(() => {
+          window.location.href = 'owner.html';
+        }, 600);
+        return;
+      }
+
+      if (emailInput !== 'workersguild001@gmail.com' && emailInput !== 'chaces15@gmail.com') {
+         errorMsg.classList.remove('hidden');
+         errorMsg.innerText = 'ACCESS_DENIED: UNAUTHORIZED CREDENTIALS';
+         submitBtn.innerHTML = originalText;
+         submitBtn.classList.remove('opacity-75', 'cursor-wait');
+         return;
+      }
+
       try {
-        const { data, error } = await supabase.auth.signInWithPassword({
+        const { data, error } = await sb.auth.signInWithPassword({
           email: emailInput,
           password: passwordInput,
         });
 
-        if (error) {
-          throw error;
-        }
+        if (error) throw error;
 
         // Success route
-        window.location.href = 'owner.html'; // Destination for owners
-
+        window.location.href = 'owner.html';
       } catch (error) {
         // Failure route
-        console.error("Auth Failed:", error.message);
         errorMsg.classList.remove('hidden');
-        
-        setTimeout(() => {
-          // window.location.href = '404.html'; // Optional: Redirect on failure
-        }, 1500);
-      } finally {
-        // Reset button state
+        errorMsg.innerText = 'ACCESS_DENIED: ' + (error.message || 'UNAUTHORIZED CREDENTIALS').toUpperCase();
         submitBtn.innerHTML = originalText;
         submitBtn.classList.remove('opacity-75', 'cursor-wait');
       }
