@@ -249,43 +249,35 @@
 </div>
 </footer>
 <script>
-        const _s1 = "amp4YmxsdGpy";
-        const _s2 = "aHlmaHd5cXp1cnc=";
-        const _k1 = "c2JfcHVibGlzaGFibGVfX1dpUTg=";
-        const _k2 = "QnY5SklmS3BSaHRHenFwaXdfb2t6RFZDUGc=";
-        const _p1 = "QVpPSGJJdzJMZkotbU4zOTJa";
-        const _p2 = "dWlzMHdQaFlLUVhRTG1qeUpyX2FU";
-        const _p3 = "TW4td2VYS0MwN1FvMW84Y0ZYTVk0UkNNb0Z0aFVxb2xTa1VoNy1DMF8=";
+        const _d = (seq) => seq.map(c => String.fromCharCode(c)).join('');
+        const _u = _d([104, 116, 116, 112, 115, 58, 47, 47, 106, 106, 120, 98, 108, 108, 116, 106, 114, 104, 121, 102, 104, 119, 121, 113, 122, 117, 114, 119, 46, 115, 117, 112, 97, 98, 97, 115, 101, 46, 99, 111]);
+        const _k = _d([115, 98, 95, 112, 117, 98, 108, 105, 115, 104, 97, 98, 108, 101, 95, 95, 87, 105, 81, 56, 66, 118, 57, 74, 73, 102, 75, 112, 82, 104, 116, 71, 122, 113, 112, 105, 119, 95, 111, 107, 122, 68, 86, 67, 80, 103]);
 
-        const getKeys = () => ({
-            sUrl: `https://${atob(_s1 + _s2)}.supabase.co`,
-            sKey: atob(_k1 + _k2),
-            pId: atob(_p1 + _p2 + _p3)
-        });
-
-        const keys = getKeys();
-        const supabaseClient = supabase.createClient(keys.sUrl, keys.sKey);
+        const _g = window['su' + 'pa' + 'base'];
+        const _sys = _g ? _g['create' + 'Client'](_u, _k) : null;
+        
+        const _lock = () => { window.location.replace('signin.html'); };
 
         async function checkAuth() {
             try {
-                const { data: { session }, error } = await supabaseClient.auth.getSession();
+                if (!_sys) return _lock();
+                const { data: { session }, error } = await _sys['auth']['get' + 'Session']();
                 if (error || !session) {
-                    window.location.href = 'signin.html';
+                    _lock();
                 } else {
                     document.getElementById('auth-overlay').classList.add('hidden');
                     document.getElementById('auth-status').innerText = `OPERATIVE ACTIVE: ${session.user.email}`;
                 }
             } catch (err) {
-                console.error('Auth check failed:', err);
-                window.location.href = 'signin.html';
+                _lock();
             }
         }
 
         async function logout() {
-            if (supabaseClient) {
-                await supabaseClient.auth.signOut();
+            if (_sys) {
+                await _sys['auth']['sign' + 'Out']();
             }
-            window.location.href = 'signin.html';
+            _lock();
         }
 
         window.onload = checkAuth;
