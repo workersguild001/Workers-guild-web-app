@@ -6,7 +6,7 @@
 <title>THE WORKERS GUILD | OPENING SOON</title>
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;800&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com"></script>
-<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
         tailwind.config = {
             darkMode: 'class',
@@ -130,7 +130,7 @@
 <main class="flex-1 flex flex-col items-center justify-center p-6 sm:p-12 text-center">
 <!-- Brand Seal Section -->
 <div class="glow-effect mb-8 sm:mb-12">
-<img alt="The Workers Guild Seal" class="w-48 h-48 sm:w-80 sm:h-80 mx-auto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCRqD1tIxw4fRkQB4Te-ZomYcqoSMWlc_Fp_55WMhC4FhTxKrLYGiOz1vRiKtj-c5j4SvLPlI6z7TQ32oOcjqLaloSY4j12SuzXPjfxXxb_4zKmN7Kd4enwGFAQA32MuC2XlZsgCkN43_GnqkTnL7ubAuHg4qUQZcQb4_iiT0ZjjWOqurglUj3o2duVWdwIvDbn0r3p0bn_-qtLXA5-wG0na-L5TEU0kwUM10MTP7snnhNm6ggcbIUsfxovA-IXHuYWw"/>
+<img alt="The Workers Guild Seal" class="w-48 h-48 sm:w-80 sm:h-80 mx-auto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9TyKd8C0-7KLQufIA9xPgfwU3rSZFSm7bLjrJyXOVajI4kDRb09g_ibC84KepdJBk3AjUzJZX1aP54AtztYwt8B13IFRrO5tyFMDeYYvFRrHAzb1VRbUriyVz9BpLw0i5E80Shv4f7yC4EqPd8QFbyn8edYDR34Q0qugEw2pv3UawAb3PyBG39tJL4Zal_AtoquQvNEgMMKwvA-t5V_KIIzKpLdJkkPGpWEo-3nsOqt2w0dy5hdxbYulDCpq2T-E8iI4"/>
 </div>
 <!-- Status Indicator -->
 <div class="w-full max-w-2xl mb-8 sm:mb-12">
@@ -218,7 +218,7 @@
             feedback.innerText = 'Transmitting credentials...';
 
             try {
-                const { data, error } = await supabaseClient
+                const { data, error, status } = await supabaseClient
                     .from('waitlist')
                     .insert([{ name: name, email: email, joined_at: new Date() }]);
 
@@ -228,6 +228,7 @@
                     feedback.classList.add('text-red-500');
                     alert('Enlistment failed: ' + error.message);
                 } else {
+                    console.log('Successfully inserted data:', data, 'Status:', status);
                     feedback.innerText = 'Transmission successful.';
                     feedback.classList.add('text-green-500');
                     form.reset();
