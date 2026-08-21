@@ -3,12 +3,12 @@
 <html class="dark" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Worker Console - Fixed Balance</title>
+<title>Worker Console - The Workers Guild</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;700;800;900&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-<script src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID&amp;currency=USD"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script id="tailwind-config">
         tailwind.config = {
@@ -182,7 +182,7 @@
 <header class="w-full top-0 bg-background dark:bg-background border-b-2 border-outline-variant shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] z-50 sticky">
 <div class="flex justify-between items-center px-margin-desktop py-stack-md w-full max-w-full">
 <div class="flex items-center gap-4">
-<img alt="Guild Seal" class="w-12 h-12 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMgpQh5__A1DY_mXMuy8yw-iwxrgcl5ZqU4JkmUgslC9Wpoj6SN58fZvRicb3Xwl_qjO9GIeLZJyVyKY0GU77cNbRDPRIURcvsOpEirGatqTC0wm7KcFoplYAKfoAIyXuVukE6WHtKKri51Sfy1iBBZph7GbjT5OZnl_hlKirCLn_ulksOCAO3v8onovGO7g1_VhsgdzKuJksGodpfLiZzmQgTDJH7NEPRun21t0zpNiMdcuYf8je95424WCYkO6tCkDY"/>
+<img alt="Guild Seal" class="w-12 h-12 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuNIhzahW6WrB5vD-njFTguiCNd_qsbc2qLz0eU5jjs0zuWH8MjVMnQtdu_cVQcGawKiA6kcC1nkDG8fz6xAs4f7i14sa_GXiCFOCkO5tHPwQyix5AeiqYrgKrPc2YU2BfEPHOguyyyyhvYULROq9jBtcpZqTQDJLdh_SnJIMYTZY2NLYTpdj3N9kbMFHPqF5nLBfNIFYCE-3MK3Edh4hy09aTBvf_3Q-xTptF72n17uTfcj0SJNyOM70yyC1khvnxlWU"/>
 <span class="font-headline-md text-headline-md font-black text-primary uppercase tracking-tighter">THE WORKERS GUILD</span>
 </div>
 <nav class="hidden md:flex gap-gutter items-center">
@@ -190,7 +190,7 @@
 <a class="text-primary font-bold border-b-2 border-primary pb-1" href="#">Console</a>
 <a class="text-on-surface-variant font-medium hover:text-primary-container transition-colors" href="#">Support</a>
 </nav>
-<button class="hidden md:block bg-surface-container border-2 border-outline-variant px-4 py-2 font-label-mono text-label-mono text-primary uppercase hover:bg-primary-container hover:text-on-primary-container hover:border-black transition-colors industrial-shadow-hover">
+<button class="hidden md:block bg-surface-container border-2 border-outline-variant px-4 py-2 font-label-mono text-label-mono text-primary uppercase hover:bg-primary-container hover:text-on-primary-container hover:border-black transition-colors industrial-shadow-hover" id="logout-btn">
                 Logout
             </button>
 </div>
@@ -201,13 +201,13 @@
 <!-- Hero Section -->
 <section class="flex flex-col items-center justify-center text-center gap-stack-md w-full py-stack-lg border-b-2 border-outline-variant">
 <div class="relative inline-block mb-4">
-<img alt="Large Guild Seal" class="w-32 h-32 md:w-48 md:h-48 object-contain glow-image mx-auto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDR5czcgOnH85PEu_c3JyLzp3-sytqdfy-INny1CJXDun0D0zh9i2GzDoe0IOeKAdXDXgdn9s5RTdNHiOGjvbhWTYRHnT95qql-suvmUBDEyiD-9epYmUPkCC-iJtCfWl2hKwUlKl7m0y8Js3uZcpy35PTIznj0Kr2muCS_61epyCW_4pqpMQP91zSwI6KOzBdrwIpCFmmSTH2_bxoeUgwfgR9L5mU7nQ9ictxQOUT3f6P3r4YJdxqq8HyuK8rfZEkFyIk"/>
+<img alt="Large Guild Seal" class="w-32 h-32 md:w-48 md:h-48 object-contain glow-image mx-auto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyxwxbBzMSB7YnUFkgfC7VB0Hcm339l5npg23gqKIHM8G1UXsn45gMlFkdgtCtQWQVevH9hCSrI1kzAoJZK7TFMLd1mxBwT_f599kB8gNyqc0daki4AqdJo7tzu97pFyEFknrmQfE_8ILLROSHs5GCASNAWVT_IBa2EO5_wzB3G6ar1EWlEtqbax_g8Ay0I897ygH2IShdDgpr9hPKdIX3QOP5Z2PUg_Jy2DqoVvYjFt1Ch_dK1LXee7tHHsKKS0ayxkM"/>
 </div>
 <h1 class="font-headline-xl-mobile md:font-headline-xl text-headline-xl-mobile md:text-headline-xl text-on-surface uppercase tracking-tighter glow-text">
                 WORKER CONSOLE
             </h1>
 <p class="font-label-mono text-label-mono text-on-surface-variant uppercase bg-surface-container px-4 py-2 border border-outline-variant">
-                ID: <span class="text-primary" id="worker-id">LOADING...</span> | STATUS: <span class="text-primary-container flex items-center inline-flex gap-1"><span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>ACTIVE</span>
+                ID: <span class="text-primary" id="worker-id">WKG-XXXX</span> | STATUS: <span class="text-primary-container flex items-center inline-flex gap-1"><span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>ACTIVE</span>
 </p>
 </section>
 <!-- Dashboard Grid -->
@@ -224,12 +224,16 @@
 <span class="font-label-mono text-label-mono text-on-surface-variant">USD</span>
 </div>
 <div class="flex-grow flex flex-col justify-center items-center py-stack-lg relative z-10">
-<span class="font-headline-xl-mobile md:font-headline-xl text-headline-xl-mobile md:text-headline-xl text-[#ff8c00] font-black tracking-tighter glow-text" id="revenue-display">$0.00</span>
+<span class="font-headline-xl-mobile md:font-headline-xl text-headline-xl-mobile md:text-headline-xl text-primary font-black tracking-tighter glow-text transition-all duration-500" id="revenue-display">
+                        $0.00
+                    </span>
 <span class="font-label-mono text-label-mono text-on-surface-variant mt-2">Available Balance</span>
 </div>
 <div class="mt-auto relative z-10">
-<button class="w-full bg-primary-container text-black font-headline-md text-headline-md uppercase py-4 border-2 border-black industrial-shadow industrial-shadow-hover transition-all flex justify-center items-center gap-2" id="withdraw-btn">CONNECT PAYPAL</button>
-<div class="hidden w-full min-h-[45px]" id="paypal-button-container"></div>
+<button class="w-full bg-primary-container text-black font-headline-md text-headline-md uppercase py-4 border-2 border-black industrial-shadow industrial-shadow-hover transition-all flex justify-center items-center gap-2" id="withdraw-btn">
+                        WITHDRAW TO PAYPAL
+                        <span class="material-symbols-outlined">payments</span>
+</button>
 <p class="font-label-mono text-label-mono text-on-surface-variant text-center mt-2 h-4 hidden" id="withdraw-status"></p>
 </div>
 </div>
@@ -256,10 +260,12 @@
 <div class="absolute bottom-0 left-0 w-4 h-4 border-b-4 border-l-4 border-primary -translate-x-1 translate-y-1"></div>
 <div class="absolute bottom-0 right-0 w-4 h-4 border-b-4 border-r-4 border-primary translate-x-1 translate-y-1"></div>
 </div>
-<p class="font-label-mono text-label-mono text-primary text-center mb-2" id="affiliate-link">workersguild.com/id/...</p><p class="font-label-mono text-label-mono text-on-surface-variant text-center mt-2 max-w-xs">Present this code to access guild resources, record jobs, and recruit new members to earn a commission.</p>
+<p class="font-label-mono text-label-mono text-on-surface-variant text-center mt-2 max-w-xs">
+                        Present this code to access guild resources and record jobs.
+                    </p>
 </div>
 <div class="mt-auto relative z-10 grid grid-cols-2 gap-unit">
-<button class="bg-surface-container border border-outline-variant py-2 font-label-mono text-label-mono text-on-surface hover:bg-surface-container-high transition-colors flex justify-center items-center gap-1" id="refresh-pass-btn">
+<button class="bg-surface-container border border-outline-variant py-2 font-label-mono text-label-mono text-on-surface hover:bg-surface-container-high transition-colors flex justify-center items-center gap-1">
 <span class="material-symbols-outlined text-[16px]">refresh</span> REFRESH
                     </button>
 <button class="bg-surface-container border border-outline-variant py-2 font-label-mono text-label-mono text-on-surface hover:bg-surface-container-high transition-colors flex justify-center items-center gap-1">
@@ -282,65 +288,70 @@
 </footer>
 <!-- Logic Scripts -->
 <script>
-        document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', async () => {
             
-            // Supabase Initialization (Replace with real credentials)
-            const SUPABASE_URL = 'https://YOUR_SUPABASE_PROJECT.supabase.co';
-            const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
-            let supabase;
-            
-            try {
-                supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-            } catch (e) {
-                console.warn("Supabase client not initialized.", e);
+            // Supabase Initialization
+            const supabaseUrl = 'https://jjxblltjrhyfhwyqzurw.supabase.co';
+            const supabaseKey = 'sb_publishable__WiQ8Bv9JIfKpRhtGzqpiw_okzDVCPg';
+            const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+            // 1. Security Shield Logic
+            const checkAuth = async () => {
+                const { data: { session } } = await supabase.auth.getSession();
+                if (!session) {
+                    console.warn("No auth session found, redirecting...");
+                    window.location.href = 'signin.html';
+                } else {
+                    // Sync Guild ID with authenticated user profile logic prepared here
+                    // document.getElementById('worker-id').textContent = 'WKG-' + session.user.id.substring(0, 4).toUpperCase();
+                }
+            };
+            await checkAuth();
+
+            // Set simulated Worker ID
+            document.getElementById('worker-id').textContent = 'WKG-' + Math.floor(1000 + Math.random() * 9000);
+
+            // Logout Functionality
+            const logoutBtn = document.getElementById('logout-btn');
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', async () => {
+                    await supabase.auth.signOut();
+                    window.location.href = 'signin.html';
+                });
             }
 
-            const loadProfileData = async () => {
-                if (!supabase) {
-                    document.getElementById('revenue-display').textContent = '$0.00';
-                    return;
-                }
-                
-                try {
-                    const { data: { user }, error: authError } = await supabase.auth.getUser();
+            // 2. Supabase Client Initialization (Simulated Data Fetching)
+            const fetchRevenue = () => {
+                // Simulate network request to Supabase
+                setTimeout(() => {
+                    // Random revenue for demo
+                    const rev = (Math.random() * 1500).toFixed(2);
+                    const revEl = document.getElementById('revenue-display');
                     
-                    if (authError || !user) {
-                        console.warn("User not authenticated or error fetching user.", authError);
-                        document.getElementById('revenue-display').textContent = '$0.00';
-                        return;
-                    }
+                    // Simple count up animation
+                    let start = 0;
+                    const duration = 1500;
+                    const stepTime = 50;
+                    const steps = duration / stepTime;
+                    const increment = rev / steps;
+                    
+                    const timer = setInterval(() => {
+                        start += increment;
+                        if(start >= rev) {
+                            start = rev;
+                            clearInterval(timer);
+                            revEl.classList.add('text-[#ff8c00]'); // Ensure it stays highlighted
+                        }
+                        revEl.textContent = `$${parseFloat(start).toFixed(2)}`;
+                    }, stepTime);
 
-                    const { data: profile, error: profileError } = await supabase
-                        .from('profiles')
-                        .select('*')
-                        .eq('id', user.id)
-                        .single();
-
-                    if (profileError || !profile) {
-                        console.error("Error fetching profile.", profileError);
-                        document.getElementById('revenue-display').textContent = '$0.00';
-                        return;
-                    }
-
-                    updateUI(profile.guild_id, profile.balance);
-
-                } catch (error) {
-                    console.error("Unexpected error loading data.", error);
-                    document.getElementById('revenue-display').textContent = '$0.00';
-                }
+                }, 1000);
             };
+            fetchRevenue();
 
-            const updateUI = (guildId, balance) => {
-                document.getElementById('worker-id').textContent = guildId;
-                document.getElementById('affiliate-link').textContent = `workersguild.com/id/${guildId}`;
-                document.getElementById('revenue-display').textContent = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(balance);
-                generateQR(guildId);
-            };
-
-            // 3. PayPal Signup Handler
+            // 3. PayPal Withdrawal Handler
             const withdrawBtn = document.getElementById('withdraw-btn');
             const withdrawStatus = document.getElementById('withdraw-status');
-            const paypalContainer = document.getElementById('paypal-button-container');
 
             withdrawBtn.addEventListener('click', function(e) {
                 // Prevent multiple clicks
@@ -352,45 +363,49 @@
                 this.disabled = true;
                 
                 withdrawStatus.classList.remove('hidden');
-                withdrawStatus.textContent = 'Authenticating...';
+                withdrawStatus.textContent = 'Connecting to PayPal gateway...';
                 withdrawStatus.classList.remove('text-error', 'text-primary');
 
                 // Simulate processing
                 setTimeout(() => {
-                    this.classList.add('hidden');
-                    paypalContainer.classList.remove('hidden');
-                    withdrawStatus.textContent = 'PAYPAL CONNECTED.';
-                    withdrawStatus.classList.add('text-primary');
+                    const success = Math.random() > 0.3; // 70% chance of success for demo
                     
-                    if (window.paypal) {
-                        paypal.Buttons().render("#paypal-button-container");
+                    this.innerHTML = originalText;
+                    this.classList.remove('opacity-75');
+                    this.disabled = false;
+
+                    if(success) {
+                        withdrawStatus.textContent = 'TRANSACTION INITIATED SUCCESSFULLY.';
+                        withdrawStatus.classList.add('text-primary');
+                        document.getElementById('revenue-display').textContent = '$0.00';
                     } else {
-                        withdrawStatus.textContent = 'ERROR: PAYPAL SDK NOT LOADED.';
+                        withdrawStatus.textContent = 'ERROR: GATEWAY TIMEOUT. TRY AGAIN.';
                         withdrawStatus.classList.add('text-error');
                     }
-                }, 1500);
+                    
+                    // Hide message after a while
+                    setTimeout(() => {
+                        withdrawStatus.classList.add('hidden');
+                    }, 4000);
+
+                }, 2000);
             });
 
             // 4. QR Code Generation Logic
-            const generateQR = (guildId) => {
+            const generateQR = () => {
                 const container = document.getElementById('qrcode-container');
                 const placeholder = document.getElementById('qr-placeholder');
-                const workerData = `GUILD_PASS_${guildId}_${Date.now()}`;
+                const workerData = `GUILD_PASS_${document.getElementById('worker-id').textContent}_${Date.now()}`;
                 
-                placeholder.style.display = 'block';
-                container.innerHTML = '';
-                container.appendChild(placeholder);
-                
-                const beam = document.createElement('div');
-                beam.className = 'scanner-beam';
-                container.appendChild(beam);
-
                 // Simulate processing time
                 setTimeout(() => {
                     placeholder.style.display = 'none';
+                    // Clear previous (if any, besides placeholder)
                     container.innerHTML = '';
                     
-                    // Re-add scanner beam for effect
+                    // Re-add scanner beam
+                    const beam = document.createElement('div');
+                    beam.className = 'scanner-beam';
                     container.appendChild(beam);
 
                     new QRCode(container, {
@@ -411,16 +426,7 @@
                     
                 }, 1500);
             };
-            
-            // Wire up refresh button to regenerate QR and re-fetch profile data
-            document.getElementById('refresh-pass-btn').addEventListener('click', () => {
-                document.getElementById('revenue-display').innerHTML = '<span class="material-symbols-outlined animate-spin text-headline-md">sync</span>';
-                document.getElementById('worker-id').textContent = 'LOADING...';
-                loadProfileData();
-            });
-
-            // Start initial load
-            loadProfileData();
+            generateQR();
             
         });
     </script>
