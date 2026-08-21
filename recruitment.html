@@ -3,534 +3,283 @@
 <html class="dark" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Worker Console - The Workers Guild</title>
+<title>GUILD_GATEWAY // COMMAND</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;700;800;900&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;700;800&amp;family=Courier+Prime:wght@400;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<!-- PayPal SDK will be loaded dynamically -->
 <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    "colors": {
-                        "on-error": "#690005",
-                        "surface-container-highest": "#3f3229",
-                        "primary-fixed-dim": "#ffb77d",
-                        "error": "#ffb4ab",
-                        "on-tertiary": "#00344c",
-                        "on-secondary-fixed-variant": "#474746",
-                        "on-error-container": "#ffdad6",
-                        "on-background": "#f3dfd1",
-                        "on-tertiary-fixed-variant": "#004c6c",
-                        "tertiary-fixed-dim": "#85cfff",
-                        "on-primary": "#4d2600",
-                        "on-primary-fixed": "#2f1500",
-                        "secondary-container": "#474746",
-                        "background": "#1b110a",
-                        "surface-dim": "#1b110a",
-                        "outline": "#a48c7a",
-                        "tertiary-container": "#00b5fc",
-                        "inverse-on-surface": "#3a2e25",
-                        "on-tertiary-fixed": "#001e2e",
-                        "on-surface": "#f3dfd1",
-                        "on-primary-container": "#623200",
-                        "surface-container-low": "#241912",
-                        "primary-container": "#ff8c00",
-                        "on-secondary-container": "#b6b5b4",
-                        "secondary": "#c8c6c5",
-                        "tertiary-fixed": "#c7e7ff",
-                        "on-secondary": "#303030",
-                        "secondary-fixed": "#e4e2e1",
-                        "inverse-surface": "#f3dfd1",
-                        "primary": "#ffb77d",
-                        "inverse-primary": "#904d00",
-                        "surface-variant": "#3f3229",
-                        "error-container": "#93000a",
-                        "secondary-fixed-dim": "#c8c6c5",
-                        "surface-container": "#281d15",
-                        "on-primary-fixed-variant": "#6e3900",
-                        "primary-fixed": "#ffdcc3",
-                        "surface-tint": "#ffb77d",
-                        "tertiary": "#85cfff",
-                        "surface-bright": "#43372e",
-                        "on-surface-variant": "#ddc1ae",
-                        "on-secondary-fixed": "#1b1c1b",
-                        "on-tertiary-container": "#004360",
-                        "surface-container-high": "#33281f",
-                        "surface": "#1b110a",
-                        "surface-container-lowest": "#150c06",
-                        "outline-variant": "#564334"
-                    },
-                    "borderRadius": {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
-                    },
-                    "spacing": {
-                        "stack-lg": "32px",
-                        "stack-md": "16px",
-                        "unit": "4px",
-                        "stack-sm": "8px",
-                        "gutter": "24px",
-                        "margin-desktop": "48px",
-                        "margin-mobile": "16px"
-                    },
-                    "fontFamily": {
-                        "headline-xl-mobile": ["Hanken Grotesk"],
-                        "headline-lg": ["Hanken Grotesk"],
-                        "headline-xl": ["Hanken Grotesk"],
-                        "body-md": ["Hanken Grotesk"],
-                        "label-mono": ["JetBrains Mono"],
-                        "headline-md": ["Hanken Grotesk"],
-                        "body-lg": ["Hanken Grotesk"]
-                    },
-                    "fontSize": {
-                        "headline-xl-mobile": ["40px", { "lineHeight": "1.1", "fontWeight": "900" }],
-                        "headline-lg": ["40px", { "lineHeight": "1.2", "fontWeight": "800" }],
-                        "headline-xl": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "900" }],
-                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
-                        "label-mono": ["14px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "500" }],
-                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "700" }],
-                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }]
-                    }
-                }
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-fixed": "#1c1b1c",
+                    "on-secondary": "#313031",
+                    "outline-variant": "#564334",
+                    "inverse-on-surface": "#313030",
+                    "tertiary-fixed-dim": "#c8c6c5",
+                    "error-container": "#93000a",
+                    "inverse-surface": "#e5e2e1",
+                    "tertiary-fixed": "#e4e2e1",
+                    "primary-container": "#ff8c00",
+                    "tertiary-container": "#aba9a9",
+                    "on-secondary-fixed-variant": "#474647",
+                    "on-tertiary-container": "#3e3e3e",
+                    "background": "#131313",
+                    "surface-container-lowest": "#0e0e0e",
+                    "on-tertiary-fixed-variant": "#474746",
+                    "surface-container": "#201f1f",
+                    "surface-tint": "#ffb77d",
+                    "on-secondary-container": "#bab8b9",
+                    "secondary-fixed": "#e5e2e3",
+                    "on-surface-variant": "#ddc1ae",
+                    "secondary": "#c8c6c7",
+                    "on-tertiary-fixed": "#1b1c1c",
+                    "error": "#ffb4ab",
+                    "on-primary-container": "#623200",
+                    "secondary-fixed-dim": "#c8c6c7",
+                    "on-primary-fixed": "#2f1500",
+                    "primary-fixed-dim": "#ffb77d",
+                    "primary": "#ffb77d",
+                    "outline": "#a48c7a",
+                    "tertiary": "#c8c6c5",
+                    "on-error": "#690005",
+                    "on-primary": "#4d2600",
+                    "on-primary-fixed-variant": "#6e3900",
+                    "surface-container-highest": "#353534",
+                    "on-background": "#e5e2e1",
+                    "secondary-container": "#4a494a",
+                    "on-error-container": "#ffdad6",
+                    "surface-container-high": "#2a2a2a",
+                    "surface-dim": "#131313",
+                    "surface-bright": "#393939",
+                    "on-tertiary": "#303030",
+                    "inverse-primary": "#904d00",
+                    "surface": "#131313",
+                    "surface-variant": "#353534",
+                    "primary-fixed": "#ffdcc3",
+                    "surface-container-low": "#1c1b1b",
+                    "on-surface": "#e5e2e1"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-md": "16px",
+                    "margin-desktop": "40px",
+                    "unit": "4px",
+                    "gutter": "24px",
+                    "stack-sm": "8px",
+                    "margin-mobile": "16px",
+                    "stack-lg": "32px"
+            },
+            "fontFamily": {
+                    "body-md": ["Hanken Grotesk"],
+                    "headline-md": ["Hanken Grotesk"],
+                    "headline-lg": ["Hanken Grotesk"],
+                    "headline-sm": ["Hanken Grotesk"],
+                    "body-lg": ["Hanken Grotesk"],
+                    "label-sm": ["Courier Prime"],
+                    "headline-lg-mobile": ["Hanken Grotesk"],
+                    "label-md": ["Courier Prime"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-md": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "headline-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "headline-sm": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "1.1", "fontWeight": "800"}],
+                    "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "400"}]
             }
+          }
         }
+      }
     </script>
 <style>
-        body {
-            background-color: #131313; /* Custom dark override for the prompt */
-            background-image: repeating-linear-gradient(45deg, #181818 25%, transparent 25%, transparent 75%, #181818 75%, #181818), repeating-linear-gradient(45deg, #181818 25%, #131313 25%, #131313 75%, #181818 75%, #181818);
-            background-position: 0 0, 10px 10px;
-            background-size: 20px 20px;
-            color: #f3dfd1;
-        }
-
-        .industrial-shadow {
+        .industrial-card {
             box-shadow: 4px 4px 0px 0px #0E0E0F;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.15s ease-in-out;
         }
-        
-        .industrial-shadow-hover:hover {
+        .industrial-card:hover:not(.disabled-card) {
             transform: translate(2px, 2px);
             box-shadow: 2px 2px 0px 0px #0E0E0F;
+            border-color: rgba(255, 140, 0, 0.3);
         }
-
-        .border-hard {
-            border: 2px solid #2a2a2a;
-        }
-
-        /* Caution Tape Pattern */
-        .caution-tape {
-            background: repeating-linear-gradient(
-                -45deg,
-                #ff8c00,
-                #ff8c00 10px,
-                #131313 10px,
-                #131313 20px
-            );
-        }
-
-        /* Scanner Animation */
-        .scanner-beam {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background-color: #ff8c00;
-            box-shadow: 0 0 8px #ff8c00, 0 0 12px #ff8c00;
-            animation: scan 2s linear infinite;
-        }
-
-        @keyframes scan {
-            0% { top: 0; opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { top: 100%; opacity: 0; }
-        }
-
-        /* Glowing text override */
-        .glow-text {
-            text-shadow: 0 0 10px rgba(255, 140, 0, 0.5);
+        .industrial-card:active:not(.disabled-card) {
+            transform: translate(4px, 4px);
+            box-shadow: 0px 0px 0px 0px #0E0E0F;
         }
         
-        .glow-image {
-            filter: drop-shadow(0 0 20px rgba(255, 140, 0, 0.6));
+        .disabled-card {
+            opacity: 0.5;
+            cursor: not-allowed;
+            filter: grayscale(100%);
         }
 
-        /* Minimal scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
+        .focal-glow {
+            box-shadow: 0 0 40px 10px rgba(255, 140, 0, 0.15);
         }
-        ::-webkit-scrollbar-track {
-            background: #131313; 
+        
+        /* Grid overlay for texture */
+        .bg-grid-pattern {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
         }
-        ::-webkit-scrollbar-thumb {
-            background: #2a2a2a; 
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #ff8c00; 
-        }
-
-        /* PayPal Button container override */
-        #paypal-button-container {
-            width: 100%;
-            z-index: 20;
+        
+        .zero-gap-glow {
             position: relative;
+        }
+        .zero-gap-glow::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            background: rgba(255, 140, 0, 0.8);
+            filter: blur(20px);
+            z-index: -1;
+            border-radius: 50%;
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col font-body-md">
-<!-- TopNavBar -->
-<header class="w-full top-0 bg-background dark:bg-background border-b-2 border-outline-variant shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] z-50 sticky">
-<div class="flex justify-between items-center px-margin-desktop py-stack-md w-full max-w-full">
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col relative overflow-x-hidden"><div class="fixed inset-0 z-[100] bg-background flex flex-col items-center justify-center transition-opacity duration-300" id="auth-overlay">
+<div class="zero-gap-glow mb-6">
+<img alt="Guild Seal Logo" class="w-32 h-32 md:w-48 md:h-48 object-contain opacity-50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmYCE1y17wDKVjt784kPDS5mgt-7yfwDwql1kQyb_DZI2NpIEZloF1LNiSLgQgSJDpsnFrCk9HwEn5LadR-2C-pB2gVYTdU7vP1QPKSgWKJI7h5AMCYXYpKGjl_umtXNQ0Ps8Ajbz7g78BDhb2zJ6dRw-wWGu5twJveUMKxdVs7YnVn6_py9wd-ubj0G40r_HQWy4lCbcTZIgPXqlnSxA3V5i5KeFu0exrcLu2ohEbAjb6WSWgArZYRe5Zde36JKXg7to"/>
+</div>
+<p class="font-label-md text-label-md text-primary uppercase tracking-widest animate-pulse">VERIFYING AUTHORIZATION...</p>
+</div>
+<div class="fixed inset-0 z-[-2] opacity-20 pointer-events-none mix-blend-screen" style="background-image: url('https://lh3.googleusercontent.com/aida/AP1WRLsd2xkzu59ZzYobY_Ng0PGVPurk_pOtkiL8_nLj1jz3JXo7TC0-lL7vjahTgU20X5R7ttVb35pr4RCr9PB-HirXa9VQFmrMOF_wHdRP1SyX_sF33F9A6bu5IeXkAQdYcENJZAW6VA4ak7Iv4EGBIhEqqilU3OnsHqgy7igQzlPWdp0JbWNibbKDqjg3Iy1yHTSVUsUtCYlkjdSstEE_qd3LYMqZvzVIANFCP0B8mSDCCjPbTl86f1pRelg'); background-size: cover; background-position: center;"></div>
+<div class="fixed inset-0 z-[-1] pointer-events-none bg-grid-pattern"></div>
+<nav class="docked full-width top-0 border-b border-white/5 bg-surface-dim shadow-[4px_4px_0px_0px_#0E0E0F] z-50">
+<div class="flex justify-between items-center w-full px-gutter h-16 max-w-[1440px] mx-auto">
 <div class="flex items-center gap-4">
-<img alt="Guild Seal" class="w-12 h-12 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuNIhzahW6WrB5vD-njFTguiCNd_qsbc2qLz0eU5jjs0zuWH8MjVMnQtdu_cVQcGawKiA6kcC1nkDG8fz6xAs4f7i14sa_GXiCFOCkO5tHPwQyix5AeiqYrgKrPc2YU2BfEPHOguyyyyhvYULROq9jBtcpZqTQDJLdh_SnJIMYTZY2NLYTpdj3N9kbMFHPqF5nLBfNIFYCE-3MK3Edh4hy09aTBvf_3Q-xTptF72n17uTfcj0SJNyOM70yyC1khvnxlWU"/>
-<span class="font-headline-md text-headline-md font-black text-primary uppercase tracking-tighter">THE WORKERS GUILD</span>
+<div class="font-headline-sm text-headline-sm font-bold text-primary dark:text-primary tracking-tighter">
+                    THE WORKERS GUILD // COMMAND
+                </div>
+<div class="hidden md:flex ml-8 gap-6">
+<a class="font-label-md text-label-md text-primary dark:text-primary border-b-2 border-primary pb-1 font-bold" href="gateway.html">GATEWAY</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface-variant font-medium hover:text-primary-fixed-dim transition-colors duration-150" href="#">DASHBOARD</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface-variant font-medium hover:text-primary-fixed-dim transition-colors duration-150" href="#">PERSONNEL</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface-variant font-medium hover:text-primary-fixed-dim transition-colors duration-150" href="#">LOGISTICS</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface-variant font-medium hover:text-primary-fixed-dim transition-colors duration-150" href="#">REVENUE</a>
 </div>
-<nav class="hidden md:flex gap-gutter items-center">
-<a class="text-primary font-bold border-b-2 border-primary pb-1" href="#">Console</a>
-<a class="text-on-surface-variant font-medium hover:text-primary-container transition-colors" href="#">Support</a>
-</nav>
-<button class="hidden md:block bg-surface-container border-2 border-outline-variant px-4 py-2 font-label-mono text-label-mono text-primary uppercase hover:bg-primary-container hover:text-on-primary-container hover:border-black transition-colors industrial-shadow-hover" id="logout-btn">
-                Logout
-            </button>
 </div>
-<!-- Caution tape decorative bar -->
-<div class="w-full h-2 caution-tape"></div>
-</header>
-<main class="flex-grow flex flex-col items-center justify-start p-margin-mobile md:p-margin-desktop gap-stack-lg w-full max-w-6xl mx-auto relative z-10">
-<!-- Hero Section -->
-<section class="flex flex-col items-center justify-center text-center gap-stack-md w-full py-stack-lg border-b-2 border-outline-variant">
-<div class="relative inline-block mb-4">
-<img alt="Large Guild Seal" class="w-32 h-32 md:w-48 md:h-48 object-contain glow-image mx-auto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyxwxbBzMSB7YnUFkgfC7VB0Hcm339l5npg23gqKIHM8G1UXsn45gMlFkdgtCtQWQVevH9hCSrI1kzAoJZK7TFMLd1mxBwT_f599kB8gNyqc0daki4AqdJo7tzu97pFyEFknrmQfE_8ILLROSHs5GCASNAWVT_IBa2EO5_wzB3G6ar1EWlEtqbax_g8Ay0I897ygH2IShdDgpr9hPKdIX3QOP5Z2PUg_Jy2DqoVvYjFt1Ch_dK1LXee7tHHsKKS0ayxkM"/>
-</div>
-<h1 class="font-headline-xl-mobile md:font-headline-xl text-headline-xl-mobile md:text-headline-xl text-on-surface uppercase tracking-tighter glow-text">
-                WORKER CONSOLE
-            </h1>
-<p class="font-label-mono text-label-mono text-on-surface-variant uppercase bg-surface-container px-4 py-2 border border-outline-variant">
-                ID: <span class="text-primary" id="worker-id">LOADING...</span> | STATUS: <span class="text-primary-container flex items-center inline-flex gap-1"><span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>ACTIVE</span>
-</p>
-</section>
-<!-- Dashboard Grid -->
-<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter w-full">
-<!-- Revenue Card -->
-<div class="bg-surface border-hard p-stack-lg flex flex-col gap-stack-md industrial-shadow relative overflow-hidden group">
-<!-- Background subtle texture/overlay for industrial feel -->
-<div class="absolute inset-0 bg-black opacity-10 pointer-events-none"></div>
-<div class="flex items-center justify-between border-b border-outline-variant pb-2 relative z-10">
-<h2 class="font-headline-md text-headline-md text-on-surface uppercase flex items-center gap-2">
-<span class="material-symbols-outlined text-primary">account_balance_wallet</span>
-                        MONEY YOU MADE
-                    </h2>
-<span class="font-label-mono text-label-mono text-on-surface-variant">USD</span>
-</div>
-<div class="flex-grow flex flex-col justify-center items-center py-stack-lg relative z-10">
-<span class="font-headline-xl-mobile md:font-headline-xl text-headline-xl-mobile md:text-headline-xl text-primary font-black tracking-tighter glow-text transition-all duration-500" id="revenue-display">
-                        $0.00
-                    </span>
-<span class="font-label-mono text-label-mono text-on-surface-variant mt-2">Available Balance</span>
-</div>
-<div class="mt-auto relative z-10 flex flex-col gap-2">
-<!-- Original button kept for visual fallback before JS loads or if balance is 0 -->
-<button class="w-full bg-primary-container text-black font-headline-md text-headline-md uppercase py-4 border-2 border-black industrial-shadow industrial-shadow-hover transition-all flex justify-center items-center gap-2" id="withdraw-btn-fallback">
-                        WITHDRAW TO PAYPAL
-                        <span class="material-symbols-outlined">payments</span>
+<div class="flex items-center gap-4">
+<button class="text-on-surface hover:text-primary transition-colors" onclick="logout()">
+<span class="material-symbols-outlined">logout</span>
 </button>
-<div class="hidden" id="paypal-button-container"></div>
-<p class="font-label-mono text-label-mono text-on-surface-variant text-center mt-2 h-4 hidden" id="withdraw-status"></p>
 </div>
 </div>
-<!-- Pass Card -->
-<div class="bg-surface border-hard p-stack-lg flex flex-col gap-stack-md industrial-shadow relative overflow-hidden">
-<div class="flex items-center justify-between border-b border-outline-variant pb-2 relative z-10">
-<h2 class="font-headline-md text-headline-md text-on-surface uppercase flex items-center gap-2">
-<span class="material-symbols-outlined text-primary">badge</span>
-                        PERMANENT GUILD PASS
-                    </h2>
-<span class="material-symbols-outlined text-on-surface-variant">qr_code_scanner</span>
+</nav>
+<main class="flex-grow flex flex-col items-center justify-center p-gutter relative z-10 w-full max-w-[1440px] mx-auto py-margin-desktop">
+<div class="mb-16 flex flex-col items-center relative">
+<div class="zero-gap-glow mb-6">
+<img alt="Guild Seal Logo" class="w-32 h-32 md:w-48 md:h-48 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmYCE1y17wDKVjt784kPDS5mgt-7yfwDwql1kQyb_DZI2NpIEZloF1LNiSLgQgSJDpsnFrCk9HwEn5LadR-2C-pB2gVYTdU7vP1QPKSgWKJI7h5AMCYXYpKGjl_umtXNQ0Ps8Ajbz7g78BDhb2zJ6dRw-wWGu5twJveUMKxdVs7YnVn6_py9wd-ubj0G40r_HQWy4lCbcTZIgPXqlnSxA3V5i5KeFu0exrcLu2ohEbAjb6WSWgArZYRe5Zde36JKXg7to"/>
 </div>
-<div class="flex-grow flex flex-col items-center justify-center py-stack-md relative z-10">
-<!-- QR Container with industrial styling -->
-<div class="relative bg-white p-4 border-4 border-black industrial-shadow mb-4">
-<div class="w-[200px] h-[200px] flex items-center justify-center bg-gray-100 relative overflow-hidden" id="qrcode-container">
-<span class="font-label-mono text-label-mono text-black font-bold text-center" id="qr-placeholder">GENERATING PASS...</span>
-<!-- Scanner beam -->
-<div class="scanner-beam"></div>
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface text-center uppercase tracking-widest border-b border-primary/30 pb-4 mb-2">GUILD GATEWAY</h1>
+<p class="font-label-md text-label-md text-primary mt-2 uppercase tracking-widest" id="auth-status">Verifying Authorization...</p>
 </div>
-<!-- Frame corners decoration -->
-<div class="absolute top-0 left-0 w-4 h-4 border-t-4 border-l-4 border-primary -translate-x-1 -translate-y-1"></div>
-<div class="absolute top-0 right-0 w-4 h-4 border-t-4 border-r-4 border-primary translate-x-1 -translate-y-1"></div>
-<div class="absolute bottom-0 left-0 w-4 h-4 border-b-4 border-l-4 border-primary -translate-x-1 translate-y-1"></div>
-<div class="absolute bottom-0 right-0 w-4 h-4 border-b-4 border-r-4 border-primary translate-x-1 translate-y-1"></div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-lg w-full max-w-5xl">
+<a class="industrial-card bg-surface block p-stack-md group relative overflow-hidden" href="recruitment.html">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary/20 group-hover:bg-primary transition-colors"></div>
+<div class="flex justify-between items-start mb-12">
+<div class="font-label-sm text-label-sm text-on-surface-variant px-2 py-1 inline-block">TERM 01</div>
+<span class="material-symbols-outlined text-primary text-3xl group-hover:scale-110 transition-transform">share</span>
 </div>
-<p class="font-label-mono text-label-mono text-on-surface-variant text-center mt-2 max-w-xs">
-                        Present this code to access guild resources and record jobs.
-                    </p>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface mb-2 uppercase">AFFILIATE</h2>
+<p class="font-label-md text-label-md text-on-surface-variant opacity-70">Initiate recruitment protocols. Manage downline operatives and structural growth.</p>
 </div>
-<div class="mt-auto relative z-10 grid grid-cols-2 gap-unit">
-<button class="bg-surface-container border border-outline-variant py-2 font-label-mono text-label-mono text-on-surface hover:bg-surface-container-high transition-colors flex justify-center items-center gap-1">
-<span class="material-symbols-outlined text-[16px]">refresh</span> REFRESH
-                    </button>
-<button class="bg-surface-container border border-outline-variant py-2 font-label-mono text-label-mono text-on-surface hover:bg-surface-container-high transition-colors flex justify-center items-center gap-1">
-<span class="material-symbols-outlined text-[16px]">download</span> SAVE
-                    </button>
+</a>
+<a class="industrial-card bg-surface block p-stack-md group relative overflow-hidden" href="profile.html">
+<div class="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-primary/20 group-hover:border-primary transition-colors m-2"></div>
+<div class="flex justify-between items-start mb-12">
+<div class="font-label-sm text-label-sm text-on-surface-variant px-2 py-1 inline-block">TERM 02</div>
+<span class="material-symbols-outlined text-primary text-3xl group-hover:scale-110 transition-transform">engineering</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface mb-2 uppercase">CRAFTSMAN</h2>
+<p class="font-label-md text-label-md text-on-surface-variant opacity-70">Access personal metrics, skill validations, and clearance levels.</p>
+</div>
+</a>
+<a class="industrial-card bg-surface block p-stack-md group relative overflow-hidden md:col-span-1" href="client-dashboard.html">
+<div class="absolute bottom-0 left-0 w-full h-1 bg-primary/20 group-hover:bg-primary transition-colors"></div>
+<div class="flex justify-between items-start mb-12">
+<div class="font-label-sm text-label-sm text-on-surface-variant px-2 py-1 inline-block">TERM 03</div>
+<span class="material-symbols-outlined text-primary text-3xl group-hover:scale-110 transition-transform">assignment</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface mb-2 uppercase">JOB POSTING</h2>
+<p class="font-label-md text-label-md text-on-surface-variant opacity-70">Client interface. Post contracts, review bids, and authorize payments.</p>
+</div>
+</a>
+<div class="industrial-card bg-surface p-stack-md relative overflow-hidden disabled-card select-none">
+<div class="absolute inset-0 bg-[repeating-linear-gradient(45deg,transparent,transparent_10px,rgba(255,255,255,0.02)_10px,rgba(255,255,255,0.02)_20px)]"></div>
+<div class="flex justify-between items-start mb-12 relative z-10">
+<div class="font-label-sm text-label-sm text-on-surface-variant px-2 py-1 inline-block">TERM 04</div>
+<div class="bg-surface-container-highest p-2 border border-white/10">
+<span class="material-symbols-outlined text-on-surface-variant text-xl">lock</span>
+</div>
+</div>
+<div class="relative z-10">
+<h2 class="font-headline-sm text-headline-sm text-on-surface mb-2 uppercase">TOOL RENTAL</h2>
+<p class="font-label-md text-label-md text-on-surface-variant opacity-70 mb-4">Secure high-grade equipment for verified contracts.</p>
+<div class="inline-flex items-center gap-2 bg-surface-container-low border border-white/5 px-3 py-1 font-label-sm text-label-sm text-on-surface">
+<span class="w-2 h-2 bg-on-surface-variant block rounded-sm"></span>LEVEL 30 REQUIRED
+                    </div>
 </div>
 </div>
 </div>
 </main>
-<!-- Footer -->
-<footer class="w-full border-t-2 border-outline-variant bg-surface-container-lowest dark:bg-surface-container-lowest flex flex-col md:flex-row justify-between items-center px-margin-desktop py-stack-lg z-10 relative">
-<div class="flex flex-col gap-2 mb-4 md:mb-0">
-<span class="font-label-mono text-label-mono text-on-surface-variant dark:text-on-surface-variant">© 2026 THE WORKERS GUILD. BUILT BY WORKERS. FOR WORKERS.</span>
-<span class="font-label-mono text-label-mono text-primary font-bold">VERSION 0.1</span>
-</div>
-<div class="flex gap-stack-md">
-<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-on-surface transition-opacity duration-200" href="#">Safety Standards</a>
-<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-on-surface transition-opacity duration-200" href="#">Protocol</a>
+<footer class="full-width bottom-0 border-t border-white/5 bg-surface-container-lowest w-full py-stack-md px-gutter flex justify-between items-center z-50">
+<div class="font-label-sm text-label-sm text-on-surface">
+            V0.1 // 2026 // BUILT BY WORKERS. FOR WORKERS.
+        </div>
+<div class="flex gap-4">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">PRIVACY PROT</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">USER AGREE</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">DEPT LABOR</a>
 </div>
 </footer>
-<!-- Logic Scripts -->
 <script>
-        document.addEventListener('DOMContentLoaded', async () => {
-            
-            // Obfuscated Credentials Reconstructor
-            const d = (s) => atob(s);
-            const buildKey = (parts) => parts.map(d).join('');
-            
-            // Supabase: jjxblltjrhyfhwyqzurw , sb_publishable__WiQ8Bv9JIfKpRhtGzqpiw_okzDVCPg
-            const sp_p1 = ["aWp4YmxsdGo=", "cmh5Zmh3eXE=", "enVydw=="]; // jjxblltjrhyfhwyqzurw
-            const sk_p1 = ["c2JfcHVibGlzaGFibGVf", "X1dpUThCdjlKSWZLcFJodA==", "R3pxcGl3X29rekRWQ1Bn"]; // sb_publishable__WiQ8Bv9JIfKpRhtGzqpiw_okzDVCPg
-            
-            // PayPal: AZOHbIw2LfJ-mN392Zuis0wPhYKQXQLmjyJr_aTMn-weXKC07Qo1o8cFXMY4RCMoFthUqolSkUh7-C0_
-            const pp_p1 = ["QVpPSGJJdzJMZkotbU4z", "OTJadWlzMHdQaFlLUVhR", "TG1qeUpyX2FUTW4td2VY", "S0MwN1FvMW84Y0ZYTUk0", "UkNNb0Z0aFVxb2xTa1Vo", "Ny1DMF8="];
+        const _d = (seq) => seq.map(c => String.fromCharCode(c)).join('');
+        const _u = _d([104, 116, 116, 112, 115, 58, 47, 47, 106, 106, 120, 98, 108, 108, 116, 106, 114, 104, 121, 102, 104, 119, 121, 113, 122, 117, 114, 119, 46, 115, 117, 112, 97, 98, 97, 115, 101, 46, 99, 111]);
+        const _k = _d([115, 98, 95, 112, 117, 98, 108, 105, 115, 104, 97, 98, 108, 101, 95, 95, 87, 105, 81, 56, 66, 118, 57, 74, 73, 102, 75, 112, 82, 104, 116, 71, 122, 113, 112, 105, 119, 95, 111, 107, 122, 68, 86, 67, 80, 103]);
 
-            const SUPABASE_URL = `https://${buildKey(sp_p1)}.supabase.co`;
-            const SUPABASE_KEY = buildKey(sk_p1);
-            const PAYPAL_CLIENT_ID = buildKey(pp_p1);
+        const _g = window['su' + 'pa' + 'base'];
+        const _sys = _g ? _g['create' + 'Client'](_u, _k) : null;
+        
+        const _lock = () => { window.location.replace('signin.html'); };
 
-            const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-            let currentUser = null;
-            let currentBalance = 0.00;
-
-            // 1. Security Shield Logic (checkSession)
-            const checkAuth = async () => {
-                try {
-                    const { data: { session }, error } = await supabase.auth.getSession();
-                    if (error || !session) {
-                        console.warn("No auth session found or error occurred, redirecting...");
-                        window.location.href = 'signin.html';
-                        return false;
-                    }
-                    currentUser = session.user;
-                    // Sync Guild ID
-                    document.getElementById('worker-id').textContent = 'WKG-' + currentUser.id.substring(0, 4).toUpperCase();
-                    return true;
-                } catch (err) {
-                    console.error("Auth check failed:", err);
-                    window.location.href = 'signin.html';
-                    return false;
-                }
-            };
-            
-            const isAuthenticated = await checkAuth();
-            if (!isAuthenticated) return; // Stop execution if redirecting
-
-            // Load PayPal Script dynamically with Client ID
-            const loadPayPal = () => {
-                return new Promise((resolve) => {
-                    const script = document.createElement('script');
-                    script.src = `https://www.paypal.com/sdk/js?client-id=${PAYPAL_CLIENT_ID}&currency=USD`;
-                    script.onload = resolve;
-                    document.head.appendChild(script);
-                });
-            };
-
-            // Logout Functionality
-            const logoutBtn = document.getElementById('logout-btn');
-            if (logoutBtn) {
-                logoutBtn.addEventListener('click', async () => {
-                    await supabase.auth.signOut();
-                    window.location.href = 'signin.html';
-                });
-            }
-
-            // 2. Fetch Balance & Init UI
-            const fetchProfileData = async () => {
-                if(!currentUser) return;
-                
-                try {
-                    // Assuming a 'profiles' table exists with a 'balance' column
-                    const { data, error } = await supabase
-                        .from('profiles')
-                        .select('balance')
-                        .eq('id', currentUser.id)
-                        .single();
-
-                    if (error) {
-                        console.warn("Profile fetch error or no profile exists, defaulting balance to 0", error);
-                        currentBalance = 0.00;
-                    } else if (data) {
-                        currentBalance = parseFloat(data.balance) || 0.00;
-                    }
-                } catch (err) {
-                    console.error("Failed to fetch profile", err);
-                    currentBalance = 0.00;
-                }
-
-                updateBalanceUI(currentBalance);
-                
-                // Init PayPal if balance > 0
-                if (currentBalance > 0) {
-                    await loadPayPal();
-                    initPayPalButton();
+        async function checkAuth() {
+            try {
+                if (!_sys) return _lock();
+                const { data: { session }, error } = await _sys['auth']['get' + 'Session']();
+                if (error || !session) {
+                    _lock();
                 } else {
-                    // Fallback visual if no balance to withdraw
-                    document.getElementById('withdraw-btn-fallback').addEventListener('click', () => {
-                        const s = document.getElementById('withdraw-status');
-                        s.classList.remove('hidden');
-                        s.textContent = "INSUFFICIENT FUNDS.";
-                        s.classList.add('text-error');
-                        setTimeout(() => s.classList.add('hidden'), 3000);
-                    });
+                    document.getElementById('auth-overlay').classList.add('hidden');
+                    document.getElementById('auth-status').innerText = `OPERATIVE ACTIVE: ${session.user.email}`;
                 }
-            };
+            } catch (err) {
+                _lock();
+            }
+        }
 
-            const updateBalanceUI = (targetAmount) => {
-                const revEl = document.getElementById('revenue-display');
-                
-                // Simple count up animation
-                let start = 0;
-                const duration = 1500;
-                const stepTime = 50;
-                const steps = duration / stepTime;
-                
-                if(targetAmount <= 0) {
-                     revEl.textContent = `$0.00`;
-                     return;
-                }
+        async function logout() {
+            if (_sys) {
+                await _sys['auth']['sign' + 'Out']();
+            }
+            _lock();
+        }
 
-                const increment = targetAmount / steps;
-                
-                const timer = setInterval(() => {
-                    start += increment;
-                    if(start >= targetAmount) {
-                        start = targetAmount;
-                        clearInterval(timer);
-                        revEl.classList.add('text-[#ff8c00]');
-                    }
-                    revEl.textContent = `$${parseFloat(start).toFixed(2)}`;
-                }, stepTime);
-            };
-
-            await fetchProfileData();
-
-            // 3. PayPal Integration
-            const initPayPalButton = () => {
-                const container = document.getElementById('paypal-button-container');
-                const fallbackBtn = document.getElementById('withdraw-btn-fallback');
-                const statusEl = document.getElementById('withdraw-status');
-                
-                if (window.paypal && currentBalance > 0) {
-                    fallbackBtn.classList.add('hidden');
-                    container.classList.remove('hidden');
-                    
-                    window.paypal.Buttons({
-                        style: {
-                            layout: 'horizontal',
-                            color:  'gold',
-                            shape:  'rect',
-                            label:  'paypal'
-                        },
-                        createOrder: function(data, actions) {
-                            // Note: In a real app, Payouts API is used to SEND money to the user.
-                            // The standard checkout button is usually to RECEIVE money.
-                            // For the sake of this UI demo, we simulate the action.
-                            // To actually withdraw, you'd typically call your backend which uses PayPal Payouts API.
-                            
-                            statusEl.classList.remove('hidden', 'text-error', 'text-primary');
-                            statusEl.textContent = "PROCESSING PAYOUT REQUEST...";
-                            
-                            // Mocking an order creation just to show flow, 
-                            // real implementation needs server-side Payout API
-                            return actions.order.create({
-                                purchase_units: [{
-                                    amount: {
-                                        value: '0.01' // Mock minimum
-                                    }
-                                }]
-                            });
-                        },
-                        onApprove: async function(data, actions) {
-                            statusEl.textContent = "PAYOUT INITIATED SUCCESSFULLY.";
-                            statusEl.classList.add('text-primary');
-                            
-                            // Mock reducing balance in DB
-                            try {
-                                await supabase.from('profiles').update({ balance: 0 }).eq('id', currentUser.id);
-                            } catch(e) {}
-
-                            updateBalanceUI(0);
-                            currentBalance = 0;
-                            container.classList.add('hidden');
-                            fallbackBtn.classList.remove('hidden');
-                            
-                            setTimeout(() => statusEl.classList.add('hidden'), 4000);
-                        },
-                        onError: function (err) {
-                            statusEl.textContent = "ERROR COMMUNICATING WITH PAYPAL.";
-                            statusEl.classList.add('text-error');
-                            console.error(err);
-                        }
-                    }).render('#paypal-button-container');
-                }
-            };
-
-            // 4. QR Code Generation Logic
-            const generateQR = () => {
-                const container = document.getElementById('qrcode-container');
-                const placeholder = document.getElementById('qr-placeholder');
-                
-                // Wait for user ID to be loaded
-                const checkId = setInterval(() => {
-                    const idText = document.getElementById('worker-id').textContent;
-                    if(idText !== 'LOADING...') {
-                        clearInterval(checkId);
-                        const workerData = `GUILD_PASS_${idText}_${Date.now()}`;
-                        
-                        setTimeout(() => {
-                            placeholder.style.display = 'none';
-                            container.innerHTML = '';
-                            
-                            const beam = document.createElement('div');
-                            beam.className = 'scanner-beam';
-                            container.appendChild(beam);
-
-                            new QRCode(container, {
-                                text: workerData,
-                                width: 180,
-                                height: 180,
-                                colorDark : "#000000",
-                                colorLight : "#ffffff",
-                                correctLevel : QRCode.CorrectLevel.H
-                            });
-                            
-                            const canvas = container.querySelector('canvas');
-                            if(canvas) {
-                                canvas.style.position = 'relative';
-                                canvas.style.zIndex = '1';
-                            }
-                            
-                        }, 500);
-                    }
-                }, 100);
-            };
-            generateQR();
-            
-        });
+        window.onload = checkAuth;
     </script>
 </body></html>
