@@ -9,8 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-<script src="https://www.paypal.com/sdk/js?client-id=AZOHbIw2LfJ-mN392Zuis0wPhYKQXQLmjyJr_aTMn-weXKC07Qo1o8cFXMY4RCMoFthUqolSkUh7-C0_&amp;currency=USD"></script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID&amp;currency=USD"></script>
 <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -183,7 +182,7 @@
 <header class="w-full top-0 bg-background dark:bg-background border-b-2 border-outline-variant shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] z-50 sticky">
 <div class="flex justify-between items-center px-margin-desktop py-stack-md w-full max-w-full">
 <div class="flex items-center gap-4">
-<img alt="Guild Seal" class="w-12 h-12 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbFDckLkOgzpYLXs53WkPh2nvymu4g3QzvPavZT7cWw7T_MP2MD0kqKhMcNbvpmCRZQVECn3Z3AzV4ArrNgeEPiH13BBi4cRAnotELwS_U4DfkkyLf5MRSwrZq3lEK3BOa9mlT7nu--IamoYDlhCbhbhjSYV34i_db3ved5_r4Zep2iZHM6JYkV1FCdRkJqTmrBz3p1ibIGKJRalVUfXaCIwPuy9Gm12hAXLo9RsCcyX_Uq7pNqBqt9zTMxMcRSwMZVBQ"/>
+<img alt="Guild Seal" class="w-12 h-12 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMgpQh5__A1DY_mXMuy8yw-iwxrgcl5ZqU4JkmUgslC9Wpoj6SN58fZvRicb3Xwl_qjO9GIeLZJyVyKY0GU77cNbRDPRIURcvsOpEirGatqTC0wm7KcFoplYAKfoAIyXuVukE6WHtKKri51Sfy1iBBZph7GbjT5OZnl_hlKirCLn_ulksOCAO3v8onovGO7g1_VhsgdzKuJksGodpfLiZzmQgTDJH7NEPRun21t0zpNiMdcuYf8je95424WCYkO6tCkDY"/>
 <span class="font-headline-md text-headline-md font-black text-primary uppercase tracking-tighter">THE WORKERS GUILD</span>
 </div>
 <nav class="hidden md:flex gap-gutter items-center">
@@ -202,7 +201,7 @@
 <!-- Hero Section -->
 <section class="flex flex-col items-center justify-center text-center gap-stack-md w-full py-stack-lg border-b-2 border-outline-variant">
 <div class="relative inline-block mb-4">
-<img alt="Large Guild Seal" class="w-32 h-32 md:w-48 md:h-48 object-contain glow-image mx-auto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDR6HjzY0AGIWl_-DZbZoN3AtEfosswnZFZljsMRZhgsCReVoioVJ6v1lY6-1ic4zIt6RP22VdyXSIoWBeUC6KN2UCk4cszgJC5BFRnv9vM1efhP10j0xte4eTsmpkeg_ldn1yuWLp_ocEtxlmTxeBzJRxTJejCkKEopBMtXg7RZ9TCvpFkRqhzRMUBfERMoNkjB85eflw0BLP10W98AAvpcYxYqgJsto9twhqNWHTG0-LbD9utXdh3SLvFEMBhKNtJWSg"/>
+<img alt="Large Guild Seal" class="w-32 h-32 md:w-48 md:h-48 object-contain glow-image mx-auto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDR5czcgOnH85PEu_c3JyLzp3-sytqdfy-INny1CJXDun0D0zh9i2GzDoe0IOeKAdXDXgdn9s5RTdNHiOGjvbhWTYRHnT95qql-suvmUBDEyiD-9epYmUPkCC-iJtCfWl2hKwUlKl7m0y8Js3uZcpy35PTIznj0Kr2muCS_61epyCW_4pqpMQP91zSwI6KOzBdrwIpCFmmSTH2_bxoeUgwfgR9L5mU7nQ9ictxQOUT3f6P3r4YJdxqq8HyuK8rfZEkFyIk"/>
 </div>
 <h1 class="font-headline-xl-mobile md:font-headline-xl text-headline-xl-mobile md:text-headline-xl text-on-surface uppercase tracking-tighter glow-text">
                 WORKER CONSOLE
@@ -225,7 +224,7 @@
 <span class="font-label-mono text-label-mono text-on-surface-variant">USD</span>
 </div>
 <div class="flex-grow flex flex-col justify-center items-center py-stack-lg relative z-10">
-<span class="font-headline-xl-mobile md:font-headline-xl text-headline-xl-mobile md:text-headline-xl text-[#ff8c00] font-black tracking-tighter glow-text transition-all duration-500" id="revenue-display">...</span>
+<span class="font-headline-xl-mobile md:font-headline-xl text-headline-xl-mobile md:text-headline-xl text-[#ff8c00] font-black tracking-tighter glow-text transition-all duration-500" id="revenue-display">$0.00</span>
 <span class="font-label-mono text-label-mono text-on-surface-variant mt-2">Available Balance</span>
 </div>
 <div class="mt-auto relative z-10">
@@ -283,53 +282,8 @@
 </footer>
 <!-- Logic Scripts -->
 <script>
-        document.addEventListener('DOMContentLoaded', async () => {
+        document.addEventListener('DOMContentLoaded', () => {
             
-            // Supabase Initialization
-            const supabaseUrl = 'https://jjxblltjrhyfhwyqzurw.supabase.co';
-            const supabaseKey = 'sb_publishable__WiQ8Bv9JIfKpRhtGzqpiw_okzDVCPg';
-            const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
-
-            let generatedWorkerId = 'WKG-7936'; // Default fallback
-
-            async function fetchUserData() {
-                try {
-                    // Logic to fetch the currently authenticated user
-                    const { data: { user } } = await supabase.auth.getUser();
-                    
-                    if (user) {
-                        // Fetch from a 'workers' table
-                        const { data, error } = await supabase
-                            .from('workers')
-                            .select('guild_id, balance')
-                            .eq('id', user.id)
-                            .single();
-                        
-                        if (error) throw error;
-
-                        if (data) {
-                            generatedWorkerId = data.guild_id;
-                            document.getElementById('worker-id').textContent = generatedWorkerId;
-                            document.getElementById('affiliate-link').textContent = `workersguild.com/id/${generatedWorkerId}`;
-                            document.getElementById('revenue-display').textContent = `$${data.balance.toFixed(2)}`;
-                        }
-                    } else {
-                        // Fallback if not authenticated
-                        document.getElementById('worker-id').textContent = generatedWorkerId;
-                        document.getElementById('affiliate-link').textContent = `workersguild.com/id/${generatedWorkerId}`;
-                        document.getElementById('revenue-display').textContent = `$0.00`;
-                    }
-                } catch (err) {
-                    console.error("Error fetching user data:", err);
-                    // Fallback
-                    document.getElementById('worker-id').textContent = generatedWorkerId;
-                    document.getElementById('affiliate-link').textContent = `workersguild.com/id/${generatedWorkerId}`;
-                    document.getElementById('revenue-display').textContent = `$0.00`;
-                } finally {
-                     generateQR();
-                }
-            }
-
             // 1. Security Shield Logic (Simulated)
             const checkAuth = () => {
                 // In a real app, this checks cookies/localStorage
@@ -341,9 +295,10 @@
             };
             checkAuth();
 
-            // Fetch data instead of just generating random ID
-            await fetchUserData();
-
+            // Set simulated Worker ID dynamically
+            const generatedWorkerId = 'WKG-' + Math.floor(1000 + Math.random() * 9000);
+            document.getElementById('worker-id').textContent = generatedWorkerId;
+            document.getElementById('affiliate-link').textContent = `workersguild.com/id/${generatedWorkerId}`;
 
             // 3. PayPal Signup Handler
             const withdrawBtn = document.getElementById('withdraw-btn');
@@ -380,7 +335,7 @@
             });
 
             // 4. QR Code Generation Logic
-            function generateQR() {
+            const generateQR = () => {
                 const container = document.getElementById('qrcode-container');
                 const placeholder = document.getElementById('qr-placeholder');
                 const workerData = `GUILD_PASS_${generatedWorkerId}_${Date.now()}`;
@@ -418,8 +373,8 @@
                     }
                     
                 }, 1500);
-            }
-            
+            };
+            generateQR();
             
             // Wire up refresh button to regenerate QR
             document.getElementById('refresh-pass-btn').addEventListener('click', () => {
