@@ -199,9 +199,12 @@
 </footer>
 </div>
 <script>
+        // Configuration
+        window.CONFIG = window.CONFIG || {};
+
         // Supabase Configuration
-        const supabaseUrl = 'https://jjxblltjrhyfhwyqzurw.supabase.co';
-        const supabaseKey = 'sb_publishable__WiQ8Bv9JIfKpRhtGzqpiw_okzDVCPg';
+        const supabaseUrl = window.CONFIG.SUPABASE_URL || 'YOUR_SUPABASE_URL';
+        const supabaseKey = window.CONFIG.SUPABASE_KEY || 'YOUR_SUPABASE_KEY';
         const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
 
         const form = document.getElementById('waitlist-form');
