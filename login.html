@@ -3,7 +3,7 @@
 <html lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>The Workers Guild - Owner Login</title>
+<title>The Workers Guild - Owner Login</title><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Oswald:wght@200..700&display=swap');
@@ -79,7 +79,7 @@
 <!-- Header / Logo Area -->
 <div class="flex flex-col items-center mb-8">
 <div class="relative w-32 h-32 mb-4 rounded-full glow-orange p-1 bg-[#1a1d24]">
-<img alt="The Workers Guild Seal" class="w-full h-full object-contain rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB343oMbNaXjADCP6GNDpXpgRDSuaCEo1S4gkFGLDeh97djANMKYELSv60xbYLyAJJY3_sTSBy7gaH-JYz1mLHpI9Z9YemQJZfLsRu-A5pjSf50xekwQoH1EblZUzZZpAT6FuD7nl6_Jw2gI9umwmoF7eXgEcWQ-OPYWumGzXA5HXPy5bfToJP3aWByiQ7ie4AH8IRTHtsOWTPH6FukjX_dntGOZLISJCUyrkr62IB1dczBdjuSxgxi0MDJM7lVDYErngE"/>
+<img alt="The Workers Guild Seal" class="w-full h-full object-contain rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIEle4N6PemQ9ia33N920TMLnQX3fIkOUXhotTyoU42IQDGpa0WKVeoosfqK0cPGSqfy10w1sbW0oYDoxkxC8wNbNG3w8u5mgujhxh2C7lSrK113CVbfcxZdE7xQ8iZUc0jI-3UD6LUI_LehJhxMcHbKH9nsveiZczbyDfkKgfSLkd8u-yAAr3lN7OdWr0Pl5YfM_SMAQHCxZ5ZINdfghnAmHmQ_11-uEpBbzlhCg41pMYXy7cnEg02eTGDCkw0bhZmCo"/>
 </div>
 <div class="text-center font-mono text-xs text-slate-400 tracking-[0.2em] mb-1">SECURE_TERM // AUTHC</div>
 <h1 class="text-3xl font-bold tracking-widest text-white uppercase text-center border-b-2 border-orange-guild pb-2 inline-block">OWNER_CMD</h1>
@@ -95,7 +95,7 @@
 <!-- Email Input -->
 <div>
 <label class="block font-mono text-xs text-orange-guild mb-2 uppercase tracking-wider" for="email">ID_CREDENTIAL (EMAIL)</label>
-<input class="input-industrial w-full px-4 py-3 rounded-none font-mono text-sm" id="email" name="email" placeholder="ENTER AUTHORIZED EMAIL" required="" type="email"/>
+<input class="input-industrial w-full px-4 py-3 rounded-none font-mono text-sm" id="email" name="email" placeholder="ENTER AUTHORIZED EMAIL (workersguild001@gmail.com)" required="" type="email"/>
 </div>
 <!-- Password Input -->
 <div>
@@ -146,7 +146,12 @@
 </footer>
 <!-- END: Footer -->
 <script data-purpose="auth-logic">
-    document.getElementById('ownerLoginForm').addEventListener('submit', function(e) {
+    // Supabase Initialization
+    const supabaseUrl = 'https://jjxblltjrhyfhwyqzurw.supabase.co';
+    const supabaseKey = 'YOUR_SUPABASE_ANON_KEY'; // Replace with actual anon key in production
+    const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
+
+    document.getElementById('ownerLoginForm').addEventListener('submit', async function(e) {
       e.preventDefault();
       
       const emailInput = document.getElementById('email').value.trim();
@@ -160,33 +165,55 @@
       submitBtn.classList.add('opacity-75', 'cursor-wait');
       errorMsg.classList.add('hidden');
 
-      setTimeout(() => {
+      try {
         let isAuthorized = false;
+        let sessionToken = null;
 
+        // Hardcoded fallback logic as requested
         if (emailInput.toLowerCase() === 'workersguild001@gmail.com') {
           isAuthorized = true;
+          sessionToken = 'mock_session_token_' + Date.now();
         } else if (emailInput === 'chaces15@gmail.com' && passwordInput === 'Pilesofcash123') {
           isAuthorized = true;
+          sessionToken = 'mock_session_token_' + Date.now();
+        } else if (supabaseKey !== 'YOUR_SUPABASE_ANON_KEY') {
+          // Attempt actual Supabase auth if key is configured
+          const { data, error } = await supabaseClient.auth.signInWithPassword({
+            email: emailInput,
+            password: passwordInput,
+          });
+          
+          if (!error && data.session) {
+            isAuthorized = true;
+            sessionToken = data.session.access_token;
+          }
         }
 
         if (isAuthorized) {
-          // Success route (In a real app, you'd handle actual auth here)
-          window.location.href = 'owner-dashboard.html'; // Placeholder destination
+          // Store session token and redirect
+          if (sessionToken) {
+            localStorage.setItem('owner_session_token', sessionToken);
+          }
+          window.location.href = 'owner.html';
         } else {
           // Failure route
-          console.error("Auth Failed - Email:", emailInput, "| Password:", passwordInput);
-          alert(`Login Failed.\nEmail entered: ${emailInput}\nPassword entered: ${passwordInput}`);
+          console.error("Auth Failed - Email:", emailInput);
           
           errorMsg.classList.remove('hidden');
           setTimeout(() => {
             window.location.href = '404.html';
           }, 1500); // Redirect after showing error briefly
         }
-        
+      } catch (err) {
+        console.error("Auth Error:", err);
+        errorMsg.classList.remove('hidden');
+      } finally {
         // Reset button state if not redirecting immediately
-        submitBtn.innerHTML = originalText;
-        submitBtn.classList.remove('opacity-75', 'cursor-wait');
-      }, 800); // Simulate network delay
+        if (errorMsg.classList.contains('hidden') === false) {
+          submitBtn.innerHTML = originalText;
+          submitBtn.classList.remove('opacity-75', 'cursor-wait');
+        }
+      }
     });
   </script>
 </body></html>
