@@ -287,32 +287,37 @@
             
             // Supabase Initialization
             const supabaseUrl = 'https://jjxblltjrhyfhwyqzurw.supabase.co';
-            const supabaseKey = 'public-anon-key'; // Replace with actual anon key in real implementation if needed, though for dummy fetch it might not be strictly checked if RLS allows anon select, or we simulate. Let's assume a dummy key for the library to initialize, or we mock the client.
-            // For the sake of the prompt "Set up the logic to fetch...", we initialize the client.
-            const supabase = window.supabase.createClient(supabaseUrl, 'dummy-anon-key-replace-me');
+            const supabaseKey = 'sb_publishable__WiQ8Bv9JIfKpRhtGzqpiw_okzDVCPg';
+            const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
 
             let generatedWorkerId = 'WKG-7936'; // Default fallback
 
             async function fetchUserData() {
                 try {
-                    // Simulated logic to fetch the currently authenticated user
-                    // const { data: { user } } = await supabase.auth.getUser();
+                    // Logic to fetch the currently authenticated user
+                    const { data: { user } } = await supabase.auth.getUser();
                     
-                    // Simulated fetch from a 'profiles' or 'workers' table
-                    // const { data, error } = await supabase
-                    //     .from('workers')
-                    //     .select('guild_id, balance')
-                    //     .eq('id', user.id)
-                    //     .single();
-                    
-                    // For demonstration, simulating a successful fetch
-                    const data = { guild_id: 'WKG-8021', balance: 0.00 };
-                    
-                    if (data) {
-                        generatedWorkerId = data.guild_id;
+                    if (user) {
+                        // Fetch from a 'workers' table
+                        const { data, error } = await supabase
+                            .from('workers')
+                            .select('guild_id, balance')
+                            .eq('id', user.id)
+                            .single();
+                        
+                        if (error) throw error;
+
+                        if (data) {
+                            generatedWorkerId = data.guild_id;
+                            document.getElementById('worker-id').textContent = generatedWorkerId;
+                            document.getElementById('affiliate-link').textContent = `workersguild.com/id/${generatedWorkerId}`;
+                            document.getElementById('revenue-display').textContent = `$${data.balance.toFixed(2)}`;
+                        }
+                    } else {
+                        // Fallback if not authenticated
                         document.getElementById('worker-id').textContent = generatedWorkerId;
                         document.getElementById('affiliate-link').textContent = `workersguild.com/id/${generatedWorkerId}`;
-                        document.getElementById('revenue-display').textContent = `$${data.balance.toFixed(2)}`;
+                        document.getElementById('revenue-display').textContent = `$0.00`;
                     }
                 } catch (err) {
                     console.error("Error fetching user data:", err);
