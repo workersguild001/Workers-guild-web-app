@@ -79,7 +79,7 @@
 <!-- Header / Logo Area -->
 <div class="flex flex-col items-center mb-8">
 <div class="relative w-32 h-32 mb-4 rounded-full glow-orange p-1 bg-[#1a1d24]">
-<img alt="The Workers Guild Seal" class="w-full h-full object-contain rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIEle4N6PemQ9ia33N920TMLnQX3fIkOUXhotTyoU42IQDGpa0WKVeoosfqK0cPGSqfy10w1sbW0oYDoxkxC8wNbNG3w8u5mgujhxh2C7lSrK113CVbfcxZdE7xQ8iZUc0jI-3UD6LUI_LehJhxMcHbKH9nsveiZczbyDfkKgfSLkd8u-yAAr3lN7OdWr0Pl5YfM_SMAQHCxZ5ZINdfghnAmHmQ_11-uEpBbzlhCg41pMYXy7cnEg02eTGDCkw0bhZmCo"/>
+<img alt="The Workers Guild Seal" class="w-full h-full object-contain rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB343oMbNaXjADCP6GNDpXpgRDSuaCEo1S4gkFGLDeh97djANMKYELSv60xbYLyAJJY3_sTSBy7gaH-JYz1mLHpI9Z9YemQJZfLsRu-A5pjSf50xekwQoH1EblZUzZZpAT6FuD7nl6_Jw2gI9umwmoF7eXgEcWQ-OPYWumGzXA5HXPy5bfToJP3aWByiQ7ie4AH8IRTHtsOWTPH6FukjX_dntGOZLISJCUyrkr62IB1dczBdjuSxgxi0MDJM7lVDYErngE"/>
 </div>
 <div class="text-center font-mono text-xs text-slate-400 tracking-[0.2em] mb-1">SECURE_TERM // AUTHC</div>
 <h1 class="text-3xl font-bold tracking-widest text-white uppercase text-center border-b-2 border-orange-guild pb-2 inline-block">OWNER_CMD</h1>
@@ -95,7 +95,7 @@
 <!-- Email Input -->
 <div>
 <label class="block font-mono text-xs text-orange-guild mb-2 uppercase tracking-wider" for="email">ID_CREDENTIAL (EMAIL)</label>
-<input class="input-industrial w-full px-4 py-3 rounded-none font-mono text-sm" id="email" name="email" placeholder="ENTER AUTHORIZED EMAIL (workersguild001@gmail.com)" required="" type="email"/>
+<input class="input-industrial w-full px-4 py-3 rounded-none font-mono text-sm" id="email" name="email" placeholder="ENTER AUTHORIZED EMAIL" required="" type="email"/>
 </div>
 <!-- Password Input -->
 <div>
@@ -145,12 +145,15 @@
 </div>
 </footer>
 <!-- END: Footer -->
+<script>
+    // Configuration block for Supabase keys (Replace with actual secure environment variables in a real app)
+    const SUPABASE_URL = 'YOUR_SUPABASE_PROJECT_URL'; // e.g., 'https://xyzcompany.supabase.co'
+    const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
+    
+    // Initialize Supabase client
+    const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  </script>
 <script data-purpose="auth-logic">
-    // Supabase Initialization
-    const supabaseUrl = 'https://jjxblltjrhyfhwyqzurw.supabase.co';
-    const supabaseKey = 'sb_publishable__WiQ8Bv9JIfKpRhtGzqpiw_okzDVCPg'; // Live Publishable Key
-    const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
-
     document.getElementById('ownerLoginForm').addEventListener('submit', async function(e) {
       e.preventDefault();
       
@@ -166,53 +169,30 @@
       errorMsg.classList.add('hidden');
 
       try {
-        let isAuthorized = false;
-        let sessionToken = null;
+        const { data, error } = await supabase.auth.signInWithPassword({
+          email: emailInput,
+          password: passwordInput,
+        });
 
-        // Hardcoded fallback logic as requested
-        if (emailInput.toLowerCase() === 'workersguild001@gmail.com') {
-          isAuthorized = true;
-          sessionToken = 'mock_session_token_' + Date.now();
-        } else if (emailInput === 'chaces15@gmail.com' && passwordInput === 'Pilesofcash123') {
-          isAuthorized = true;
-          sessionToken = 'mock_session_token_' + Date.now();
-        } else if (supabaseKey !== 'YOUR_SUPABASE_ANON_KEY') {
-          // Attempt actual Supabase auth if key is configured
-          const { data, error } = await supabaseClient.auth.signInWithPassword({
-            email: emailInput,
-            password: passwordInput,
-          });
-          
-          if (!error && data.session) {
-            isAuthorized = true;
-            sessionToken = data.session.access_token;
-          }
+        if (error) {
+          throw error;
         }
 
-        if (isAuthorized) {
-          // Store session token and redirect
-          if (sessionToken) {
-            localStorage.setItem('owner_session_token', sessionToken);
-          }
-          window.location.href = 'owner.html';
-        } else {
-          // Failure route
-          console.error("Auth Failed - Email:", emailInput);
-          
-          errorMsg.classList.remove('hidden');
-          setTimeout(() => {
-            window.location.href = '404.html';
-          }, 1500); // Redirect after showing error briefly
-        }
-      } catch (err) {
-        console.error("Auth Error:", err);
+        // Success route
+        window.location.href = 'owner.html'; // Destination for owners
+
+      } catch (error) {
+        // Failure route
+        console.error("Auth Failed:", error.message);
         errorMsg.classList.remove('hidden');
+        
+        setTimeout(() => {
+          // window.location.href = '404.html'; // Optional: Redirect on failure
+        }, 1500);
       } finally {
-        // Reset button state if not redirecting immediately
-        if (errorMsg.classList.contains('hidden') === false) {
-          submitBtn.innerHTML = originalText;
-          submitBtn.classList.remove('opacity-75', 'cursor-wait');
-        }
+        // Reset button state
+        submitBtn.innerHTML = originalText;
+        submitBtn.classList.remove('opacity-75', 'cursor-wait');
       }
     });
   </script>
