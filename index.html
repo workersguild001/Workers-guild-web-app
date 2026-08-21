@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 
-<html class="dark" lang="en">
-<head>
+<html class="dark" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>THE WORKERS GUILD | OPENING SOON</title>
@@ -188,6 +187,20 @@
 <label class="text-[9px] font-mono uppercase opacity-30 tracking-[0.3em]">Set Launch Date</label>
 <input class="bg-transparent border border-white/10 text-[10px] font-mono p-2 mt-2 opacity-30 focus:opacity-100" type="date"/>
 </div>
+<!-- Success Modal -->
+<div class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4" id="success-modal">
+<div class="terminal-card max-w-md w-full p-8 text-center relative">
+<button class="absolute top-4 right-4 text-white/50 hover:text-white transition-colors" onclick="document.getElementById('success-modal').classList.add('hidden')" type="button">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<div class="w-16 h-16 bg-primary/20 text-primary rounded-full flex items-center justify-center mx-auto mb-6">
+<svg class="w-8 h-8" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</div>
+<h3 class="text-2xl font-black uppercase italic tracking-tighter mb-4 text-primary">Transmission Successful</h3>
+<p class="text-white/80 font-mono text-sm leading-relaxed uppercase tracking-wider">Congratulations! You've been successfully signed up for the waiting list!</p>
+<button class="mt-8 bg-primary/10 border border-primary text-primary px-8 py-3 text-sm font-bold uppercase tracking-widest hover:bg-primary hover:text-surface transition-all w-full" onclick="document.getElementById('success-modal').classList.add('hidden')" type="button">Acknowledge</button>
+</div>
+</div>
 </main>
 <!-- Footer -->
 <footer class="py-8 sm:py-12 border-t border-white/5 bg-surface/50 backdrop-blur-sm flex flex-col items-center gap-4 sm:gap-6">
@@ -201,8 +214,8 @@
 </div>
 <script>
         // Supabase Configuration
-        const supabaseUrl = 'https://WiQ8Bv9JIfKpRhtGzqpiw_okDVCPg.supabase.co';
-        const supabaseKey = 'sb_publishable__WiQ8Bv9JIfKpRhtGzqpiw_okDVCPg';
+        const supabaseUrl = 'https://jjxblltjrhyfhwyqzurw.supabase.co';
+        const supabaseKey = 'sb_publishable__WiQ8Bv9JIfKpRhtGzqpiw_okzDVCPg';
         const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
 
         const form = document.getElementById('waitlist-form');
@@ -210,28 +223,30 @@
 
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
+            const operativeName = document.getElementById('name').value;
+            const commChannel = document.getElementById('email').value;
 
-            feedback.classList.remove('hidden');
-            feedback.innerText = 'Transmitting credentials...';
+            feedback.classList.remove('hidden', 'text-red-500', 'text-green-500');
+            feedback.classList.add('text-primary');
+            feedback.innerText = 'Processing Transmission...';
 
-            const { data, error } = await supabaseClient
-                .from('waitlist')
-                .insert([{ email: email, joined_at: new Date() }]);
+            try {
+                const { data, error } = await supabaseClient
+                    .from('waitlist')
+                    .insert([{ name: operativeName, email: commChannel }]);
 
-            if (error) {
-                feedback.innerText = 'Transmission error: ' + error.message;
-                feedback.classList.add('text-red-500');
-            } else {
-                feedback.innerText = 'Transmission successful. Operative logged.';
-                feedback.classList.add('text-green-500');
-                form.reset();
-            }
-            
-            setTimeout(() => {
+                if (error) throw error;
+
+                document.getElementById('success-modal').classList.remove('hidden');
                 feedback.classList.add('hidden');
-            }, 3000);
+                form.reset();
+                
+            } catch (error) {
+                console.error('Waitlist Signup Error:', error);
+                feedback.innerText = 'Transmission Interrupted';
+                feedback.classList.remove('text-primary');
+                feedback.classList.add('text-red-500');
+            }
         });
 
         // Gateway Access Check
@@ -252,5 +267,4 @@
         }
         checkSession();
     </script>
-<div class="hidden fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4" id="success-modal"><div class="terminal-card max-w-md w-full p-8 border-2 border-primary/50 relative overflow-hidden bg-[#1b110a]"><div class="caution-tape absolute top-0 left-0 !h-1"></div><div class="flex flex-col items-center text-center gap-6"><div class="w-16 h-16 bg-primary/20 flex items-center justify-center rounded-full border border-primary/40"><svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" stroke-width="3" viewbox="0 0 24 24"><path d="M5 13l4 4L19 7"></path></svg></div><div class="space-y-2"><h4 class="text-2xl font-black uppercase italic tracking-tighter text-primary">Transmission Received</h4><p class="text-sm font-medium opacity-80 leading-relaxed">Congratulations! You've been successfully signed up for the waiting list!</p></div><button class="w-full bg-primary text-surface font-black uppercase py-3 text-lg italic tracking-tighter hover:scale-[1.02] transition-transform" onclick="document.getElementById('success-modal').classList.add('hidden')">OK</button></div><div class="caution-tape absolute bottom-0 left-0 !h-1"></div></div></div><script>const originalForm = document.getElementById('waitlist-form');if (originalForm) {originalForm.addEventListener('submit', async (e) => {const feedback = document.getElementById('form-feedback');const checkInterval = setInterval(() => {if (feedback && feedback.innerText.includes('Transmission successful')) {document.getElementById('success-modal').classList.remove('hidden');clearInterval(checkInterval);}}, 100);setTimeout(() => clearInterval(checkInterval), 5000);});}</script></body>
-</html>
+</body></html>
