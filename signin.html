@@ -233,4 +233,35 @@
 <div class="absolute bottom-0 left-0 w-full h-1 bg-[repeating-linear-gradient(45deg,#ff8c00,#ff8c00_10px,#000_10px,#000_20px)]"></div>
 </div>
 </main>
-</body></html>
+<script>
+const supabaseUrl = 'https://jjxblltjrhyfhwyqzurw.supabase.co';
+const supabaseKey = 'YOUR_PUBLISHABLE_KEY'; // Note: Replace with actual key if provided in context, otherwise placeholder used
+const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
+document.querySelector('form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const signInButton = e.target.querySelector('button[type="submit"]');
+    
+    signInButton.disabled = true;
+    signInButton.innerText = 'AUTHENTICATING...';
+
+    try {
+        const { data, error } = await supabase.auth.signInWithPassword({
+            email: email,
+            password: password,
+        });
+
+        if (error) throw error;
+
+        if (data.user) {
+            window.location.href = 'recruitment.html';
+        }
+    } catch (error) {
+        alert('ACCESS DENIED: ' + error.message);
+        signInButton.disabled = false;
+        signInButton.innerHTML = '<span class="material-symbols-outlined text-[24px] group-hover:translate-x-1 transition-transform">login</span> SIGN IN';
+    }
+});
+</script></body></html>
