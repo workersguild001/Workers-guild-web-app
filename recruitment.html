@@ -3,13 +3,13 @@
 <html class="dark" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Worker Console - Absolute Zero Balance</title>
+<title>Worker Console - Fixed Balance</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;700;800;900&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID&amp;currency=USD"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -284,21 +284,58 @@
 <script>
         document.addEventListener('DOMContentLoaded', () => {
             
-            // 1. Security Shield Logic (Simulated)
-            const checkAuth = () => {
-                // In a real app, this checks cookies/localStorage
-                const mockToken = localStorage.getItem('guild_token') || 'simulated-token-present';
-                if (!mockToken) {
-                    console.warn("No auth token found, redirecting...");
-                    // window.location.href = 'index.html'; // Commented out for demo purposes to allow UI rendering
+            // Supabase Initialization (Replace with real credentials)
+            const SUPABASE_URL = 'https://YOUR_SUPABASE_PROJECT.supabase.co';
+            const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
+            let supabase;
+            
+            try {
+                supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+            } catch (e) {
+                console.warn("Supabase client not initialized.", e);
+            }
+
+            const loadProfileData = async () => {
+                if (!supabase) {
+                    document.getElementById('revenue-display').textContent = '$0.00';
+                    return;
+                }
+                
+                try {
+                    const { data: { user }, error: authError } = await supabase.auth.getUser();
+                    
+                    if (authError || !user) {
+                        console.warn("User not authenticated or error fetching user.", authError);
+                        document.getElementById('revenue-display').textContent = '$0.00';
+                        return;
+                    }
+
+                    const { data: profile, error: profileError } = await supabase
+                        .from('profiles')
+                        .select('*')
+                        .eq('id', user.id)
+                        .single();
+
+                    if (profileError || !profile) {
+                        console.error("Error fetching profile.", profileError);
+                        document.getElementById('revenue-display').textContent = '$0.00';
+                        return;
+                    }
+
+                    updateUI(profile.guild_id, profile.balance);
+
+                } catch (error) {
+                    console.error("Unexpected error loading data.", error);
+                    document.getElementById('revenue-display').textContent = '$0.00';
                 }
             };
-            checkAuth();
 
-            // Set simulated Worker ID dynamically
-            const generatedWorkerId = 'WKG-' + Math.floor(1000 + Math.random() * 9000);
-            document.getElementById('worker-id').textContent = generatedWorkerId;
-            document.getElementById('affiliate-link').textContent = `workersguild.com/id/${generatedWorkerId}`;
+            const updateUI = (guildId, balance) => {
+                document.getElementById('worker-id').textContent = guildId;
+                document.getElementById('affiliate-link').textContent = `workersguild.com/id/${guildId}`;
+                document.getElementById('revenue-display').textContent = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(balance);
+                generateQR(guildId);
+            };
 
             // 3. PayPal Signup Handler
             const withdrawBtn = document.getElementById('withdraw-btn');
@@ -335,10 +372,10 @@
             });
 
             // 4. QR Code Generation Logic
-            const generateQR = () => {
+            const generateQR = (guildId) => {
                 const container = document.getElementById('qrcode-container');
                 const placeholder = document.getElementById('qr-placeholder');
-                const workerData = `GUILD_PASS_${generatedWorkerId}_${Date.now()}`;
+                const workerData = `GUILD_PASS_${guildId}_${Date.now()}`;
                 
                 placeholder.style.display = 'block';
                 container.innerHTML = '';
@@ -374,12 +411,16 @@
                     
                 }, 1500);
             };
-            generateQR();
             
-            // Wire up refresh button to regenerate QR
+            // Wire up refresh button to regenerate QR and re-fetch profile data
             document.getElementById('refresh-pass-btn').addEventListener('click', () => {
-                generateQR();
+                document.getElementById('revenue-display').innerHTML = '<span class="material-symbols-outlined animate-spin text-headline-md">sync</span>';
+                document.getElementById('worker-id').textContent = 'LOADING...';
+                loadProfileData();
             });
+
+            // Start initial load
+            loadProfileData();
             
         });
     </script>
