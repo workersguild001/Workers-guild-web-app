@@ -5,7 +5,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>THE WORKERS GUILD | OPENING SOON</title>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;800&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;800&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
 <script>
@@ -252,5 +252,23 @@
         }
         checkSession();
     </script>
-</body>
+<div class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4" id="success-modal">
+<div class="absolute inset-0 bg-black/80 backdrop-blur-sm"></div>
+<div class="terminal-card relative w-full max-w-md p-8 border border-primary/30 shadow-2xl shadow-primary/10">
+<div class="flex flex-col items-center text-center space-y-6">
+<div class="w-16 h-16 bg-primary/10 flex items-center justify-center rounded-full border border-primary/20">
+<span class="material-symbols-outlined text-primary text-4xl">check_circle</span>
+</div>
+<div class="space-y-2">
+<h4 class="text-2xl font-black uppercase italic tracking-tighter text-primary">Transmission Received</h4>
+<p class="text-sm font-medium opacity-80 leading-relaxed">
+                    Congratulations! You've been successfully signed up for the waiting list!
+                </p>
+</div>
+<button class="w-full bg-primary text-surface font-black uppercase py-4 text-lg italic tracking-tighter shadow-lg shadow-primary/20 hover:scale-[1.02] transition-transform" id="close-modal">
+                OK
+            </button>
+</div>
+</div>
+</div></body>
 </html>
