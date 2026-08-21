@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 
-<html class="dark" lang="en">
-<head>
+<html class="dark" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>THE WORKERS GUILD | OPENING SOON</title>
@@ -201,12 +200,14 @@
 </div>
 <script>
         // Supabase Configuration
-        const supabaseUrl = 'https://WiQ8Bv9JIfKpRhtGzqpiw_okDVCPg.supabase.co';
-        const supabaseKey = 'sb_publishable__WiQ8Bv9JIfKpRhtGzqpiw_okDVCPg';
+        const supabaseUrl = 'https://jjxblltjrhyfhwyqzurw.supabase.co';
+        const supabaseKey = 'sb_publishable__WiQ8Bv9JIfKpRhtGzqpiw_okzDVCPg';
         const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
 
         const form = document.getElementById('waitlist-form');
         const feedback = document.getElementById('form-feedback');
+        const modal = document.getElementById('success-modal');
+        const closeModalBtn = document.getElementById('close-modal');
 
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -216,23 +217,40 @@
             feedback.classList.remove('hidden');
             feedback.innerText = 'Transmitting credentials...';
 
-            const { data, error } = await supabaseClient
-                .from('waitlist')
-                .insert([{ email: email, joined_at: new Date() }]);
+            try {
+                const { data, error } = await supabaseClient
+                    .from('waitlist')
+                    .insert([{ name: name, email: email, joined_at: new Date() }]);
 
-            if (error) {
-                feedback.innerText = 'Transmission error: ' + error.message;
+                if (error) {
+                    console.error('Supabase Error:', error);
+                    feedback.innerText = 'Transmission failed. Try again.';
+                    feedback.classList.add('text-red-500');
+                    alert('Enlistment failed: ' + error.message);
+                } else {
+                    feedback.innerText = 'Transmission successful.';
+                    feedback.classList.add('text-green-500');
+                    form.reset();
+                    modal.classList.remove('hidden');
+                }
+            } catch (err) {
+                console.error('Network or unexpected error:', err);
+                feedback.innerText = 'Transmission error.';
                 feedback.classList.add('text-red-500');
-            } else {
-                feedback.innerText = 'Transmission successful. Operative logged.';
-                feedback.classList.add('text-green-500');
-                form.reset();
+                alert('An unexpected error occurred.');
             }
             
             setTimeout(() => {
                 feedback.classList.add('hidden');
+                feedback.classList.remove('text-red-500', 'text-green-500');
             }, 3000);
         });
+
+        if(closeModalBtn) {
+            closeModalBtn.addEventListener('click', () => {
+                modal.classList.add('hidden');
+            });
+        }
 
         // Gateway Access Check
         async function checkSession() {
@@ -270,5 +288,5 @@
             </button>
 </div>
 </div>
-</div></body>
-</html>
+</div>
+</body></html>
