@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 
-<html class="dark" lang="en"><head>
+<html class="dark" lang="en">
+<head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>GUILD_GATEWAY // COMMAND</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;700;800&amp;family=Courier+Prime:wght@400;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script id="tailwind-config">
       tailwind.config = {
         darkMode: "class",
@@ -149,64 +150,97 @@
         }
     </style>
 </head>
-<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col relative overflow-x-hidden">
-<!-- Background Blueprint Image -->
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col relative overflow-x-hidden"><div class="fixed inset-0 z-[100] bg-background flex flex-col items-center justify-center" id="auth-overlay">
+<div class="zero-gap-glow mb-6">
+<img alt="Guild Seal Logo" class="w-32 h-32 md:w-48 md:h-48 object-contain opacity-50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmYCE1y17wDKVjt784kPDS5mgt-7yfwDwql1kQyb_DZI2NpIEZloF1LNiSLgQgSJDpsnFrCk9HwEn5LadR-2C-pB2gVYTdU7vP1QPKSgWKJI7h5AMCYXYpKGjl_umtXNQ0Ps8Ajbz7g78BDhb2zJ6dRw-wWGu5twJveUMKxdVs7YnVn6_py9wd-ubj0G40r_HQWy4lCbcTZIgPXqlnSxA3V5i5KeFu0exrcLu2ohEbAjb6WSWgArZYRe5Zde36JKXg7to"/>
+</div>
+<p class="font-label-md text-label-md text-primary uppercase tracking-widest animate-pulse">VERIFYING AUTHORIZATION...</p>
+</div>
 <div class="fixed inset-0 z-[-2] opacity-20 pointer-events-none mix-blend-screen" style="background-image: url('https://lh3.googleusercontent.com/aida/AP1WRLsd2xkzu59ZzYobY_Ng0PGVPurk_pOtkiL8_nLj1jz3JXo7TC0-lL7vjahTgU20X5R7ttVb35pr4RCr9PB-HirXa9VQFmrMOF_wHdRP1SyX_sF33F9A6bu5IeXkAQdYcENJZAW6VA4ak7Iv4EGBIhEqqilU3OnsHqgy7igQzlPWdp0JbWNibbKDqjg3Iy1yHTSVUsUtCYlkjdSstEE_qd3LYMqZvzVIANFCP0B8mSDCCjPbTl86f1pRelg'); background-size: cover; background-position: center;"></div>
-<!-- Grid Overlay -->
 <div class="fixed inset-0 z-[-1] pointer-events-none bg-grid-pattern"></div>
-<!-- Top Navigation (TopAppBar) -->
 <nav class="docked full-width top-0 border-b border-white/5 bg-surface-dim shadow-[4px_4px_0px_0px_#0E0E0F] z-50">
 <div class="flex justify-between items-center w-full px-gutter h-16 max-w-[1440px] mx-auto">
 <div class="flex items-center gap-4">
 <div class="font-headline-sm text-headline-sm font-bold text-primary dark:text-primary tracking-tighter">
                     THE WORKERS GUILD // COMMAND
                 </div>
-<div class="hidden md:flex ml-8 gap-6"><a class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface-variant font-medium hover:text-primary-fixed-dim transition-colors duration-150" href="gateway.html">GATEWAY</a>
-<a class="font-label-md text-label-md text-primary dark:text-primary border-b-2 border-primary pb-1 font-bold" href="#">DASHBOARD</a>
+<div class="hidden md:flex ml-8 gap-6">
+<a class="font-label-md text-label-md text-primary dark:text-primary border-b-2 border-primary pb-1 font-bold" href="gateway.html">GATEWAY</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface-variant font-medium hover:text-primary-fixed-dim transition-colors duration-150" href="#">DASHBOARD</a>
 <a class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface-variant font-medium hover:text-primary-fixed-dim transition-colors duration-150" href="#">PERSONNEL</a>
 <a class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface-variant font-medium hover:text-primary-fixed-dim transition-colors duration-150" href="#">LOGISTICS</a>
 <a class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface-variant font-medium hover:text-primary-fixed-dim transition-colors duration-150" href="#">REVENUE</a>
 </div>
 </div>
 <div class="flex items-center gap-4">
-<button class="text-on-surface hover:text-primary transition-colors">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">settings</span>
-</button>
-<button class="text-on-surface hover:text-primary transition-colors relative">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">notifications</span>
-<span class="absolute top-0 right-0 w-2 h-2 bg-primary rounded-full"></span>
-</button>
-<button class="text-on-surface hover:text-primary transition-colors">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">account_circle</span>
+<button class="text-on-surface hover:text-primary transition-colors" onclick="logout()">
+<span class="material-symbols-outlined">logout</span>
 </button>
 </div>
 </div>
 </nav>
-<!-- Main Content Area -->
 <main class="flex-grow flex flex-col items-center justify-center p-gutter relative z-10 w-full max-w-[1440px] mx-auto py-margin-desktop">
-<!-- Finalized Marker -->
-<!-- Central Branding -->
 <div class="mb-16 flex flex-col items-center relative">
 <div class="zero-gap-glow mb-6">
-<img alt="Guild Seal Logo" class="w-32 h-32 md:w-48 md:h-48 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrkRv8uq8NiYnkSqqGeFfqetMOIrcvvTwzCcYGJv4R6DPiy-B16UOKEiGwtTWl73-40SDVeyLUiwCFzsfO6szjLh89NpQQlJukS-ec56ujAT2ss0GWi_4k0NgRR7aoRw4-zYKYd2yJy_VblYslG_EojMcLWexTbvutP_dqYZdXyji_-AUwnCBlGEkKkku4Ayh1jPlZqA5z_2QH9BXJkrWxuZVBEiIrR_WUVwr678vcJl73pTWTMP-9lRoQowI_-0yQrg"/>
+<img alt="Guild Seal Logo" class="w-32 h-32 md:w-48 md:h-48 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmYCE1y17wDKVjt784kPDS5mgt-7yfwDwql1kQyb_DZI2NpIEZloF1LNiSLgQgSJDpsnFrCk9HwEn5LadR-2C-pB2gVYTdU7vP1QPKSgWKJI7h5AMCYXYpKGjl_umtXNQ0Ps8Ajbz7g78BDhb2zJ6dRw-wWGu5twJveUMKxdVs7YnVn6_py9wd-ubj0G40r_HQWy4lCbcTZIgPXqlnSxA3V5i5KeFu0exrcLu2ohEbAjb6WSWgArZYRe5Zde36JKXg7to"/>
 </div>
 <h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface text-center uppercase tracking-widest border-b border-primary/30 pb-4 mb-2">GUILD GATEWAY</h1>
+<p class="font-label-md text-label-md text-primary mt-2 uppercase tracking-widest" id="auth-status">Verifying Authorization...</p>
 </div>
-<!-- Terminal Grid (Bento Layout) -->
 <div class="grid grid-cols-1 md:grid-cols-2 gap-stack-lg w-full max-w-5xl">
-<!-- Terminal 1: Affiliate Network -->
-<a class="industrial-card bg-surface block p-stack-md group relative overflow-hidden" href="recruitment.html"><div class="absolute top-0 left-0 w-1 h-full bg-primary/20 group-hover:bg-primary transition-colors"></div><div class="flex justify-between items-start mb-12"><div class="font-label-sm text-label-sm text-on-surface-variant px-2 py-1 inline-block">TERM 01</div><span class="material-symbols-outlined text-primary text-3xl group-hover:scale-110 transition-transform">share</span></div><div><h2 class="font-headline-sm text-headline-sm text-on-surface mb-2 uppercase">AFFILIATE</h2><p class="font-label-md text-label-md text-on-surface-variant opacity-70">Initiate recruitment protocols. Manage downline operatives and structural growth.</p></div></a>
-<!-- Terminal 2: Craftsman Terminal -->
-<a class="industrial-card bg-surface block p-stack-md group relative overflow-hidden" href="profile.html"><div class="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-primary/20 group-hover:border-primary transition-colors m-2"></div><div class="flex justify-between items-start mb-12"><div class="font-label-sm text-label-sm text-on-surface-variant px-2 py-1 inline-block">TERM 02</div><span class="material-symbols-outlined text-primary text-3xl group-hover:scale-110 transition-transform">engineering</span></div><div><h2 class="font-headline-sm text-headline-sm text-on-surface mb-2 uppercase">CRAFTSMAN</h2><p class="font-label-md text-label-md text-on-surface-variant opacity-70">Access personal metrics, skill validations, and clearance levels.</p></div></a>
-<!-- Terminal 3: Poster Command -->
-<a class="industrial-card bg-surface block p-stack-md group relative overflow-hidden md:col-span-1" href="client-dashboard.html"><div class="absolute bottom-0 left-0 w-full h-1 bg-primary/20 group-hover:bg-primary transition-colors"></div><div class="flex justify-between items-start mb-12"><div class="font-label-sm text-label-sm text-on-surface-variant px-2 py-1 inline-block">TERM 03</div><span class="material-symbols-outlined text-primary text-3xl group-hover:scale-110 transition-transform">assignment</span></div><div><h2 class="font-headline-sm text-headline-sm text-on-surface mb-2 uppercase">JOB POSTING</h2><p class="font-label-md text-label-md text-on-surface-variant opacity-70">Client interface. Post contracts, review bids, and authorize payments.</p></div></a>
-<!-- Terminal 4: Tool Rental (Gated) -->
-<div class="industrial-card bg-surface p-stack-md relative overflow-hidden disabled-card select-none"><div class="absolute inset-0 bg-[repeating-linear-gradient(45deg,transparent,transparent_10px,rgba(255,255,255,0.02)_10px,rgba(255,255,255,0.02)_20px)]"></div><div class="flex justify-between items-start mb-12 relative z-10"><div class="font-label-sm text-label-sm text-on-surface-variant px-2 py-1 inline-block">TERM 04</div><div class="bg-surface-container-highest p-2 border border-white/10"><span class="material-symbols-outlined text-on-surface-variant text-xl">lock</span></div></div><div class="relative z-10"><h2 class="font-headline-sm text-headline-sm text-on-surface mb-2 uppercase">TOOL RENTAL</h2><p class="font-label-md text-label-md text-on-surface-variant opacity-70 mb-4">Secure high-grade equipment for verified contracts.</p><div class="inline-flex items-center gap-2 bg-surface-container-low border border-white/5 px-3 py-1 font-label-sm text-label-sm text-on-surface"><span class="w-2 h-2 bg-on-surface-variant block rounded-sm"></span>LEVEL 30 REQUIRED</div></div></div>
+<a class="industrial-card bg-surface block p-stack-md group relative overflow-hidden" href="recruitment.html">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary/20 group-hover:bg-primary transition-colors"></div>
+<div class="flex justify-between items-start mb-12">
+<div class="font-label-sm text-label-sm text-on-surface-variant px-2 py-1 inline-block">TERM 01</div>
+<span class="material-symbols-outlined text-primary text-3xl group-hover:scale-110 transition-transform">share</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface mb-2 uppercase">AFFILIATE</h2>
+<p class="font-label-md text-label-md text-on-surface-variant opacity-70">Initiate recruitment protocols. Manage downline operatives and structural growth.</p>
+</div>
+</a>
+<a class="industrial-card bg-surface block p-stack-md group relative overflow-hidden" href="profile.html">
+<div class="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-primary/20 group-hover:border-primary transition-colors m-2"></div>
+<div class="flex justify-between items-start mb-12">
+<div class="font-label-sm text-label-sm text-on-surface-variant px-2 py-1 inline-block">TERM 02</div>
+<span class="material-symbols-outlined text-primary text-3xl group-hover:scale-110 transition-transform">engineering</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface mb-2 uppercase">CRAFTSMAN</h2>
+<p class="font-label-md text-label-md text-on-surface-variant opacity-70">Access personal metrics, skill validations, and clearance levels.</p>
+</div>
+</a>
+<a class="industrial-card bg-surface block p-stack-md group relative overflow-hidden md:col-span-1" href="client-dashboard.html">
+<div class="absolute bottom-0 left-0 w-full h-1 bg-primary/20 group-hover:bg-primary transition-colors"></div>
+<div class="flex justify-between items-start mb-12">
+<div class="font-label-sm text-label-sm text-on-surface-variant px-2 py-1 inline-block">TERM 03</div>
+<span class="material-symbols-outlined text-primary text-3xl group-hover:scale-110 transition-transform">assignment</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface mb-2 uppercase">JOB POSTING</h2>
+<p class="font-label-md text-label-md text-on-surface-variant opacity-70">Client interface. Post contracts, review bids, and authorize payments.</p>
+</div>
+</a>
+<div class="industrial-card bg-surface p-stack-md relative overflow-hidden disabled-card select-none">
+<div class="absolute inset-0 bg-[repeating-linear-gradient(45deg,transparent,transparent_10px,rgba(255,255,255,0.02)_10px,rgba(255,255,255,0.02)_20px)]"></div>
+<div class="flex justify-between items-start mb-12 relative z-10">
+<div class="font-label-sm text-label-sm text-on-surface-variant px-2 py-1 inline-block">TERM 04</div>
+<div class="bg-surface-container-highest p-2 border border-white/10">
+<span class="material-symbols-outlined text-on-surface-variant text-xl">lock</span>
+</div>
+</div>
+<div class="relative z-10">
+<h2 class="font-headline-sm text-headline-sm text-on-surface mb-2 uppercase">TOOL RENTAL</h2>
+<p class="font-label-md text-label-md text-on-surface-variant opacity-70 mb-4">Secure high-grade equipment for verified contracts.</p>
+<div class="inline-flex items-center gap-2 bg-surface-container-low border border-white/5 px-3 py-1 font-label-sm text-label-sm text-on-surface">
+<span class="w-2 h-2 bg-on-surface-variant block rounded-sm"></span>LEVEL 30 REQUIRED
+                    </div>
+</div>
+</div>
 </div>
 </main>
-<!-- Footer -->
 <footer class="full-width bottom-0 border-t border-white/5 bg-surface-container-lowest w-full py-stack-md px-gutter flex justify-between items-center z-50">
-<div class="font-label-sm text-label-sm text-on-surface font-label-sm text-on-surface">
+<div class="font-label-sm text-label-sm text-on-surface">
             V0.1 // 2026 // BUILT BY WORKERS. FOR WORKERS.
         </div>
 <div class="flex gap-4">
@@ -215,4 +249,26 @@
 <a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">DEPT LABOR</a>
 </div>
 </footer>
-</body></html>
+<script>
+        const SUPABASE_URL = 'https://jjxblltjrhyfhwyqzurw.supabase.co';
+        const SUPABASE_ANON_KEY = 'sb_publishable__WiQ8Bv9JIfKpRhtGzqpiw_okzDVCPg';
+        const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        async function checkAuth() {
+            const { data: { session } } = await supabase.auth.getSession();
+            if (!session) {
+                window.location.href = 'signin.html';
+            } else {
+                document.getElementById('auth-status').innerText = `OPERATIVE ACTIVE: ${session.user.email}`;
+            }
+        }
+
+        async function logout() {
+            await supabase.auth.signOut();
+            window.location.href = 'signin.html';
+        }
+
+        window.onload = checkAuth;
+    </script>
+</body>
+</html>
