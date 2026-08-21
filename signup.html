@@ -1,347 +1,300 @@
 <!DOCTYPE html>
 
-<html class="dark" lang="en"><head>
+<html lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>The Workers Guild - Create Account</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries,typography"></script>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;700;800&amp;family=Courier+Prime:wght@400;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-  tailwind.config = {
-    darkMode: "class",
-    theme: {
-      extend: {
-        "colors": {
-                "secondary-fixed-dim": "#c8c6c7",
-                "secondary-container": "#4a494a",
-                "surface-container-high": "#2a2a2a",
-                "primary-container": "#ff8c00",
-                "on-secondary-fixed-variant": "#474647",
-                "surface-container-lowest": "#0e0e0e",
-                "on-tertiary-fixed-variant": "#474746",
-                "surface-container-highest": "#353534",
-                "inverse-primary": "#904d00",
-                "on-secondary-fixed": "#1c1b1c",
-                "on-error-container": "#ffdad6",
-                "on-secondary-container": "#bab8b9",
-                "on-tertiary-fixed": "#1b1c1c",
-                "primary-fixed": "#ffdcc3",
-                "surface-dim": "#131313",
-                "on-tertiary-container": "#3e3e3e",
-                "error": "#ffb4ab",
-                "on-secondary": "#313031",
-                "inverse-on-surface": "#313030",
-                "secondary": "#c8c6c7",
-                "on-primary-container": "#623200",
-                "outline": "#a48c7a",
-                "surface-tint": "#ffb77d",
-                "on-tertiary": "#303030",
-                "primary-fixed-dim": "#ffb77d",
-                "tertiary-container": "#aba9a9",
-                "on-surface": "#e5e2e1",
-                "outline-variant": "#564334",
-                "primary": "#ffb77d",
-                "surface-variant": "#353534",
-                "tertiary-fixed": "#e4e2e1",
-                "on-error": "#690005",
-                "tertiary-fixed-dim": "#c8c6c5",
-                "on-primary": "#4d2600",
-                "on-primary-fixed": "#2f1500",
-                "on-surface-variant": "#ddc1ae",
-                "error-container": "#93000a",
-                "on-background": "#e5e2e1",
-                "secondary-fixed": "#e5e2e3",
-                "tertiary": "#c8c6c5",
-                "inverse-surface": "#e5e2e1",
-                "on-primary-fixed-variant": "#6e3900",
-                "surface-container-low": "#1c1b1b",
-                "surface-bright": "#393939",
-                "background": "#131313",
-                "surface": "#131313",
-                "surface-container": "#201f1f"
-        },
-        "borderRadius": {
-                "DEFAULT": "0.25rem",
-                "lg": "0.5rem",
-                "xl": "0.75rem",
-                "full": "9999px"
-        },
-        "spacing": {
-                "unit": "4px",
-                "stack-sm": "8px",
-                "stack-md": "16px",
-                "margin-desktop": "40px",
-                "margin-mobile": "16px",
-                "gutter": "24px",
-                "stack-lg": "32px"
-        },
-        "fontFamily": {
-                "headline-lg": [
-                        "Hanken Grotesk"
-                ],
-                "headline-sm": [
-                        "Hanken Grotesk"
-                ],
-                "headline-lg-mobile": [
-                        "Hanken Grotesk"
-                ],
-                "body-md": [
-                        "Hanken Grotesk"
-                ],
-                "label-sm": [
-                        "Courier Prime"
-                ],
-                "body-lg": [
-                        "Hanken Grotesk"
-                ],
-                "headline-md": [
-                        "Hanken Grotesk"
-                ],
-                "label-md": [
-                        "Courier Prime"
-                ]
-        },
-        "fontSize": {
-                "headline-lg": [
-                        "48px",
-                        {
-                                "lineHeight": "1.1",
-                                "letterSpacing": "-0.02em",
-                                "fontWeight": "800"
-                        }
-                ],
-                "headline-sm": [
-                        "24px",
-                        {
-                                "lineHeight": "1.2",
-                                "fontWeight": "700"
-                        }
-                ],
-                "headline-lg-mobile": [
-                        "32px",
-                        {
-                                "lineHeight": "1.1",
-                                "fontWeight": "800"
-                        }
-                ],
-                "body-md": [
-                        "16px",
-                        {
-                                "lineHeight": "1.5",
-                                "fontWeight": "400"
-                        }
-                ],
-                "label-sm": [
-                        "12px",
-                        {
-                                "lineHeight": "1.2",
-                                "fontWeight": "400"
-                        }
-                ],
-                "body-lg": [
-                        "18px",
-                        {
-                                "lineHeight": "1.6",
-                                "fontWeight": "400"
-                        }
-                ],
-                "headline-md": [
-                        "32px",
-                        {
-                                "lineHeight": "1.2",
-                                "fontWeight": "700"
-                        }
-                ],
-                "label-md": [
-                        "14px",
-                        {
-                                "lineHeight": "1.2",
-                                "letterSpacing": "0.05em",
-                                "fontWeight": "400"
-                        }
-                ]
+<title>The Workers Guild - Sign Up</title>
+<!-- Fonts: Hanken Grotesk and Courier Prime -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&amp;family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#ff8c00',
+            surface: '#131313',
+            accent: '#ffb77d',
+            background: '#0a0a0a'
+          },
+          fontFamily: {
+            sans: ['"Hanken Grotesk"', 'sans-serif'],
+            mono: ['"Courier Prime"', 'monospace']
+          },
+          boxShadow: {
+            'industrial': '4px 4px 0px 0px rgba(0,0,0,0.5)',
+            'industrial-hover': '2px 2px 0px 0px rgba(0,0,0,0.5)',
+            'glow': '0 0 40px rgba(255, 140, 0, 0.15)'
+          }
         }
-},
-    },
-  }
-</script>
-<style>
-        .industrial-shadow {
-            box-shadow: 4px 4px 0px 0px #0E0E0F;
-        }
-        .industrial-shadow-hover:hover {
-            box-shadow: 0px 0px 0px 0px #0E0E0F;
-            transform: translate(4px, 4px);
-        }
-        .focal-glow {
-            box-shadow: 0 0 40px rgba(255,140,0,0.15);
-        }
-        .input-glow:focus {
-            box-shadow: 0px 2px 10px rgba(255,140,0,0.15);
-        }
-        .custom-scrollbar::-webkit-scrollbar {
-            width: 8px;
-            background: #131313;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: #353534;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-            background: #ff8c00;
-        }
-      </style>
+      }
+    }
+  </script>
+<!-- Custom Styles -->
+<style data-purpose="custom-styling">
+    body {
+      background-color: #0a0a0a;
+      background-image: 
+        radial-gradient(circle at 50% 50%, rgba(255, 140, 0, 0.05) 0%, transparent 60%),
+        repeating-linear-gradient(45deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 2px, transparent 2px, transparent 10px);
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #131313;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #ff8c00;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #ffb77d;
+    }
+
+    .industrial-border {
+      border: 1px solid rgba(255, 140, 0, 0.3);
+      position: relative;
+    }
+    .industrial-border::before, .industrial-border::after {
+      content: '';
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border: 1px solid #ff8c00;
+    }
+    .industrial-border::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+    .industrial-border::after { bottom: -1px; right: -1px; border-left: none; border-top: none; }
+
+    /* Modal Animation */
+    .modal-enter { opacity: 0; transform: scale(0.95); }
+    .modal-enter-active { opacity: 1; transform: scale(1); transition: opacity 200ms ease-out, transform 200ms ease-out; }
+    .modal-leave { opacity: 1; transform: scale(1); }
+    .modal-leave-active { opacity: 0; transform: scale(0.95); transition: opacity 150ms ease-in, transform 150ms ease-in; }
+  </style>
 </head>
-<body class="bg-background min-h-screen flex items-center justify-center p-gutter relative overflow-hidden text-on-surface selection:bg-primary-container selection:text-on-primary-container">
-<!-- Ambient Glow Background -->
-<div class="absolute inset-0 z-0 flex items-center justify-center pointer-events-none">
-<div class="w-[800px] h-[800px] bg-primary-container/10 rounded-full blur-[120px] opacity-50 mix-blend-screen"></div>
-</div>
-<!-- Main Registration Module -->
-<main class="w-full max-w-md z-10 relative">
+<body class="text-gray-300 min-h-screen flex flex-col font-sans selection:bg-primary selection:text-black">
+<!-- BEGIN: MainContent -->
+<main class="flex-grow flex items-center justify-center p-4 relative z-10">
+<div class="max-w-md w-full">
 <!-- Registration Card -->
-<article class="bg-surface-dim border border-white/5 industrial-shadow p-stack-lg relative overflow-hidden text-on-surface">
-<!-- Technical Overlay Pattern -->
-<div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: radial-gradient(#fff 1px, transparent 1px); background-size: 20px 20px;"></div>
+<div class="bg-surface/90 backdrop-blur-sm p-8 industrial-border shadow-industrial shadow-glow border border-white/5 relative">
 <!-- Header Section -->
-<header class="flex flex-col items-center mb-stack-lg relative z-10">
-<span class="font-label-sm text-label-sm text-on-surface-variant absolute top-0 left-0 tracking-widest">UNIT_01 // INIT</span>
-<div class="w-24 h-24 mb-stack-md rounded-full overflow-hidden border-2 border-surface-container-high bg-surface-container-lowest flex items-center justify-center focal-glow" style="box-shadow: 0 0 30px 5px #ff8c00;">
-<img alt="The Workers Guild Bronze Seal" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDS8O3Tei_RzNg47lSYnGtN9QXd1TsfaaO3twcH_Sq8mxMlqyucjuQxL6qYNPwYX7J0jdlDmb1vXRNr8jApxN-FMzXNNH_14NkH0kmLrUjpvDnRQQ2zK8PCsFtgQf-14UNBrqW0_B9J6i4vtMx_-DO3rqAmxMlluVA53T-8_TyQKlO5OKuoQNGWEZM-LTUb65hvaPre2mzjLg-CI2_XqSAxh5MaB07nlboRzf8GuX9rUw5Y3DkykZj_ZpucNM9QK9i3Dw"/>
+<div class="text-center mb-8">
+<div class="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden border border-primary/30 shadow-glow drop-shadow-[0_0_15px_rgba(255,140,0,0.4)] bg-black/20 flex items-center justify-center"><img alt="The Workers Guild Seal" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNn0RvFjC0BTI1URkLL1PMDRxJqAkh8BxTzzVzPg4HebZXIhqWD0RLP4NEQINFGuyTYjHcsVc8GJUOx8xZO4o1vSzEHDiwbc03InaDruERACn1JuVfXOttlDmSVtLDRKpHpIB-ThK1f4TfGa1OhKM44cXql5_WM4ou_BbojR7eEvmuzFzJ2XAdm2NEaikh64M6ID1QwroRRGOq5JszpZlzq1qHsmOxrE4g_KnmEvKQN8yp-xA4dTcKQlfhx94qFyfb0uo"/></div>
+<h1 class="text-3xl font-bold text-white uppercase tracking-wider italic">Sign Up</h1>
+<p class="text-accent/70 font-mono text-sm mt-2 uppercase tracking-widest">Enlistment Protocol</p>
 </div>
-<h1 class="font-headline-md text-headline-md text-primary tracking-tighter uppercase">Sign Up</h1>
-<p class="font-label-md text-label-md text-on-surface-variant mt-unit text-center">INITIALIZE GUILD CREDENTIALS</p>
-</header>
 <!-- Registration Form -->
-<form action="recruitment.html" class="flex flex-col gap-stack-md relative z-10" method="POST">
+<form class="space-y-6" id="signupForm">
 <!-- Full Name Field -->
-<div class="group">
-<label class="block font-label-sm text-label-sm text-on-surface-variant mb-unit uppercase tracking-widest" for="fullName">Full Name</label>
-<div class="relative">
-<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant group-focus-within:text-primary transition-colors text-[20px]">badge</span>
-<input class="w-full bg-surface-container-lowest border-0 border-b-2 border-surface-container-high text-on-surface font-label-md text-label-md px-3 py-3 pl-10 focus:ring-0 focus:border-primary input-glow transition-all placeholder:text-on-surface-variant/50" id="fullName" name="fullName" placeholder="JOHN DOE" required="" type="text"/>
-</div>
+<div>
+<label class="block text-xs font-mono text-gray-400 mb-1 uppercase tracking-wider" for="fullName">Operative Name</label>
+<input class="w-full bg-black/50 border border-white/10 rounded-sm px-4 py-3 text-white font-mono focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors placeholder-gray-600" id="fullName" name="fullName" placeholder="FULL NAME" required="" type="text"/>
+<p class="text-red-500 text-xs font-mono mt-1 hidden" id="nameError">Name is required.</p>
 </div>
 <!-- Email Field -->
-<div class="group">
-<label class="block font-label-sm text-label-sm text-on-surface-variant mb-unit uppercase tracking-widest" for="email">Email</label>
-<div class="relative">
-<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant group-focus-within:text-primary transition-colors text-[20px]">mail</span>
-<input class="w-full bg-surface-container-lowest border-0 border-b-2 border-surface-container-high text-on-surface font-label-md text-label-md px-3 py-3 pl-10 focus:ring-0 focus:border-primary input-glow transition-all placeholder:text-on-surface-variant/50" id="email" name="email" placeholder="WORKER@GUILD.COM" required="" type="email"/>
-</div>
+<div>
+<label class="block text-xs font-mono text-gray-400 mb-1 uppercase tracking-wider" for="email">Comm Channel</label>
+<input class="w-full bg-black/50 border border-white/10 rounded-sm px-4 py-3 text-white font-mono focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors placeholder-gray-600" id="email" name="email" placeholder="OPERATIVE@DOMAIN.COM" required="" type="email"/>
+<p class="text-red-500 text-xs font-mono mt-1 hidden" id="emailError">Valid comm channel required.</p>
 </div>
 <!-- Password Field -->
-<div class="group mb-stack-sm">
-<label class="block font-label-sm text-label-sm text-on-surface-variant mb-unit uppercase tracking-widest" for="password">Password</label>
+<div>
+<label class="block text-xs font-mono text-gray-400 mb-1 uppercase tracking-wider" for="password">Security Key</label>
 <div class="relative">
-<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant group-focus-within:text-primary transition-colors text-[20px]">key</span>
-<input class="w-full bg-surface-container-lowest border-0 border-b-2 border-surface-container-high text-on-surface font-label-md text-label-md px-3 py-3 pl-10 focus:ring-0 focus:border-primary input-glow transition-all placeholder:text-on-surface-variant/50" id="password" name="password" placeholder="••••••••" required="" type="password"/>
-<button aria-label="Toggle password visibility" class="absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-on-surface transition-colors" type="button">
-<span class="material-symbols-outlined text-[20px]">visibility_off</span>
+<input class="w-full bg-black/50 border border-white/10 rounded-sm px-4 py-3 text-white font-mono focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors placeholder-gray-600 pr-12" id="password" minlength="8" name="password" placeholder="••••••••" required="" type="password"/>
+<button class="absolute inset-y-0 right-0 px-3 flex items-center text-gray-400 hover:text-primary transition-colors" id="togglePassword" type="button">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
 </button>
 </div>
+<p class="text-red-500 text-xs font-mono mt-1 hidden" id="passwordError">Security key must be at least 8 characters.</p>
 </div>
-<!-- Terms Checkbox -->
-<div class="flex items-center gap-3 mt-2">
-<input class="w-5 h-5 bg-surface-container-lowest border-2 border-surface-container-high rounded-sm text-primary focus:ring-primary focus:ring-offset-0 focus:ring-2 focus:ring-offset-surface-dim transition-all cursor-pointer accent-primary" id="tosCheckbox" required="" type="checkbox"/>
-<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest cursor-pointer select-none" for="tosCheckbox">
-        I acknowledge the <a class="text-primary hover:text-primary-fixed underline decoration-primary/30 underline-offset-4" href="#" id="openModalBtn">Guild Conditions</a>
-</label>
+<!-- Conditions Checkbox -->
+<div class="flex items-start">
+<div class="flex items-center h-5">
+<input class="w-4 h-4 bg-black/50 border-white/20 rounded-sm text-primary focus:ring-primary focus:ring-offset-surface" id="conditions" name="conditions" required="" type="checkbox"/>
+</div>
+<div class="ml-3 text-sm">
+<label class="font-medium text-gray-400" for="conditions">I acknowledge the <button class="text-primary hover:text-accent underline transition-colors" id="openModalBtn" type="button">Guild Conditions</button></label>
+</div>
+<p class="text-red-500 text-xs font-mono mt-1 hidden w-full ml-7" id="conditionsError">Acknowledgment required.</p>
 </div>
 <!-- Submit Button -->
-<button class="w-full bg-primary-container text-[#0E0E0F] font-headline-sm text-[20px] font-bold py-3 mt-stack-sm uppercase tracking-wide industrial-shadow transition-all duration-150 flex items-center justify-center gap-2 opacity-50 cursor-not-allowed" disabled="" id="submitBtn" type="submit">
-                    Create Account
-                    <span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">how_to_reg</span>
+<button class="w-full bg-gradient-to-r from-primary to-[#ff6b00] hover:from-[#ff9d2e] hover:to-[#ff7f24] text-black font-bold uppercase tracking-widest py-4 px-6 rounded-sm shadow-industrial hover:shadow-industrial-hover transform hover:translate-y-[2px] hover:translate-x-[2px] transition-all duration-150 relative overflow-hidden group" type="submit">
+<span class="relative z-10 italic">Create Account</span>
+<div class="absolute inset-0 bg-white/20 transform -skew-x-12 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]"></div>
 </button>
 </form>
+</div>
 <!-- Footer Links -->
-<footer class="mt-stack-lg border-t border-white/5 pt-stack-md flex flex-col items-center justify-center relative z-10 gap-4">
-<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1 group" href="#">
-<span class="material-symbols-outlined text-[16px] group-hover:-translate-x-1 transition-transform">arrow_left</span>
-                    BACK TO SIGN IN
-                </a>
-<p class="font-label-sm text-label-sm text-on-surface-variant/50 text-center uppercase tracking-widest">Built by workers. For workers. 2026</p>
-</footer>
-</article>
+<div class="mt-8 text-center">
+<a class="inline-flex items-center text-xs font-mono text-gray-500 hover:text-primary transition-colors uppercase tracking-widest" href="signin.html">
+<svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 19l-7-7m0 0l7-7m-7 7h18" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+          Back to Sign In
+        </a>
+</div>
+</div>
 </main>
-<!-- TOS Modal -->
-<div class="fixed inset-0 z-50 hidden items-center justify-center bg-background/90 backdrop-blur-sm p-gutter" id="tosModal">
-<div class="w-full max-w-3xl max-h-[80vh] flex flex-col bg-surface-dim border border-primary/20 shadow-[0_0_40px_rgba(255,140,0,0.15)] relative overflow-hidden industrial-shadow">
-<!-- Modal Header -->
-<header class="p-4 border-b border-white/5 bg-surface-container-highest flex justify-between items-center relative z-10">
-<h2 class="font-headline-sm text-headline-sm text-primary uppercase tracking-tighter">Guild Conditions</h2>
-<button class="text-on-surface-variant hover:text-primary transition-colors" id="closeModalBtn" type="button">
-<span class="material-symbols-outlined">close</span>
-</button>
-</header>
-<!-- Modal Content -->
-<div class="p-gutter overflow-y-auto font-body-md text-on-surface-variant relative z-10 custom-scrollbar prose prose-invert prose-headings:text-on-surface prose-headings:font-headline-sm prose-a:text-primary max-w-none">
-            {{DATA:DOCUMENT:DOCUMENT_6}}
-        </div>
-<!-- Modal Footer -->
-<footer class="p-4 border-t border-white/5 bg-surface-container-highest flex justify-end relative z-10">
-<button class="bg-primary-container text-[#0E0E0F] font-bold px-6 py-2 uppercase tracking-wide hover:brightness-110 transition-all shadow-[4px_4px_0px_0px_#0E0E0F] hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px]" id="acceptBtn" type="button">Accept Conditions</button>
+<!-- END: MainContent -->
+<!-- BEGIN: Footer -->
+<footer class="py-6 text-center border-t border-white/5 bg-black/50 relative z-10">
+<p class="text-xs font-mono text-gray-600 uppercase tracking-widest">
+      © 2026 Built by workers. For workers. Version 0.1
+    </p>
 </footer>
+<!-- END: Footer -->
+<!-- BEGIN: Conditions Modal -->
+<div aria-labelledby="modal-title" aria-modal="true" class="fixed inset-0 z-50 hidden" id="conditionsModal" role="dialog">
+<!-- Background backdrop -->
+<div aria-hidden="true" class="fixed inset-0 bg-black/80 backdrop-blur-sm transition-opacity" id="modalBackdrop"></div>
+<div class="fixed inset-0 z-10 overflow-y-auto">
+<div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+<!-- Modal panel -->
+<div class="relative transform overflow-hidden rounded-sm bg-surface border border-white/10 text-left shadow-2xl transition-all sm:my-8 sm:w-full sm:max-w-2xl industrial-border modal-enter" id="modalPanel">
+<div class="bg-black/40 px-4 py-3 border-b border-white/5 flex justify-between items-center sm:px-6">
+<h3 class="text-lg font-bold leading-6 text-white uppercase italic tracking-wider" id="modal-title">Guild Conditions Document</h3>
+<button class="text-gray-400 hover:text-primary transition-colors" id="closeModalBtnTop" type="button">
+<span class="sr-only">Close</span>
+<svg aria-hidden="true" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24">
+<path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</div>
+<div class="px-4 pb-4 pt-5 sm:p-6 sm:pb-4 max-h-[60vh] overflow-y-auto font-mono text-sm text-gray-300 space-y-4">
+<h1 class="text-xl font-bold text-white mb-4">The Workers Guild - Terms and Conditions</h1>
+<p>Welcome to The Workers Guild. By enlisting, you agree to the following protocols:</p>
+<ol class="list-decimal pl-5 space-y-3 mt-4 text-gray-400">
+<li><strong class="text-white font-sans">Verification Protocol</strong>: All operatives must provide valid identification and proof of trade skills. Misrepresentation of expertise will result in immediate expulsion from the guild.</li>
+<li><strong class="text-white font-sans">Workmanship Standard</strong>: Every job is tracked. Consistently high-quality work is rewarded with XP; substandard work will impact your guild standing and access to premium job postings.</li>
+<li><strong class="text-white font-sans">Confidentiality</strong>: Client data and job site specifics are strictly confidential. Sharing internal guild communications or trade secrets with external entities is prohibited.</li>
+<li><strong class="text-white font-sans">Safety Compliance</strong>: You agree to adhere to all safety regulations relevant to your trade. The Guild provides tracking and verification, but operational safety remains the responsibility of the operative.</li>
+<li><strong class="text-white font-sans">Mutual Respect</strong>: The Guild is built by workers, for workers. Professionalism and respect between operatives and clients are non-negotiable.</li>
+</ol>
+<p class="mt-4 pt-4 border-t border-white/5">Failure to adhere to these protocols may result in the suspension of your credentials. Thank you for building the future with us.</p>
+</div>
+<div class="bg-black/40 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6 border-t border-white/5">
+<button class="mt-3 inline-flex w-full justify-center rounded-sm bg-surface px-3 py-2 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-white/10 hover:bg-white/5 hover:text-primary transition-colors sm:mt-0 sm:w-auto font-mono uppercase tracking-widest" id="closeModalBtnBottom" type="button">Acknowledge</button>
 </div>
 </div>
-<script>
-        // Simple script to toggle password visibility
-        const passwordInput = document.getElementById('password');
-        const toggleBtn = passwordInput.nextElementSibling;
-        const toggleIcon = toggleBtn.querySelector('.material-symbols-outlined');
+</div>
+</div>
+</div>
+<!-- END: Conditions Modal -->
+<!-- BEGIN: Interactive Scripts -->
+<script data-purpose="form-and-modal-logic">
+    document.addEventListener('DOMContentLoaded', () => {
+      // Elements
+      const form = document.getElementById('signupForm');
+      const passwordInput = document.getElementById('password');
+      const togglePasswordBtn = document.getElementById('togglePassword');
+      
+      const modal = document.getElementById('conditionsModal');
+      const modalPanel = document.getElementById('modalPanel');
+      const openModalBtn = document.getElementById('openModalBtn');
+      const closeModalBtnTop = document.getElementById('closeModalBtnTop');
+      const closeModalBtnBottom = document.getElementById('closeModalBtnBottom');
+      const modalBackdrop = document.getElementById('modalBackdrop');
 
-        toggleBtn.addEventListener('click', () => {
-            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-            passwordInput.setAttribute('type', type);
-            toggleIcon.textContent = type === 'password' ? 'visibility_off' : 'visibility';
-        });
-
-        // TOS Checkbox Logic
-        const tosCheckbox = document.getElementById('tosCheckbox');
-        const submitBtn = document.getElementById('submitBtn');
-
-        tosCheckbox.addEventListener('change', (e) => {
-            submitBtn.disabled = !e.target.checked;
-            if (e.target.checked) {
-                submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
-                submitBtn.classList.add('industrial-shadow-hover');
-            } else {
-                submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
-                submitBtn.classList.remove('industrial-shadow-hover');
-            }
-        });
-
-        // Modal Logic
-        const modal = document.getElementById('tosModal');
-        const openBtn = document.getElementById('openModalBtn');
-        const closeBtn = document.getElementById('closeModalBtn');
-        const acceptBtn = document.getElementById('acceptBtn');
-
-        openBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-        });
-
-        const closeModal = () => {
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
-        };
-
-        closeBtn.addEventListener('click', closeModal);
+      // Password Toggle Visibility
+      togglePasswordBtn.addEventListener('click', () => {
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
         
-        acceptBtn.addEventListener('click', () => {
-            tosCheckbox.checked = true;
-            tosCheckbox.dispatchEvent(new Event('change'));
-            closeModal();
-        });
+        // Toggle icon visual state (simple opacity change for demonstration)
+        if(type === 'text') {
+           togglePasswordBtn.classList.add('text-primary');
+           togglePasswordBtn.classList.remove('text-gray-400');
+        } else {
+           togglePasswordBtn.classList.add('text-gray-400');
+           togglePasswordBtn.classList.remove('text-primary');
+        }
+      });
+
+      // Modal Logic
+      const openModal = () => {
+        modal.classList.remove('hidden');
+        // Small delay to allow display:block to apply before animating opacity
+        setTimeout(() => {
+          modalPanel.classList.remove('modal-enter');
+          modalPanel.classList.add('modal-enter-active');
+        }, 10);
+      };
+
+      const closeModal = () => {
+        modalPanel.classList.remove('modal-enter-active');
+        modalPanel.classList.add('modal-leave-active');
         
-        // Close modal when clicking outside
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                closeModal();
-            }
-        });
-    </script>
+        setTimeout(() => {
+          modal.classList.add('hidden');
+          modalPanel.classList.remove('modal-leave-active');
+          modalPanel.classList.add('modal-enter');
+        }, 200); // match transition duration
+      };
+
+      openModalBtn.addEventListener('click', openModal);
+      closeModalBtnTop.addEventListener('click', closeModal);
+      closeModalBtnBottom.addEventListener('click', closeModal);
+      modalBackdrop.addEventListener('click', closeModal);
+
+      // Simple Form Validation
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        // Reset errors
+        document.querySelectorAll('[id$="Error"]').forEach(el => el.classList.add('hidden'));
+        
+        let isValid = true;
+        
+        if(!document.getElementById('fullName').value.trim()) {
+          document.getElementById('nameError').classList.remove('hidden');
+          isValid = false;
+        }
+        
+        const emailVal = document.getElementById('email').value.trim();
+        if(!emailVal || !emailVal.includes('@')) {
+          document.getElementById('emailError').classList.remove('hidden');
+          isValid = false;
+        }
+        
+        if(passwordInput.value.length < 8) {
+          document.getElementById('passwordError').classList.remove('hidden');
+          isValid = false;
+        }
+        
+        if(!document.getElementById('conditions').checked) {
+          document.getElementById('conditionsError').classList.remove('hidden');
+          isValid = false;
+        }
+
+        if(isValid) {
+          // Simulate successful registration
+          const btn = form.querySelector('button[type="submit"]');
+          const originalText = btn.innerHTML;
+          btn.innerHTML = '<span class="relative z-10 italic">ENLISTING...</span>';
+          btn.disabled = true;
+          
+          setTimeout(() => {
+            alert('Enlistment successful. Welcome to the Guild.');
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+            form.reset();
+          }, 1500);
+        }
+      });
+    });
+  </script>
+<!-- END: Interactive Scripts -->
+<style>
+    @keyframes shimmer {
+      100% {
+        transform: skew-x-12 translate-x-[300%];
+      }
+    }
+  </style>
 </body></html>
