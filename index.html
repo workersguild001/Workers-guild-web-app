@@ -1,236 +1,256 @@
 <!DOCTYPE html>
 
-<html class="dark" lang="en"><head>
+<html class="dark" lang="en">
+<head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>The Workers Guild - Sign In</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;family=JetBrains+Mono:wght@400..800&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
+<title>THE WORKERS GUILD | OPENING SOON</title>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;800&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script>
         tailwind.config = {
-          darkMode: "class",
-          theme: {
-            extend: {
-              "colors": {
-                      "on-primary-fixed-variant": "#6e3900",
-                      "on-error": "#690005",
-                      "on-surface": "#f3dfd1",
-                      "on-surface-variant": "#ddc1ae",
-                      "on-secondary-fixed-variant": "#474746",
-                      "tertiary-fixed-dim": "#85cfff",
-                      "primary-fixed": "#ffdcc3",
-                      "secondary-container": "#474746",
-                      "on-background": "#f3dfd1",
-                      "outline": "#a48c7a",
-                      "primary-container": "#ff8c00",
-                      "tertiary": "#85cfff",
-                      "on-tertiary-fixed": "#001e2e",
-                      "on-tertiary-fixed-variant": "#004c6c",
-                      "on-primary": "#4d2600",
-                      "on-secondary-fixed": "#1b1c1b",
-                      "inverse-primary": "#904d00",
-                      "background": "#0e0e0e",
-                      "surface-container-high": "#33281f",
-                      "on-tertiary": "#00344c",
-                      "secondary-fixed-dim": "#c8c6c5",
-                      "tertiary-fixed": "#c7e7ff",
-                      "error-container": "#93000a",
-                      "surface-container-highest": "#3f3229",
-                      "surface-tint": "#ffb77d",
-                      "surface-variant": "#3f3229",
-                      "surface-dim": "#1b110a",
-                      "secondary": "#c8c6c5",
-                      "tertiary-container": "#00b5fc",
-                      "on-error-container": "#ffdad6",
-                      "outline-variant": "#564334",
-                      "error": "#ffb4ab",
-                      "on-tertiary-container": "#004360",
-                      "surface": "#131313",
-                      "surface-bright": "#43372e",
-                      "inverse-surface": "#f3dfd1",
-                      "on-primary-fixed": "#2f1500",
-                      "primary-fixed-dim": "#ffb77d",
-                      "surface-container-lowest": "#150c06",
-                      "secondary-fixed": "#e4e2e1",
-                      "on-secondary": "#303030",
-                      "on-primary-container": "#623200",
-                      "surface-container": "#1c1b1b",
-                      "primary": "#ffb77d",
-                      "surface-container-low": "#241912",
-                      "inverse-on-surface": "#3a2e25",
-                      "on-secondary-container": "#b6b5b4"
-              },
-              "borderRadius": {
-                      "DEFAULT": "0.25rem",
-                      "lg": "0.5rem",
-                      "xl": "0.75rem",
-                      "full": "9999px"
-              },
-              "spacing": {
-                      "stack-md": "16px",
-                      "margin-desktop": "48px",
-                      "margin-mobile": "16px",
-                      "unit": "4px",
-                      "stack-lg": "32px",
-                      "gutter": "24px",
-                      "stack-sm": "8px"
-              },
-              "fontFamily": {
-                      "headline-md": [
-                              "Hanken Grotesk"
-                      ],
-                      "body-md": [
-                              "Hanken Grotesk"
-                      ],
-                      "label-mono": [
-                              "JetBrains Mono"
-                      ],
-                      "headline-xl-mobile": [
-                              "Hanken Grotesk"
-                      ],
-                      "headline-lg": [
-                              "Hanken Grotesk"
-                      ],
-                      "body-lg": [
-                              "Hanken Grotesk"
-                      ],
-                      "headline-xl": [
-                              "Hanken Grotesk"
-                      ]
-              },
-              "fontSize": {
-                      "headline-md": [
-                              "24px",
-                              {
-                                      "lineHeight": "1.3",
-                                      "fontWeight": "700"
-                              }
-                      ],
-                      "body-md": [
-                              "16px",
-                              {
-                                      "lineHeight": "1.5",
-                                      "fontWeight": "400"
-                              }
-                      ],
-                      "label-mono": [
-                              "14px",
-                              {
-                                      "lineHeight": "1.0",
-                                      "letterSpacing": "0.05em",
-                                      "fontWeight": "500"
-                              }
-                      ],
-                      "headline-xl-mobile": [
-                              "40px",
-                              {
-                                      "lineHeight": "1.1",
-                                      "fontWeight": "900"
-                              }
-                      ],
-                      "headline-lg": [
-                              "40px",
-                              {
-                                      "lineHeight": "1.2",
-                                      "fontWeight": "800"
-                              }
-                      ],
-                      "body-lg": [
-                              "18px",
-                              {
-                                      "lineHeight": "1.6",
-                                      "fontWeight": "400"
-                              }
-                      ],
-                      "headline-xl": [
-                              "64px",
-                              {
-                                      "lineHeight": "1.1",
-                                      "letterSpacing": "-0.02em",
-                                      "fontWeight": "900"
-                              }
-                      ]
-              }
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#ff8c00',
+                        surface: '#131313',
+                        'surface-container': '#1c1b1b',
+                    },
+                    fontFamily: {
+                        sans: ['Hanken Grotesk', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                },
             },
-          },
         }
-      </script>
+    </script>
 <style>
-        .industrial-shadow {
-            box-shadow: 4px 4px 0px 0px #000000;
+        body {
+            background-color: #0e0e0e;
+            background-image: url('https://lh3.googleusercontent.com/aida/AEtjO1VFJSiMfSqpZBE_EARZNm77ftbX0hel28c8SaGW4-dfP0VBDqA0p-SnexAdy_926-FVBVob3QSu5pZm8cXaKIx03JHo3fdXRlHoyR-ndBAx4ESwq8eDBk4ig1vdYs8Br8YgICWI5HQ7C9ooXYtPwt0vV1JVJP4Pl-t5R0bWT4hfdp6g-YBKrmDrfaLSwlTAcqv5FvlG1wylQ7ZTy5Qfp7oQVHyNam1QWRmw13PNueGsYQc4pXhT7nk2zlk');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #e4e2e1;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
-        .industrial-shadow:active {
-            box-shadow: 0px 0px 0px 0px #000000;
-            transform: translate(4px, 4px);
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 0;
         }
-        
-        .bg-diagonal-stripes {
-            background-image: repeating-linear-gradient(
-                -45deg,
-                rgba(255, 255, 255, 0.02),
-                rgba(255, 255, 255, 0.02) 2px,
-                transparent 2px,
-                transparent 8px
+        .content-layer {
+            position: relative;
+            z-index: 1;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .caution-tape {
+            background: #ffc400;
+            background: repeating-linear-gradient(
+                45deg,
+                #ffc400,
+                #ffc400 20px,
+                #000 20px,
+                #000 40px
             );
+            height: 24px;
+            width: 100%;
+        }
+        .glow-effect {
+            position: relative;
+        }
+        .glow-effect::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: 80%;
+            background: #ff8c00;
+            filter: blur(60px);
+            opacity: 0.3;
+            z-index: -1;
+        }
+        .terminal-card {
+            background: #131313;
+            border: 1px solid rgba(255, 140, 0, 0.1);
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+        }
+        .input-field {
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.2s ease;
+        }
+        .input-field:focus {
+            outline: none;
+            border-color: #ff8c00;
+            background: rgba(255, 140, 0, 0.05);
+        }
+        .locked-btn {
+            opacity: 0.5;
+            cursor: not-allowed;
         }
     </style>
 </head>
-<body class="bg-background text-on-background min-h-screen flex items-center justify-center relative overflow-hidden font-body-md antialiased selection:bg-primary-container selection:text-black">
-<!-- Background Elements -->
-<div class="absolute inset-0 bg-diagonal-stripes"></div>
-<!-- Orange Glow Focal Point -->
-<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary-container opacity-10 blur-[150px] rounded-full pointer-events-none"></div>
-<!-- Login Container -->
-<main class="relative z-20 w-full max-w-[480px] p-margin-mobile md:p-0">
-<!-- Auth Node Label -->
-<div class="bg-surface border-2 border-[#2a2a2a] p-stack-lg industrial-shadow relative">
-<!-- Corner Accents -->
-<div class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-primary-container -mt-[2px] -ml-[2px]"></div>
-<div class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-primary-container -mt-[2px] -mr-[2px]"></div>
-<div class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-primary-container -mb-[2px] -ml-[2px]"></div>
-<div class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-primary-container -mb-[2px] -mr-[2px]"></div>
-<!-- Header Section -->
-<div class="flex flex-col items-center mb-stack-lg text-center">
-<div class="w-32 h-32 mb-stack-md relative">
-<div class="absolute inset-0 bg-primary-container blur-2xl opacity-20 rounded-full"></div>
-<img alt="Official Guild Seal" class="w-full h-full object-contain relative z-10 drop-shadow-[0_0_15px_rgba(255,140,0,0.5)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJal6bvG97VyslrX5dotKUGoikdO9prVvCWVUzWHgQIweLJMsjZxfhHBnvJzIPsu2HB0fmLAh1t_aNYk77IvGj7jgSsl97SExgv-aR-D4IG61kYLeyTbnbJ7bif-VRQwwl8e6fGuc8jxEq3FE6LCMlnrwGF5AAmDLk-_NeRmVvcbJdZ7OCURgF5qwCXsksRLukhbaiDyrtGHbSBtx4HdNV9uDMfmHdKhpqGpWcOs1G9FMzCiJQGEGen1feECnkjn0YZmE"/>
+<body>
+<div class="content-layer">
+<!-- Top Navigation -->
+<nav class="border-b border-white/5 bg-surface/80 backdrop-blur-md sticky top-0 z-50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex justify-between items-center">
+<div class="flex items-center gap-4 sm:gap-8">
+<span class="text-primary font-black tracking-tighter text-lg sm:text-xl uppercase italic">The Workers Guild</span>
 </div>
-<h1 class="font-headline-lg text-headline-lg uppercase italic tracking-tighter text-on-surface mb-unit">THE WORKERS GUILD</h1>
-<h2 class="font-label-mono text-label-mono text-primary-container tracking-[0.2em]">SIGN IN</h2>
+<div class="flex items-center gap-2 sm:gap-6">
+<!-- Gated Gateway Access -->
+<div class="hidden sm:flex items-center gap-2 px-3 py-1.5 border border-white/10 opacity-40" id="gateway-link">
+<svg fill="none" height="14" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="14"><path d="M12 15v2m-6 4h12a2 2(0 002-2v-6a2 2(0 00-2-2H6a2 2(0 00-2 2v6a2 2(0 002 2zm10-10V7a4 4(0 00-8 0v4h8z"></path></svg>
+<span class="text-[10px] font-mono uppercase tracking-widest">Gateway Access</span>
+<span class="text-[8px] font-mono bg-white/5 px-1 ml-1">LOGIN REQUIRED</span>
 </div>
-<!-- Horizontal Rule -->
-<hr class="border-t-[1px] border-[#2a2a2a] mb-stack-lg w-full"/>
-<!-- Form -->
-<form class="flex flex-col gap-stack-md" onsubmit="event.preventDefault();">
-<!-- Email Field -->
-<div class="flex flex-col gap-unit">
-<label class="font-label-mono text-label-mono text-on-surface-variant uppercase" for="email">LOGIN EMAIL</label>
-<input class="w-full bg-surface-container border-2 border-secondary-fixed text-on-surface font-label-mono p-3 focus:outline-none focus:border-primary-container focus:ring-0 focus:shadow-[0_0_10px_rgba(255,140,0,0.2)] transition-all uppercase placeholder:text-on-surface-variant/50" id="email" placeholder="ENTER CREDENTIALS" type="email"/>
+<a class="hidden sm:block opacity-60 hover:opacity-100 text-[10px] font-mono uppercase tracking-widest transition-opacity mr-2" href="login.html">Owner Login</a><a class="bg-primary/10 border border-primary/20 text-primary px-3 sm:px-4 py-1.5 text-[10px] sm:text-xs font-bold uppercase tracking-widest hover:bg-primary hover:text-surface transition-all" href="signup.html">
+                        Affiliate Access
+                    </a>
+<a class="opacity-60 hover:opacity-100 transition-opacity" href="login.html">
+<svg class="sm:w-6 sm:h-6" fill="none" height="20" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="20"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h10a7 7 0 00-7-7z"></path></svg>
+</a>
 </div>
-<!-- Password Field -->
-<div class="flex flex-col gap-unit mb-stack-sm">
-<label class="font-label-mono text-label-mono text-on-surface-variant uppercase" for="password">PASSWORD</label>
-<input class="w-full bg-surface-container border-2 border-secondary-fixed text-on-surface font-label-mono p-3 focus:outline-none focus:border-primary-container focus:ring-0 focus:shadow-[0_0_10px_rgba(255,140,0,0.2)] transition-all" id="password" placeholder="••••••••" type="password"/>
 </div>
-<!-- Checkbox -->
-<div class="flex items-center gap-2 mb-stack-md">
-<input class="w-5 h-5 bg-surface-container border-2 border-secondary-fixed text-primary-container focus:ring-0 focus:ring-offset-0 rounded-none cursor-pointer" id="save_creds" type="checkbox"/>
-<label class="font-label-mono text-label-mono text-on-surface-variant cursor-pointer uppercase mt-1" for="save_creds">REMEMBER ME</label>
+</nav>
+<main class="flex-1 flex flex-col items-center justify-center p-6 sm:p-12 text-center">
+<!-- Brand Seal Section -->
+<div class="glow-effect mb-8 sm:mb-12">
+<img alt="The Workers Guild Seal" class="w-48 h-48 sm:w-80 sm:h-80 mx-auto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCRqD1tIxw4fRkQB4Te-ZomYcqoSMWlc_Fp_55WMhC4FhTxKrLYGiOz1vRiKtj-c5j4SvLPlI6z7TQ32oOcjqLaloSY4j12SuzXPjfxXxb_4zKmN7Kd4enwGFAQA32MuC2XlZsgCkN43_GnqkTnL7ubAuHg4qUQZcQb4_iiT0ZjjWOqurglUj3o2duVWdwIvDbn0r3p0bn_-qtLXA5-wG0na-L5TEU0kwUM10MTP7snnhNm6ggcbIUsfxovA-IXHuYWw"/>
 </div>
-<!-- Primary Action -->
-<button class="w-full bg-primary-container text-black font-headline-md text-body-lg uppercase py-4 border-2 border-black flex items-center justify-center gap-2 industrial-shadow transition-all font-bold tracking-wider mb-stack-md group" type="submit"><span class="material-symbols-outlined text-[24px] group-hover:translate-x-1 transition-transform" data-icon="login" data-weight="fill">login</span> SIGN IN</button>
+<!-- Status Indicator -->
+<div class="w-full max-w-2xl mb-8 sm:mb-12">
+<div class="caution-tape mb-2"></div>
+<div class="border-y border-primary/30 py-4 sm:py-8 bg-black/40 backdrop-blur-sm">
+<h2 class="text-4xl sm:text-7xl font-black italic tracking-tighter uppercase text-primary">In Construction</h2>
+</div>
+<div class="caution-tape mt-2"></div>
+</div>
+<!-- Descriptive Text -->
+<div class="max-w-xl mb-12 sm:mb-16 px-4">
+<h3 class="text-2xl sm:text-4xl font-black uppercase italic tracking-tighter mb-4">Opening Soon</h3>
+<p class="text-sm sm:text-lg opacity-80 leading-relaxed font-medium">
+                    The job board for trade workers. We verify skills and track every job. Earn XP and level up. One click to find a job.
+                </p>
+</div>
+<!-- Waitlist Terminal -->
+<div class="terminal-card w-full max-w-md p-8 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-3 opacity-20">
+<svg fill="none" height="24" stroke="currentColor" stroke-width="1" viewbox="0 0 24 24" width="24"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>
+</div>
+<div class="flex items-center gap-3 mb-8">
+<div class="w-10 h-10 bg-primary/20 flex items-center justify-center rounded">
+<svg fill="none" height="20" stroke="#ff8c00" stroke-width="2" viewbox="0 0 24 24" width="20"><path d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path></svg>
+</div>
+<div class="text-left">
+<h4 class="text-xl font-black uppercase italic tracking-tighter">Join the List</h4>
+<p class="text-[10px] font-mono opacity-50 uppercase tracking-widest">Enlistment Protocol v0.1</p>
+</div>
+</div>
+<form class="space-y-6" id="waitlist-form">
+<div class="text-left">
+<label class="block text-[10px] font-mono uppercase opacity-50 tracking-widest mb-2">Your Name</label>
+<input class="w-full input-field p-4 text-sm font-bold uppercase tracking-widest text-white" id="name" placeholder="OPERATIVE NAME" required="" type="text"/>
+</div>
+<div class="text-left">
+<label class="block text-[10px] font-mono uppercase opacity-50 tracking-widest mb-2">Your Email</label>
+<input class="w-full input-field p-4 text-sm font-bold uppercase tracking-widest text-white" id="email" placeholder="COMM_CHANNEL@DOMAIN.COM" required="" type="email"/>
+</div>
+<button class="w-full bg-primary text-surface font-black uppercase py-5 text-xl italic tracking-tighter shadow-lg shadow-primary/20 hover:scale-[1.02] transition-transform" type="submit">
+                        Initalize Enlistment
+                    </button>
 </form>
-<!-- Secondary Actions -->
-<div class="flex flex-col gap-stack-sm mt-stack-md">
-<a class="w-full bg-transparent text-on-surface font-label-mono text-label-mono uppercase py-3 border-2 border-[#2a2a2a] hover:border-primary-container hover:text-primary-container transition-colors tracking-widest text-center block" href="signup.html">CREATE ACCOUNT</a>
-<a class="text-center font-label-mono text-label-mono text-on-surface-variant hover:text-primary-container underline underline-offset-4 mt-unit transition-colors" href="#">
-                    LOST OR STOLEN ACCOUNT?
-                </a>
+<div class="mt-4 hidden font-mono text-[10px] uppercase tracking-widest text-primary animate-pulse" id="form-feedback">
+                    Processing Transmission...
+                </div>
+</div><div class="sm:hidden w-full max-w-md mt-4">
+<a class="block w-full bg-white/5 border border-white/10 text-white/60 px-4 py-4 text-xs font-bold uppercase tracking-widest text-center hover:bg-white/10 transition-all" href="login.html">
+        Owner Login
+    </a>
 </div>
-<!-- Caution Bar Decor -->
-<div class="absolute bottom-0 left-0 w-full h-1 bg-[repeating-linear-gradient(45deg,#ff8c00,#ff8c00_10px,#000_10px,#000_20px)]"></div>
+<!-- Secure Admin Control (Owner Only) -->
+<div class="mt-12 opacity-0 transition-opacity" id="owner-controls">
+<label class="text-[9px] font-mono uppercase opacity-30 tracking-[0.3em]">Set Launch Date</label>
+<input class="bg-transparent border border-white/10 text-[10px] font-mono p-2 mt-2 opacity-30 focus:opacity-100" type="date"/>
 </div>
 </main>
-</body></html>
+<!-- Footer -->
+<footer class="py-8 sm:py-12 border-t border-white/5 bg-surface/50 backdrop-blur-sm flex flex-col items-center gap-4 sm:gap-6">
+<p class="text-[10px] sm:text-xs font-mono opacity-40 uppercase tracking-[0.3em]">© 2026 BUILT BY WORKERS. FOR WORKERS. VERSION 0.1</p>
+<div class="flex flex-wrap justify-center gap-6 sm:gap-12 text-[10px] font-mono uppercase tracking-widest opacity-60">
+<a class="hover:text-primary transition-colors" href="terms.html">Terms of Service</a>
+<a class="hover:text-primary transition-colors" href="terms.html">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Contact Support</a>
+</div>
+</footer>
+</div>
+<script>
+        // Supabase Configuration
+        const supabaseUrl = 'https://WiQ8Bv9JIfKpRhtGzqpiw_okDVCPg.supabase.co';
+        const supabaseKey = 'sb_publishable__WiQ8Bv9JIfKpRhtGzqpiw_okDVCPg';
+        const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
+
+        const form = document.getElementById('waitlist-form');
+        const feedback = document.getElementById('form-feedback');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+
+            feedback.classList.remove('hidden');
+            feedback.innerText = 'Transmitting credentials...';
+
+            const { data, error } = await supabaseClient
+                .from('waitlist')
+                .insert([{ email: email, joined_at: new Date() }]);
+
+            if (error) {
+                feedback.innerText = 'Transmission error: ' + error.message;
+                feedback.classList.add('text-red-500');
+            } else {
+                feedback.innerText = 'Transmission successful. Operative logged.';
+                feedback.classList.add('text-green-500');
+                form.reset();
+            }
+            
+            setTimeout(() => {
+                feedback.classList.add('hidden');
+            }, 3000);
+        });
+
+        // Gateway Access Check
+        async function checkSession() {
+            const { data: { session } } = await supabaseClient.auth.getSession();
+            if (session) {
+                const gatewayLink = document.getElementById('gateway-link');
+                if(gatewayLink) {
+                   gatewayLink.classList.remove('hidden', 'opacity-40');
+                   gatewayLink.innerHTML = `
+                    <a href="gateway.html" class="flex items-center gap-2">
+                        <svg width="14" height="14" fill="none" stroke="#ff8c00" stroke-width="2" viewBox="0 0 24 24"><path d="M12 15v2m-6 4h12a2 2(0 002-2v-6a2 2(0 00-2-2H6a2 2(0 00-2 2v6a2 2(0 002 2zm10-10V7a4 4(0 00-8 0v4h8z"></path></svg>
+                        <span class="text-[10px] font-mono text-primary uppercase tracking-widest">Gateway Access</span>
+                    </a>
+                   `;
+                }
+            }
+        }
+        checkSession();
+    </script>
+</body>
+</html>
