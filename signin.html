@@ -3,10 +3,10 @@
 <html class="dark" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Affiliate Access - The Workers Guild</title>
+<title>The Workers Guild - Sign In</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;family=JetBrains+Mono:wght@400..800&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;700;800&amp;family=Courier+Prime:wght@400;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
         tailwind.config = {
@@ -14,53 +14,53 @@
           theme: {
             extend: {
               "colors": {
-                      "on-primary-fixed": "#2f1500",
-                      "tertiary-container": "#aba9a9",
-                      "primary-fixed": "#ffdcc3",
-                      "on-tertiary-fixed-variant": "#474746",
-                      "on-tertiary": "#303030",
-                      "on-tertiary-fixed": "#1b1c1c",
-                      "secondary-container": "#4a494a",
-                      "surface-dim": "#131313",
-                      "surface": "#131313",
-                      "on-tertiary-container": "#3e3e3e",
-                      "error": "#ffb4ab",
-                      "background": "#131313",
-                      "tertiary-fixed-dim": "#c8c6c5",
-                      "surface-variant": "#353534",
-                      "surface-tint": "#ffb77d",
-                      "surface-container-low": "#1c1b1b",
-                      "on-secondary-fixed": "#1c1b1c",
-                      "secondary-fixed-dim": "#c8c6c7",
-                      "secondary-fixed": "#e5e2e3",
-                      "on-background": "#e5e2e1",
-                      "primary-container": "#ff8c00",
-                      "primary": "#ffb77d",
-                      "on-secondary-container": "#bab8b9",
-                      "on-secondary-fixed-variant": "#474647",
-                      "on-primary-container": "#623200",
-                      "surface-container-lowest": "#0e0e0e",
-                      "surface-bright": "#393939",
-                      "surface-container": "#201f1f",
-                      "on-error-container": "#ffdad6",
-                      "tertiary": "#c8c6c5",
-                      "primary-fixed-dim": "#ffb77d",
-                      "on-primary": "#4d2600",
-                      "on-surface-variant": "#ddc1ae",
-                      "secondary": "#c8c6c7",
-                      "error-container": "#93000a",
-                      "inverse-on-surface": "#313030",
-                      "inverse-primary": "#904d00",
-                      "on-secondary": "#313031",
                       "on-primary-fixed-variant": "#6e3900",
-                      "inverse-surface": "#e5e2e1",
-                      "outline-variant": "#564334",
-                      "tertiary-fixed": "#e4e2e1",
-                      "surface-container-highest": "#353534",
-                      "outline": "#a48c7a",
                       "on-error": "#690005",
-                      "on-surface": "#e5e2e1",
-                      "surface-container-high": "#2a2a2a"
+                      "on-surface": "#f3dfd1",
+                      "on-surface-variant": "#ddc1ae",
+                      "on-secondary-fixed-variant": "#474746",
+                      "tertiary-fixed-dim": "#85cfff",
+                      "primary-fixed": "#ffdcc3",
+                      "secondary-container": "#474746",
+                      "on-background": "#f3dfd1",
+                      "outline": "#a48c7a",
+                      "primary-container": "#ff8c00",
+                      "tertiary": "#85cfff",
+                      "on-tertiary-fixed": "#001e2e",
+                      "on-tertiary-fixed-variant": "#004c6c",
+                      "on-primary": "#4d2600",
+                      "on-secondary-fixed": "#1b1c1b",
+                      "inverse-primary": "#904d00",
+                      "background": "#0e0e0e",
+                      "surface-container-high": "#33281f",
+                      "on-tertiary": "#00344c",
+                      "secondary-fixed-dim": "#c8c6c5",
+                      "tertiary-fixed": "#c7e7ff",
+                      "error-container": "#93000a",
+                      "surface-container-highest": "#3f3229",
+                      "surface-tint": "#ffb77d",
+                      "surface-variant": "#3f3229",
+                      "surface-dim": "#1b110a",
+                      "secondary": "#c8c6c5",
+                      "tertiary-container": "#00b5fc",
+                      "on-error-container": "#ffdad6",
+                      "outline-variant": "#564334",
+                      "error": "#ffb4ab",
+                      "on-tertiary-container": "#004360",
+                      "surface": "#131313",
+                      "surface-bright": "#43372e",
+                      "inverse-surface": "#f3dfd1",
+                      "on-primary-fixed": "#2f1500",
+                      "primary-fixed-dim": "#ffb77d",
+                      "surface-container-lowest": "#150c06",
+                      "secondary-fixed": "#e4e2e1",
+                      "on-secondary": "#303030",
+                      "on-primary-container": "#623200",
+                      "surface-container": "#1c1b1b",
+                      "primary": "#ffb77d",
+                      "surface-container-low": "#241912",
+                      "inverse-on-surface": "#3a2e25",
+                      "on-secondary-container": "#b6b5b4"
               },
               "borderRadius": {
                       "DEFAULT": "0.25rem",
@@ -69,144 +69,168 @@
                       "full": "9999px"
               },
               "spacing": {
-                      "unit": "4px",
-                      "stack-sm": "8px",
-                      "gutter": "24px",
-                      "margin-desktop": "40px",
+                      "stack-md": "16px",
+                      "margin-desktop": "48px",
                       "margin-mobile": "16px",
+                      "unit": "4px",
                       "stack-lg": "32px",
-                      "stack-md": "16px"
+                      "gutter": "24px",
+                      "stack-sm": "8px"
               },
               "fontFamily": {
-                      "headline-md": ["Hanken Grotesk"],
-                      "body-lg": ["Hanken Grotesk"],
-                      "label-md": ["Courier Prime"],
-                      "headline-lg": ["Hanken Grotesk"],
-                      "headline-lg-mobile": ["Hanken Grotesk"],
-                      "headline-sm": ["Hanken Grotesk"],
-                      "body-md": ["Hanken Grotesk"],
-                      "label-sm": ["Courier Prime"]
+                      "headline-md": [
+                              "Hanken Grotesk"
+                      ],
+                      "body-md": [
+                              "Hanken Grotesk"
+                      ],
+                      "label-mono": [
+                              "JetBrains Mono"
+                      ],
+                      "headline-xl-mobile": [
+                              "Hanken Grotesk"
+                      ],
+                      "headline-lg": [
+                              "Hanken Grotesk"
+                      ],
+                      "body-lg": [
+                              "Hanken Grotesk"
+                      ],
+                      "headline-xl": [
+                              "Hanken Grotesk"
+                      ]
               },
               "fontSize": {
-                      "headline-md": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
-                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
-                      "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "400"}],
-                      "headline-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}],
-                      "headline-lg-mobile": ["32px", {"lineHeight": "1.1", "fontWeight": "800"}],
-                      "headline-sm": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
-                      "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
-                      "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "400"}]
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-mono": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.0",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-xl-mobile": [
+                              "40px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "fontWeight": "900"
+                              }
+                      ],
+                      "headline-lg": [
+                              "40px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-xl": [
+                              "64px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "900"
+                              }
+                      ]
               }
-            }
-          }
+            },
+          },
         }
-    </script>
+      </script>
 <style>
-        /* Custom Utilities for Industrial Theme */
-        .industrial-card {
-            background-color: #131313;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 4px 4px 0px 0px #0E0E0F;
+        .industrial-shadow {
+            box-shadow: 4px 4px 0px 0px #000000;
         }
-        .industrial-glow {
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background: rgba(255, 140, 0, 0.15);
-            filter: blur(40px);
-            z-index: -1;
-            pointer-events: none;
-        }
-        .industrial-input {
-            background-color: #0E0E0F;
-            border: none;
-            border-bottom: 2px solid #2A2A2A;
-            color: #e5e2e1;
-        }
-        .industrial-input:focus {
-            outline: none;
-            border-bottom-color: #FF8C00;
-            box-shadow: 0 4px 15px -3px rgba(255, 140, 0, 0.2);
-        }
-        .industrial-btn-primary {
-            background-color: #FF8C00;
-            color: #000000;
-            border-radius: 0;
-            box-shadow: 4px 4px 0px 0px #0E0E0F;
-            transition: all 0.1s ease;
-        }
-        .industrial-btn-primary:active, .industrial-btn-primary:hover {
-            box-shadow: 0px 0px 0px 0px #0E0E0F;
+        .industrial-shadow:active {
+            box-shadow: 0px 0px 0px 0px #000000;
             transform: translate(4px, 4px);
         }
-        .scanline {
-            width: 100%;
-            height: 2px;
-            background-color: rgba(255, 140, 0, 0.3);
-            position: absolute;
-            top: 0;
-            left: 0;
-            animation: scan 4s linear infinite;
-            pointer-events: none;
-            opacity: 0.5;
-        }
-        @keyframes scan {
-            0% { top: 0%; }
-            100% { top: 100%; }
+        
+        .bg-diagonal-stripes {
+            background-image: repeating-linear-gradient(
+                -45deg,
+                rgba(255, 255, 255, 0.02),
+                rgba(255, 255, 255, 0.02) 2px,
+                transparent 2px,
+                transparent 8px
+            );
         }
     </style>
 </head>
-<body class="bg-background text-on-surface min-h-screen flex items-center justify-center p-gutter relative overflow-hidden">
+<body class="bg-background text-on-background min-h-screen flex items-center justify-center relative overflow-hidden font-body-md antialiased selection:bg-primary-container selection:text-black">
 <!-- Background Elements -->
-<div class="absolute inset-0 bg-[url('placeholder')] bg-cover bg-center opacity-10" data-alt="A dark, rugged industrial texture resembling heavily weathered metal plates bolted together in a high-tech underground facility. Dim ambient lighting highlights deep scratches and robust rivets, creating a gritty, utilitarian atmosphere suitable for a heavy machinery command center. Deep charcoal and bronze tones dominate the palette."></div>
-<div class="scanline"></div>
-<!-- Main Container -->
-<div class="relative w-full max-w-lg z-10">
-<!-- Focal Glow behind the main card -->
-<div class="industrial-glow top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
-<main class="industrial-card p-stack-lg relative overflow-hidden">
-<!-- Header section with seal -->
-<div class="flex flex-col items-center mb-stack-lg">
-<img alt="The Workers Guild Seal" class="w-32 h-32 mb-stack-md rounded-full border border-white/10 shadow-[0_0_15px_rgba(255,140,0,0.3)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRVdDZlMMx9Yl-oOsCTusayjug_wPQedBSrKa9u5x4xkT9pa6_N2SDi4CbT064O4mRZ6dsjQ9uCacfByq1mFUBJgo9Ajxh-Ks0PrgXTWOQZNfZfbplHKfyGFuDOLBM1uXU2VZnj9uxCWeOxziHtmKByAI-zmzDjggED1Nh2_f2ugOyNX8RgPaqfAMCkw3IfDvh13iZu5zyoJ7Bpi8KKFUR7ArT4jkt8UQDvgqIhv4ECDIWloo8zcJGEsIHAftRDrq8mg"/>
-<h1 class="font-headline-md text-headline-md text-primary text-center uppercase tracking-tighter">THE WORKERS GUILD</h1>
-<p class="font-label-md text-label-md text-on-surface-variant mt-unit text-center">SIGN IN</p>
+<div class="absolute inset-0 bg-diagonal-stripes"></div>
+<!-- Orange Glow Focal Point -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary-container opacity-10 blur-[150px] rounded-full pointer-events-none"></div>
+<!-- Login Container -->
+<main class="relative z-20 w-full max-w-[480px] p-margin-mobile md:p-0">
+<!-- Auth Node Label -->
+<div class="bg-surface border-2 border-[#2a2a2a] p-stack-lg industrial-shadow relative">
+<!-- Corner Accents -->
+<div class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-primary-container -mt-[2px] -ml-[2px]"></div>
+<div class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-primary-container -mt-[2px] -mr-[2px]"></div>
+<div class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-primary-container -mb-[2px] -ml-[2px]"></div>
+<div class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-primary-container -mb-[2px] -mr-[2px]"></div>
+<!-- Header Section -->
+<div class="flex flex-col items-center mb-stack-lg text-center">
+<div class="w-32 h-32 mb-stack-md relative">
+<div class="absolute inset-0 bg-primary-container blur-2xl opacity-20 rounded-full"></div>
+<img alt="Official Guild Seal" class="w-full h-full object-contain relative z-10 drop-shadow-[0_0_15px_rgba(255,140,0,0.5)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJal6bvG97VyslrX5dotKUGoikdO9prVvCWVUzWHgQIweLJMsjZxfhHBnvJzIPsu2HB0fmLAh1t_aNYk77IvGj7jgSsl97SExgv-aR-D4IG61kYLeyTbnbJ7bif-VRQwwl8e6fGuc8jxEq3FE6LCMlnrwGF5AAmDLk-_NeRmVvcbJdZ7OCURgF5qwCXsksRLukhbaiDyrtGHbSBtx4HdNV9uDMfmHdKhpqGpWcOs1G9FMzCiJQGEGen1feECnkjn0YZmE"/>
 </div>
-<!-- Login Form -->
-<form action="#" class="flex flex-col gap-stack-md" method="POST">
-<div class="relative">
-<label class="font-label-sm text-label-sm text-on-surface-variant mb-unit block" for="affiliate-id">LOGIN EMAIL</label>
-<input class="industrial-input w-full p-stack-sm font-label-md text-label-md placeholder:text-surface-variant" id="affiliate-id" name="affiliate-id" placeholder="ENTER CREDENTIALS" required="" type="text"/>
+<h1 class="font-headline-lg text-headline-lg uppercase italic tracking-tighter text-on-surface mb-unit">THE WORKERS GUILD</h1>
+<h2 class="font-label-mono text-label-mono text-primary-container tracking-[0.2em]">SIGN IN</h2>
 </div>
-<div class="relative">
-<label class="font-label-sm text-label-sm text-on-surface-variant mb-unit block" for="access-code">PASSWORD</label>
-<input class="industrial-input w-full p-stack-sm font-label-md text-label-md placeholder:text-surface-variant" id="access-code" name="access-code" placeholder="••••••••" required="" type="password"/>
+<!-- Horizontal Rule -->
+<hr class="border-t-[1px] border-[#2a2a2a] mb-stack-lg w-full"/>
+<!-- Form -->
+<form class="flex flex-col gap-stack-md" onsubmit="event.preventDefault();">
+<!-- Email Field -->
+<div class="flex flex-col gap-unit">
+<label class="font-label-mono text-label-mono text-on-surface-variant uppercase" for="email">LOGIN EMAIL</label>
+<input class="w-full bg-surface-container border-2 border-secondary-fixed text-on-surface font-label-mono p-3 focus:outline-none focus:border-primary-container focus:ring-0 focus:shadow-[0_0_10px_rgba(255,140,0,0.2)] transition-all uppercase placeholder:text-on-surface-variant/50" id="email" placeholder="ENTER CREDENTIALS" type="email"/>
 </div>
-<div class="flex items-center justify-between mt-unit mb-stack-md">
-<label class="flex items-center gap-unit cursor-pointer">
-<input class="form-checkbox h-4 w-4 bg-surface-container-low border-surface-variant text-primary focus:ring-0 rounded-none" type="checkbox"/>
-<span class="font-label-sm text-label-sm text-on-surface-variant">SAVE_CREDENTIALS</span>
-</label>
+<!-- Password Field -->
+<div class="flex flex-col gap-unit mb-stack-sm">
+<label class="font-label-mono text-label-mono text-on-surface-variant uppercase" for="password">PASSWORD</label>
+<input class="w-full bg-surface-container border-2 border-secondary-fixed text-on-surface font-label-mono p-3 focus:outline-none focus:border-primary-container focus:ring-0 focus:shadow-[0_0_10px_rgba(255,140,0,0.2)] transition-all" id="password" placeholder="••••••••" type="password"/>
 </div>
-<button class="industrial-btn-primary w-full py-stack-md font-headline-sm text-headline-sm uppercase flex items-center justify-center gap-stack-sm" type="submit">
-<span class="material-symbols-outlined">login</span>
-                    LOGIN
-                </button>
+<!-- Checkbox -->
+<div class="flex items-center gap-2 mb-stack-md">
+<input class="w-5 h-5 bg-surface-container border-2 border-secondary-fixed text-primary-container focus:ring-0 focus:ring-offset-0 rounded-none cursor-pointer" id="save_creds" type="checkbox"/>
+<label class="font-label-mono text-label-mono text-on-surface-variant cursor-pointer uppercase mt-1" for="save_creds">REMEMBER ME</label>
+</div>
+<!-- Primary Action -->
+<button class="w-full bg-primary-container text-black font-headline-md text-body-lg uppercase py-4 border-2 border-black flex items-center justify-center gap-2 industrial-shadow transition-all font-bold tracking-wider mb-stack-md group" type="submit"><span class="material-symbols-outlined text-[24px] group-hover:translate-x-1 transition-transform" data-icon="login" data-weight="fill">login</span> SIGN IN</button>
 </form>
-<!-- Decorative corner elements -->
-<div class="absolute top-2 left-2 w-4 h-4 border-t border-l border-white/20"></div>
-<div class="absolute top-2 right-2 w-4 h-4 border-t border-r border-white/20"></div>
-<div class="absolute bottom-2 left-2 w-4 h-4 border-b border-l border-white/20"></div>
-<div class="absolute bottom-2 right-2 w-4 h-4 border-b border-r border-white/20"></div>
-<!-- Serial Label -->
-<div class="absolute top-0 left-0 bg-surface-container-low px-2 py-1 border-b border-r border-white/5">
-<span class="font-label-sm text-label-sm text-on-surface-variant">AUTH_NODE // 01</span>
+<!-- Secondary Actions -->
+<div class="flex flex-col gap-stack-sm mt-stack-md">
+<a class="w-full bg-transparent text-on-surface font-label-mono text-label-mono uppercase py-3 border-2 border-[#2a2a2a] hover:border-primary-container hover:text-primary-container transition-colors tracking-widest text-center block" href="signup.html">CREATE ACCOUNT</a>
+<a class="text-center font-label-mono text-label-mono text-on-surface-variant hover:text-primary-container underline underline-offset-4 mt-unit transition-colors" href="#">
+                    LOST OR STOLEN ACCOUNT?
+                </a>
+</div>
+<!-- Caution Bar Decor -->
+<div class="absolute bottom-0 left-0 w-full h-1 bg-[repeating-linear-gradient(45deg,#ff8c00,#ff8c00_10px,#000_10px,#000_20px)]"></div>
 </div>
 </main>
-<!-- Action area below main card -->
-<div class="mt-stack-md text-center">
-<button class="bg-transparent border border-white/10 px-stack-md py-stack-sm font-label-md text-label-md text-on-surface hover:text-primary hover:border-primary/50 transition-colors uppercase w-full">CREATE ACCOUNT</button>
-<div class="mt-12">
-<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors uppercase tracking-tighter" href="#">LOST OR STOLEN ACCOUNT?</a>
-</div></div>
-</div>
 </body></html>
