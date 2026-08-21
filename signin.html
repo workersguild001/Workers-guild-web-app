@@ -7,7 +7,6 @@
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;family=JetBrains+Mono:wght@400..800&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
         tailwind.config = {
           darkMode: "class",
@@ -234,34 +233,9 @@
 </div>
 </main>
 <script>
-const supabaseUrl = 'https://jjxblltjrhyfhwyqzurw.supabase.co';
-const supabaseKey = 'YOUR_PUBLISHABLE_KEY'; // Note: Replace with actual key if provided in context, otherwise placeholder used
-const supabase = supabase.createClient(supabaseUrl, supabaseKey);
-
-document.querySelector('form').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-    const signInButton = e.target.querySelector('button[type="submit"]');
-    
-    signInButton.disabled = true;
-    signInButton.innerText = 'AUTHENTICATING...';
-
-    try {
-        const { data, error } = await supabase.auth.signInWithPassword({
-            email: email,
-            password: password,
-        });
-
-        if (error) throw error;
-
-        if (data.user) {
-            window.location.href = 'recruitment.html';
-        }
-    } catch (error) {
-        alert('ACCESS DENIED: ' + error.message);
-        signInButton.disabled = false;
-        signInButton.innerHTML = '<span class="material-symbols-outlined text-[24px] group-hover:translate-x-1 transition-transform">login</span> SIGN IN';
-    }
-});
-</script></body></html>
+    // Supabase client initialization should be handled via environment variables
+    // e.g. const supabaseUrl = process.env.SUPABASE_URL;
+    //      const supabaseKey = process.env.SUPABASE_ANON_KEY;
+    //      const supabase = createClient(supabaseUrl, supabaseKey);
+</script>
+</body></html>
