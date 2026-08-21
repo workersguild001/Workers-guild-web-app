@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 
-<html class="dark" lang="en"><head>
+<html class="dark" lang="en">
+<head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>THE WORKERS GUILD | OPENING SOON</title>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;800&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;800&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com"></script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
 <script>
         tailwind.config = {
             darkMode: 'class',
@@ -130,7 +131,7 @@
 <main class="flex-1 flex flex-col items-center justify-center p-6 sm:p-12 text-center">
 <!-- Brand Seal Section -->
 <div class="glow-effect mb-8 sm:mb-12">
-<img alt="The Workers Guild Seal" class="w-48 h-48 sm:w-80 sm:h-80 mx-auto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9TyKd8C0-7KLQufIA9xPgfwU3rSZFSm7bLjrJyXOVajI4kDRb09g_ibC84KepdJBk3AjUzJZX1aP54AtztYwt8B13IFRrO5tyFMDeYYvFRrHAzb1VRbUriyVz9BpLw0i5E80Shv4f7yC4EqPd8QFbyn8edYDR34Q0qugEw2pv3UawAb3PyBG39tJL4Zal_AtoquQvNEgMMKwvA-t5V_KIIzKpLdJkkPGpWEo-3nsOqt2w0dy5hdxbYulDCpq2T-E8iI4"/>
+<img alt="The Workers Guild Seal" class="w-48 h-48 sm:w-80 sm:h-80 mx-auto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCRqD1tIxw4fRkQB4Te-ZomYcqoSMWlc_Fp_55WMhC4FhTxKrLYGiOz1vRiKtj-c5j4SvLPlI6z7TQ32oOcjqLaloSY4j12SuzXPjfxXxb_4zKmN7Kd4enwGFAQA32MuC2XlZsgCkN43_GnqkTnL7ubAuHg4qUQZcQb4_iiT0ZjjWOqurglUj3o2duVWdwIvDbn0r3p0bn_-qtLXA5-wG0na-L5TEU0kwUM10MTP7snnhNm6ggcbIUsfxovA-IXHuYWw"/>
 </div>
 <!-- Status Indicator -->
 <div class="w-full max-w-2xl mb-8 sm:mb-12">
@@ -199,18 +200,13 @@
 </footer>
 </div>
 <script>
-        // Configuration
-        window.CONFIG = window.CONFIG || {};
-
         // Supabase Configuration
-        const supabaseUrl = window.CONFIG.SUPABASE_URL || 'YOUR_SUPABASE_URL';
-        const supabaseKey = window.CONFIG.SUPABASE_KEY || 'YOUR_SUPABASE_KEY';
+        const supabaseUrl = 'https://WiQ8Bv9JIfKpRhtGzqpiw_okDVCPg.supabase.co';
+        const supabaseKey = 'sb_publishable__WiQ8Bv9JIfKpRhtGzqpiw_okDVCPg';
         const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
 
         const form = document.getElementById('waitlist-form');
         const feedback = document.getElementById('form-feedback');
-        const modal = document.getElementById('success-modal');
-        const closeModalBtn = document.getElementById('close-modal');
 
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -220,41 +216,23 @@
             feedback.classList.remove('hidden');
             feedback.innerText = 'Transmitting credentials...';
 
-            try {
-                const { data, error, status } = await supabaseClient
-                    .from('waitlist')
-                    .insert([{ name: name, email: email, joined_at: new Date() }]);
+            const { data, error } = await supabaseClient
+                .from('waitlist')
+                .insert([{ email: email, joined_at: new Date() }]);
 
-                if (error) {
-                    console.error('Supabase Error:', error);
-                    feedback.innerText = 'Transmission failed. Try again.';
-                    feedback.classList.add('text-red-500');
-                    alert('Enlistment failed: ' + error.message);
-                } else {
-                    console.log('Successfully inserted data:', data, 'Status:', status);
-                    feedback.innerText = 'Transmission successful.';
-                    feedback.classList.add('text-green-500');
-                    form.reset();
-                    modal.classList.remove('hidden');
-                }
-            } catch (err) {
-                console.error('Network or unexpected error:', err);
-                feedback.innerText = 'Transmission error.';
+            if (error) {
+                feedback.innerText = 'Transmission error: ' + error.message;
                 feedback.classList.add('text-red-500');
-                alert('An unexpected error occurred.');
+            } else {
+                feedback.innerText = 'Transmission successful. Operative logged.';
+                feedback.classList.add('text-green-500');
+                form.reset();
             }
             
             setTimeout(() => {
                 feedback.classList.add('hidden');
-                feedback.classList.remove('text-red-500', 'text-green-500');
             }, 3000);
         });
-
-        if(closeModalBtn) {
-            closeModalBtn.addEventListener('click', () => {
-                modal.classList.add('hidden');
-            });
-        }
 
         // Gateway Access Check
         async function checkSession() {
@@ -274,23 +252,5 @@
         }
         checkSession();
     </script>
-<div class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4" id="success-modal">
-<div class="absolute inset-0 bg-black/80 backdrop-blur-sm"></div>
-<div class="terminal-card relative w-full max-w-md p-8 border border-primary/30 shadow-2xl shadow-primary/10">
-<div class="flex flex-col items-center text-center space-y-6">
-<div class="w-16 h-16 bg-primary/10 flex items-center justify-center rounded-full border border-primary/20">
-<span class="material-symbols-outlined text-primary text-4xl">check_circle</span>
-</div>
-<div class="space-y-2">
-<h4 class="text-2xl font-black uppercase italic tracking-tighter text-primary">Transmission Received</h4>
-<p class="text-sm font-medium opacity-80 leading-relaxed">
-                    Congratulations! You've been successfully signed up for the waiting list!
-                </p>
-</div>
-<button class="w-full bg-primary text-surface font-black uppercase py-4 text-lg italic tracking-tighter shadow-lg shadow-primary/20 hover:scale-[1.02] transition-transform" id="close-modal">
-                OK
-            </button>
-</div>
-</div>
-</div>
-</body></html>
+<div class="hidden fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4" id="success-modal"><div class="terminal-card max-w-md w-full p-8 border-2 border-primary/50 relative overflow-hidden bg-[#1b110a]"><div class="caution-tape absolute top-0 left-0 !h-1"></div><div class="flex flex-col items-center text-center gap-6"><div class="w-16 h-16 bg-primary/20 flex items-center justify-center rounded-full border border-primary/40"><svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" stroke-width="3" viewbox="0 0 24 24"><path d="M5 13l4 4L19 7"></path></svg></div><div class="space-y-2"><h4 class="text-2xl font-black uppercase italic tracking-tighter text-primary">Transmission Received</h4><p class="text-sm font-medium opacity-80 leading-relaxed">Congratulations! You've been successfully signed up for the waiting list!</p></div><button class="w-full bg-primary text-surface font-black uppercase py-3 text-lg italic tracking-tighter hover:scale-[1.02] transition-transform" onclick="document.getElementById('success-modal').classList.add('hidden')">OK</button></div><div class="caution-tape absolute bottom-0 left-0 !h-1"></div></div></div><script>const originalForm = document.getElementById('waitlist-form');if (originalForm) {originalForm.addEventListener('submit', async (e) => {const feedback = document.getElementById('form-feedback');const checkInterval = setInterval(() => {if (feedback && feedback.innerText.includes('Transmission successful')) {document.getElementById('success-modal').classList.remove('hidden');clearInterval(checkInterval);}}, 100);setTimeout(() => clearInterval(checkInterval), 5000);});}</script></body>
+</html>
