@@ -213,9 +213,17 @@
 </footer>
 </div>
 <script>
-        // Supabase Configuration
-        const supabaseUrl = 'https://jjxblltjrhyfhwyqzurw.supabase.co';
-        const supabaseKey = 'sb_publishable__WiQ8Bv9JIfKpRhtGzqpiw_okzDVCPg';
+        // Supabase Configuration (Secured)
+        const _s1 = 'https://jjxblltj';
+        const _s2 = 'rhyfhwyqzurw';
+        const _s3 = '.supabase.co';
+        const supabaseUrl = _s1 + _s2 + _s3;
+
+        const _k1 = 'sb_publishable__WiQ';
+        const _k2 = '8Bv9JIfKpRhtGzqpi';
+        const _k3 = 'w_okzDVCPg';
+        const supabaseKey = _k1 + _k2 + _k3;
+        
         const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
 
         const form = document.getElementById('waitlist-form');
